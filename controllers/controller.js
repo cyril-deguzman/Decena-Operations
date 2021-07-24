@@ -13,6 +13,12 @@ const controller = {
         res.render('index', {});
     },
 
+    /**
+     * getFavicon
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
     getFavicon: function (req, res) {
         res.status(204);
     },

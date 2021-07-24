@@ -4,7 +4,7 @@ const hbs = require(`hbs`);
 const bodyParser = require(`body-parser`);
 const session = require('express-session');
 const routes = require(`./routes/routes.js`);
-const db = require(`./models/db.js`);
+// const db = require(`./models/db.js`);
 const MongoStore = require('connect-mongo');
 const app = express();
 
@@ -14,25 +14,27 @@ app.set(`view engine`, `hbs`);
 hbs.registerPartials(__dirname + `/views/partials`);
 
 dotenv.config();
+hostname = process.env.HOSTNAME;
 port = process.env.PORT;
-url = process.env.DB_URI;
+url = process.env.DB_URL;
 secret = process.env.SECRET;
 
 app.use(express.static(`public`));
 
-db.connect();
+// db.connect();
 
-app.use(session({
-	resave: false,
-	saveUninitialized: false,
-	secret: secret,
-	store: MongoStore.create({
-		mongoUrl: url
-	})
-}));
+// app.use(session({
+// 	resave: false,
+// 	saveUninitialized: false,
+// 	secret: secret,
+// 	store: MongoStore.create({
+// 		mongoUrl: url
+// 	})
+// }));
 
 app.use(`/`, routes);
 
-app.listen(port, function () {
-	
+app.listen(port, hostname, function () {
+    console.log(`Server is running at:`);
+    console.log(`http://` + hostname + `:` + port);
 });
