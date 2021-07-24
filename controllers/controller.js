@@ -13,6 +13,10 @@ const controller = {
         res.render('index', {});
     },
 
+    getFavicon: function (req, res) {
+        res.status(204);
+    },
+
 }
 
 module.exports = controller;
