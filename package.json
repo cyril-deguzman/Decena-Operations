@@ -1,0 +1,28 @@
+{
+  "name": "decena-operations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyril-deguzman/Decena-Operations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyril-deguzman/Decena-Operations/issues"
+  },
+  "homepage": "https://github.com/cyril-deguzman/Decena-Operations#readme",
+  "dependencies": {
+    "connect-mongo": "^4.4.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "mongodb": "^4.0.1",
+    "mongoose": "^5.13.3"
+  }
+}
