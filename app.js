@@ -4,7 +4,7 @@ const hbs = require(`hbs`);
 const bodyParser = require(`body-parser`);
 const session = require('express-session');
 const routes = require(`./routes/routes.js`);
-// const db = require(`./models/db.js`);
+const db = require(`./models/db.js`);
 const MongoStore = require('connect-mongo');
 const app = express();
 
@@ -21,16 +21,16 @@ secret = process.env.SECRET;
 
 app.use(express.static(`public`));
 
-// db.connect();
+db.connect();
 
-// app.use(session({
-// 	resave: false,
-// 	saveUninitialized: false,
-// 	secret: secret,
-// 	store: MongoStore.create({
-// 		mongoUrl: url
-// 	})
-// }));
+app.use(session({
+	resave: false,
+	saveUninitialized: false,
+	secret: secret,
+	store: MongoStore.create({
+		mongoUrl: url
+	})
+}));
 
 app.use(`/`, routes);
 
