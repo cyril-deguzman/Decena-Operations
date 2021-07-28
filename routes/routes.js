@@ -4,7 +4,6 @@ const controller = require(`../controllers/controller.js`);
 const app = express();
 
 app.get(`/`, controller.getIndex);
-// app.get(`/ `, controller.get);
 
 // Test File
 app.get(`/test`, controller.getTest);
