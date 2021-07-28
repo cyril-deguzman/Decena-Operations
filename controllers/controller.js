@@ -1,4 +1,9 @@
 const {render} = require('../routes/routes.js');
+const Fleet = require('../models/FleetsSchema.js');
+const PickUp = require('../models/PickUpSchema.js');
+const Destination = require('../models/DestinationSchema.js');
+const DocumentList = require('../models/DocumentListSchema.js');
+const DeliveryReceipt = require('../models/DeliveryReceiptModel.js')
 
 const controller = {
 
@@ -31,30 +36,63 @@ const controller = {
      * @param {*} res 
      */
     getTest: function(req, res) {
-        console.log("here");
-        // var str = "" + count;
-        // var pad = "00000000";
-        // var okamid = pad.substring(0, pad.length - str.length) + str;
+        
+        let defaultOpt = "jusq";
+        
+        console.log('start');
 
-        // var profile = new Profile({
-        //     about: '',
-        //     bio: 'has not set',
-        //     followers: 0
-        // });
+        // fleet
+        let fleetDetails = new Fleet ({
+            truckPlateNo: 'ABC123',
+            driverName: 'nathan',
+            helperName: 'panchonk'
+        });
 
-        // var okami = new Okami({
-        //     okamid: okamid,
-        //     fullname: firstname + ' ' + lastname,
-        //     name: {
-        //         first: firstname,
-        //         last: lastname
-        //     },
-        //     email: email,
-        //     password: hash,
-        //     profile: profile
-        // });
+        console.log('1');
 
-        // okami.save();
+        // pickup dates
+        let pickUpDates = new PickUp ({
+            arrivalDate: Date.now(),
+            arrivalTime: '23:59',
+            departureDate: Date.now(),
+            departureTime: '23:59'
+        });
+
+        // dest dates
+        let destinationDates = new Destination ({
+            arrivalDate: Date.now(),
+            arrivalTime: '23:59',
+            unloadingStartDate: Date.now(),
+            unloadingStartTime: '23:59',
+            unloadingFinishedDate: Date.now(),
+            unloadingFinishedTime: '23:59',
+            departureDate: Date.now(),
+            departureTime: '23:59'
+        });        
+
+        // doclist
+        let documentList = new DocumentList ({
+            documents: [true, false, false],
+            processor: 'Jordan'
+        });
+
+        // delrec
+        let deliveryReceipt = new DeliveryReceipt({
+            companyName: defaultOpt,
+            clientName: defaultOpt,
+            pickSite: defaultOpt,
+            dropSite: defaultOpt,
+            shipMode: defaultOpt,
+            quantity: 1,
+            commodityDesc: defaultOpt,
+            fleetDetails: fleetDetails,
+            pickUpDates: pickUpDates,
+            destinationDates: destinationDates,
+            documentList: documentList,
+            acknowledgement: defaultOpt
+        });
+
+        deliveryReceipt.save();
     },
 }
 

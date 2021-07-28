@@ -9,7 +9,7 @@ let mongoose = require("mongoose");
  * @property processor: name of the processor of said documents.
  */
  let DocumentListSchema = new mongoose.Schema ({
-      documents: {type: [boolean], required: true},
+      documents: {type: [Boolean], required: true},
       processor: {type: String, required: true}
  })
 
