@@ -31,7 +31,7 @@ const controller = {
      * @param {*} res 
      */
     getTest: function(req, res) {
-        console.log(here);
+        console.log("here");
         // var str = "" + count;
         // var pad = "00000000";
         // var okamid = pad.substring(0, pad.length - str.length) + str;
