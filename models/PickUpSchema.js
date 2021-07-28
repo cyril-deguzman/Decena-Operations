@@ -5,9 +5,10 @@ var mongoose = require("mongoose");
  * 
  * A sub schema for DeliveryReceipt Schema.
  * 
- * @property truckPlantNo: The truck's plate number.
- * @property driverName: The driver's name
- * @property helperName: The helper's name
+ * @property arrivalDate: Date of arrival
+ * @property arrivalTime: Time of arrival
+ * @property departureDate: Date of departure
+ * @property departureTime: Time of departure
  */
 
  var PickUp = new mongoose.Schema ({
