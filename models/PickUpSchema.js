@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+let mongoose = require("mongoose");
 
 /**
  * PickUpSchema.
@@ -10,8 +10,7 @@ var mongoose = require("mongoose");
  * @property departureDate: Date of departure
  * @property departureTime: Time of departure
  */
-
- var PickUp = new mongoose.Schema ({
+ let PickUp = new mongoose.Schema ({
  	arrivalDate = {type: Date, required: true},
  	arrivalTime = {type: String, required: true},
  	departureDate = {type: Date, required: true},
