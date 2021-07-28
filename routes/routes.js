@@ -5,7 +5,7 @@ const app = express();
 
 app.get(`/`, controller.getIndex);
 
-// Test File
+// Test Function
 app.get(`/test`, controller.getTest);
 
 module.exports = app;
