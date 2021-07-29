@@ -188,7 +188,7 @@
 									data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">
-										×
+										x
 									</span>
 								</button>
 							</div>
@@ -244,8 +244,8 @@
 			        mm='0'+mm
 			    } 
 			today = yyyy+'-'+mm+'-'+dd;
-			document.getElementById("datefield").setAttribute("value", today);
-			document.getElementById("datefield").setAttribute("max", today);		
+			document.getElementByTagName('date').setAttribute("value", today);
+			document.getElementByTagName('date').setAttribute("max", today);		
 		</script>
 	</body>
 </html>
