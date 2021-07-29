@@ -195,12 +195,12 @@
 					<!-- Mode of Shipment-->
 					<div id="mode-shipment">
 						<p class="mode-shipment">Mode Of Shipment</p>
-						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
-						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
-						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
-						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
-						<input type="radio" class="radio" value="LOCAL" name="shipment"/> <label> LOCAL</label><br>
-						<input type="radio" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" id="shipment1" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" id="shipment2" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
+						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" id="shipment3" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
+						<input type="radio" class="radio" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
+						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
 						<input type="number" id="quantity" name="quantity" min="1" max="100" style="width: 18%;"><br> 
@@ -210,16 +210,16 @@
 						<p class="list-documents">List of Documents</p>
 						<div id="docs-options">
 							<div id="first-docs">
-								<input type="checkbox" value="KN DR" name="document"/> <label> KN DR</label><br>
-								<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" name="document" /> <label> AIR WAYBILL (AIR FREIGHT)</label><br>
-								<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label><br>	
-								<input type="checkbox" value="IMPORT" name="document" /> <label> IMPORT</label><br>				
+								<input type="checkbox" value="KN DR" id="document1" name="document"/> <label> KN DR</label><br>
+								<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" id="document2" name="document" /> <label> AIR WAYBILL (AIR FREIGHT)</label><br>
+								<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" id="document3" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label><br>	
+								<input type="checkbox" value="IMPORT" id="document4" name="document" /> <label> IMPORT</label><br>				
 							</div>
 							<div id="second-docs">
-								<input type="checkbox" value="INVOICE" name="document"/> <label> INVOICE</label><br>	
-								<input type="checkbox" value="PACKING LIST" name="document" /> <label> PACKING LIST</label><br>		
-								<input type="checkbox" value="B.O REPORT" name="document"/> <label> B.O REPORT</label><br>
-								<input type="checkbox" value="OTHERS" name="document" /> <label> OTHERS</label><br>
+								<input type="checkbox" value="INVOICE" id="document5" name="document"/> <label> INVOICE</label><br>	
+								<input type="checkbox" value="PACKING LIST" id="document6" name="document" /> <label> PACKING LIST</label><br>		
+								<input type="checkbox" value="B.O REPORT" id="document7" name="document"/> <label> B.O REPORT</label><br>
+								<input type="checkbox" value="OTHERS" id="document8" name="document" /> <label> OTHERS</label><br>
 							</div>
 						</div>
 						<br>
@@ -315,11 +315,11 @@
 					</div>
 					<br>
 
-					<input type="radio" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement" id="ack1"/> 
-					<label for="ack1"> Received the merchandise in good order and condition</label>
+					<input type="radio" class="radio" value="Received the merchandise in good order and condition" id="acknowledgement1" name="acknowledgement"/> 
+					<label for="acknowledgement1"> Received the merchandise in good order and condition</label>
 					<br>
-					<input type="radio" class="radio" value="Received the merchandise with issue/s" name="acknowledgement" id="ack2"/> 
-					<label for="ack2"> Received the merchandise with issue/s</label>							
+					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
+					<label for="acknowledgement2"> Received the merchandise with issue/s</label>							
 				</div>
 			</div>
 			
@@ -379,23 +379,25 @@
 			$("#submit").click(function () {
 				var	company = $("#company-name").val();
 				var client = $("#client-name").val();
+				var date = $("#date-issued").val();
+				var ack = $("#acknowledgement").val();
 				var fname = "Forwarding/Broker's Company Name: " + company; 
 				var cname = "Client's Name: " + client;
-				var str = fname + "<br>"+ cname;	
+				var datee = "Date Issued: " + date;
+				var ackk = "Acknowledgement: " + ack;
+				var str = fname + "<br>"+ cname + "<br>" + datee + "<br>" + ackk;	
 				$("#modal_body").html(str);
 			});
 
 			// Setting the DEFAULT & MAX DATE to today (for all date fields)
 			var today = new Date();
 			var dd = today.getDate();
-			var mm = today.getMonth()+1; //January is 0!
+			var mm = today.getMonth()+1;
 			var yyyy = today.getFullYear();
-			 if(dd<10){
-			        dd='0'+dd
-			    } 
-			    if(mm<10){
-			        mm='0'+mm
-			    } 
+			if(dd < 10)
+				dd='0'+dd;
+			if(mm < 10)
+			    mm='0'+mm; 
 			today = yyyy+'-'+mm+'-'+dd;
 			document.getElementById("date-issued").setAttribute("value", today);
 			document.getElementById("date-issued").setAttribute("max", today);	
