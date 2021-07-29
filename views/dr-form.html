@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title> Delivery Receipt </title>
-		<link rel="stylesheet" href= "../public/css/dr-form.css">
 		<!-- Import bootstrap cdn -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -51,10 +50,6 @@
 				flex-direction: column;
 			}
 
-			#description {
-				width:  70%;
-			}
-
 			#part1, #part2, #part3, #part4 {
 				border-top: 5px;
 				border-right: 0px;
@@ -84,13 +79,13 @@
 
 			.header-logo img {
 			  float: left;
-			  width: 25%;
-			  height: 25%;
+			  width: 23%;
+			  height: 23%;
 			}
 
-			.header-logo h1, #dr-title {
+			.header-logo h1 {
 			  position: relative;
-			  font-size: 7vh;
+			  font-size: 6vh;
 			}
 
 			.header-logo h1 {
@@ -121,15 +116,36 @@
 
 			input[type=text], input[type=date], input[type=time], input[type=number]{
 				border: none;
-				border-bottom: 2px solid silver;	
+				border-bottom: 2px solid #194A09;	
 				font-size: 2vh;
 				display: block;
 			}
 
-			.label {
+			.label,p {
 				display: block;
 				margin: 0;
+				color: #737373; /*#545454;*/
+				font-size: 2.5vh;
 			}
+			label, h6, h1 {
+				color: #194A09;
+			}
+
+			h6 {
+				font-size: 2.5vh;
+				font-weight: bold;
+			}
+
+			textarea {
+				border-color: #194A09;
+				border: 2px;
+				border-style: solid;
+				width: 75%;
+				border-radius: 2px;
+				padding-left: 1%;
+				margin-top: 0.5%;
+			}
+
 		</style>
 	</head> 
 	
@@ -178,20 +194,20 @@
 				<div id="lists-processor">
 					<!-- Mode of Shipment-->
 					<div id="mode-shipment">
-						<h2 class="mode-shipment">Mode Of Shipment</h2>
+						<p class="mode-shipment">Mode Of Shipment</p>
 						<input type="checkbox" class="radio" value="AIR FREIGHT (EXPORT)" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
 						<input type="checkbox" class="radio" value="AIR FREIGHT (IMPORT)" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
 						<input type="checkbox" class="radio" value="SEA FREIGHT (EXPORT)" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
 						<input type="checkbox" class="radio" value="SEA FREIGHT (IMPORT)" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
 						<input type="checkbox" class="radio" value="LOCAL" name="shipment"/> <label> LOCAL</label><br>
-						<input type="checkbox" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label><br>
+						<input type="checkbox" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
 						<input type="number" id="quantity" name="quantity" min="1" max="100" style="width: 18%;"><br> 
 					</div>
 					<!-- List of Documents w/ Processsor-->
 					<div id="documents-processor">
-						<h2 class="list-documents">List of Documents</h2>
+						<p class="list-documents">List of Documents</p>
 						<div id="docs-options">
 							<div id="first-docs">
 								<input type="checkbox" value="KN DR" name="document"/> <label> KN DR</label><br>
@@ -221,7 +237,7 @@
 			<div id="part3">
 				<!-- Pick-Up Date & Time -->
 				<div id="pick-up">
-					<h3>PICK-UP POINT</h3>
+					<h6>PICK-UP POINT</h6>
 					<div id="p-date-time">
 						<div id="p-date">
 							<label class="label" for="p-arrival-date">Arrival Date </label>
@@ -232,21 +248,21 @@
 						</div>
 						<div id="p-time">	
 							<label class="label" for="p-arrival-time">Time </label>
-							<input type="time" id="p-arrival-time" name="p-arrival-time" value="13:30">		
+							<input type="time" id="p-arrival-time" name="p-arrival-time" value="00:00">		
 							<br>
 							<label class="label" for="p-departure-time">Time </label>
-							<input type="time" id="p-departure-time" name="p-departure-time" value="13:30">	
+							<input type="time" id="p-departure-time" name="p-departure-time" value="00:00">	
 						</div>	
 					</div>					
 				</div>
 				
 				<!-- Destination Date & Time -->
 				<div id="destination">
-					<h3>DESTINATION POINT</h3>
+					<h6>DESTINATION POINT</h6>
 					<div id="d-date-time">
 						<div id="d-date"> 
 							<label class="label" for="d-arrival-date">Arrival Date </label>
-							<input class="label" type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
 							<br>
 							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
 							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
@@ -259,16 +275,16 @@
 						</div>
 						<div id="d-time">
 							<label class="label" for="d-arrival-time">Time </label>
-							<input type="time" id="d-arrival-time" name="d-arrival-time" value="13:30">	
+							<input type="time" id="d-arrival-time" name="d-arrival-time" value="00:00">	
 							<br>						
 							<label class="label" for="start-load-time">Time </label>
-							<input type="time" id="start-load-time" name="start-load-time" value="13:30">						
+							<input type="time" id="start-load-time" name="start-load-time" value="00:00">						
 							<br>
 							<label class="label" for="finish-load-time">Time </label>
-							<input type="time" id="finish-load-time" name="finish-load-time" value="13:30">											
+							<input type="time" id="finish-load-time" name="finish-load-time" value="00:00">											
 							<br>	
 							<label class="label" for="d-departure-time">Time </label>
-							<input type="time" id="d-departure-time" name="d-departure-time" value="13:30">	
+							<input type="time" id="d-departure-time" name="d-departure-time" value="00:00">	
 						</div>	
 					</div>				
 				</div>
@@ -277,7 +293,7 @@
 			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
 			<div class="part4" id="part4">
 				<div id="fleet-details">
-					<h3>FLEET DETAILS</h3>
+					<h6>FLEET DETAILS</h6>
 					<label class="label" for="plate-number">Truck Plate Number</label>
 					<input type="text" id="plate-number" name="plate-number" style="width: 40%;"><br>		
 					<label class="label" for="driver">Driver</label>
@@ -286,7 +302,7 @@
 					<input type="text" id="helper" name="fname" style="width: 70%;"><br>					
 				</div>
 				<div id="acknowledgement">
-					<h3>ACKNOWLEDGEMENT</h3>
+					<h6>ACKNOWLEDGEMENT</h6>
 					<div id="a-date-time">
 						<div id="a-date">
 							<label class="label" for="ack-date">Date</label>
@@ -294,7 +310,7 @@
 						</div>
 						<div id="a-time">
 							<label class="label" for="ack-time">Time</label>
-							<input type="time" id="ack-time" name="ack-time" value="13:30">
+							<input type="time" id="ack-time" name="ack-time" value="00:00">
 						</div>
 					</div>
 					<br>
@@ -360,6 +376,8 @@
 		<script>
 			// Printing Data Inputted by the user in the Modal
 			$("#submit").click(function () {
+				var data = [];
+				var labels = [];
 				var	fname = $("#company-name").val();
 				var cname = $("#client-name").val();
 				var ffname = "Forwarding/Broker's Company Name: " + fname 
@@ -379,7 +397,7 @@
 				else { $box.prop("checked", false); }
 			});			
 
-			// Setting the Max Date to Today for Date Issued
+			// Setting the DEFAULT & MAX DATE to today (for all date fields)
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth()+1; //January is 0!
@@ -391,8 +409,23 @@
 			        mm='0'+mm
 			    } 
 			today = yyyy+'-'+mm+'-'+dd;
-			document.getElementByClass("datefield").setAttribute("value", today);
-			document.getElementByClass("datefield").setAttribute("max", today);		
+			document.getElementById("date-issued").setAttribute("value", today);
+			document.getElementById("date-issued").setAttribute("max", today);	
+			document.getElementById("p-arrival-date").setAttribute("value", today);
+			document.getElementById("p-arrival-date").setAttribute("max", today);	
+			document.getElementById("p-departure-date").setAttribute("value", today);
+			document.getElementById("p-departure-date").setAttribute("max", today);
+			document.getElementById("d-arrival-date").setAttribute("value", today);
+			document.getElementById("d-arrival-date").setAttribute("max", today);	
+			document.getElementById("d-departure-date").setAttribute("value", today);
+			document.getElementById("d-departure-date").setAttribute("max", today);	
+			document.getElementById("start-load-date").setAttribute("value", today);
+			document.getElementById("start-load-date").setAttribute("max", today);	
+			document.getElementById("finish-load-date").setAttribute("value", today);
+			document.getElementById("finish-load-date").setAttribute("max", today);	
+			document.getElementById("ack-date").setAttribute("value", today);
+			document.getElementById("ack-date").setAttribute("max", today);											
+
 		</script>
 	</body>
 </html>
