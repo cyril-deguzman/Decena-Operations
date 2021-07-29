@@ -26,66 +26,142 @@
 				<!-- logo -->
 
 				<!-- Delivery Receipt Title -->
-				<h2 id="dr-title"> Delivery Receipt</h2>	
+				<h2 id="dr-title">Delivery Receipt</h2>	
 			</div>
 			
-			<!-- Part 1 of Delivery Receipt Form -->
-			<div id="part1">
+			<!-- Part 1 of DR Form -->
+			<div class="part1">
 				<div id="name-site-container">
-					<label id="label">Forwarding/Broker's Company Name </label>
-					<input class="accdets" type="text" placeholder="Forwarding/Broker's Company Name" id="company-name" name="company-name">
-					<label id="label">Client's Name </label>
-					<input class="accdets" type="text" placeholder="Client's Name" id="client-name" name="client-name">		
-					<label id="label">Pick-Up Site </label>
-					<input class="accdets" type="text" placeholder="Client's Name" id="fname" name="fname">		
-					<label id="label">Delivery Site </label>
-					<input class="accdets" type="text" placeholder="Client's Name" id="fname" name="fname">
+					<label>Forwarding/Broker's Company Name </label>
+					<input type="text" placeholder="Forwarding/Broker's Company Name" id="company-name" name="company-name">
+					
+					<label>Client's Name </label>
+					<input type="text" placeholder="Client's Name" id="client-name" name="client-name">		
+					
+					<label>Pick-Up Site </label>
+					<input type="text" placeholder="Pick-Up Site" id="pickup-site" name="pickup-site">		
+					
+					<label>Delivery Site </label>
+					<input type="text" placeholder="Delivery Site" id="delivery-site" name="delivery-site">
 				</div>
+				
 				<div id="date-container">	
-					<label id="label">Date </label>
-					<input class="accdets" type="date" id="datefield" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+					<label>Date </label>
+					<input type="date" id="date-issued" name="date-issued" value="2000-01-01" min="1900-01-01" max="2021-12-31">
 				</div>										
 			</div>
 
-			<!-- Part 2 of Delivery Receipt Form -->
-			<div id="part2">
-				<input type="checkbox" class="radio" value="Export" name="shipment"/> <label> export</label>
-				
-				<input type="checkbox" class="radio" value="Import" name="shipment" /> <label> Import</label>							
+			<!-- Part 2 of DR Form -->
+			<div class="part2">
+				<!-- Lists -->
+				<div id="lists-processor">
+					<h2 class="mode-shipment">Mode Of Shipment</h2>
+					<input type="checkbox" class="radio" value="AIR FREIGHT (EXPORT)" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label>
+					<input type="checkbox" class="radio" value="AIR FREIGHT (IMPORT)" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label>							
+					<input type="checkbox" class="radio" value="SEA FREIGHT (EXPORT)" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label>
+					<input type="checkbox" class="radio" value="SEA FREIGHT (IMPORT)" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label>				
+					<input type="checkbox" class="radio" value="LOCAL" name="shipment"/> <label> LOCAL</label>
+					<input type="checkbox" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label>	
+					
+					<!-- List of Documents w/ Processsor-->
+					<div id="documents-processor">
+						<h2 class="list-documents">List of Documents</h2>
+						<input type="checkbox" value="KN DR" name="document"/> <label> KN DR</label>
+						<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" name="document" /> <label> AIR FREIGHT (IMPORT)</label>
+						<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label>	
+						<input type="checkbox" value="IMPORT" name="document" /> <label> IMPORT</label>				
+						<input type="checkbox" value="INVOICE" name="document"/> <label> INVOICE</label>	
+						<input type="checkbox" value="PACKING LIST" name="document" /> <label> PACKING LIST</label>		
+						<input type="checkbox" value="B.O REPORT" name="document"/> <label> B.O REPORT</label>
+						<input type="checkbox" value="OTHERS" name="document" /> <label> OTHERS</label>
+
+						<label>Processor</label>
+						<input type="text" placeholder="Processor" id="processor" name="processor">	
+					</div>	
+				</div>
+
+				<label>Quantity (No. of Packages)</label>
+				<input type="number" id="quantity" name="quantity" min="1" max="100"> 
+
+				<label>Description of Commodity</label>
+				<textarea type = "text" id = "description" name = "description" rows = "10" cols = "10" maxlength = "550" placeholder = "Write here..."></textarea>											
 			</div>
 
-			<!-- Part 3 of Delivery Receipt Form -->
+			<!-- Part 3 of DR Form: Arrival & Departure -->
 			<div id="part3">
+				<!-- Pick-Up Date & Time -->
 				<div id="pick-up">
-					<label id="label">Arrival Date </label>
-					<input class="accdets" type="date" id="dr-date" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">					
+					<h3>PICK-UP POINT</h3>
+					<label>Arrival Date </label>
+					<input type="date" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+					<label>Time </label>
+					<input type="time" id="p-arrival-time" name="p-arrival-time" value="13:30">						
+					<br>
+
+					<label>Departure Date </label>
+					<input type="date" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+					<label>Time </label>
+					<input type="time" id="p-departure-time" name="p-departure-time" value="13:30">							
 				</div>
-				<div id="destination"></div>
+				
+				<!-- Destination Date & Time -->
+				<div id="destination">
+					<h3>DESTINATION POINT</h3>
+					<label>Arrival Date </label>
+					<input type="date" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+					<label>Time </label>
+					<input type="time" id="d-arrival-time" name="d-arrival-time" value="13:30">	
+					<br>
+
+					<label>Date Started Loading/Unloading </label>
+					<input type="date" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+					<label>Time </label>
+					<input type="time" id="start-load-time" name="start-load-time" value="13:30">						
+					<br>
+
+					<label>Date Finished Loading/Unloading </label>
+					<input type="date" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+					<label>Time </label>
+					<input type="time" id="finish-load-time" name="finish-load-time" value="13:30">											
+					<br>
+
+					<label>Departure Date </label>
+					<input type="date" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+					<label>Time </label>
+					<input type="time" id="d-departure-time" name="d-departure-time" value="13:30">						
+				</div>
 			</div>
-			<!-- Part 3 of Delivery Receipt Form -->
-			<div id="part3">
+			
+			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
+			<div class="part3" id="part3">
 				<div id="fleet-details">
-					<label id="label">Truck Plate Number </label>
-					<input class="part3" type="text" placeholder="Truck Plate Number" id="plate-number" name="plate-number">		
-					<label id="label">Driver </label>
-					<input class="part3" type="text" placeholder="" id="Driver" name="driver">		
-					<label id="label">Helper </label>
-					<input class="part3" type="text" placeholder="Helper" id="helper" name="fname">					
+					<h3>FLEET DETAILS</h3>
+					<label>Truck Plate Number</label>
+					<input type="text" placeholder="Truck Plate Number" id="plate-number" name="plate-number">		
+					<label>Driver</label>
+					<input type="text" placeholder="Driver" id="driver" name="driver">		
+					<label>Helper</label>
+					<input type="text" placeholder="Helper" id="helper" name="fname">					
 				</div>
 				<div id="acknowledgement">
-					<label id="label">Date </label>
-					<input class="accdets" type="date" id="datefield" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-					<label for="appt-time">Time </label>
-					<input id="appt-time" type="time" name="appt-time" value="13:30">
+					<h3>ACKNOWLEDGEMENT</h3>
+					<label>Date</label>
+					<input type="date" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+					<label>Time</label>
+					<input type="time" id="ack-time" name="ack-time" value="13:30">
 					<br>
 					
-					<input type="checkbox" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement" /> <label> Received the merchandise in good order and condition</label>
+					<input type="checkbox" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement"/> 
+					<label> Received the merchandise in good order and condition</label>
 					
-					<input type="checkbox" class="radio" value="Received the merchandise with issue/s" name="acknowledgement" /> <label> Received the merchandise with issue/s</label>		
+					<input type="checkbox" class="radio" value="Received the merchandise with issue/s" name="acknowledgement"/> 
+					<label> Received the merchandise with issue/s</label>		
 				</div>
 			</div>
-			<div id="part4">
-				<!-- Button to invoke the modal -->
+			
+			<!-- Part 5 of DR Form: Submit Button -->
+			<div id="part5">
+				<!-- Button to trigger the modal -->
 				<button type="button" class="btn btn-primary
 					btn-sm" data-toggle="modal"
 					data-target="#exampleModal"
@@ -137,7 +213,7 @@
 		<script>
 			// Printing Data Inputted by the user in the Modal
 			$("#submit").click(function () {
-				var fname = $("#company-name").val();
+				var	fname = $("#company-name").val();
 				var cname = $("#client-name").val();
 				var ffname = "Forwarding/Broker's Company Name: " + fname
 				var ccname = "Client's Name: " + cname;
