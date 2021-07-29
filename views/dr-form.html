@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Delivery Receipt </title>
+		<!-- Import bootstrap cdn -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+			crossorigin="anonymous">
+
+		<!-- Import jquery cdn -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous">
+		</script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+			crossorigin="anonymous">
+		</script> 	
+	</head> 
+	
+	<body>
+		<div class="dr-form">
+			<!-- Header -->
+			<div id="header">
+				<!-- logo -->
+
+				<!-- Delivery Receipt Title -->
+				<h2 id="dr-title"> Delivery Receipt</h2>	
+			</div>
+			
+			<!-- Part 1 of Delivery Receipt Form -->
+			<div id="part1">
+				<div id="name-site-container">
+					<label id="label">Forwarding/Broker's Company Name </label>
+					<input class="accdets" type="text" placeholder="Forwarding/Broker's Company Name" id="company-name" name="company-name">
+					<label id="label">Client's Name </label>
+					<input class="accdets" type="text" placeholder="Client's Name" id="client-name" name="client-name">		
+					<label id="label">Pick-Up Site </label>
+					<input class="accdets" type="text" placeholder="Client's Name" id="fname" name="fname">		
+					<label id="label">Delivery Site </label>
+					<input class="accdets" type="text" placeholder="Client's Name" id="fname" name="fname">
+				</div>
+				<div id="date-container">	
+					<label id="label">Date </label>
+					<input class="accdets" type="date" id="datefield" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+				</div>										
+			</div>
+
+			<!-- Part 2 of Delivery Receipt Form -->
+			<div id="part2">
+				<input type="checkbox" class="radio" value="Export" name="shipment"/> <label> export</label>
+				
+				<input type="checkbox" class="radio" value="Import" name="shipment" /> <label> Import</label>							
+			</div>
+
+			<!-- Part 3 of Delivery Receipt Form -->
+			<div id="part3">
+				<div id="pick-up">
+					<label id="label">Arrival Date </label>
+					<input class="accdets" type="date" id="dr-date" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">					
+				</div>
+				<div id="destination"></div>
+			</div>
+			<!-- Part 3 of Delivery Receipt Form -->
+			<div id="part3">
+				<div id="fleet-details">
+					<label id="label">Truck Plate Number </label>
+					<input class="part3" type="text" placeholder="Truck Plate Number" id="plate-number" name="plate-number">		
+					<label id="label">Driver </label>
+					<input class="part3" type="text" placeholder="" id="Driver" name="driver">		
+					<label id="label">Helper </label>
+					<input class="part3" type="text" placeholder="Helper" id="helper" name="fname">					
+				</div>
+				<div id="acknowledgement">
+					<label id="label">Date </label>
+					<input class="accdets" type="date" id="datefield" name="dr-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+					<label for="appt-time">Time </label>
+					<input id="appt-time" type="time" name="appt-time" value="13:30">
+					<br>
+					
+					<input type="checkbox" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement" /> <label> Received the merchandise in good order and condition</label>
+					
+					<input type="checkbox" class="radio" value="Received the merchandise with issue/s" name="acknowledgement" /> <label> Received the merchandise with issue/s</label>		
+				</div>
+			</div>
+			<div id="part4">
+				<!-- Button to invoke the modal -->
+				<button type="button" class="btn btn-primary
+					btn-sm" data-toggle="modal"
+					data-target="#exampleModal"
+					id="submit">
+					Submit
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal"
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title"
+									id="exampleModalLabel">
+									Confirmation
+								</h5>
+								
+								<button type="button"
+									class="close"
+									data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">
+										×
+									</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+								<h6 id="modal_body"></h6>
+								<button type="button"
+									class="btn btn-success btn-sm"
+									data-toggle="modal"
+									data-target="#exampleModal"
+									id="submit">
+									Submit
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+
+		<!-- JavaScript/JQuery -->
+		<script>
+			// Printing Data Inputted by the user in the Modal
+			$("#submit").click(function () {
+				var fname = $("#company-name").val();
+				var cname = $("#client-name").val();
+				var ffname = "Forwarding/Broker's Company Name: " + fname
+				var ccname = "Client's Name: " + cname;
+				var str = ffname + "<br>"+ ccname;	
+				$("#modal_body").html(str);
+			});
+
+			// Acknowledgement: Only one checkbox can be selected
+			$("input:checkbox").on('click', function() {
+				var $box = $(this);
+				if ($box.is(":checked")) {
+					var group = "input:checkbox[name='" + $box.attr("name") + "']";
+					$(group).prop("checked", false);
+					$box.prop("checked", true);
+				} 
+				else { $box.prop("checked", false); }
+			});			
+
+			// Setting the Max Date to Today for Date Issued
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+			 if(dd<10){
+			        dd='0'+dd
+			    } 
+			    if(mm<10){
+			        mm='0'+mm
+			    } 
+			today = yyyy+'-'+mm+'-'+dd;
+			document.getElementById("datefield").setAttribute("value", today);
+			document.getElementById("datefield").setAttribute("max", today);		
+		</script>
+	</body>
+</html>
