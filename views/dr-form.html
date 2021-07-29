@@ -195,12 +195,12 @@
 					<!-- Mode of Shipment-->
 					<div id="mode-shipment">
 						<p class="mode-shipment">Mode Of Shipment</p>
-						<input type="checkbox" class="radio" value="AIR FREIGHT (EXPORT)" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
-						<input type="checkbox" class="radio" value="AIR FREIGHT (IMPORT)" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
-						<input type="checkbox" class="radio" value="SEA FREIGHT (EXPORT)" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
-						<input type="checkbox" class="radio" value="SEA FREIGHT (IMPORT)" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
-						<input type="checkbox" class="radio" value="LOCAL" name="shipment"/> <label> LOCAL</label><br>
-						<input type="checkbox" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
+						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
+						<input type="radio" class="radio" value="LOCAL" name="shipment"/> <label> LOCAL</label><br>
+						<input type="radio" class="radio" value="TRANSFER (to Airline)" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
 						<input type="number" id="quantity" name="quantity" min="1" max="100" style="width: 18%;"><br> 
@@ -314,11 +314,12 @@
 						</div>
 					</div>
 					<br>
-					<input type="checkbox" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement"/> 
-					<label> Received the merchandise in good order and condition</label>
+
+					<input type="radio" class="radio" value="Received the merchandise in good order and condition" name="acknowledgement" id="ack1"/> 
+					<label for="ack1"> Received the merchandise in good order and condition</label>
 					<br>
-					<input type="checkbox" class="radio" value="Received the merchandise with issue/s" name="acknowledgement"/> 
-					<label> Received the merchandise with issue/s</label>		
+					<input type="radio" class="radio" value="Received the merchandise with issue/s" name="acknowledgement" id="ack2"/> 
+					<label for="ack2"> Received the merchandise with issue/s</label>							
 				</div>
 			</div>
 			
@@ -376,26 +377,13 @@
 		<script>
 			// Printing Data Inputted by the user in the Modal
 			$("#submit").click(function () {
-				var data = [];
-				var labels = [];
-				var	fname = $("#company-name").val();
-				var cname = $("#client-name").val();
-				var ffname = "Forwarding/Broker's Company Name: " + fname 
-				var ccname = "Client's Name: " + cname;
-				var str = ffname + "<br>"+ ccname;	
+				var	company = $("#company-name").val();
+				var client = $("#client-name").val();
+				var fname = "Forwarding/Broker's Company Name: " + company; 
+				var cname = "Client's Name: " + client;
+				var str = fname + "<br>"+ cname;	
 				$("#modal_body").html(str);
 			});
-
-			//  Only one checkbox can be selected
-			$("input:checkbox").on('click', function() {
-				var $box = $(this);
-				if ($box.is(":checked")) {
-					var group = "input:checkbox[name='" + $box.attr("name") + "']";
-					$(group).prop("checked", false);
-					$box.prop("checked", true);
-				} 
-				else { $box.prop("checked", false); }
-			});			
 
 			// Setting the DEFAULT & MAX DATE to today (for all date fields)
 			var today = new Date();
