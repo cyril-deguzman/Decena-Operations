@@ -1,0 +1,126 @@
+body {			
+    background-color: #194A09;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;		
+}
+
+#dr-form {
+    background-color: white;
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+#header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time {
+    display: flex;
+    flex-direction: row;
+}
+
+#part1, #part2, #description,#p-date, #p-time {
+    display: flex;
+    flex-direction: column;
+}
+
+#part1, #part2, #part3, #part4 {
+    border-top: 5px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-color: #194A09;
+    border-style: solid;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 3%;
+    padding-bottom: 2%;
+
+}
+#header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+  float: left;
+  width: 23%;
+  height: 23%;
+}
+
+.header-logo h1 {
+  position: relative;
+  font-size: 6vh;
+}
+
+.header-logo h1 {
+    padding-left: 1%;
+    color: #299B04;
+}
+
+#name-container, #mode-shipment, #pick-up, #fleet-details {
+    width: 50%;
+}
+
+#second-docs, #p-time, #d-time, #a-time {
+    margin-left: 5vh;
+}
+
+#submit {
+    background-color: #194A09;
+    color: white;
+    font-size: 3vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    border: #194A09;
+    float: right;
+    margin-right: 5%;
+}
+
+input[type=text], input[type=date], input[type=time], input[type=number]{
+    border: none;
+    border-bottom: 2px solid #194A09;	
+    font-size: 2vh;
+    display: block;
+}
+
+.label,p {
+    display: block;
+    margin: 0;
+    color: #737373; /*#545454;*/
+    font-size: 2.5vh;
+}
+label, h6, h1 {
+    color: #194A09;
+}
+
+h6 {
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+
+textarea {
+    border-color: #194A09;
+    border: 2px;
+    border-style: solid;
+    width: 75%;
+    border-radius: 2px;
+    padding-left: 1%;
+    margin-top: 0.5%;
+}
