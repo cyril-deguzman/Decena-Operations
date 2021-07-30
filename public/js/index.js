@@ -1,8 +1,5 @@
 $(document).ready(function () {
-
 	$("#submit").click(function () {
-		$.get('/form', {}, function (result) {
-			
-		})
+		window.location = '/form';
 	})
 })
