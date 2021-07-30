@@ -29,6 +29,17 @@ const controller = {
     },
 
     /**
+     * getForm.
+     * 
+     * renders the delivery receipt form.
+     * @param {*} req 
+     * @param {*} res 
+     */
+     getForm: function(req, res) {
+        res.render('dr-form', {});
+    },
+
+    /**
      * getTest.
      * 
      * Database test function.
@@ -47,8 +58,6 @@ const controller = {
             driverName: 'nathan',
             helperName: 'panchonk'
         });
-
-        console.log('1');
 
         // pickup dates
         let pickUpDates = new PickUp ({
