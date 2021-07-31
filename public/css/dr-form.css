@@ -1,3 +1,157 @@
+body {          
+    background-color: #194A09;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;        
+}
+
+#dr-form {
+    background-color: white;
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+#header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time, /*modal: */ #modal-part1, #upper-part2, #lower-part2, #modal-part3, #modal-pickup-point, #modal-destination-point, #modal-fleet-details, #modal-acknowledgement{
+    display: flex;
+    flex-direction: row;
+}
+
+#part1, #part2, #description, #p-date, #p-time, /*modal*/ #modal-part2, #modal-part4 {
+    display: flex;
+    flex-direction: column;
+}
+
+#part1, #part2, #part3, #part4, /*modal*/#modal-part1, #modal-part2, #modal-part3, #modal-part4  {
+    border-top: 5px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-color: #194A09;
+    border-style: solid;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 3%;
+    padding-bottom: 2%;
+
+}
+#header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+  float: left;
+  width: 23%;
+  height: 23%;
+}
+
+.header-logo h1 {
+  position: relative;
+  font-size: 6vh;
+}
+
+.header-logo h1 {
+    padding-left: 1%;
+    color: #299B04;
+}
+
+#name-container, #mode-shipment, #pick-up, #fleet-details {
+    width: 50%;
+}
+
+/* modal */ #left-p1, #upper-left-p2, #lower-left-p2, #left-p3, #left-left-p3, #right-left-p3, #upper-left-p4, #lower-left-p4 {
+    width: 40%;
+    font-size: 2vh;
+}
+
+#second-docs, #p-time, #d-time, #a-time{
+    margin-left: 7vh;
+}
+
+/*modal*/ #right-p3 {
+    margin-left: 2vh;
+}
+
+/*modal*/ #right-p1, #upper-right-p2, #lower-right-p2,  #left-right-p3, #right-right-p3, #upper-right-p4, #lower-right-p4 {
+    color: black;
+    font-size: 2vh;
+    margin-left: 2vh;
+}
+
+#submit, #submit-confirm {
+    background-color: #194A09;
+    color: white;
+    font-size: 3vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    border: #194A09;
+    float: right;
+    margin-right: 5%;
+}
+
+input[type=text], input[type=date], input[type=time], input[type=number]{
+    border: none;
+    border-bottom: 2px solid #194A09;   
+    font-size: 2vh;
+    display: block;
+}
+
+.label,p {
+    display: block;
+    margin: 0;
+    color: #737373;
+    font-size: 2.5vh;
+}
+label, h6, h1 {
+    color: #194A09;
+}
+
+h6 {
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+
+textarea {
+    border-color: #194A09;
+    border: 2px;
+    border-style: solid;
+    width: 75%;
+    border-radius: 2px;
+    padding-left: 1%;
+    margin-top: 0.5%;
+}
+
+#modal-header {
+    background-color: #FCFA0D;
+    margin: 1vh;
+    margin-top: 0vh;
+    padding: 2vh;
+}
+
+#modal-dr-title {
+    margin: 0vh;
+}
+
+/*
 body {			
     background-color: #194A09;
     background-size: cover;
@@ -103,7 +257,7 @@ input[type=text], input[type=date], input[type=time], input[type=number]{
 .label,p {
     display: block;
     margin: 0;
-    color: #737373; /*#545454;*/
+    color: #737373; //#545454;
     font-size: 2.5vh;
 }
 label, h6, h1 {
@@ -124,3 +278,4 @@ textarea {
     padding-left: 1%;
     margin-top: 0.5%;
 }
+*/

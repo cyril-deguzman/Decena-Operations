@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title> Delivery Receipt </title>
@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 			crossorigin="anonymous">
-
+		
 		<!-- Import stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/dr-form.css">
 
@@ -22,8 +22,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 			crossorigin="anonymous">
-		</script> 
-	</head> 
+		</script>
+
+	</head>
 	
 	<body>
 		<div class="dr-form" id="dr-form">
@@ -31,7 +32,7 @@
 			<div id="header">
 				<!-- logo -->
 				<div class="header-logo" id="header-logo">
-					<img src="dv-logo.png" alt="dv-logo"/>
+					<img src="/images/dv-logo.png" alt="dv-logo"/>
 					<h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
 				</div>
 				<!-- Delivery Receipt Title -->
@@ -103,9 +104,9 @@
 						<input type="text" id="processor" name="processor" style="width: 70%;">	
 					</div>	
 				</div>
-				<div id="description-container">
+				<div id="description">
 					<label class="label" for="description">Description of Commodity</label>
-					<textarea type = "text" id = "description" name = "description" rows = "6" cols = "10" placeholder = "Write here..."></textarea>
+					<textarea type = "text" id = "description" name = "description" rows = "6" cols = "10" maxlength = "550" placeholder = "Write here..."></textarea>	
 				</div>										
 			</div>
 
@@ -203,229 +204,53 @@
 			<div id="part5">
 				<!-- Button to trigger the modal -->
 				<button type="button" class="btn btn-primary
-                    btn-sm" data-toggle="modal"
-                    data-target="#exampleModal"
-                    id="submit">
+					btn-sm" data-toggle="modal"
+					data-target="#exampleModal"
+					id="submit">
 					Submit
 				</button>
 
 				<!-- Modal -->
-				<div div class="modal fade" id="exampleModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+				<div class="modal fade" id="exampleModal"
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
 					
-					<div class="modal-dialog modal-lg">
+					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h1 id="modal-dr-title">
-									Delivery Receipt
-								</h1>
+								<h5 class="modal-title"
+									id="exampleModalLabel">
+									Confirmation
+								</h5>
 								
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+								<button type="button"
+									class="close"
+									data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">
+										x
+									</span>
+								</button>
 							</div>
-                            
-							<div class="modal-body" id="modal-body">
-                                <div id="modal-header">
-                                    Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Confirm</b> to submit.
-                                </div>
-                                <div class="modal-part1" id="modal-part1">
-                                    <p id="left-p1"></p>
-                                    <p id="right-p1"></p>
-                                </div>
-                                
-                                <div class="modal-part2" id="modal-part2">
-                                    <div id="upper-part2">
-                                        <p id="upper-left-p2"></p>
-                                        <p id="upper-right-p2"></p>
-                                    </div>
-                                    <div id="lower-part2">
-                                        <p id="lower-left-p2"></p>
-                                        <p id="lower-right-p2"></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="modal-part3" id="modal-part3">
-                                    <div id="left-p3">
-                                        <h6>PICK-UP POINT</h6>
-                                        <div id="modal-pickup-point">
-                                            <p id="left-left-p3"></p>
-                                            <p id="left-right-p3"></p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div id="right-p3">
-                                        <h6>DESTINATION POINT</h6>
-                                        <div id="modal-destination-point">
-                                            <p id="right-left-p3"></p>
-                                            <p id="right-right-p3"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="modal-part4" id="modal-part4">
-                                    <h6>FLEET DETAILS</h6>
-                                    <div id="modal-fleet-details">
-                                        <p id="upper-left-p4"></p>
-                                        <p id="upper-right-p4"></p>
-                                    </div>
-                                    <br>
-                                    <h6>ACKNOWLEDGEMENT</h6>
-                                    <div id="modal-acknowledgement">
-                                        <p id="lower-left-p4"></p>
-                                        <p id="lower-right-p4"></p>
-                                    </div>
-                                </div>
+
+							<div class="modal-body">
+								<h6 id="modal_body"></h6>
+								<button type="button"
+									class="btn btn-success btn-sm"
+									data-toggle="modal"
+									data-target="#exampleModal"
+									id="submit-confirm">
+									Submit
+								</button>
 							</div>
-                            <div id="modal-footer" style="padding-bottom:4vh">
-                                <button type="button"
-                                    class="btn btn-success btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#exampleModal"
-                                    id="submit-confirm">
-                                    Confirm
-                                </button>
-                            </div>
 						</div>
 					</div>
 				</div>	
 			</div>
 		</div>
 
-		<!-- JavaScript/JQuery -->
 		<script>
-			// Printing Data Inputted by the user in the Modal
-			$("#submit").click(function () {
-                //Part 1
-                var dataP1 = [];
-                var fieldsP1 = [];
-            
-                fieldsP1.push("Date Issued ")
-                fieldsP1.push("Forwarding/Broker's Company ");
-                fieldsP1.push("Client ");
-                fieldsP1.push("Pick-Up Site <br>");
-                fieldsP1.push("Delivery Site ");
-                dataP1.push($("#date-issued").val());
-                dataP1.push($("#company-name").val());
-                dataP1.push($("#client-name").val());
-                dataP1.push($("#pickup-site").val() + "<br>");
-                dataP1.push($("#delivery-site").val());
-                
-                var strDataP1 = dataP1.join("<br>");
-                var strFieldP1 = fieldsP1.join("<br>");
-                
-                //Part 2
-				var dataP2 = [];
-                var fieldsP2 = [];
-                var docs = [];
-                $.each($("input[name=document]:checked"), function(){
-                   docs.push($(this).val());
-                });
-                fieldsP2.push("Mode of Shipment ")
-                fieldsP2.push("List of Documents ");
-                fieldsP2.push("Processor ");
-                fieldsP2.push("Quantity ");
-                fieldsP2.push("Description of Commodity ");
-                dataP2.push($("input[name=shipment]:checked").val());
-                dataP2.push(docs.join("<br>"));
-                dataP2.push($("#processor").val());
-                dataP2.push($("#quantity").val());
-                dataP2.push($("#description").val());
-                
-                var strFieldUpperP2 = fieldsP2.slice(0,2).join("<br>");
-                var strFieldLowerP2 = fieldsP2.slice(2,5).join("<br>");
-                var strDataUpperP2 = dataP2.slice(0,2).join("<br>");
-                var strDataLowerP2 = dataP2.slice(2,5).join("<br>");
-              
-                //Part 3
-                var dataP3 = [];
-                var fieldsP3 = [];
-                
-                fieldsP3.push("Arrival Date ");
-                fieldsP3.push("Date Started Loading/Unloading ");
-                fieldsP3.push("Date Finished Loading/Unloading ");
-                fieldsP3.push("Departure Date ");
-                fieldsP3.push("Time ");
-                
-                dataP3.push($("#p-arrival-date").val());
-                dataP3.push($("#p-arrival-time").val());
-                dataP3.push($("#p-departure-date").val());
-                dataP3.push($("#p-departure-time").val());
-                dataP3.push($("#d-arrival-date").val());
-                dataP3.push($("#d-arrival-time").val());
-                dataP3.push($("#start-load-date").val());
-                dataP3.push($("#start-load-time").val());
-                dataP3.push($("#finish-load-date").val());
-                dataP3.push($("#finish-load-time").val());
-                dataP3.push($("#d-departure-date").val());
-                dataP3.push($("#d-departure-time").val());
-                
-                var strFieldLeftP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
-                                     +  "<br><br>" +
-                                     fieldsP3[3] + "<br>" + fieldsP3[4];
-                var strFieldRightP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
-                                      + "<br><br>" +
-                                      fieldsP3[1] + "<br>" + fieldsP3[4]
-                                      + "<br><br>" +
-                                      fieldsP3[2] + "<br>" + fieldsP3[4]
-                                      + "<br><br>" +
-                                      fieldsP3[3] + "<br>" + fieldsP3[4];
-                var strDataLeftP3 = dataP3.slice(0,2).join("<br>")
-                                    + "<br><br>" +
-                                    dataP3.slice(2,4).join("<br>");
-                var strDataRightP3 = dataP3.slice(4,6).join("<br>")
-                                     + "<br><br>" +
-                                     dataP3.slice(6,8).join("<br><br>")
-                                     + "<br><br>" +
-                                     dataP3.slice(8,10).join("<br><br>")
-                                     + "<br><br>" +
-                                     dataP3.slice(10,12).join("<br>");
-                
-                //Part 4
-                var dataP4 = [];
-                var fieldsP4 = [];
-                
-                fieldsP4.push("Truck Plate Number ");
-                fieldsP4.push("Driver ");
-                fieldsP4.push("Helper ");
-                fieldsP4.push("Acknowledgement ");
-                fieldsP4.push("Date ");
-                fieldsP4.push("Time ");
-            
-                dataP4.push($("#plate-number").val());
-                dataP4.push($("#driver").val());
-                dataP4.push($("#helper").val());
-                dataP4.push($("input[name=acknowledgement]:checked").val());
-                dataP4.push($("#ack-date").val());
-                dataP4.push($("#ack-time").val());
-                
-                var strFieldUpperP4 = fieldsP4.slice(0,3).join("<br>");
-                var strFieldLowerP4 = fieldsP4.slice(3,6).join("<br>");
-                var strDataUpperP4 = dataP4.slice(0,3).join("<br>");
-                var strDataLowerP4 = dataP4.slice(3,6).join("<br>");
-                
-                //Displaying all contents of field[] and data[];
-                $("#left-p1").html(strFieldP1);
-				$("#right-p1").html(strDataP1);
-                
-                $("#upper-left-p2").html(strFieldUpperP2);
-                $("#upper-right-p2").html(strDataUpperP2);
-                $("#lower-left-p2").html(strFieldLowerP2);
-                $("#lower-right-p2").html(strDataLowerP2);
-                
-                $("#left-left-p3").html(strFieldLeftP3);
-                $("#left-right-p3").html(strDataLeftP3);
-                $("#right-left-p3").html(strFieldRightP3);
-                $("#right-right-p3").html(strDataRightP3);
-                
-                $("#upper-left-p4").html(strFieldUpperP4);
-                $("#upper-right-p4").html(strDataUpperP4);
-                $("#lower-left-p4").html(strFieldLowerP4);
-                $("#lower-right-p4").html(strDataLowerP4);
-			});
-
 			// Setting the DEFAULT & MAX DATE to today (for all date fields)
 			var today = new Date();
 			var dd = today.getDate();
@@ -434,7 +259,7 @@
 			if(dd < 10)
 				dd='0'+dd;
 			if(mm < 10)
-			    mm='0'+mm; 
+				mm='0'+mm; 
 			today = yyyy+'-'+mm+'-'+dd;
 			document.getElementById("date-issued").setAttribute("value", today);
 			document.getElementById("date-issued").setAttribute("max", today);	
@@ -451,8 +276,7 @@
 			document.getElementById("finish-load-date").setAttribute("value", today);
 			document.getElementById("finish-load-date").setAttribute("max", today);	
 			document.getElementById("ack-date").setAttribute("value", today);
-			document.getElementById("ack-date").setAttribute("max", today);											
-
+			document.getElementById("ack-date").setAttribute("max", today);
 		</script>
 	</body>
 </html>
