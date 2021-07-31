@@ -3,8 +3,8 @@ const Fleet = require('../models/FleetsSchema.js');
 const PickUp = require('../models/PickUpSchema.js');
 const Destination = require('../models/DestinationSchema.js');
 const DocumentList = require('../models/DocumentListSchema.js');
-const DeliveryReceipt = require('../models/DeliveryReceiptModel.js')
-
+const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
+const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const controller = {
 
     /**
@@ -47,10 +47,33 @@ const controller = {
      * @param {*} res 
      */
     postForm: function(req, res) {
-        
-        let defaultOpt = "jusq";
-        
-        console.log('start');
+        let dateIssued = req.body.dateIssued;
+        let companyName = req.body.companyName;
+        let clientName = req.body.clientName;
+        let	pickSite = req.body.pickSite;
+        let	dropSite = req.body.dropSite;
+        let shipMode = req.body.shipMode;
+        let quantity = req.body.quantity;
+        let commodityDesc = req.body.commodityDesc;
+        let truckPlateNo = req.body.truckPlateNo;
+        let driverName = req.body.driverName;
+        let helperName = req.body.helperName;
+        let pArrivalDate = req.body.pArrivalDate;
+        let pArrivalTime = req.body.pArrivalTime;
+        let pDepartureDate = req.body.pDepartureDate;
+        let pDepartureTime = req.body.pDepartureTime;
+        let dArrivalDate = req.body.dArrivalDate;
+        let dArrivalTime = req.body.dArrivalTime;
+        let dStartLoadDate = req.body.dStartLoadDate;
+        let dStartLoadTime = req.body.dStartLoadTime;
+        let dFinishLoadDate = req.body.dFinishLoadDate;
+        let dFinishLoadTime = req.body.dFinishLoadTime;
+        let dDepartureDate = req.body.dDepartureDate;
+        let dDepartureTime = req.body.dDepartureTime;
+        let remarks = req.body.remarks;
+        let ackDate = req.body.ackDate;
+        let ackTime = req.body.ackTime;
+        let docs = req.body.docs;
 
         // fleet
         let fleetDetails = new Fleet ({
@@ -83,6 +106,12 @@ const controller = {
         let documentList = new DocumentList ({
             documents: [true, false, false],
             processor: 'Jordan'
+        });
+
+        let acknowledgement = new Acknowledgement ({
+            dateAck: ackDate,
+            timeAck: ackTime,
+            remarks: remarks,
         });
 
         // delrec
