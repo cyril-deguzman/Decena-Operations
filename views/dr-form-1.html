@@ -1,0 +1,607 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Delivery Receipt </title>
+		<!-- Import bootstrap cdn -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+			crossorigin="anonymous">
+
+		<!-- Import jquery cdn -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous">
+		</script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+			crossorigin="anonymous">
+		</script> 	
+
+		<style>
+			body {			
+				background-color: #194A09;
+				background-size: cover;
+				height: 100%;
+				width: 100%;
+				margin: 0px;
+    			display: flex;
+				align-items: center;
+				justify-content: center;		
+			}
+
+			#dr-form {
+				background-color: white;
+				height: 100%;
+				width: 80%;
+				display: flex;
+				flex-direction: column;
+				padding-top: 4%;
+				padding-bottom: 4%;
+			}
+
+			#header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time, /*modal: */ #modal-part1, #upper-part2, #lower-part2, #modal-part3, #modal-pickup-point, #modal-destination-point, #modal-fleet-details, #modal-acknowledgement{
+				display: flex;
+				flex-direction: row;
+			}
+
+			#part1, #part2, #description, #p-date, #p-time, /*modal*/ #modal-part2, #modal-part4 {
+				display: flex;
+				flex-direction: column;
+			}
+
+			#part1, #part2, #part3, #part4, /*modal*/#modal-part1, #modal-part2, #modal-part3, #modal-part4  {
+				border-top: 5px;
+				border-right: 0px;
+				border-bottom: 0px;
+				border-left: 0px;
+				border-color: #194A09;
+				border-style: solid;
+				padding-top: 3%;
+				padding-bottom: 3%;
+				padding-left: 3%;
+				padding-right: 3%;
+
+			}
+
+			#header {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding-left: 3%;
+				padding-bottom: 2%;
+
+			}
+			#header-logo {
+				display: flex;
+				align-items: center;
+			}
+
+			.header-logo img {
+			  float: left;
+			  width: 23%;
+			  height: 23%;
+			}
+
+			.header-logo h1 {
+			  position: relative;
+			  font-size: 6vh;
+			}
+
+			.header-logo h1 {
+				padding-left: 1%;
+				color: #299B04;
+			}
+
+			#name-container, #mode-shipment, #pick-up, #fleet-details {
+				width: 50%;
+			}
+
+            /* modal */ #left-p1, #upper-left-p2, #lower-left-p2, #left-p3, #left-left-p3, #right-left-p3, #upper-left-p4, #lower-left-p4 {
+                width: 40%;
+                font-size: 2vh;
+            }
+			
+            #second-docs, #p-time, #d-time, #a-time{
+				margin-left: 7vh;
+			}
+            
+            /*modal*/ #right-p3 {
+                margin-left: 2vh;
+            }
+            
+            /*modal*/ #right-p1, #upper-right-p2, #lower-right-p2,  #left-right-p3, #right-right-p3, #upper-right-p4, #lower-right-p4 {
+                color: black;
+                font-size: 2vh;
+                margin-left: 2vh;
+            }
+
+			#submit, #submit-confirm {
+				background-color: #194A09;
+				color: white;
+				font-size: 3vh;
+				padding-top: 1vh;
+				padding-bottom: 1vh;
+				padding-left: 5vh;
+				padding-right: 5vh;
+				border: #194A09;
+				float: right;
+				margin-right: 5%;
+			}
+
+			input[type=text], input[type=date], input[type=time], input[type=number]{
+				border: none;
+				border-bottom: 2px solid #194A09;	
+				font-size: 2vh;
+				display: block;
+			}
+
+			.label,p {
+				display: block;
+				margin: 0;
+				color: #737373;
+				font-size: 2.5vh;
+			}
+			label, h6, h1 {
+				color: #194A09;
+			}
+
+			h6 {
+				font-size: 2.5vh;
+				font-weight: bold;
+			}
+
+			textarea {
+				border-color: #194A09;
+				border: 2px;
+				border-style: solid;
+				width: 75%;
+				border-radius: 2px;
+				padding-left: 1%;
+				margin-top: 0.5%;
+			}
+            
+            #modal-header {
+                background-color: #FCFA0D;
+                margin: 1vh;
+                margin-top: 0vh;
+                padding: 2vh;
+            }
+            
+            #modal-dr-title {
+                margin: 0vh;
+            }
+		</style>
+	</head> 
+	
+	<body>
+		<div class="dr-form" id="dr-form">
+			<!-- Header -->
+			<div id="header">
+				<!-- logo -->
+				<div class="header-logo" id="header-logo">
+					<img src="dv-logo.png" alt="dv-logo"/>
+					<h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
+				</div>
+				<!-- Delivery Receipt Title -->
+				<h1 id="dr-title">Delivery Receipt</h1>	
+			</div>
+
+			<!-- Part 1 of DR Form -->
+			<div class="part1" id="part1">
+				<div id="name-date-container">
+					<div id="name-container" style="width: 70%;">
+						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
+						<input type="text" id="company-name" name="company-name" style="width: 50%;">
+						<br>
+						<label class="label" for="client-name">Client's Name </label>
+						<input type="text" id="client-name" name="client-name" style="width: 50%;">		
+					</div>
+					
+					<div id="date-container">	
+						<label class="label" for="date-issued">Date Issued</label>
+						<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
+					</div>		
+				</div>
+				<br>
+				<div id="site-container">
+					<label class="label" for="pickup-site">Pick-Up Site </label>
+					<input type="text"  id="pickup-site" name="pickup-site" style="width: 70%;">		
+					<br>
+					<label class="label" for="delivery-site">Delivery Site </label>
+					<input type="text"  id="delivery-site" name="delivery-site" style="width: 70%;">
+				</div>								
+			</div>
+
+			<!-- Part 2 of DR Form -->
+			<div class="part2" id="part2">
+				<!-- Lists -->
+				<div id="lists-processor">
+					<!-- Mode of Shipment-->
+					<div id="mode-shipment">
+						<p class="mode-shipment">Mode Of Shipment</p>
+						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" id="shipment1" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" id="shipment2" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
+						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" id="shipment3" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
+						<input type="radio" class="radio" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
+						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+
+						<label class="label" for="quantity">Quantity (No. of Packages)</label>
+						<input type="number" id="quantity" name="quantity" min="1" max="100" style="width: 18%;"><br> 
+					</div>
+					<!-- List of Documents w/ Processsor-->
+					<div id="documents-processor">
+						<p class="list-documents">List of Documents</p>
+						<div id="docs-options">
+							<div id="first-docs">
+								<input type="checkbox" value="KN DR" id="document1" name="document"/> <label> KN DR</label><br>
+								<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" id="document2" name="document" /> <label> AIR WAYBILL (AIR FREIGHT)</label><br>
+								<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" id="document3" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label><br>	
+								<input type="checkbox" value="IMPORT" id="document4" name="document" /> <label> IMPORT</label><br>				
+							</div>
+							<div id="second-docs">
+								<input type="checkbox" value="INVOICE" id="document5" name="document"/> <label> INVOICE</label><br>	
+								<input type="checkbox" value="PACKING LIST" id="document6" name="document" /> <label> PACKING LIST</label><br>		
+								<input type="checkbox" value="B.O REPORT" id="document7" name="document"/> <label> B.O REPORT</label><br>
+								<input type="checkbox" value="OTHERS" id="document8" name="document" /> <label> OTHERS</label><br>
+							</div>
+						</div>
+						<br>
+						<label class="label" for="processor">Processor</label>
+						<input type="text" id="processor" name="processor" style="width: 70%;">	
+					</div>	
+				</div>
+				<div id="description-container">
+					<label class="label" for="description">Description of Commodity</label>
+					<textarea type = "text" id = "description" name = "description" rows = "6" cols = "10" placeholder = "Write here..."></textarea>
+				</div>										
+			</div>
+
+			<!-- Part 3 of DR Form: Arrival & Departure -->
+			<div id="part3">
+				<!-- Pick-Up Date & Time -->
+				<div id="pick-up">
+					<h6>PICK-UP POINT</h6>
+					<div id="p-date-time">
+						<div id="p-date">
+							<label class="label" for="p-arrival-date">Arrival Date </label>
+							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">					
+							<br>
+							<label class="label" for="p-departure-date">Departure Date </label>
+							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+						</div>
+						<div id="p-time">	
+							<label class="label" for="p-arrival-time">Time </label>
+							<input type="time" id="p-arrival-time" name="p-arrival-time" value="00:00">		
+							<br>
+							<label class="label" for="p-departure-time">Time </label>
+							<input type="time" id="p-departure-time" name="p-departure-time" value="00:00">	
+						</div>	
+					</div>					
+				</div>
+				
+				<!-- Destination Date & Time -->
+				<div id="destination">
+					<h6>DESTINATION POINT</h6>
+					<div id="d-date-time">
+						<div id="d-date"> 
+							<label class="label" for="d-arrival-date">Arrival Date </label>
+							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<br>
+							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
+							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+							<br>
+							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
+							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<br>
+							<label class="label" for="d-departure-date">Departure Date </label>
+							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+						</div>
+						<div id="d-time">
+							<label class="label" for="d-arrival-time">Time </label>
+							<input type="time" id="d-arrival-time" name="d-arrival-time" value="00:00">	
+							<br>						
+							<label class="label" for="start-load-time">Time </label>
+							<input type="time" id="start-load-time" name="start-load-time" value="00:00">						
+							<br>
+							<label class="label" for="finish-load-time">Time </label>
+							<input type="time" id="finish-load-time" name="finish-load-time" value="00:00">											
+							<br>	
+							<label class="label" for="d-departure-time">Time </label>
+							<input type="time" id="d-departure-time" name="d-departure-time" value="00:00">	
+						</div>	
+					</div>				
+				</div>
+			</div>
+
+			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
+			<div class="part4" id="part4">
+				<div id="fleet-details">
+					<h6>FLEET DETAILS</h6>
+					<label class="label" for="plate-number">Truck Plate Number</label>
+					<input type="text" id="plate-number" name="plate-number" style="width: 40%;"><br>		
+					<label class="label" for="driver">Driver</label>
+					<input type="text" id="driver" name="driver" style="width: 70%;"><br>		
+					<label class="label" for="helper">Helper</label>
+					<input type="text" id="helper" name="fname" style="width: 70%;"><br>					
+				</div>
+				<div id="acknowledgement">
+					<h6>ACKNOWLEDGEMENT</h6>
+					<div id="a-date-time">
+						<div id="a-date">
+							<label class="label" for="ack-date">Date</label>
+							<input type="date" class="datefield" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+						</div>
+						<div id="a-time">
+							<label class="label" for="ack-time">Time</label>
+							<input type="time" id="ack-time" name="ack-time" value="00:00">
+						</div>
+					</div>
+					<br>
+
+					<input type="radio" class="radio" value="Received the merchandise in good order and condition" id="acknowledgement1" name="acknowledgement"/> 
+					<label for="acknowledgement1"> Received the merchandise in good order and condition</label>
+					<br>
+					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
+					<label for="acknowledgement2"> Received the merchandise with issue/s</label>							
+				</div>
+			</div>
+			
+			<!-- Part 5 of DR Form: Submit Button -->
+			<div id="part5">
+				<!-- Button to trigger the modal -->
+				<button type="button" class="btn btn-primary
+                    btn-sm" data-toggle="modal"
+                    data-target="#exampleModal"
+                    id="submit">
+					Submit
+				</button>
+
+				<!-- Modal -->
+				<div div class="modal fade" id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+					
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 id="modal-dr-title">
+									Delivery Receipt
+								</h1>
+								
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+							</div>
+                            
+							<div class="modal-body" id="modal-body">
+                                <div id="modal-header">
+                                    Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Confirm</b> to submit.
+                                </div>
+                                <div class="modal-part1" id="modal-part1">
+                                    <p id="left-p1"></p>
+                                    <p id="right-p1"></p>
+                                </div>
+                                
+                                <div class="modal-part2" id="modal-part2">
+                                    <div id="upper-part2">
+                                        <p id="upper-left-p2"></p>
+                                        <p id="upper-right-p2"></p>
+                                    </div>
+                                    <div id="lower-part2">
+                                        <p id="lower-left-p2"></p>
+                                        <p id="lower-right-p2"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-part3" id="modal-part3">
+                                    <div id="left-p3">
+                                        <h6>PICK-UP POINT</h6>
+                                        <div id="modal-pickup-point">
+                                            <p id="left-left-p3"></p>
+                                            <p id="left-right-p3"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="right-p3">
+                                        <h6>DESTINATION POINT</h6>
+                                        <div id="modal-destination-point">
+                                            <p id="right-left-p3"></p>
+                                            <p id="right-right-p3"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-part4" id="modal-part4">
+                                    <h6>FLEET DETAILS</h6>
+                                    <div id="modal-fleet-details">
+                                        <p id="upper-left-p4"></p>
+                                        <p id="upper-right-p4"></p>
+                                    </div>
+                                    <br>
+                                    <h6>ACKNOWLEDGEMENT</h6>
+                                    <div id="modal-acknowledgement">
+                                        <p id="lower-left-p4"></p>
+                                        <p id="lower-right-p4"></p>
+                                    </div>
+                                </div>
+							</div>
+                            <div id="modal-footer" style="padding-bottom:4vh">
+                                <button type="button"
+                                    class="btn btn-success btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    id="submit-confirm">
+                                    Confirm
+                                </button>
+                            </div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+
+		<!-- JavaScript/JQuery -->
+		<script>
+			// Printing Data Inputted by the user in the Modal
+			$("#submit").click(function () {
+                //Part 1
+                var dataP1 = [];
+                var fieldsP1 = [];
+            
+                fieldsP1.push("Date Issued ")
+                fieldsP1.push("Forwarding/Broker's Company ");
+                fieldsP1.push("Client ");
+                fieldsP1.push("Pick-Up Site <br>");
+                fieldsP1.push("Delivery Site ");
+                dataP1.push($("#date-issued").val());
+                dataP1.push($("#company-name").val());
+                dataP1.push($("#client-name").val());
+                dataP1.push($("#pickup-site").val() + "<br>");
+                dataP1.push($("#delivery-site").val());
+                
+                var strDataP1 = dataP1.join("<br>");
+                var strFieldP1 = fieldsP1.join("<br>");
+                
+                //Part 2
+				var dataP2 = [];
+                var fieldsP2 = [];
+                var docs = [];
+                $.each($("input[name=document]:checked"), function(){
+                   docs.push($(this).val());
+                });
+                fieldsP2.push("Mode of Shipment ")
+                fieldsP2.push("List of Documents ");
+                fieldsP2.push("Processor ");
+                fieldsP2.push("Quantity ");
+                fieldsP2.push("Description of Commodity ");
+                dataP2.push($("input[name=shipment]:checked").val());
+                dataP2.push(docs.join("<br>"));
+                dataP2.push($("#processor").val());
+                dataP2.push($("#quantity").val());
+                dataP2.push($("#description").val());
+                
+                var strFieldUpperP2 = fieldsP2.slice(0,2).join("<br>");
+                var strFieldLowerP2 = fieldsP2.slice(2,5).join("<br>");
+                var strDataUpperP2 = dataP2.slice(0,2).join("<br>");
+                var strDataLowerP2 = dataP2.slice(2,5).join("<br>");
+              
+                //Part 3
+                var dataP3 = [];
+                var fieldsP3 = [];
+                
+                fieldsP3.push("Arrival Date ");
+                fieldsP3.push("Date Started Loading/Unloading ");
+                fieldsP3.push("Date Finished Loading/Unloading ");
+                fieldsP3.push("Departure Date ");
+                fieldsP3.push("Time ");
+                
+                dataP3.push($("#p-arrival-date").val());
+                dataP3.push($("#p-arrival-time").val());
+                dataP3.push($("#p-departure-date").val());
+                dataP3.push($("#p-departure-time").val());
+                dataP3.push($("#d-arrival-date").val());
+                dataP3.push($("#d-arrival-time").val());
+                dataP3.push($("#start-load-date").val());
+                dataP3.push($("#start-load-time").val());
+                dataP3.push($("#finish-load-date").val());
+                dataP3.push($("#finish-load-time").val());
+                dataP3.push($("#d-departure-date").val());
+                dataP3.push($("#d-departure-time").val());
+                
+                var strFieldLeftP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
+                                     +  "<br><br>" +
+                                     fieldsP3[3] + "<br>" + fieldsP3[4];
+                var strFieldRightP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
+                                      + "<br><br>" +
+                                      fieldsP3[1] + "<br>" + fieldsP3[4]
+                                      + "<br><br>" +
+                                      fieldsP3[2] + "<br>" + fieldsP3[4]
+                                      + "<br><br>" +
+                                      fieldsP3[3] + "<br>" + fieldsP3[4];
+                var strDataLeftP3 = dataP3.slice(0,2).join("<br>")
+                                    + "<br><br>" +
+                                    dataP3.slice(2,4).join("<br>");
+                var strDataRightP3 = dataP3.slice(4,6).join("<br>")
+                                     + "<br><br>" +
+                                     dataP3.slice(6,8).join("<br><br>")
+                                     + "<br><br>" +
+                                     dataP3.slice(8,10).join("<br><br>")
+                                     + "<br><br>" +
+                                     dataP3.slice(10,12).join("<br>");
+                
+                //Part 4
+                var dataP4 = [];
+                var fieldsP4 = [];
+                
+                fieldsP4.push("Truck Plate Number ");
+                fieldsP4.push("Driver ");
+                fieldsP4.push("Helper ");
+                fieldsP4.push("Acknowledgement ");
+                fieldsP4.push("Date ");
+                fieldsP4.push("Time ");
+            
+                dataP4.push($("#plate-number").val());
+                dataP4.push($("#driver").val());
+                dataP4.push($("#helper").val());
+                dataP4.push($("input[name=acknowledgement]:checked").val());
+                dataP4.push($("#ack-date").val());
+                dataP4.push($("#ack-time").val());
+                
+                var strFieldUpperP4 = fieldsP4.slice(0,3).join("<br>");
+                var strFieldLowerP4 = fieldsP4.slice(3,6).join("<br>");
+                var strDataUpperP4 = dataP4.slice(0,3).join("<br>");
+                var strDataLowerP4 = dataP4.slice(3,6).join("<br>");
+                
+                //Displaying all contents of field[] and data[];
+                $("#left-p1").html(strFieldP1);
+				$("#right-p1").html(strDataP1);
+                
+                $("#upper-left-p2").html(strFieldUpperP2);
+                $("#upper-right-p2").html(strDataUpperP2);
+                $("#lower-left-p2").html(strFieldLowerP2);
+                $("#lower-right-p2").html(strDataLowerP2);
+                
+                $("#left-left-p3").html(strFieldLeftP3);
+                $("#left-right-p3").html(strDataLeftP3);
+                $("#right-left-p3").html(strFieldRightP3);
+                $("#right-right-p3").html(strDataRightP3);
+                
+                $("#upper-left-p4").html(strFieldUpperP4);
+                $("#upper-right-p4").html(strDataUpperP4);
+                $("#lower-left-p4").html(strFieldLowerP4);
+                $("#lower-right-p4").html(strDataLowerP4);
+			});
+
+			// Setting the DEFAULT & MAX DATE to today (for all date fields)
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;
+			var yyyy = today.getFullYear();
+			if(dd < 10)
+				dd='0'+dd;
+			if(mm < 10)
+			    mm='0'+mm; 
+			today = yyyy+'-'+mm+'-'+dd;
+			document.getElementById("date-issued").setAttribute("value", today);
+			document.getElementById("date-issued").setAttribute("max", today);	
+			document.getElementById("p-arrival-date").setAttribute("value", today);
+			document.getElementById("p-arrival-date").setAttribute("max", today);	
+			document.getElementById("p-departure-date").setAttribute("value", today);
+			document.getElementById("p-departure-date").setAttribute("max", today);
+			document.getElementById("d-arrival-date").setAttribute("value", today);
+			document.getElementById("d-arrival-date").setAttribute("max", today);	
+			document.getElementById("d-departure-date").setAttribute("value", today);
+			document.getElementById("d-departure-date").setAttribute("max", today);	
+			document.getElementById("start-load-date").setAttribute("value", today);
+			document.getElementById("start-load-date").setAttribute("max", today);	
+			document.getElementById("finish-load-date").setAttribute("value", today);
+			document.getElementById("finish-load-date").setAttribute("max", today);	
+			document.getElementById("ack-date").setAttribute("value", today);
+			document.getElementById("ack-date").setAttribute("max", today);											
+
+		</script>
+	</body>
+</html>
