@@ -70,44 +70,46 @@ const controller = {
         let dFinishLoadTime = req.body.dFinishLoadTime;
         let dDepartureDate = req.body.dDepartureDate;
         let dDepartureTime = req.body.dDepartureTime;
+        let docs = req.body.docs;
+        let processor = req.body.processor;
         let remarks = req.body.remarks;
         let ackDate = req.body.ackDate;
         let ackTime = req.body.ackTime;
-        let docs = req.body.docs;
 
         // fleet
         let fleetDetails = new Fleet ({
-            truckPlateNo: 'ABC123',
-            driverName: 'nathan',
-            helperName: 'panchonk'
+            truckPlateNo: truckPlateNo,
+            driverName: driverName,
+            helperName: helperName
         });
 
         // pickup dates
         let pickUpDates = new PickUp ({
-            arrivalDate: Date.now(),
-            arrivalTime: '23:59',
-            departureDate: Date.now(),
-            departureTime: '23:59'
+            arrivalDate: pArrivalDate,
+            arrivalTime: pArrivalTime,
+            departureDate: pDepartureDate,
+            departureTime: pDepartureTime
         });
 
         // dest dates
         let destinationDates = new Destination ({
-            arrivalDate: Date.now(),
-            arrivalTime: '23:59',
-            unloadingStartDate: Date.now(),
-            unloadingStartTime: '23:59',
-            unloadingFinishedDate: Date.now(),
-            unloadingFinishedTime: '23:59',
-            departureDate: Date.now(),
-            departureTime: '23:59'
+            arrivalDate: dArrivalDate,
+            arrivalTime: dArrivalTime,
+            unloadingStartDate: dStartLoadDate,
+            unloadingStartTime: dStartLoadTime,
+            unloadingFinishedDate: dFinishLoadDate,
+            unloadingFinishedTime: dFinishLoadTime,
+            departureDate: dDepartureDate,
+            departureTime: dDepartureTime
         });        
 
         // doclist
         let documentList = new DocumentList ({
-            documents: [true, false, false],
-            processor: 'Jordan'
+            documents: docs,
+            processor: processor
         });
 
+        // ack
         let acknowledgement = new Acknowledgement ({
             dateAck: ackDate,
             timeAck: ackTime,
@@ -116,18 +118,19 @@ const controller = {
 
         // delrec
         let deliveryReceipt = new DeliveryReceipt({
-            companyName: defaultOpt,
-            clientName: defaultOpt,
-            pickSite: defaultOpt,
-            dropSite: defaultOpt,
-            shipMode: defaultOpt,
-            quantity: 1,
-            commodityDesc: defaultOpt,
+            dateIssued: dateIssued,
+            companyName: companyName,
+            clientName: clientName,
+            pickSite: pickSite,
+            dropSite: dropSite,
+            shipMode: shipMode,
+            quantity: quantity,
+            commodityDesc: commodityDesc,
             fleetDetails: fleetDetails,
             pickUpDates: pickUpDates,
             destinationDates: destinationDates,
             documentList: documentList,
-            acknowledgement: defaultOpt
+            acknowledgement: acknowledgement
         });
 
         deliveryReceipt.save();
