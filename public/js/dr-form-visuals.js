@@ -25,7 +25,7 @@ $("#submit").click(function () {
 	$.each($("input[name=document]:checked"), function(){
 		docs.push($(this).val());
 	});
-	fieldsP2.push("Mode of Shipment ")
+	fieldsP2.push("Mode of Shipment ");
 	fieldsP2.push("List of Documents ");
 	fieldsP2.push("Processor ");
 	fieldsP2.push("Quantity ");

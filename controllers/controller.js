@@ -5,6 +5,7 @@ const Destination = require('../models/DestinationSchema.js');
 const DocumentList = require('../models/DocumentListSchema.js');
 const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
 const Acknowledgement = require('../models/AcknowledgementSchema.js');
+
 const controller = {
 
     /**
@@ -70,11 +71,14 @@ const controller = {
         let dFinishLoadTime = req.body.dFinishLoadTime;
         let dDepartureDate = req.body.dDepartureDate;
         let dDepartureTime = req.body.dDepartureTime;
-        let docs = req.body.docs;
         let processor = req.body.processor;
         let remarks = req.body.remarks;
-        let ackDate = req.body.ackDate;
-        let ackTime = req.body.ackTime;
+        let dateAck = req.body.dateAck;
+        let timeAck = req.body.timeAck;
+        let docsBody = req.body.docs;
+        let docs = docsBody.split('-');
+
+        console.log(docs);
 
         // fleet
         let fleetDetails = new Fleet ({
@@ -111,8 +115,8 @@ const controller = {
 
         // ack
         let acknowledgement = new Acknowledgement ({
-            dateAck: ackDate,
-            timeAck: ackTime,
+            dateAck: dateAck,
+            timeAck: timeAck,
             remarks: remarks,
         });
 
@@ -133,6 +137,7 @@ const controller = {
             acknowledgement: acknowledgement
         });
 
+        console.log(deliveryReceipt);
         deliveryReceipt.save();
     },
 }

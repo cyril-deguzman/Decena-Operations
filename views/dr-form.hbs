@@ -11,8 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="/css/dr-form.css">
 
 		<!-- Import jquery cdn -->
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		<script 
+			src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 			crossorigin="anonymous">
 		</script>
 
@@ -27,7 +28,7 @@
 	
 	<body>
 		<div class="dr-form" id="dr-form">
-			<form method="POST" id="dr-form-post" action="/postform">
+			<form method="POST" id="dr-form-post">
 			<!-- Header -->
 			<div id="header">
 				<!-- logo -->
@@ -281,7 +282,7 @@
                                 </div>
 							</div>
                             <div id="modal-footer" style="padding-bottom:4vh">
-                                <button type="submit"
+                                <button type="button"
                                     class="btn btn-success btn-sm"
                                     data-toggle="modal"
                                     data-target="#exampleModal"
