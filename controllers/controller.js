@@ -40,13 +40,13 @@ const controller = {
     },
 
     /**
-     * getTest.
+     * postForm.
      * 
      * Database test function.
      * @param {*} req 
      * @param {*} res 
      */
-    getTest: function(req, res) {
+    postForm: function(req, res) {
         
         let defaultOpt = "jusq";
         
