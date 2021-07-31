@@ -17,10 +17,10 @@ let mongoose = require("mongoose");
  let DestinationSchema = new mongoose.Schema ({
  	arrivalDate: {type: Date, required: true},
  	arrivalTime: {type: String, required: true},
-    unloadingStartDate: {type: Date, required: true},
-    unloadingStartTime: {type: String, required: true},
-    unloadingFinishedDate: {type: Date, required: true},
-    unloadingFinishedTime: {type: String, required: true},
+   unloadingStartDate: {type: Date, required: true},
+   unloadingStartTime: {type: String, required: true},
+   unloadingFinishedDate: {type: Date, required: true},
+   unloadingFinishedTime: {type: String, required: true},
  	departureDate: {type: Date, required: true},
  	departureTime: {type: String, required: true}
  })

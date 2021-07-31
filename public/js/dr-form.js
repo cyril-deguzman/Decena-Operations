@@ -25,6 +25,7 @@ $(document).ready(function () {
 	let remarks = $("input[name=acknowledgement]:checked");
 	let ackDate = $("ack-date");
 	let ackTime = $("ack-time");
+	let processor = $("processor");
 	let docs = [];
     $.each($("input[name=document]:checked"), function(){
 		docs.push($(this).val());
@@ -33,10 +34,39 @@ $(document).ready(function () {
 	//add to database
 	$.post('/postForm', 
 	{
-		// firstname: firstname.val(), 
-		// lastname: lastname.val(), 
-		// email: email.val(),
-		// password: password.val(),
+		// Main
+		dateIssued: dateIssued.val(),
+		companyName: companyName.val(),
+		clientName: clientName.val(),
+		pickSite: pickSite.val(),
+		dropSite: dropSite.val(),
+		shipMode: shipMode.val(),
+		quantity: quantity.val(),
+		commodityDesc: commodityDesc.val(),
+		// Fleet Deets
+		truckPlateNo: truckPlateNo.val(),
+		driverName: driverName.val(),
+		helperName: helperName.val(),
+		// Pick up
+		pArrivalDate: pArrivalDate.val(),
+		pArrivalTime: pArrivalTime.val(),
+		pDepartureDate: pDepartureDate.val(),
+		pDepartureTime: pDepartureTime.val(),
+		// Destination
+		dArrivalDate: dArrivalDate.val(),
+		dArrivalTime: dArrivalTime.val(),
+		dStartLoadDate: dStartLoadDate.val(),
+		dStartLoadTime: dStartLoadTime.val(),
+		dFinishLoadDate: dFinishLoadDate.val(),
+		dFinishLoadTime: dFinishLoadTime.val(),
+		dDepartureDate: dDepartureDate.val(),
+		dDepartureTime: dDepartureTime.val(),
+		// Acknowledgement
+		dateAck: remarks.val(),
+		timeAck: ackDate.val(),
+		remarks: ackTime.val(),
+		processor: processor.val(),
+		docs: docs,
 	}, function(result){});
    
 })
