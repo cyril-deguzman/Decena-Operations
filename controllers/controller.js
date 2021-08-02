@@ -9,7 +9,7 @@ const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const controller = {
 
     /**
-     * getFavicon
+     * getFavicon.
      * 
      * @param {*} req 
      * @param {*} res 
@@ -43,7 +43,7 @@ const controller = {
     /**
      * postForm.
      * 
-     * Database test function.
+     * Saves the delivery receipt to the database.
      * @param {*} req 
      * @param {*} res 
      */
