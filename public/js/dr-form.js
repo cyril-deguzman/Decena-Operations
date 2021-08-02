@@ -76,5 +76,6 @@ $(document).ready(function () {
 			processor: processor.val(),
 			docs: docs,
 		}, function(result){});
+		window.location = '/form';
 	})
 })

@@ -77,7 +77,7 @@ const controller = {
         let timeAck = req.body.timeAck;
         let docsBody = req.body.docs;
         let docs = docsBody.split('-');
-
+        docs.pop();
         console.log(docs);
 
         // fleet
@@ -137,7 +137,6 @@ const controller = {
             acknowledgement: acknowledgement
         });
 
-        console.log(deliveryReceipt);
         deliveryReceipt.save();
     },
 }
