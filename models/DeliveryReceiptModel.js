@@ -38,7 +38,8 @@ let DeliveryReceiptSchema = new mongoose.Schema({
     pickUpDates: {type: PickUp.schema, required: true},
     destinationDates: {type: Destination.schema, required: true},
     documentList: {type: DocumentList.schema, required: true},
-    acknowledgement: {type: Acknowledgement.schema, required: true}
+    acknowledgement: {type: Acknowledgement.schema, required: true},
+    status: {type: Boolean, required: true, default: false}
 })
 
 module.exports = mongoose.model('DeliveryReceipt', DeliveryReceiptSchema);

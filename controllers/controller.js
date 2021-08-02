@@ -14,7 +14,7 @@ const controller = {
      * @param {*} req 
      * @param {*} res 
      */
-     getFavicon: function (req, res) {
+    getFavicon: function (req, res) {
         res.status(204);
     },
 

@@ -9,8 +9,8 @@ let mongoose = require("mongoose");
  * @property processor: name of the processor of said documents.
  */
  let DocumentListSchema = new mongoose.Schema ({
-      documents: {type: [String], required: true},
-      processor: {type: String, required: true}
+     documents: {type: [String], required: true},
+     processor: {type: String, required: true}
  })
 
  module.exports = mongoose.model ("DocumentList", DocumentListSchema);
