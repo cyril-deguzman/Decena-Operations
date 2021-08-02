@@ -1,5 +1,7 @@
 $(document).ready(function () {
-	//add to database
+	/**
+     * Renders the Delivery Receipt fill-up form 
+     */
 	$("#submit-confirm").click(function () {
 		let dateIssued = $('#date-issued');
 		let companyName = $('#company-name');
@@ -45,15 +47,18 @@ $(document).ready(function () {
 			shipMode: shipMode.val(),
 			quantity: quantity.val(),
 			commodityDesc: commodityDesc.val(),
+
 			// Fleet Deets
 			truckPlateNo: truckPlateNo.val(),
 			driverName: driverName.val(),
 			helperName: helperName.val(),
+
 			// Pick up
 			pArrivalDate: pArrivalDate.val(),
 			pArrivalTime: pArrivalTime.val(),
 			pDepartureDate: pDepartureDate.val(),
 			pDepartureTime: pDepartureTime.val(),
+
 			// Destination
 			dArrivalDate: dArrivalDate.val(),
 			dArrivalTime: dArrivalTime.val(),
@@ -63,6 +68,7 @@ $(document).ready(function () {
 			dFinishLoadTime: dFinishLoadTime.val(),
 			dDepartureDate: dDepartureDate.val(),
 			dDepartureTime: dDepartureTime.val(),
+
 			// Acknowledgement
 			dateAck: ackDate.val(),
 			timeAck: ackTime.val(),
@@ -71,13 +77,4 @@ $(document).ready(function () {
 			docs: docs,
 		}, function(result){});
 	})
-
-	
-   
 })
-
-
-
-
-
-

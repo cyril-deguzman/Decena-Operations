@@ -1,6 +1,8 @@
-// Printing Data Inputted by the user in the Modal
+/**
+ * Printing Data Inputted by the user in the Modal
+ */
 $("#submit").click(function () {
-	//Part 1
+	// Part 1
 	var dataP1 = [];
 	var fieldsP1 = [];
 
@@ -18,7 +20,7 @@ $("#submit").click(function () {
 	var strDataP1 = dataP1.join("<br>");
 	var strFieldP1 = fieldsP1.join("<br>");
 	
-	//Part 2
+	// Part 2
 	var dataP2 = [];
 	var fieldsP2 = [];
 	var docs = [];
@@ -41,7 +43,7 @@ $("#submit").click(function () {
 	var strDataUpperP2 = dataP2.slice(0,2).join("<br>");
 	var strDataLowerP2 = dataP2.slice(2,5).join("<br>");
 	
-	//Part 3
+	// Part 3
 	var dataP3 = [];
 	var fieldsP3 = [];
 	
@@ -85,7 +87,7 @@ $("#submit").click(function () {
 							+ "<br><br>" +
 							dataP3.slice(10,12).join("<br>");
 	
-	//Part 4
+	// Part 4
 	var dataP4 = [];
 	var fieldsP4 = [];
 	
@@ -108,7 +110,7 @@ $("#submit").click(function () {
 	var strDataUpperP4 = dataP4.slice(0,3).join("<br>");
 	var strDataLowerP4 = dataP4.slice(3,6).join("<br>");
 	
-	//Displaying all contents of field[] and data[];
+	// Displaying all contents of field[] and data[];
 	$("#left-p1").html(strFieldP1);
 	$("#right-p1").html(strDataP1);
 	
