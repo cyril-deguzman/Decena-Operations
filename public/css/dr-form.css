@@ -19,17 +19,20 @@ body {
     padding-bottom: 4%;
 }
 
-#header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time, /*modal: */ #modal-part1, #upper-part2, #lower-part2, #modal-part3, #modal-pickup-point, #modal-destination-point, #modal-fleet-details, #modal-acknowledgement{
+#header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time, 
+/* modal */ #upper1-part1, #upper2-part1, #lower1-part1, #lower2-part1, #upper-part2, #middle-part2, #lower-part2, #modal-part3, 
+#arrival-ppoint, #departure-ppoint, #arrival-dpoint, #startload-dpoint, #finishload-dpoint, #departure-dpoint, #modal-fleet1-details, 
+#modal-fleet2-details, #modal-acknowledgement1, #modal-acknowledgement2 {
     display: flex;
     flex-direction: row;
 }
 
-#part1, #part2, #description, #p-date, #p-time, /*modal*/ #modal-part2, #modal-part4 {
+#part1, #part2, #description, #p-date, #p-time, /* modal */ #modal-part1, #modal-part2, #modal-part4 {
     display: flex;
     flex-direction: column;
 }
 
-#part1, #part2, #part3, #part4, /*modal*/#modal-part1, #modal-part2, #modal-part3, #modal-part4  {
+#part1, #part2, #part3, #part4, /* modal */ #modal-part1, #modal-part2, #modal-part3, #modal-part4  {
     border-top: 5px;
     border-right: 0px;
     border-bottom: 0px;
@@ -83,9 +86,24 @@ body {
 /* 
  * Modal
  */ 
- #left-p1, #upper-left-p2, #lower-left-p2, #left-p3, #left-left-p3, #right-left-p3, #upper-left-p4, #lower-left-p4 {
+  #upper1-left-p1, #upper2-left-p1, #lower1-left-p1, #lower2-left-p1, #upper-left-p2, #middle-left-p2, #lower-left-p2, 
+  #left-p3,  #a-left-left-p3, #d-left-left-p3, #a-right-left-p3, #sl-right-left-p3, #fl-right-left-p3, #d-right-left-p3,
+    #upper1-left-p4, #upper2-left-p4, #lower1-left-p4, #lower2-left-p4 {
     width: 40%;
     font-size: 2vh;
+}
+
+/* 
+ * Modal
+ */ 
+ #upper1-right-p1, #upper2-right-p1, #lower1-right-p1, #lower2-right-p1, #upper-right-p2, #middle-right-p2, #lower-right-p2, 
+ #a-left-right-p3, #d-left-right-p3, #a-right-right-p3, #sl-right-right-p3, #fl-right-right-p3, #d-right-right-p3, 
+ #upper1-right-p4, #upper2-right-p4, #lower1-right-p4, #lower2-right-p4 {
+    width: 55%;
+    word-wrap: break-word;
+    color: black;
+    font-size: 2vh;
+    margin-left: 2vh;    
 }
 
 /*
@@ -93,15 +111,8 @@ body {
  */ 
  #right-p3 {
     margin-left: 2vh;
-}
-
-/*
- * Modal
- */
-#right-p1, #upper-right-p2, #lower-right-p2,  #left-right-p3, #right-right-p3, #upper-right-p4, #lower-right-p4 {
-    color: black;
-    font-size: 2vh;
-    margin-left: 2vh;
+    width: 55%;
+    word-wrap: break-word;    
 }
 
 #submit, #submit-confirm {
