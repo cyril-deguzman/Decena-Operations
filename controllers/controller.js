@@ -78,16 +78,15 @@ const controller = {
         let docsBody = req.body.docs;
         let docs = docsBody.split('-');
         docs.pop();
-        console.log(docs);
 
-        // fleet
+        /* Fleet Details*/
         let fleetDetails = new Fleet ({
             truckPlateNo: truckPlateNo,
             driverName: driverName,
             helperName: helperName
         });
 
-        // pickup dates
+        /* Pick-up Dates */
         let pickUpDates = new PickUp ({
             arrivalDate: pArrivalDate,
             arrivalTime: pArrivalTime,
@@ -95,7 +94,7 @@ const controller = {
             departureTime: pDepartureTime
         });
 
-        // dest dates
+        /* Destination Dates */
         let destinationDates = new Destination ({
             arrivalDate: dArrivalDate,
             arrivalTime: dArrivalTime,
@@ -107,20 +106,20 @@ const controller = {
             departureTime: dDepartureTime
         });        
 
-        // doclist
+        /* Document List */
         let documentList = new DocumentList ({
             documents: docs,
             processor: processor
         });
 
-        // ack
+        /* Acknowledgement */
         let acknowledgement = new Acknowledgement ({
             dateAck: dateAck,
             timeAck: timeAck,
             remarks: remarks,
         });
 
-        // delrec
+        /* Delivery Receipt */
         let deliveryReceipt = new DeliveryReceipt({
             dateIssued: dateIssued,
             companyName: companyName,

@@ -10,7 +10,7 @@ let mongoose = require("mongoose");
  */
  let DocumentListSchema = new mongoose.Schema ({
      documents: {type: [String], required: true},
-     processor: {type: String, required: true}
+     processor: {type: String, required: true, maxLength: 50}
  })
 
  module.exports = mongoose.model ("DocumentList", DocumentListSchema);

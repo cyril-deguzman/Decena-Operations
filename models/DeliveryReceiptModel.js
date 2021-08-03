@@ -5,8 +5,6 @@ const Destination = require('./DestinationSchema.js');
 const DocumentList = require('./DocumentListSchema.js');
 const Acknowledgement = require('./AcknowledgementSchema');
 
-let defaultOpt = {type: String, required: true};
-
 /**
  * DeliveryReceiptSchema.
  * 
@@ -26,14 +24,14 @@ let defaultOpt = {type: String, required: true};
  * @property acknowledgement: Acknowledgement of the receipt.
  */
 let DeliveryReceiptSchema = new mongoose.Schema({
-    dateIssued: defaultOpt,
-    companyName: defaultOpt,
-    clientName: defaultOpt,
-    pickSite: defaultOpt,
-    dropSite: defaultOpt,
-    shipMode: defaultOpt,
+    dateIssued: {type: String, required: true},
+    companyName: {type: String, required: true, maxLength: 125},
+    clientName: {type: String, required: true, maxLength: 50},
+    pickSite: {type: String, required: true, maxLength: 100},
+    dropSite: {type: String, required: true, maxLength: 100},
+    shipMode: {type: String, required: true},
     quantity: {type: Number, required: true},
-    commodityDesc: defaultOpt,
+    commodityDesc: {type: String, required: true, maxLength: 200},
     fleetDetails: {type: Fleet.schema, required: true},
     pickUpDates: {type: PickUp.schema, required: true},
     destinationDates: {type: Destination.schema, required: true},

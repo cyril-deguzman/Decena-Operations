@@ -10,9 +10,9 @@ let mongoose = require ("mongoose");
  * @property helperName: The helper's name
  */
 let FleetDetailsSchema = new mongoose.Schema ({
-	truckPlateNo: {type: String, required: true},
-	driverName: {type: String, required: true},
-	helperName: {type: String, required: true}
+	truckPlateNo: {type: String, required: true, maxLength: 8},
+	driverName: {type: String, required: true, maxLength: 50},
+	helperName: {type: String, required: true, maxLength: 50},
 });
 
 module.exports = mongoose.model ("Fleet", FleetDetailsSchema);
