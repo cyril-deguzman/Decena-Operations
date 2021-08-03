@@ -9,16 +9,16 @@ $("#submit").click(function () {
 	fieldsP1.push("Date Issued ")
 	fieldsP1.push("Forwarding/Broker's Company ");
 	fieldsP1.push("Client ");
-	fieldsP1.push("Pick-Up Site <br>");
+	fieldsP1.push("Pick-Up Site ");
 	fieldsP1.push("Delivery Site ");
 	dataP1.push($("#date-issued").val());
 	dataP1.push($("#company-name").val());
 	dataP1.push($("#client-name").val());
-	dataP1.push($("#pickup-site").val() + "<br>");
+	dataP1.push($("#pickup-site").val());
 	dataP1.push($("#delivery-site").val());
 	
-	var strDataP1 = dataP1.join("<br>");
-	var strFieldP1 = fieldsP1.join("<br>");
+    var strDataUpper1P1 = dataP1.slice(0,2).join("<br>");
+    var strFieldUpper1P1 = fieldsP1.slice(0,2).join("<br>");
 	
 	// Part 2
 	var dataP2 = [];
@@ -38,10 +38,10 @@ $("#submit").click(function () {
 	dataP2.push($("#quantity").val());
 	dataP2.push($("#description").val());
 	
-	var strFieldUpperP2 = fieldsP2.slice(0,2).join("<br>");
-	var strFieldLowerP2 = fieldsP2.slice(2,5).join("<br>");
-	var strDataUpperP2 = dataP2.slice(0,2).join("<br>");
-	var strDataLowerP2 = dataP2.slice(2,5).join("<br>");
+    var strFieldUpperP2 = fieldsP2.slice(0,2).join("<br>");
+    var strFieldLowerP2 = fieldsP2.slice(3,5).join("<br>");
+    var strDataUpperP2 = dataP2.slice(0,2).join("<br>");
+    var strDataLowerP2 = dataP2.slice(3,5).join("<br>");
 	
 	// Part 3
 	var dataP3 = [];
@@ -66,27 +66,6 @@ $("#submit").click(function () {
 	dataP3.push($("#d-departure-date").val());
 	dataP3.push($("#d-departure-time").val());
 	
-	var strFieldLeftP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
-							+  "<br><br>" +
-							fieldsP3[3] + "<br>" + fieldsP3[4];
-	var strFieldRightP3 = fieldsP3[0] + "<br>" + fieldsP3[4]
-							+ "<br><br>" +
-							fieldsP3[1] + "<br>" + fieldsP3[4]
-							+ "<br><br>" +
-							fieldsP3[2] + "<br>" + fieldsP3[4]
-							+ "<br><br>" +
-							fieldsP3[3] + "<br>" + fieldsP3[4];
-	var strDataLeftP3 = dataP3.slice(0,2).join("<br>")
-						+ "<br><br>" +
-						dataP3.slice(2,4).join("<br>");
-	var strDataRightP3 = dataP3.slice(4,6).join("<br>")
-							+ "<br><br>" +
-							dataP3.slice(6,8).join("<br><br>")
-							+ "<br><br>" +
-							dataP3.slice(8,10).join("<br><br>")
-							+ "<br><br>" +
-							dataP3.slice(10,12).join("<br>");
-	
 	// Part 4
 	var dataP4 = [];
 	var fieldsP4 = [];
@@ -105,29 +84,49 @@ $("#submit").click(function () {
 	dataP4.push($("#ack-date").val());
 	dataP4.push($("#ack-time").val());
 	
-	var strFieldUpperP4 = fieldsP4.slice(0,3).join("<br>");
-	var strFieldLowerP4 = fieldsP4.slice(3,6).join("<br>");
-	var strDataUpperP4 = dataP4.slice(0,3).join("<br>");
-	var strDataLowerP4 = dataP4.slice(3,6).join("<br>");
+    var strFieldUpper1P4 = fieldsP4.slice(0,2).join("<br>");
+    var strFieldLower2P4 = fieldsP4.slice(4,6).join("<br>");
+    var strDataUpper1P4 = dataP4.slice(0,2).join("<br>");
+    var strDataLower2P4 = dataP4.slice(4,6).join("<br>");
 	
 	// Displaying all contents of field[] and data[];
-	$("#left-p1").html(strFieldP1);
-	$("#right-p1").html(strDataP1);
+    $("#upper1-left-p1").html(strFieldUpper1P1);
+    $("#upper2-left-p1").html(fieldsP1[2]); 
+    $("#lower1-left-p1").html(fieldsP1[3]);
+    $("#lower2-left-p1").html(fieldsP1[4]);
+	$("#upper1-right-p1").html(strDataUpper1P1);
+	$("#upper2-right-p1").html(dataP1[2]);
+	$("#lower1-right-p1").html(dataP1[3]);
+    $("#lower2-right-p1").html(dataP1[4]);
 	
-	$("#upper-left-p2").html(strFieldUpperP2);
-	$("#upper-right-p2").html(strDataUpperP2);
-	$("#lower-left-p2").html(strFieldLowerP2);
-	$("#lower-right-p2").html(strDataLowerP2);
+    $("#upper-left-p2").html(strFieldUpperP2);
+    $("#upper-right-p2").html(strDataUpperP2);
+    $("#middle-left-p2").html(fieldsP2[2]);
+    $("#middle-right-p2").html(dataP2[2]);
+    $("#lower-left-p2").html(strFieldLowerP2);
+    $("#lower-right-p2").html(strDataLowerP2);
 	
-	$("#left-left-p3").html(strFieldLeftP3);
-	$("#left-right-p3").html(strDataLeftP3);
-	$("#right-left-p3").html(strFieldRightP3);
-	$("#right-right-p3").html(strDataRightP3);
+    $("#a-left-left-p3").html(fieldsP3[0] + "<br>" + fieldsP3[4]);
+    $("#a-left-right-p3").html(dataP3.slice(0,2).join("<br>"));
+    $("#d-left-left-p3").html(fieldsP3[3] + "<br>" + fieldsP3[4]);
+    $("#d-left-right-p3").html(dataP3.slice(2,4).join("<br>"));                
+    $("#a-right-left-p3").html(fieldsP3[0] + "<br>" + fieldsP3[4]);
+    $("#a-right-right-p3").html(dataP3.slice(4,6).join("<br>"));
+    $("#sl-right-left-p3").html(fieldsP3[1] + "<br>" + fieldsP3[4]);
+    $("#sl-right-right-p3").html(dataP3.slice(6,8).join("<br>"));
+    $("#fl-right-left-p3").html(fieldsP3[2] + "<br>" + fieldsP3[4]);
+    $("#fl-right-right-p3").html(dataP3.slice(8,10).join("<br>"));
+    $("#d-right-left-p3").html(fieldsP3[3] + "<br>" + fieldsP3[4]);
+    $("#d-right-right-p3").html(dataP3.slice(10,12).join("<br>"));
 	
-	$("#upper-left-p4").html(strFieldUpperP4);
-	$("#upper-right-p4").html(strDataUpperP4);
-	$("#lower-left-p4").html(strFieldLowerP4);
-	$("#lower-right-p4").html(strDataLowerP4);
+    $("#upper1-left-p4").html(strFieldUpper1P4);
+    $("#upper1-right-p4").html(strDataUpper1P4);
+    $("#upper2-left-p4").html(fieldsP4[2]);
+    $("#upper2-right-p4").html(dataP4[2]);
+    $("#lower1-left-p4").html(fieldsP4[3]);
+    $("#lower1-right-p4").html(dataP4[3]);                
+    $("#lower2-left-p4").html(strFieldLower2P4);
+    $("#lower2-right-p4").html(strDataLower2P4);
 });
 
 // Setting the DEFAULT & MAX DATE to today (for all date fields)

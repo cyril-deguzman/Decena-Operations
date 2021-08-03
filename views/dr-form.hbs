@@ -45,10 +45,10 @@
 				<div id="name-date-container">
 					<div id="name-container" style="width: 70%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
-						<input type="text" id="company-name" name="company-name" style="width: 50%;">
+						<input type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="125">
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
-						<input type="text" id="client-name" name="client-name" style="width: 50%;">		
+						<input type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">		
 					</div>
 					
 					<div id="date-container">	
@@ -59,10 +59,10 @@
 				<br>
 				<div id="site-container">
 					<label class="label" for="pickup-site">Pick-Up Site </label>
-					<input type="text"  id="pickup-site" name="pickup-site" style="width: 70%;">		
+					<input type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">		
 					<br>
 					<label class="label" for="delivery-site">Delivery Site </label>
-					<input type="text"  id="delivery-site" name="delivery-site" style="width: 70%;">
+					<input type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
 				</div>								
 			</div>
 
@@ -81,7 +81,7 @@
 						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
-						<input type="number" id="quantity" name="quantity" min="1" max="100" style="width: 18%;"><br> 
+						<input type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;"><br> 
 					</div>
 					<!-- List of Documents w/ Processsor-->
 					<div id="documents-processor">
@@ -102,12 +102,12 @@
 						</div>
 						<br>
 						<label class="label" for="processor">Processor</label>
-						<input type="text" id="processor" name="processor" style="width: 70%;">	
+						<input type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
 					</div>	
 				</div>
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
-					<textarea type = "text" id = "description" name = "description" rows = "6" cols = "10" placeholder = "Write here..."></textarea>
+					<textarea type = "text" id = "description" name = "description" rows = "6" cols = "10" placeholder = "Write here..." maxlength="200"></textarea>
 				</div>										
 			</div>
 
@@ -173,11 +173,11 @@
 				<div id="fleet-details">
 					<h6>FLEET DETAILS</h6>
 					<label class="label" for="plate-number">Truck Plate Number</label>
-					<input type="text" id="plate-number" name="plate-number" style="width: 40%;"><br>		
+					<input type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8"><br>		
 					<label class="label" for="driver">Driver</label>
-					<input type="text" id="driver" name="driver" style="width: 70%;"><br>		
+					<input type="text" id="driver" name="driver" style="width: 70%;" maxlength="50"><br>		
 					<label class="label" for="helper">Helper</label>
-					<input type="text" id="helper" name="fname" style="width: 70%;"><br>					
+					<input type="text" id="helper" name="fname" style="width: 70%;" maxlength="50"><br>					
 				</div>
 				<div id="acknowledgement">
 					<h6>ACKNOWLEDGEMENT</h6>
@@ -234,14 +234,33 @@
                                     Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Confirm</b> to submit.
                                 </div>
                                 <div class="modal-part1" id="modal-part1">
-                                    <p id="left-p1"></p>
-                                    <p id="right-p1"></p>
+                                	<div id="upper1-part1">
+	                                    <p id="upper1-left-p1"></p>
+	                                    <p id="upper1-right-p1"></p>
+                                	</div>
+                                	<div id="upper2-part1">
+	                                    <p id="upper2-left-p1"></p>
+	                                    <p id="upper2-right-p1"></p>
+	                                </div>    
+                                	<div id="lower1-part1">
+	                                    <p id="lower1-left-p1"></p>
+	                                    <p id="lower1-right-p1"></p>
+                                	</div>
+
+                                	<div id="lower2-part1">
+                                		<p id="lower2-left-p1"></p>
+	                                    <p id="lower2-right-p1"></p>
+                                	</div>
                                 </div>
                                 
                                 <div class="modal-part2" id="modal-part2">
                                     <div id="upper-part2">
                                         <p id="upper-left-p2"></p>
                                         <p id="upper-right-p2"></p>
+                                    </div>
+                                    <div id="middle-part2">
+                                        <p id="middle-left-p2"></p>
+                                        <p id="middle-right-p2"></p>
                                     </div>
                                     <div id="lower-part2">
                                         <p id="lower-left-p2"></p>
@@ -252,33 +271,65 @@
                                 <div class="modal-part3" id="modal-part3">
                                     <div id="left-p3">
                                         <h6>PICK-UP POINT</h6>
-                                        <div id="modal-pickup-point">
-                                            <p id="left-left-p3"></p>
-                                            <p id="left-right-p3"></p>
+                                        <div class="modal-pickup-point" id="modal-pickup-point">
+                                        	<div id="arrival-ppoint">
+                                        		<p id="a-left-left-p3"></p>
+                                            	<p id="a-left-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="departure-ppoint">
+                                        		<p id="d-left-left-p3"></p>
+                                            	<p id="d-left-right-p3"></p>
+                                        	</div> 
                                         </div>
                                     </div>
                                     
                                     <div id="right-p3">
                                         <h6>DESTINATION POINT</h6>
                                         <div id="modal-destination-point">
-                                            <p id="right-left-p3"></p>
-                                            <p id="right-right-p3"></p>
+                                        	<div id="arrival-dpoint">
+                                            	<p id="a-right-left-p3"></p>
+                                            	<p id="a-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="startload-dpoint">
+                                            	<p id="sl-right-left-p3"></p>
+                                            	<p id="sl-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="finishload-dpoint">
+                                            	<p id="fl-right-left-p3"></p>
+                                            	<p id="fl-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="departure-dpoint">
+                                            	<p id="d-right-left-p3"></p>
+                                            	<p id="d-right-right-p3"></p>
+                                        	</div>                                    
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="modal-part4" id="modal-part4">
                                     <h6>FLEET DETAILS</h6>
-                                    <div id="modal-fleet-details">
-                                        <p id="upper-left-p4"></p>
-                                        <p id="upper-right-p4"></p>
+                                    <div id="modal-fleet1-details">
+                                        <p id="upper1-left-p4"></p>
+                                        <p id="upper1-right-p4"></p>
+                                    </div>
+                                    <div id="modal-fleet2-details">
+                                        <p id="upper2-left-p4"></p>
+                                        <p id="upper2-right-p4"></p>
                                     </div>
                                     <br>
                                     <h6>ACKNOWLEDGEMENT</h6>
-                                    <div id="modal-acknowledgement">
-                                        <p id="lower-left-p4"></p>
-                                        <p id="lower-right-p4"></p>
+                                    <div id="modal-acknowledgement1">
+                                        <p id="lower1-left-p4"></p>
+                                        <p id="lower1-right-p4"></p>
                                     </div>
+                                    <div id="modal-acknowledgement2">
+                                        <p id="lower2-left-p4"></p>
+                                        <p id="lower2-right-p4"></p>
+                                    </div>    
                                 </div>
 							</div>
                             <div id="modal-footer" style="padding-bottom:4vh">
