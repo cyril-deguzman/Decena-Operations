@@ -129,7 +129,9 @@ $("#submit").click(function () {
     $("#lower2-right-p4").html(strDataLower2P4);
 });
 
-// Setting the DEFAULT & MAX DATE to today (for all date fields)
+/**
+ * Setting the DEFAULT & MAX DATE to today (for all date fields)
+ */
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1;
@@ -155,3 +157,29 @@ document.getElementById("finish-load-date").setAttribute("value", today);
 document.getElementById("finish-load-date").setAttribute("max", today);	
 document.getElementById("ack-date").setAttribute("value", today);
 document.getElementById("ack-date").setAttribute("max", today);											
+
+/**
+ * Displaying number of characters left in Description of Commodity
+ */
+var div1 = document.createElement("div");
+var commodityDesc = document.getElementById("description");
+var div2 = document.createElement("div");
+var counter = document.createElement("span");
+
+div1.style.position = "relative";
+div2.style.position = 'absolute';
+div2.style.bottom = '8px';
+div2.style.color = "#ccc";
+div2.style.left = "71%";
+commodityDesc.parentNode.appendChild(div1);
+div1.appendChild(commodityDesc);
+div2.appendChild(counter);
+div1.appendChild(div2);
+
+function charLeft() {
+	counter.innerHTML = (200 - this.value.length);
+}
+
+commodityDesc.addEventListener('input', charLeft);
+charLeft.call(commodityDesc);	
+
