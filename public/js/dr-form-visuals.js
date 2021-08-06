@@ -167,8 +167,8 @@ var div2 = document.createElement("div");
 var counter = document.createElement("span");
 
 div1.style.position = "relative";
-div2.style.position = 'absolute';
-div2.style.bottom = '8px';
+div2.style.position = "absolute";
+div2.style.bottom = "8px";
 div2.style.color = "#ccc";
 div2.style.left = "71%";
 commodityDesc.parentNode.appendChild(div1);
@@ -180,6 +180,6 @@ function charLeft() {
 	counter.innerHTML = (200 - this.value.length);
 }
 
-commodityDesc.addEventListener('input', charLeft);
+commodityDesc.addEventListener("input", charLeft);
 charLeft.call(commodityDesc);	
 
