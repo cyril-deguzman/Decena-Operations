@@ -63,17 +63,19 @@ const controller = {
         let noMatch = null;
         if(req.query.search) {
             /* Escape regex to avoid DDOS attacks. */
-            const regex = new RegExp(this.escapeRegex(req.query.search), 'gi');
+            const regex = new RegExp(controller.escapeRegex(req.query.search), 'gi');
 
             /* Get all companies from DB */ 
             Company.find({name: regex}, function(err, foundCompanies){
+                console.log(foundCompanies);
+
                 if(err)
                     console.log(err);
                 else {
                     if(foundCompanies.length < 1) 
                         noMatch = "No companies match that query, please try again.";
                     
-                    res.render("/search", {companyList:foundCompanies, noMatch: noMatch});
+                    res.render("search", {companyList:foundCompanies, noMatch: noMatch});
                 }
             });
         } 
@@ -85,7 +87,7 @@ const controller = {
                 if(err)
                     console.log(err);
                 else
-                    res.render("/search", {companyList:allCompanies, noMatch: noMatch});
+                    res.render("search", {companyList:allCompanies, noMatch: noMatch});
             });
         }
     },
