@@ -8,6 +8,7 @@ app.get(`/favicon.ico`, controller.getFavicon);
 app.get(`/`, controller.getIndex);
 app.get(`/form`, controller.getForm);
 app.get(`/search`, controller.getSearch);
+app.get(`/companysearch`, controller.getCompanies);
 
 /* post routes */
 app.post(`/postform`, controller.postForm);

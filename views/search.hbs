@@ -2,11 +2,35 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Hello World!</title>
+	<title>Company Search</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/search.js"></script>
 </head>
+
 <body>
-	<p>yaw q na po hehe</p>
+    <div id="landing-header">
+    <h1>Search Filler</h1>
+    <a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+        <p>
+            <form action="/campgrounds" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Campground search..." class="form-control">
+                    <input type="submit" value="Search" class="btn btn-default">
+                </div>
+            </form>
+        </p>
+    </div>
+
+    <div class="profile-timeline">
+        <ul class="list-unstyled timeline_list">
+
+
+            {{!-- Load Companies --}}
+            {{#each companyList}}
+                {{> company }}
+            {{/each}}
+        </ul>
+    </div>
+
 </body>
 </html>
