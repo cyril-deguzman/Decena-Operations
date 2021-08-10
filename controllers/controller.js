@@ -71,7 +71,7 @@ const controller = {
                     console.log(err);
                 else {
                     if(foundCompanies.length < 1) 
-                        noMatch = "No campgrounds match that query, please try again.";
+                        noMatch = "No companies match that query, please try again.";
                     
                     res.render("/search", {companyList:foundCompanies, noMatch: noMatch});
                 }
