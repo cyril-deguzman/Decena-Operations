@@ -41,6 +41,17 @@ const controller = {
     },
 
     /**
+     * getSearch.
+     * 
+     * renders the delivery receipt form.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    getSearch: function(req, res) {
+        res.render('search', {});
+    },
+
+    /**
      * postForm.
      * 
      * Saves the delivery receipt to the database.
