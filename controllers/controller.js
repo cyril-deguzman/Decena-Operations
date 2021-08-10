@@ -81,7 +81,7 @@ const controller = {
         else {
 
             /* Get all companies from DB */ 
-            Campground.find({}, function(err, allCompanies){
+            Company.find({}, function(err, allCompanies){
                 if(err)
                     console.log(err);
                 else
