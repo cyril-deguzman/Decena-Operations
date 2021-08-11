@@ -17,22 +17,35 @@
 </head>
 
 <body>
-    <div class="search-container">
-        <h1>Search Filler</h1>
-        <form action="/companysearch" method="GET" class="form-inline">
-            <div class="form-group">
-                <input type="text" name="search" placeholder="input company name" class="form-control">
-                <input type="submit" value="Search" class="btn btn-default">
+
+    {{!-- Navigation bar here --}}
+
+
+    {{!-- TODO/TOUPDATE
+        1.) When search result is empty, change the card to display no results.
+        2.)  --}}
+
+    <div class="row" id="searchHeader">
+        <div class="col-lg-6 " class="overflow-hidden">
+            <h2>Search Company</h2>
+            <form action="/companysearch" method="GET" class="form-inline">
+                <div class="form-group">
+                    <label>
+                         <input type="text" name="search" placeholder="Company name" class="form-control">
+                    </label>
+                    <label>
+                        <input type="submit" value="Search" class="btn btn-success" id="searchButton">
+                    </label>
+                </div>
+            </form>
+            <div id="companyList" class="card">
+                <div class="card-header" class=".bg-light">
+                    {{!-- Load Companies --}}
+                    {{#each companyList}}
+                        {{> company }}
+                    {{/each}}
+                </div>
             </div>
-        </form>
-    
-        <div class="company-list">
-            <ul class="list-unstyled">
-                {{!-- Load Companies --}}
-                {{#each companyList}}
-                    {{> company }}
-                {{/each}}
-            </ul>
         </div>
     </div>
 </body>
