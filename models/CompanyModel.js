@@ -10,7 +10,7 @@ let mongoose = require ("mongoose");
  * @property validatedReceipts: signed out receipts by the accounting department.
  */
 let CompanySchema = new mongoose.Schema ({
-	name: {type: String, required: true, maxLength: 8},
+	name: {type: String, required: true, maxLength: 150},
 	activeReceipts: {type: Number, default: 1},
 	validatedReceipts: {type: Number, default: 0}
 });

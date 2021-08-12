@@ -67,8 +67,6 @@ const controller = {
 
             /* Get all companies from DB */ 
             Company.find({name: regex}, function(err, foundCompanies){
-                console.log(foundCompanies);
-
                 if(err)
                     console.log(err);
                 else {
