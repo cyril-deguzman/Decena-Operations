@@ -1,6 +1,6 @@
 body,html{          
     height: 100%;
-    background-color: #194A09;
+    background-color: white;
 }
 
 #searchHeader{
@@ -9,21 +9,26 @@ body,html{
     height: 500px;
 }
 
-label,input{
-    display: block;
-}
+
 
 label {
     margin-bottom: 20px;
 }
 
-    #searchButton{
-        margin-left: 20px;
-    }
+#searchButton{
+        margin-left: 5px;
+}
 
-h2{
+h1{
     margin-bottom: 15px;
-    color:black;
+    color: #194A09;
+    font-size: 50px;
+    display: inline;
+}
+
+#searchText{
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #companyList{
@@ -32,9 +37,14 @@ h2{
     margin-left:0px;
 }
 
+
 #mainDivSearch{
-    background-color: white;
     margin-left: 20px;
+    margin-top:30px;
+}
+
+.numberOfDR{
+ margin-left: 10px;   
 }
 
 #navBarText{
@@ -47,6 +57,55 @@ h2{
     font-size: 24px;
 }
 
+.flex-container{
+    display: flex;
+}
+
+#searchCompanyText{
+    flex: 1;
+}
+
+
 a{
     color: black;
 }
+
+.card{
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 8px;
+}
+
+#companyListContainer{
+    margin-top: 50px;
+}
+
+form {
+    /* This bit sets up the horizontal layout */
+    display:flex;
+    flex-direction:row;
+    
+    /* This bit draws the box around it */
+ 
+    /* I've used padding so you can see the edges of the elements. */
+    padding:2px;
+  }
+  
+  input {
+    /* Tell the input to use all the available space */
+    flex-grow:2;
+    /* And hide the input's outline, so the form looks like the outline */
+    border:none;
+  }
+  
+  input:focus {
+    /* removing the input focus blue box. Put this on the form if you like. */
+    outline: none;
+  }
+  
+  button {
+    /* Just a little styling to make it pretty */
+    border:1px solid blue;
+    background:blue;
+    color:white;
+  }

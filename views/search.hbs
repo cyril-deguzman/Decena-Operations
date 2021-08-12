@@ -24,36 +24,30 @@
     {{!-- TODO/TOUPDATE
         1.) When search result is empty, change the card to display no results.
         2.) Page shouldn't refresh, use AJAX.
-        3.) hmm--}}
-    <div class="col-lg-12 row">
-        <h1 id="navBarText"> Nav bar here or sa side ba idk haha</h1>
-    </div>
-    <div class="col-lg-11 h-75 d-inline-block" id="mainDivSearch">
-    <div class="row" id="searchHeader">
-        <div class="col-lg-6">
-            <h2>Search Company</h2>
-            <form action="/companysearch" method="GET" class="form-inline">
-                <div class="form-group">
-                    <label>
-                         <input type="text" name="search" placeholder="Company name" class="form-control">
+        3.) Enclose button inside search bar}}
+
+    
+    <div class="col-lg-11 h-75 d-inline-block row" id="mainDivSearch">
+        <h1 id = "searchText" class="col-lg-12 align-items-center row justify-content-center">Search Company</h1>
+            
+            <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
+                <div class="form-group justify-content-center w-100 flex-container">
+                    <label class="col-lg-12">
+                         <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText">
                     </label>
                     <label>
                         <input type="submit" value="Search" class="btn btn-success" id="searchButton">
                     </label>
                 </div>
             </form>
-            <div id="companyList" class="card row">
-                <div class="card-header .bg-light companyName">
-                    {{!-- Load Companies --}}
-                    {{#each companyList}}
-                    <hr/>
-                        {{>company}} 
-                    {{/each}}
-                </div>
-            </div>
+            
+        <div class="col-lg-12 mx-auto" id="companyListContainer">
+            {{#each companyList}}
+                <div class="card col-lg-6 mx-auto">
+                    <div class="card-body">{{>company}} </div>
+                </div>     
+            {{/each}}
         </div>
     </div>
-    </div>
-    
 </body>
 </html>
