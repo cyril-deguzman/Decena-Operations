@@ -1,3 +1,5 @@
+
+@import '~material-design-icons/iconfont/material-icons.css';
 body,html{          
     height: 100%;
     background-color: white;
@@ -9,14 +11,23 @@ body,html{
     height: 500px;
 }
 
+.cardIcon{
+    background-color: white;
+    justify-content: center;
+}
 
+
+.card-header{
+    background-color: white;
+}
+
+.cardIcon{
+   margin-top: 25px;
+   font-size: 32px;
+}
 
 label {
     margin-bottom: 20px;
-}
-
-#searchButton{
-        margin-left: 5px;
 }
 
 h1{
@@ -76,9 +87,21 @@ a{
     margin-top: 8px;
 }
 
+.resultsFoundCard:hover{
+    background-color: #dbdbdb;
+    cursor:pointer;
+}
+
+
+
 #companyListContainer{
     margin-top: 50px;
 }
+
+#searchButton:hover{
+    background-color: #299B04;
+}
+
 
 form {
     /* This bit sets up the horizontal layout */
@@ -108,4 +131,8 @@ form {
     border:1px solid blue;
     background:blue;
     color:white;
+  }
+
+  #noResultsFoundCard:hover{
+    background-color: white;
   }
