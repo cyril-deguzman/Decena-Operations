@@ -1,9 +1,3 @@
-const Fleet = require('../models/FleetsSchema.js');
-const PickUp = require('../models/PickUpSchema.js');
-const Destination = require('../models/DestinationSchema.js');
-const DocumentList = require('../models/DocumentListSchema.js');
-const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
-const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const Company = require('../models/CompanyModel.js')
 
 const searchController = {
@@ -26,35 +20,18 @@ const searchController = {
      * @param {*} req 
      * @param {*} res 
      */
-    getCompanies: function(req,res) {
+    getCompanies: async function(req,res) {
         let noMatch = null;
-        if(req.query.search) {
-            /* Escape regex to avoid DDOS attacks. */
-            const regex = new RegExp(searchController.escapeRegex(req.query.search), 'gi');
 
-            /* Get all companies from DB */ 
-            Company.find({name: regex}, function(err, foundCompanies){
-                if(err)
-                    console.log(err);
-                else {
-                    if(foundCompanies.length < 1) 
-                        noMatch = "No companies match that query, please try again.";
-                    
-                    res.render("search", {companyList:foundCompanies, noMatch: noMatch});
-                }
-            });
-        } 
-        
-        else {
+        /* Escape regex to avoid DDOS attacks. */
+        const regex = new RegExp(searchController.escapeRegex(req.query.search), 'gi');
 
-            /* Get all companies from DB */ 
-            Company.find({}, function(err, allCompanies){
-                if(err)
-                    console.log(err);
-                else
-                    res.render("search", {companyList:allCompanies, noMatch: noMatch});
-            });
-        }
+        /* Get all companies from DB */ 
+        let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 5);
+        if(foundCompanies.results.length < 1) 
+            noMatch = "No companies match that query, please try again.";
+                
+        res.render("search", {companyList:foundCompanies.results, noMatch: noMatch});  
     },
     
     /**
@@ -67,6 +44,44 @@ const searchController = {
      */
     escapeRegex: function(text) {
         return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    },
+
+    /**
+     * paginatedResults
+     * 
+     * paginates a collection.
+     * @param {*} model the Model to be paginated
+     * @param {*} filter the filter for finding the model
+     * @param {*} page the page to access
+     * @param {*} limit the number of results to return per page.
+     * @returns 
+     */
+    paginatedResults: async function(model, filter, page, limit) {
+        let startIndex = (page - 1) * limit;
+        let endIndex = page * limit;
+      
+        let results = {}
+      
+        if (endIndex < await model.countDocuments(filter).exec()) {
+            results.next = {
+                page: page + 1,
+                limit: limit
+            }
+        }
+        
+        if (startIndex > 0) {
+            results.previous = {
+                page: page - 1,
+                limit: limit
+            }
+        }
+
+        try {
+            results.results = await model.find(filter).limit(limit).skip(startIndex).exec()
+            return results;
+        } catch (e) {
+            console.log(e.message);
+        }
     },
 }
 
