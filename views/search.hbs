@@ -46,18 +46,9 @@
                 </div>
             </form>
             
-            
         <div class="col-lg-12 mx-auto" id="companyListContainer">
             {{#each companyList}}
-                <div class="card col-lg-6 mx-auto resultsFoundCard flex-row flex-rap">
-                    <div class="card-header border-0">
-                        <i class="material-icons-outlined cardIcon md-36">business</i>
-                    </div>
-                    <div class="card-body">
-                    <h5 class="card-title">{{>company}}</h5>
-                    <p class="card-text">1 (Number of DR Forms here)</p>
-                    </div>
-                </div>
+                {{>company}}
             {{else}}
                 <div class="card col-lg-6 mx-auto">
                     <div class="card-body" id="noResultsFoundCard"> {{okay}} </div>
