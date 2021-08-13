@@ -1,16 +1,20 @@
 const express = require(`express`);
-const controller = require(`../controllers/controller.js`);
+const indexController = require(`../controllers/indexController.js`);
+const formController = require(`../controllers/formController.js`);
+const searchController = require(`../controllers/searchController.js`);
 
 const app = express();
 
-/* get routes */
-app.get(`/favicon.ico`, controller.getFavicon);
-app.get(`/`, controller.getIndex);
-app.get(`/form`, controller.getForm);
-app.get(`/search`, controller.getSearch);
-app.get(`/companysearch`, controller.getCompanies);
+/* index routes */
+app.get(`/favicon.ico`, indexController.getFavicon);
+app.get(`/`, indexController.getIndex);
 
-/* post routes */
-app.post(`/postform`, controller.postForm);
+/* form routes */
+app.get(`/form`, formController.getForm);
+app.post(`/postform`, formController.postForm);
+
+/* search routes */
+app.get(`/search`, searchController.getSearch);
+app.get(`/companysearch`, searchController.getCompanies);
 
 module.exports = app;
