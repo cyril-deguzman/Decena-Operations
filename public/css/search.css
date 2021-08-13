@@ -31,7 +31,7 @@ label {
 }
 
 h1{
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     color: #194A09;
     font-size: 50px;
     display: inline;
@@ -50,8 +50,9 @@ h1{
 
 
 #mainDivSearch{
+    position: relative;
     margin-left: 20px;
-    margin-top:30px;
+    top: 100px;
 }
 
 .numberOfDR{
@@ -74,6 +75,9 @@ h1{
 
 #searchCompanyText{
     flex: 1;
+    border-color:#194A09;
+    position: relative;
+    left: 20px;
 }
 
 
@@ -85,6 +89,7 @@ a{
     justify-content: center;
     list-style-type: none;
     margin-top: 8px;
+    border-color:#194A09 ;
 }
 
 .resultsFoundCard:hover{
@@ -98,9 +103,10 @@ a{
     margin-top: 50px;
 }
 
-#searchButton:hover{
-    background-color: #299B04;
+#searchButton{
+    background-color: #194A09;
 }
+
 
 
 form {
@@ -136,3 +142,11 @@ form {
   #noResultsFoundCard:hover{
     background-color: white;
   }
+
+#searchButton{
+    position: relative;
+    right:22px;
+    border-color: black;
+    color: white;
+}
+  

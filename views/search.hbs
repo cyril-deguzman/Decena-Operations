@@ -12,12 +12,18 @@
     <!-- Import stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/search.css">
 
-    <!-- Import javascript -->
-	<script type="text/javascript" src="/js/search.js"></script>
 
     
-</head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous">
+	</script>
 
+        <!-- Import javascript -->
+	<script type="text/javascript" src="/js/search.js"></script>
+    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+
+</head>
 <body>
 
     {{!-- Navigation bar here --}}
@@ -36,7 +42,7 @@
             <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
                 <div class="form-group justify-content-center w-100 flex-container">
                         <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
-                        <button class="btn btn-outline-secondary" value="Search" type="submit" id="searchButton">Search</button>
+                        <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
                 </div>
             </form>
             
@@ -54,7 +60,7 @@
                 </div>
             {{else}}
                 <div class="card col-lg-6 mx-auto">
-                    <div class="card-body" id="noResultsFoundCard">No results found for: ADD COMPANY NAME HERE</div>
+                    <div class="card-body" id="noResultsFoundCard"> {{okay}} </div>
                 </div>
             {{/each}}
         </div>
