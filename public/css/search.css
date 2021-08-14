@@ -52,7 +52,7 @@ h1{
 #mainDivSearch{
     position: relative;
     margin-left: 20px;
-    top: 100px;
+    top: 90px;
 }
 
 .numberOfDR{
@@ -100,7 +100,7 @@ a{
 
 
 #companyListContainer{
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 #searchButton{
@@ -139,7 +139,7 @@ form {
     color:white;
   }
 
-  #noResultsFoundCard:hover{
+  .resultsCard:hover{
     background-color: white;
   }
 
@@ -149,4 +149,19 @@ form {
     border-color: black;
     color: white;
 }
-  
+
+#resultsCountCard{
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color:#ff7369;
+    font-weight: 500;
+}
+
+#resultsFoundText{
+    
+    color: red;
+}
+
+#noResultsParentCard{
+    font-weight: 500;
+}
