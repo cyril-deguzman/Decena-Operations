@@ -1,4 +1,3 @@
-
 @import '~material-design-icons/iconfont/material-icons.css';
 body,html{          
     height: 100%;
@@ -151,15 +150,19 @@ form {
 }
 
 #resultsCountCard{
-    padding: 25px;
+    padding: 15px;
     margin-bottom: 30px;
-    background-color:#ff7369;
+    background-color:#299b04;
     font-weight: 500;
+    color: white;
 }
 
-#resultsFoundText{
-    
-    color: red;
+.companyNumberOfDR{
+    font-size: 20px;
+}
+
+.companyName{
+    font-size:20px;
 }
 
 #noResultsParentCard{

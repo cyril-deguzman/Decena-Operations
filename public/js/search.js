@@ -28,7 +28,9 @@ $(document).ready(function () {
 
         if (window.location.href.indexOf("?") != -1){
             $("#noResultsFoundCard").text("There are (0) results found for: " +searchValue);
-            $("#noResultsParentCard").css("background-color","#ff7369");
+            $("#noResultsParentCard").css("background-color","#299b04");
+            $('#noResultsFoundCard').css('color','white');
+            $('#noResultsFoundCard').css('padding','15px');
         }   
         else{
             $("#noResultsFoundCard").text("No search has been made yet.");
