@@ -36,4 +36,6 @@ $(document).ready(function () {
             $("#noResultsFoundCard").text("No search has been made yet.");
         }        
     }
+
+    $('#companyListContainer div.resultsFoundCard:last').css("margin-bottom","20px");
 })
