@@ -19,6 +19,8 @@
 
 		<!-- Import javascript -->
 		<script type="text/javascript" src="/js/dr-form.js"></script>
+		<script type="text/javascript" src="/js/dr-form-valid.js"></script>
+		<script type="text/javascript" src="/js/validator.min.js"></script>
 		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
@@ -45,7 +47,7 @@
 				<div id="name-date-container">
 					<div id="name-container" style="width: 70%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
-						<input type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="125">
+						<input type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
 						<input type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">		
@@ -63,7 +65,10 @@
 					<br>
 					<label class="label" for="delivery-site">Delivery Site </label>
 					<input type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
-				</div>								
+				</div>
+				<div class = errors>
+					<p class = "error" id="p1Error">{{part1Errors}}</p>
+				</div>
 			</div>
 
 			<!-- Part 2 of DR Form -->
@@ -108,6 +113,9 @@
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
 					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = "Write here..." maxlength="200"></textarea>
+				</div>
+				<div class = errors>
+					<p class = "error" id="p2Error">{{part2Error}}</p>
 				</div>										
 			</div>
 
@@ -166,6 +174,9 @@
 						</div>	
 					</div>				
 				</div>
+				<div class = errors>
+					<p class = "error" id="p3Error">{{part3Error}}</p>
+				</div>
 			</div>
 
 			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
@@ -198,6 +209,9 @@
 					<br>
 					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
 					<label for="acknowledgement2"> Received the merchandise with issue/s</label>							
+				</div>
+				<div class = errors>
+					<p class = "error" id="p4Error">{{part4Error}}</p>
 				</div>
 			</div>
 			
