@@ -21,11 +21,13 @@ $(document).ready(function () {
         numberOfCompaniesSearch = numberOfCompaniesSearch.toString();
 
         $("#resultsCountCard").text("There are ("+ numberOfCompaniesSearch +")" + " results found for: " + searchValue);
+        
 
     } else {
 
         $("#resultsCountCard").hide();
-
+        $(".paginationContainer").hide();
+        
         if (window.location.href.indexOf("?") != -1){
             $("#noResultsFoundCard").text("There are (0) results found for: " +searchValue);
             $("#noResultsParentCard").css("background-color","#299b04");
