@@ -183,3 +183,8 @@ function charLeft() {
 commodityDesc.addEventListener("input", charLeft);
 charLeft.call(commodityDesc);	
 
+radBtnShip = document.getElementById("shipment1");
+radBtnShip.checked = true;
+
+radBtnAck = document.getElementById("acknowledgement1");
+radBtnAck.checked = true;
