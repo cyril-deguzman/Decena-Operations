@@ -1,7 +1,12 @@
 @import '~material-design-icons/iconfont/material-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 body,html{          
     height: 100%;
-    background-color: white;
+    background-image: url("../images/grayBackground.jpg");
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #searchHeader{
@@ -11,7 +16,7 @@ body,html{
 }
 
 .cardIcon{
-    background-color: white;
+    background-color: #ffffff;
     justify-content: center;
 }
 
@@ -21,8 +26,8 @@ body,html{
 }
 
 .cardIcon{
-   margin-top: 25px;
-   font-size: 32px;
+   margin-top: 8px;
+   font-size: 25px;
 }
 
 label {
@@ -30,14 +35,15 @@ label {
 }
 
 h1{
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: #194A09;
     font-size: 50px;
     display: inline;
 }
 
 #searchText{
-    font-weight: normal;
+    font-weight: bold;
+    font-size: 60px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -76,6 +82,7 @@ h1{
 #searchCompanyText{
     flex: 1;
     border-color:#194A09;
+    border-width: medium;
     position: relative;
     left: 20px;
 }
@@ -94,6 +101,7 @@ a{
     list-style-type: none;
     margin-top: 8px;
     border-color:#194A09 ;
+    height: 70px;
 }
 
 .resultsFoundCard:hover{
@@ -114,30 +122,21 @@ a{
 
 
 form {
-    /* This bit sets up the horizontal layout */
     display:flex;
     flex-direction:row;
-    
-    /* This bit draws the box around it */
- 
-    /* I've used padding so you can see the edges of the elements. */
     padding:2px;
   }
   
   input {
-    /* Tell the input to use all the available space */
     flex-grow:2;
-    /* And hide the input's outline, so the form looks like the outline */
     border:none;
   }
   
   input:focus {
-    /* removing the input focus blue box. Put this on the form if you like. */
     outline: none;
   }
   
   button {
-    /* Just a little styling to make it pretty */
     border:1px solid blue;
     background:blue;
     color:white;
@@ -160,16 +159,33 @@ form {
     background-color:#299b04;
     font-weight: 500;
     color: white;
+    height:60px;
+    
 }
 
 .companyNumberOfDR{
-    font-size: 20px;
+    font-size: 15px;
+    position: relative;
+    bottom: 14px;
 }
 
 .companyName{
-    font-size:20px;
+    font-size:15px;
+    position:relative;
+    bottom:7px;
 }
 
 #noResultsParentCard{
     font-weight: 500;
+    height:60px;
+}
+
+.paginationContainer{
+    padding-bottom: 50px;
+    
+}
+
+.page-link{
+    color: white;
+    background-color:#194A09;
 }
