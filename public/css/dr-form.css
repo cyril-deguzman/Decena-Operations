@@ -170,3 +170,24 @@ textarea {
 #modal-dr-title {
     margin: 0vh;
 }
+
+.errors {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.error {
+    color: #ce2029;
+    font-weight: bold;
+}
+
+#p1Error, #p2Error, #p3Error, #p4Error {
+    background-color: #FFFFFF;
+    padding: 1%;
+}
+
+#company-name, #client-name, #pickup-site, #delivery-site, #description, #processor, 
+#driver, #helper, #plate-number, #docs-options {
+    background-color: #FFFFFF;
+}
