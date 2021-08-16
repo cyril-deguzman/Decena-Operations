@@ -33,7 +33,7 @@ const searchController = {
         if(foundCompanies.results.length < 1) 
             noMatch = "No companies match that query, please try again.";
                 
-        await Company.countDocuments({}, function(err, companyCount) {
+        await Company.countDocuments({name: regex}, function(err, companyCount) {
             pageCount = companyCount
         });
 

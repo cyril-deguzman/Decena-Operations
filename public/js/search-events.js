@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    let pageCount = $('#page-count').val() / 10;
+    alert(pageCount);
 
     /* Event Handlers */
     $(".resultsFoundCard").hover(function(){
@@ -30,5 +32,5 @@ $(document).ready(function () {
         if(parseInt($("#first-page").text()) <= 1) 
             $("#previous").addClass("disable-click"); 
     })
-    
+
 })
