@@ -25,7 +25,7 @@ $(document).ready(function () {
             $('#noResultsFoundCard').css('padding','15px');
         }   
         else {
-            $("#noResultsFoundCard").text("No search has been made yet.");
+            $("#noResultsParentCard").hide();
         }        
     }
 })
