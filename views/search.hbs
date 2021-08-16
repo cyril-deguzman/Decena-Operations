@@ -41,7 +41,8 @@
         <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
             <div class="form-group justify-content-center w-100 flex-container">
                     <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
-                    <input id="page-count" type="hidden" name="pagecount" value="{{pagecount}}">
+                    <input id="page-count" type="hidden" name="pagecount" value="{{pageCount}}">
+                    <input id="search-query" type="hidden" name="pagecount" value="{{searchQuery}}">
                     <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
             </div>
         </form>

@@ -9,10 +9,9 @@ $(document).ready(function () {
     /* This checks if the search is able to return a company, if succcessful the card will 
        display the number of companies matching the search query. */
     if ($(".resultsFoundCard")[0]) {
-        var numberOfCompaniesSearch = $(".resultsFoundCard").length;
-        numberOfCompaniesSearch = numberOfCompaniesSearch.toString();
-    
-        $("#resultsCountCard").text("There are ("+ numberOfCompaniesSearch +")" + " results found for: " + searchValue);
+        let companyCount = $('#page-count').val();
+        let searchQuery = $('#search-query').val();
+        $("#resultsCountCard").text("There are ("+ companyCount +")" + " results found for: " + searchQuery);
     } 
     else {
         $("#resultsCountCard").hide();

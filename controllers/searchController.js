@@ -23,12 +23,13 @@ const searchController = {
     getCompanies: async function(req,res) {
         let noMatch = null;
         let pageCount = 0;
+        let searchQuery = req.query.search;
 
         /* Escape regex to avoid DDOS attacks. */
-        const regex = new RegExp(searchController.escapeRegex(req.query.search), 'gi');
+        const regex = new RegExp(searchController.escapeRegex(searchQuery), 'gi');
 
         /* Get all companies from DB */ 
-        let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 5);
+        let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 10);
         if(foundCompanies.results.length < 1) 
             noMatch = "No companies match that query, please try again.";
                 
@@ -36,9 +37,7 @@ const searchController = {
             pageCount = companyCount
         });
 
-        console.log(pageCount);
-        
-        res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount});  
+        res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: searchQuery});  
     },
     
     /**
