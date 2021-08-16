@@ -15,7 +15,6 @@ $(document).ready(function () {
         $("#resultsCountCard").text("There are ("+ numberOfCompaniesSearch +")" + " results found for: " + searchValue);
     } 
     else {
-    
         $("#resultsCountCard").hide();
         $(".paginationContainer").hide();
         

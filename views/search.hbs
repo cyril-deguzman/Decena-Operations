@@ -37,10 +37,11 @@
     
     <div class="col-lg-12 h-75 d-inline-block row justify-content-center" id="mainDivSearch">
         <h1 id = "searchText" class="col-lg-12 align-items-center row justify-content-center">Search Company</h1>
-            
+        
         <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
             <div class="form-group justify-content-center w-100 flex-container">
                     <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
+                    <input id="page-count" type="hidden" name="pagecount" value="{{pagecount}}">
                     <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
             </div>
         </form>
