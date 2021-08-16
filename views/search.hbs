@@ -11,16 +11,15 @@
     
     <!-- Import stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/search.css">
-
-
     
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 			crossorigin="anonymous">
 	</script>
 
-        <!-- Import javascript -->
-	<script type="text/javascript" src="/js/search.js"></script>
+    <!-- Import javascript -->
+	<script type="text/javascript" src="/js/search-visuals.js"></script>
+    <script type="text/javascript" src="/js/search-events.js"></script>
     <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
 
 </head>
@@ -39,45 +38,51 @@
     <div class="col-lg-12 h-75 d-inline-block row justify-content-center" id="mainDivSearch">
         <h1 id = "searchText" class="col-lg-12 align-items-center row justify-content-center">Search Company</h1>
             
-            <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
-                <div class="form-group justify-content-center w-100 flex-container">
-                        <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
-                        <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
-                </div>
-            </form>
+        <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
+            <div class="form-group justify-content-center w-100 flex-container">
+                    <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
+                    <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
+            </div>
+        </form>
             
         <div class="col-lg-12 mx-auto" id="companyListContainer">
-             <div class="card col-lg-6 mx-auto resultsCard" id="resultsCountCard">
-                    <div class="card-body" id="resultsFoundText"> </div>
-                </div>
+            <div class="card col-lg-6 mx-auto resultsCard" id="resultsCountCard">
+                <div class="card-body" id="resultsFoundText"> </div>
+            </div>
+
             {{#each companyList}}
                 {{>company}}    
             {{else}}
-                <div class="card col-lg-6 mx-auto resultsCard" id="noResultsParentCard">
-                    <div class="card-body" id="noResultsFoundCard">  </div>
-                </div>
+
+            <div class="card col-lg-6 mx-auto resultsCard" id="noResultsParentCard">
+                <div class="card-body" id="noResultsFoundCard">  </div>
+            </div>
+
             {{/each}}
             <p id="bottomOfPageSpace">.</p>
-
         </div>
         
-<nav aria-label="page navigation justify-content-center paginationParent">
-  <ul class="pagination justify-content-center paginationContainer">
-    <li class="page-item justify-content-center">
-      <a class="page-link justify-content-center" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+        <nav aria-label="page navigation justify-content-center paginationParent">
+            <ul class="pagination justify-content-center paginationContainer">
+                <li class="page-item justify-content-center">
+                    <a id="previous" class="page-link justify-content-center" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                
+                <div class="pagination justify-content-center paginationContainer">
+                    <li class="page-item"><a id="first-page" class="page-link page-nav" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link page-nav" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link page-nav" href="#">3</a></li>
+                </div>
+                
+                <li class="page-item">
+                    <a id="next" class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
     </div>
 

@@ -189,3 +189,7 @@ form {
     color: white;
     background-color:#194A09;
 }
+
+.disable-click{
+    pointer-events: none;
+}
