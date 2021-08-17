@@ -50,7 +50,7 @@ const searchController = {
         let page = req.body.page
         let filter = req.body.filter
 
-        const regex = new RegExp(searchController.escapeRegex(regex), 'gi');
+        const regex = new RegExp(searchController.escapeRegex(filter), 'gi');
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, page, 10);
         
         res.send(foundCompanies);
