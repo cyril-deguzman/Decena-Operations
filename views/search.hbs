@@ -39,7 +39,7 @@
             <div class="form-group justify-content-center w-100 flex-container">
                     <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
                     <input id="page-count" type="hidden" name="pagecount" value="{{pageCount}}">
-                    <input id="search-query" type="hidden" name="pagecount" value="{{searchQuery}}">
+                    <input id="search-query" type="hidden" name="searchquery" value="{{searchQuery}}">
                     <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
             </div>
         </form>
@@ -49,9 +49,11 @@
                 <div class="card-body" id="resultsFoundText"> </div>
             </div>
 
-            {{#each companyList}}
+            <div id="company-cards">
+                {{#each companyList}}
                 {{>company}}    
-            {{else}}
+                {{else}}
+            </div>
 
             <div class="card col-lg-6 mx-auto resultsCard" id="noResultsParentCard">
                 <div class="card-body" id="noResultsFoundCard">  </div>
@@ -70,9 +72,9 @@
                 </li>
                 
                 <div class="pagination justify-content-center paginationContainer">
-                    <li class="page-item"><a id="first-page" class="page-link page-nav" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link page-nav" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link page-nav" href="#">3</a></li>
+                    <li class="page-item"><a id="first-page" class="page-link page-nav" href="">1</a></li>
+                    <li class="page-item"><a class="page-link page-nav" href="">2</a></li>
+                    <li class="page-item"><a class="page-link page-nav" href="">3</a></li>
                 </div>
                 
                 <li class="page-item">

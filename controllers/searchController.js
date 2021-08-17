@@ -1,4 +1,5 @@
-const Company = require('../models/CompanyModel.js')
+const Company = require('../models/CompanyModel.js');
+const { render } = require('../routes/routes.js');
 
 const searchController = {
 
@@ -24,10 +25,9 @@ const searchController = {
         let noMatch = null;
         let pageCount = 0;
         let searchQuery = req.query.search;
-
         /* Escape regex to avoid DDOS attacks. */
         const regex = new RegExp(searchController.escapeRegex(searchQuery), 'gi');
-
+        console.log(searchQuery);
         /* Get all companies from DB */ 
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 10);
         if(foundCompanies.results.length < 1) 
@@ -35,11 +35,27 @@ const searchController = {
                 
         await Company.countDocuments({name: regex}, function(err, companyCount) {
             pageCount = companyCount
+            res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: searchQuery});
         });
-
-        res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: searchQuery});  
+          
     },
     
+    /**
+     * postPaginateCompanies.
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    postPaginateCompanies: async function(req, res) {
+        let page = req.body.page
+        let filter = req.body.filter
+
+        const regex = new RegExp(searchController.escapeRegex(regex), 'gi');
+        let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, page, 10);
+        
+        res.send(foundCompanies);
+    },
+
     /**
      * escapeRegex
      * 
