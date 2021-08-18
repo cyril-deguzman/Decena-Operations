@@ -11,14 +11,23 @@ h1 {
     margin-top: 5%;
     text-align: left;
 }
-#tableDiv {
+
+thead,tbody,tfoot {
     background-color: white;
-    padding: 2%;
 }
-
-#mainDiv {
-
+#main-div {
     display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+h1 { 
+    border: 2px solid black; 
+    border-radius: 12px;
+    margin: 1%;
+    padding: 1%;
+}
+
+#title-company {
+    margin-top: 2%;
 }
