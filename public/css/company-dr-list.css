@@ -1,0 +1,23 @@
+body,html{          
+    height: 100%;
+    background-image: url("../images/grayBackground.jpg");
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.selector-for-some-widget { box-sizing: content-box; }
+
+/* Table */    
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before { bottom: .5em; }   
+
+.child { width: 80%; }  
