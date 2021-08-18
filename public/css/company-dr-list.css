@@ -22,10 +22,11 @@ thead,tbody,tfoot {
 }
 
 h1 { 
-    border: 2px solid black; 
+    border: 2px solid #194A09; 
     border-radius: 12px;
     margin: 1%;
     padding: 1%;
+    color: #194A09;
 }
 
 #title-company {
