@@ -18,6 +18,23 @@
   </head>
     
   <body>
+    
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src ="../public/images/dv-logo-transparent.png" alt="" width="65%" id="dv-logo"> 
+          </a>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active navBarItem" id="searchLink" aria-current="page" href="#">Search</a>
+            <a class="nav-link active navBarItem" id="deliveryReceiptLink" href="#">Delivery Receipt</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div id="main-div">
       <div class="col-lg-10 h-75 d-inline-block row justify-content-center">
         <div class="row">
@@ -435,6 +452,19 @@
       $(document).ready(function () {
       $('#dtBasicExample').DataTable();
       $('.dataTables_length').addClass('bs-select');
+
+      $("#searchLink").hover(function(){
+        $("#searchLink").css("color","#FFFFFF")
+      }, function(){
+        $("#searchLink").css("color","#194A09");
+      });
+
+      $("#deliveryReceiptLink").hover(function(){
+        $("#deliveryReceiptLink").css("color","#FFFFFF")
+      }, function(){
+        $("#deliveryReceiptLink").css("color","#194A09");
+      });
+
       });            
   </script>
 </html>

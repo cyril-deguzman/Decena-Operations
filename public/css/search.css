@@ -193,3 +193,40 @@ form {
 .disable-click{
     pointer-events: none;
 }
+
+.navbar{
+    background-color: #dbdbdb;
+    
+}
+
+#searchLink,#deliveryReceiptLink{
+    color:#194A09;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#searchLink{
+    position: relative;
+    right: 10px;
+}
+
+.navbar-brand{
+    position: relative;
+    right:5px;
+    height: auto;
+    width: auto;
+    
+}
+
+.navbar-brand:hover{
+    cursor: default;
+}
+
+#dv-logo:hover{
+    cursor: pointer;
+}
+
+#navbarNavAltMarkup{
+    position: relative;
+    right: 20px;
+}
