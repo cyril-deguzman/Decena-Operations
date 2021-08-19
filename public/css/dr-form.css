@@ -1,9 +1,9 @@
 body {          
-    background-color: #194A09;
-    background-size: cover;
     height: 100%;
-    width: 100%;
-    margin: 0px;
+    background-image: url("../images/grayBackground.jpg");
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;        

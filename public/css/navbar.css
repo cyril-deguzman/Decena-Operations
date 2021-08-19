@@ -1,0 +1,56 @@
+/* Navigation Bar */
+.navbar{
+    background-color: #e5e4e2;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#searchLink,#deliveryReceiptLink {
+    color:#194A09;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0%;
+}
+
+#searchLink{
+    position: relative;
+    right: 10px;
+}
+
+
+.navbar-brand{
+    position: relative;
+    right:5px;
+    height: auto;
+    width: auto;
+    
+}
+
+.navbar-brand:hover{
+    cursor: default;
+}
+
+#dv-logo:hover{
+    cursor: pointer;
+}
+
+#navbarNavAltMarkup{
+    position: relative;
+    right: 20px;
+}
+
+#log-out-btn {
+    border-color:#194A09;
+    color:#194A09;
+}
+
+#log-out-btn:hover {
+    color:#D9D9D9;
+    background-color: #194A09;
+}
+
+#searchLink:hover, #deliveryReceiptLink:hover {
+    background-color:#f5f5f5;
+}
