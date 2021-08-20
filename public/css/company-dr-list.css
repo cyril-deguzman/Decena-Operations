@@ -35,6 +35,9 @@ thead, tfoot, #content-container {
     background-color:#194A09;
 }
 
+.custom-select{
+    background-position: 28px !important;
+    }
 /*! `Custom` Bootstrap 5 theme *//*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
