@@ -10,7 +10,7 @@ thead,tbody,tfoot {
     background-color: white;
 }
 
-thead, tfoot {
+thead, tfoot, #content-container {
     color: #194A09;   
 }
 
@@ -21,51 +21,20 @@ thead, tfoot {
     margin-top: 30px;
 }
 
-h1 { 
+#company-name-title { 
     border: 2px solid #194A09; 
     border-radius: 12px;
-    margin: 1%;
+    margin: 0%;
     padding: 1%;
-    color: #194A09;
+    color: black;
 }
 
-#title-company {
-    margin-top: 2%;
-}
-
-.navbar{
-    background-color: #dbdbdb;
-    
-}
-
-#searchLink,#deliveryReceiptLink{
+.page-link:hover, .page-link:active {
+    background-color: white;
     color:#194A09;
-    font-weight: 500;
-    font-size: 20px;
 }
 
-#searchLink{
-    position: relative;
-    right: 10px;
-}
-
-.navbar-brand{
-    position: relative;
-    right:5px;
-    height: auto;
-    width: auto;
-    
-}
-
-.navbar-brand:hover{
-    cursor: default;
-}
-
-#dv-logo:hover{
-    cursor: pointer;
-}
-
-#navbarNavAltMarkup{
-    position: relative;
-    right: 20px;
+.page-link {
+    color: white;
+    background-color:#194A09;
 }
