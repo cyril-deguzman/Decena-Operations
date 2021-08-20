@@ -172,23 +172,14 @@ textarea {
     margin: 0vh;
 }
 
-.errors {
-    display: flex;
-    justify-content: center;
-    margin-top: 3%;
-}
-
 .error {
     color: #ce2029;
-    font-weight: bold;
-}
-
-#p1Error, #p2Error, #p3Error, #p4Error {
+    font-weight: 500;
+    font-size: 1.8vh;
     background-color: #FFFFFF;
-    padding: 1%;
 }
 
 #company-name, #client-name, #pickup-site, #delivery-site, #description, #processor, 
-#driver, #helper, #plate-number, #docs-options {
+#driver, #helper, #plate-number, #quantity, #docs-options {
     background-color: #FFFFFF;
 }
