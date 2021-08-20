@@ -77,27 +77,32 @@
 					<div id="name-container" style="width: 70%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
 						<input type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
+						<p class = "error" id="p1Error1">{{companyNameErrors}}</p>
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
-						<input type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">		
+						<input type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
+						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
 					</div>
 					
 					<div id="date-container">	
 						<label class="label" for="date-issued">Date Issued</label>
 						<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
-					</div>		
+					</div>
+					<p class = "error" id="p1Error5">{{dateIssueErrors}}</p>
 				</div>
 				<br>
 				<div id="site-container">
 					<label class="label" for="pickup-site">Pick-Up Site </label>
-					<input type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">		
+					<input type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">
+					<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
 					<br>
 					<label class="label" for="delivery-site">Delivery Site </label>
 					<input type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
+					<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
 				</div>
-				<div class = errors>
+				<!-- <div class = errors>
 					<p class = "error" id="p1Error">{{part1Errors}}</p>
-				</div>
+				</div> -->
 			</div>
 
 			<!-- Part 2 of DR Form -->
@@ -113,9 +118,11 @@
 						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
 						<input type="radio" class="radio" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
 						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+						<!-- <p class = "error" id="p2Error1">{{shipModeErrors}}</p> -->
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
-						<input type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;"><br> 
+						<input type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;"><br>
+						<p class = "error" id="p2Error1">{{quantityErrors}}</p>
 					</div>
 					<!-- List of Documents w/ Processsor-->
 					<div id="documents-processor">
@@ -125,7 +132,7 @@
 								<input type="checkbox" value="KN DR" id="document1" name="document"/> <label> KN DR</label><br>
 								<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" id="document2" name="document" /> <label> AIR WAYBILL (AIR FREIGHT)</label><br>
 								<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" id="document3" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label><br>	
-								<input type="checkbox" value="IMPORT" id="document4" name="document" /> <label> IMPORT</label><br>				
+								<input type="checkbox" value="IMPORT" id="document4" name="document" /> <label> IMPORT</label><br>
 							</div>
 							<div id="second-docs">
 								<input type="checkbox" value="INVOICE" id="document5" name="document"/> <label> INVOICE</label><br>	
@@ -134,18 +141,21 @@
 								<input type="checkbox" value="OTHERS" id="document8" name="document" /> <label> OTHERS</label><br>
 							</div>
 						</div>
+						<p class = "error" id="p2Error2">{{docListErrors}}</p>
 						<br>
 						<label class="label" for="processor">Processor</label>
 						<input type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
+						<p class = "error" id="p2Error3">{{processorErrors}}</p>
 					</div>	
 				</div>
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
 					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = "Write here..." maxlength="200"></textarea>
 				</div>
-				<div class = errors>
+				<p class = "error" id="p2Error4">{{descriptionErrors}}</p>
+				<!-- <div class = errors>
 					<p class = "error" id="p2Error">{{part2Error}}</p>
-				</div>										
+				</div>	 -->									
 			</div>
 
 			<!-- Part 3 of DR Form: Arrival & Departure -->
@@ -156,17 +166,21 @@
 					<div id="p-date-time">
 						<div id="p-date">
 							<label class="label" for="p-arrival-date">Arrival Date </label>
-							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">					
+							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+							<p class = "error" id="p3Error1">{{pInDateErrors}}</p>
 							<br>
 							<label class="label" for="p-departure-date">Departure Date </label>
 							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p3Error2">{{pOutDateErrors}}</p>
 						</div>
 						<div id="p-time">	
 							<label class="label" for="p-arrival-time">Time </label>
-							<input type="time" id="p-arrival-time" name="p-arrival-time" value="00:00">		
+							<input type="time" id="p-arrival-time" name="p-arrival-time" value="00:00">
+							<p class = "error" id="p3Error3">{{pInTimeErrors}}</p>	
 							<br>
 							<label class="label" for="p-departure-time">Time </label>
-							<input type="time" id="p-departure-time" name="p-departure-time" value="00:00">	
+							<input type="time" id="p-departure-time" name="p-departure-time" value="00:00">
+							<p class = "error" id="p3Error4">{{pOutTimeErrors}}</p>
 						</div>	
 					</div>					
 				</div>
@@ -178,34 +192,42 @@
 						<div id="d-date"> 
 							<label class="label" for="d-arrival-date">Arrival Date </label>
 							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p3Error5">{{dInDateErrors}}</p>
 							<br>
 							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
-							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p3Error6">{{dStartLoadDateErrors}}</p>
 							<br>
 							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
 							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p3Error7">{{dEndLoadDateErrors}}
 							<br>
 							<label class="label" for="d-departure-date">Departure Date </label>
 							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p3Error8">{{dOutDateErrors}}</p>
 						</div>
 						<div id="d-time">
 							<label class="label" for="d-arrival-time">Time </label>
-							<input type="time" id="d-arrival-time" name="d-arrival-time" value="00:00">	
+							<input type="time" id="d-arrival-time" name="d-arrival-time" value="00:00">
+							<p class = "error" id="p3Error9">{{dInTimeErrors}}</p>
 							<br>						
 							<label class="label" for="start-load-time">Time </label>
-							<input type="time" id="start-load-time" name="start-load-time" value="00:00">						
+							<input type="time" id="start-load-time" name="start-load-time" value="00:00">
+							<p class = "error" id="p3Error10">{{dStartLoadTimeErrors}}</p>					
 							<br>
 							<label class="label" for="finish-load-time">Time </label>
-							<input type="time" id="finish-load-time" name="finish-load-time" value="00:00">											
+							<input type="time" id="finish-load-time" name="finish-load-time" value="00:00">
+							<p class = "error" id="p3Error11">{{dEndLoadTimeErrors}}</p>
 							<br>	
 							<label class="label" for="d-departure-time">Time </label>
-							<input type="time" id="d-departure-time" name="d-departure-time" value="00:00">	
+							<input type="time" id="d-departure-time" name="d-departure-time" value="00:00">
+							<p class = "error" id="p3Error12">{{dOutTimeErrors}}</p>
 						</div>	
 					</div>				
 				</div>
-				<div class = errors>
+				<!-- <div class = errors>
 					<p class = "error" id="p3Error">{{part3Error}}</p>
-				</div>
+				</div> -->
 			</div>
 
 			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
@@ -213,11 +235,14 @@
 				<div id="fleet-details">
 					<h6>FLEET DETAILS</h6>
 					<label class="label" for="plate-number">Truck Plate Number</label>
-					<input type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8"><br>		
+					<input type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8">
+					<p class = "error" id="p4Error1">{{plateNumErrors}}</p><br>
 					<label class="label" for="driver">Driver</label>
-					<input type="text" id="driver" name="driver" style="width: 70%;" maxlength="50"><br>		
+					<input type="text" id="driver" name="driver" style="width: 70%;" maxlength="50">
+					<p class = "error" id="p4Error2">{{driverErrors}}</p><br>
 					<label class="label" for="helper">Helper</label>
-					<input type="text" id="helper" name="fname" style="width: 70%;" maxlength="50"><br>					
+					<input type="text" id="helper" name="fname" style="width: 70%;" maxlength="50">
+					<p class = "error" id="p4Error3">{{helperErrors}}</p><br>	
 				</div>
 				<div id="acknowledgement">
 					<h6>ACKNOWLEDGEMENT</h6>
@@ -226,10 +251,12 @@
 							<label class="label" for="ack-date">Date</label>
 							<input type="date" class="datefield" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
 						</div>
+						<p class = "error" id="p4Error4">{{ackDateErrors}}</p>
 						<div id="a-time">
 							<label class="label" for="ack-time">Time</label>
 							<input type="time" id="ack-time" name="ack-time" value="00:00">
 						</div>
+						<p class = "error" id="p4Error5">{{ackTimeErrors}}</p>
 					</div>
 					<br>
 
@@ -239,9 +266,9 @@
 					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
 					<label for="acknowledgement2"> Received the merchandise with issue/s</label>							
 				</div>
-				<div class = errors>
+				<!-- <div class = errors>
 					<p class = "error" id="p4Error">{{part4Error}}</p>
-				</div>
+				</div> -->
 			</div>
 			
 			<!-- Part 5 of DR Form: Submit Button -->
