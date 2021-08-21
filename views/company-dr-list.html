@@ -438,25 +438,6 @@
 
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-      $('.drdatatable').DataTable({
-        initComplete: function() {
-          this.api().columns().every( function() {
-            var column = this;
-            var select = $('<select><option value=""></option></select>').appendTo($(column.header()).empty())
-            .on('change', function() {
-              var val = $.fn.dataTable.util.escapeRegex(
-                $(this).val()
-              );
-
-              column.search(val ? '^'+val+'$': '',true,false).draw();
-            });
-            column.data().unique().sort().each( function(d,j) {
-              select.append('<option value="'+d+'">'+d+'</option>')
-            });
-          });
-        }
-      });
-    </script>
+    <script type="text/javascript"  src="../public/js/company-dr-list.js"></script>
   </body>
 </html>
