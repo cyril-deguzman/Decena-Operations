@@ -46,6 +46,7 @@ const searchController = {
      * @param {*} res 
      */    
     getViewDRs: async function(req, res) {
+        let companyName = req.params.id;
         let date = new Date()
         let today = date.getFullYear();
         
@@ -54,10 +55,20 @@ const searchController = {
                             $gte: new Date(today, 0, 1), 
                             $lt: new Date(today, 11, 31)
                         },
-            companyName: req.params.id
-        }, function(status, results) {
-            res.render("search-dr", {dr: results})
+            companyName: companyName
+        }).lean().exec(function (err, results) { 
+            const months = ["January", "February", "March", "April", "May", "June", 
+                            "July", "August", "September", "October", "November", "December"];
+
+            results.forEach((dr, i, arr) => {
+                let d = arr[i].dateIssued
+                arr[i].status = arr[i].status ? 'paid' : 'unpaid'
+                arr[i].dateIssued = months[d.getMonth()] + ' ' + (d.getDay() + 1) + ', ' + d.getFullYear();
+            });
+
+            res.render("search-dr", {dr: results, name: companyName})
         })
+
     },
 
     /**
