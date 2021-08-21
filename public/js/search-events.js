@@ -48,7 +48,7 @@ $(document).ready(function () {
         $.post(`/paginatecompany`, {page: page, filter: searchQuery},function(data, status) {
             let node = $('#company-cards');
             let textContent = '';
-
+            
             data.results.forEach(company => {
                 let temp = 
                     `<div class="card col-lg-6 mx-auto resultsFoundCard flex-row flex-rap">
@@ -70,5 +70,10 @@ $(document).ready(function () {
             node.html(textContent);
             $('#companyListContainer div.resultsFoundCard:last').css("margin-bottom","20px");
         });
+    })
+
+    $('.resultsFoundCard').click(function() {
+        let companyName = $(this).attr('data-id');
+        window.location = `/viewreceipts/${companyName}`
     })
 })

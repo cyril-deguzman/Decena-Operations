@@ -1,5 +1,5 @@
 const Company = require('../models/CompanyModel.js');
-const { render } = require('../routes/routes.js');
+const DeliveryReceiptModel = require('../models/DeliveryReceiptModel.js');
 
 const searchController = {
 
@@ -37,9 +37,29 @@ const searchController = {
             pageCount = companyCount
             res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: searchQuery});
         });
-          
     },
     
+    /**
+     * getViewDRs
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */    
+    getViewDRs: async function(req, res) {
+        let date = new Date()
+        let today = date.getFullYear();
+        
+        DeliveryReceiptModel.find({ 
+            dateIssued: { 
+                            $gte: new Date(today, 0, 1), 
+                            $lt: new Date(today, 11, 31)
+                        },
+            companyName: req.params.id
+        }, function(status, results) {
+            res.render("search-dr", {dr: results})
+        })
+    },
+
     /**
      * postPaginateCompanies.
      * 
@@ -54,18 +74,6 @@ const searchController = {
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, page, 10);
         
         res.send(foundCompanies);
-    },
-
-    /**
-     * escapeRegex
-     * 
-     * A small security measure to avoid common DDOS attacks that can potentially
-     * overload and crash the database.
-     * @param {*} text search query of the user to apply the function to.
-     * @returns 
-     */
-    escapeRegex: function(text) {
-        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     },
 
     /**
@@ -105,6 +113,20 @@ const searchController = {
             console.log(e.message);
         }
     },
+
+     /**
+     * escapeRegex
+     * 
+     * A small security measure to avoid common DDOS attacks that can potentially
+     * overload and crash the database.
+     * @param {*} text search query of the user to apply the function to.
+     * @returns 
+     */
+    escapeRegex: function(text) {
+        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    },
+
+    
 }
 
 module.exports = searchController;
