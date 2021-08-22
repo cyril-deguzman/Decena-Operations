@@ -172,6 +172,11 @@ textarea {
     margin: 0vh;
 }
 
+#date-error-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .error {
     color: #ce2029;
     font-weight: 500;
