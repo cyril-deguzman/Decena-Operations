@@ -14,6 +14,7 @@
     crossorigin="anonymous"> 
 
     <!-- Import stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../public/css/company-dr-list.css">
     <link rel="stylesheet" type="text/css" href="../public/css/navbar.css">
   </head>
@@ -57,24 +58,18 @@
         </div>
         
         <div class="col-xl-12 mb-3 mt-3">
-            <table class="table table-striped table-bordered drdatatable" style="width: 100%">
+            <table class="table table-striped table-bordered drDataTable" style="width: 100%">
               <thead>
                 <tr> 
-                  <th>Date Issued</th>
-                  <th>Client</th>
-                  <th>Payment Status</th>
-                  <th>Driver</th>
-                  <th>Helper </th>
-                  <th>Truck Plate No.</th>
+                  <th class="filterCol">Date Issued</th>
+                  <th class="filterCol">Client</th>
+                  <th class="filterCol">Payment Status</th>
+                  <th class="filterCol">Driver</th>
+                  <th class="filterCol">Helper </th>
+                  <th class="filterCol">Truck Plate No.</th>
+                  <th>Edit DR</th>
                 </tr>
-                <tr>
-                  <th>Date Issued</th>
-                  <th>Client</th>
-                  <th>Payment Status</th>
-                  <th>Driver</th>
-                  <th>Helper </th>
-                  <th>Truck Plate No.</th>
-                </tr>              
+                       
               </thead>
               
               <tbody>
@@ -85,6 +80,11 @@
                   <td>Mark Sy</td>
                   <td>Jimin Park</td>
                   <td>AGA1625</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>December 30, 2018</td>
@@ -93,6 +93,11 @@
                   <td>Jemerlyn Santos</td>
                   <td>Rizal Park</td>
                   <td>HUH1225</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>December 27, 2020</td>
@@ -101,6 +106,11 @@
                   <td>Sophia Iguana</td>
                   <td>Jimin Park</td>
                   <td>AWA2225</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>October 14, 2019</td>
@@ -109,6 +119,11 @@
                   <td>Louisse Iguana</td>
                   <td>Penge Pangalan</td>
                   <td>RAW4533</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>February 27, 2020</td>
@@ -117,6 +132,11 @@
                   <td>Jaemin Marcelo</td>
                   <td>Lord Voldemort</td>
                   <td>QWE1234</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>September 1, 2016</td>
@@ -125,6 +145,11 @@
                   <td>Marcelo Luna</td>
                   <td>Jose Burgos</td>
                   <td>DFG4356</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>June 12, 2017</td>
@@ -133,6 +158,11 @@
                   <td>Basilio Ibarra</td>
                   <td>Crisostomo Lord</td>
                   <td>BNV5697</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>                
                 <tr>
                   <td>January 21, 2020</td>
@@ -141,6 +171,11 @@
                   <td>Mark Sy</td>
                   <td>Jimin Park</td>
                   <td>AGA1625</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>December 30, 2018</td>
@@ -149,6 +184,11 @@
                   <td>Jemerlyn Santos</td>
                   <td>Rizal Park</td>
                   <td>HUH1225</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>December 27, 2020</td>
@@ -157,6 +197,11 @@
                   <td>Sophia Iguana</td>
                   <td>Jimin Park</td>
                   <td>AWA2225</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>October 14, 2019</td>
@@ -165,6 +210,11 @@
                   <td>Louisse Iguana</td>
                   <td>Penge Pangalan</td>
                   <td>RAW4533</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>February 27, 2020</td>
@@ -173,6 +223,11 @@
                   <td>Jaemin Marcelo</td>
                   <td>Lord Voldemort</td>
                   <td>QWE1234</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>September 1, 2016</td>
@@ -181,6 +236,11 @@
                   <td>Marcelo Luna</td>
                   <td>Jose Burgos</td>
                   <td>DFG4356</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>June 12, 2017</td>
@@ -189,6 +249,11 @@
                   <td>Basilio Ibarra</td>
                   <td>Crisostomo Lord</td>
                   <td>BNV5697</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>January 21, 2020</td>
@@ -197,6 +262,11 @@
                   <td>Mark Sy</td>
                   <td>Jimin Park</td>
                   <td>AGA1625</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>December 30, 2018</td>
@@ -205,225 +275,23 @@
                   <td>Jemerlyn Santos</td>
                   <td>Rizal Park</td>
                   <td>HUH1225</td>
-                </tr>
-                <tr>
-                  <td>December 27, 2020</td>
-                  <td>Andrea Jemerlyn</td>
-                  <td>Paid</td>
-                  <td>Sophia Iguana</td>
-                  <td>Jimin Park</td>
-                  <td>AWA2225</td>
-                </tr>
-                <tr>
-                  <td>October 14, 2019</td>
-                  <td>Andre Jan</td>
-                  <td>Unpaid</td>
-                  <td>Louisse Iguana</td>
-                  <td>Penge Pangalan</td>
-                  <td>RAW4533</td>
-                </tr>
-                <tr>
-                  <td>February 27, 2020</td>
-                  <td>Yani Lee</td>
-                  <td>Unpaid</td>
-                  <td>Jaemin Marcelo</td>
-                  <td>Lord Voldemort</td>
-                  <td>QWE1234</td>
-                </tr>
-                <tr>
-                  <td>September 1, 2016</td>
-                  <td>Apolinario Del Pilar</td>
-                  <td>Paid</td>
-                  <td>Marcelo Luna</td>
-                  <td>Jose Burgos</td>
-                  <td>DFG4356</td>
-                </tr>
-                <tr>
-                  <td>June 12, 2017</td>
-                  <td>Maria Clara</td>
-                  <td>Paid</td>
-                  <td>Basilio Ibarra</td>
-                  <td>Crisostomo Lord</td>
-                  <td>BNV5697</td>
-                </tr>
-                <tr>
-                  <td>January 21, 2020</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Paid</td>
-                  <td>Mark Sy</td>
-                  <td>Jimin Park</td>
-                  <td>AGA1625</td>
-                </tr>
-                <tr>
-                  <td>December 30, 2018</td>
-                  <td>Kim Taehyung</td>
-                  <td>Unpaid</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Rizal Park</td>
-                  <td>HUH1225</td>
-                </tr>
-                <tr>
-                  <td>December 27, 2020</td>
-                  <td>Andrea Jemerlyn</td>
-                  <td>Paid</td>
-                  <td>Sophia Iguana</td>
-                  <td>Jimin Park</td>
-                  <td>AWA2225</td>
-                </tr>
-                <tr>
-                  <td>October 14, 2019</td>
-                  <td>Andre Jan</td>
-                  <td>Unpaid</td>
-                  <td>Louisse Iguana</td>
-                  <td>Penge Pangalan</td>
-                  <td>RAW4533</td>
-                </tr>
-                <tr>
-                  <td>February 27, 2020</td>
-                  <td>Yani Lee</td>
-                  <td>Unpaid</td>
-                  <td>Jaemin Marcelo</td>
-                  <td>Lord Voldemort</td>
-                  <td>QWE1234</td>
-                </tr>
-                <tr>
-                  <td>September 1, 2016</td>
-                  <td>Apolinario Del Pilar</td>
-                  <td>Paid</td>
-                  <td>Marcelo Luna</td>
-                  <td>Jose Burgos</td>
-                  <td>DFG4356</td>
-                </tr>
-                <tr>
-                  <td>June 12, 2017</td>
-                  <td>Maria Clara</td>
-                  <td>Paid</td>
-                  <td>Basilio Ibarra</td>
-                  <td>Crisostomo Lord</td>
-                  <td>BNV5697</td>
-                </tr>
-                <tr>
-                  <td>January 21, 2020</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Paid</td>
-                  <td>Mark Sy</td>
-                  <td>Jimin Park</td>
-                  <td>AGA1625</td>
-                </tr>
-                <tr>
-                  <td>December 30, 2018</td>
-                  <td>Kim Taehyung</td>
-                  <td>Unpaid</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Rizal Park</td>
-                  <td>HUH1225</td>
-                </tr>
-                <tr>
-                  <td>December 27, 2020</td>
-                  <td>Andrea Jemerlyn</td>
-                  <td>Paid</td>
-                  <td>Sophia Iguana</td>
-                  <td>Jimin Park</td>
-                  <td>AWA2225</td>
-                </tr>
-                <tr>
-                  <td>October 14, 2019</td>
-                  <td>Andre Jan</td>
-                  <td>Unpaid</td>
-                  <td>Louisse Iguana</td>
-                  <td>Penge Pangalan</td>
-                  <td>RAW4533</td>
-                </tr>
-                <tr>
-                  <td>February 27, 2020</td>
-                  <td>Yani Lee</td>
-                  <td>Unpaid</td>
-                  <td>Jaemin Marcelo</td>
-                  <td>Lord Voldemort</td>
-                  <td>QWE1234</td>
-                </tr>
-                <tr>
-                  <td>September 1, 2016</td>
-                  <td>Apolinario Del Pilar</td>
-                  <td>Paid</td>
-                  <td>Marcelo Luna</td>
-                  <td>Jose Burgos</td>
-                  <td>DFG4356</td>
-                </tr>
-                <tr>
-                  <td>June 12, 2017</td>
-                  <td>Maria Clara</td>
-                  <td>Paid</td>
-                  <td>Basilio Ibarra</td>
-                  <td>Crisostomo Lord</td>
-                  <td>BNV5697</td>
-                </tr>
-                <tr>
-                  <td>January 21, 2020</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Paid</td>
-                  <td>Mark Sy</td>
-                  <td>Jimin Park</td>
-                  <td>AGA1625</td>
-                </tr>
-                <tr>
-                  <td>December 30, 2018</td>
-                  <td>Kim Taehyung</td>
-                  <td>Unpaid</td>
-                  <td>Jemerlyn Santos</td>
-                  <td>Rizal Park</td>
-                  <td>HUH1225</td>
-                </tr>
-                <tr>
-                  <td>December 27, 2020</td>
-                  <td>Andrea Jemerlyn</td>
-                  <td>Paid</td>
-                  <td>Sophia Iguana</td>
-                  <td>Jimin Park</td>
-                  <td>AWA2225</td>
-                </tr>
-                <tr>
-                  <td>October 14, 2019</td>
-                  <td>Andre Jan</td>
-                  <td>Unpaid</td>
-                  <td>Louisse Iguana</td>
-                  <td>Penge Pangalan</td>
-                  <td>RAW4533</td>
-                </tr>
-                <tr>
-                  <td>February 27, 2020</td>
-                  <td>Yani Lee</td>
-                  <td>Unpaid</td>
-                  <td>Jaemin Marcelo</td>
-                  <td>Lord Voldemort</td>
-                  <td>QWE1234</td>
-                </tr>
-                <tr>
-                  <td>September 1, 2016</td>
-                  <td>Apolinario Del Pilar</td>
-                  <td>Paid</td>
-                  <td>Marcelo Luna</td>
-                  <td>Jose Burgos</td>
-                  <td>DFG4356</td>
-                </tr>
-                <tr>
-                  <td>June 12, 2017</td>
-                  <td>Maria Clara</td>
-                  <td>Paid</td>
-                  <td>Basilio Ibarra</td>
-                  <td>Crisostomo Lord</td>
-                  <td>BNV5697</td>
+                  <td>
+                    <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+                      <i class="material-icons-outlined editIcon" style="font: size 48px;">edit_note</i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
               
               <tfoot>
                 <tr>
-                  <th>Date Issued</th>
-                  <th>Client</th>
-                  <th>Payment Status</th>
-                  <th>Driver</th>
-                  <th>Helper </th>
-                  <th>Truck Plate No.</th>
+                  <th class="filterCol">Date Issued</th>
+                  <th class="filterCol">Client</th>
+                  <th class="filterCol">Payment Status</th>
+                  <th class="filterCol">Driver</th>
+                  <th class="filterCol">Helper </th>
+                  <th class="filterCol">Truck Plate No.</th>
+                  <th>Edit DR</th>
                 </tr>    
                       
               </tfoot>

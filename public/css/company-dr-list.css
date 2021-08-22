@@ -39,6 +39,50 @@ thead, tfoot, #content-container {
     background-position: 35px !important;
     width:50px !important
     }
+
+.btn-info{
+    background-color: #417dc1 !important;
+    border-style: none !important;
+    margin-left: 40px;
+}
+
+.editIcon{
+    color: white;
+
+}
+
+tfoot input {
+    width: 40%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+table{
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed; 
+    word-wrap:break-word; 
+  }
+
+  .form-control-sm{
+      position: relative;
+   
+  }
+
+  .pagination{
+      position: relative;
+      right:430px;
+      top:30px;
+      padding-bottom: 30px;
+  }
+
+  #searchDrForm{
+      position: relative;
+      right:40px;
+  }
+
 /*! `Custom` Bootstrap 5 theme *//*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
