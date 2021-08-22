@@ -20,7 +20,7 @@
 
 		<!-- Import javascript -->
 		<script type="text/javascript" src="/js/dr-form.js"></script>
-		<script type="text/javascript" src="/js/dr-form-valid.js"></script>
+		<script type="text/javascript" src="/js/dr-form-visuals.js"></script>
 		<script type="text/javascript" src="/js/validator.min.js"></script>
 		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -83,12 +83,13 @@
 						<input type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
 						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
 					</div>
-					
-					<div id="date-container">	
-						<label class="label" for="date-issued">Date Issued</label>
-						<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
+					<div id = "date-error-container">
+						<div id="date-container">	
+							<label class="label" for="date-issued">Date Issued</label>
+							<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
+						</div>
+						<p class = "error" id="p1Error5">{{dateIssueErrors}}</p>
 					</div>
-					<p class = "error" id="p1Error5">{{dateIssueErrors}}</p>
 				</div>
 				<br>
 				<div id="site-container">
@@ -200,7 +201,7 @@
 							<br>
 							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
 							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error7">{{dEndLoadDateErrors}}
+							<p class = "error" id="p3Error7">{{dEndLoadDateErrors}}</p>
 							<br>
 							<label class="label" for="d-departure-date">Departure Date </label>
 							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
@@ -250,13 +251,14 @@
 						<div id="a-date">
 							<label class="label" for="ack-date">Date</label>
 							<input type="date" class="datefield" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p4Error4">{{ackDateErrors}}</p>
 						</div>
-						<p class = "error" id="p4Error4">{{ackDateErrors}}</p>
+						
 						<div id="a-time">
 							<label class="label" for="ack-time">Time</label>
 							<input type="time" id="ack-time" name="ack-time" value="00:00">
+							<p class = "error" id="p4Error5">{{ackTimeErrors}}</p>
 						</div>
-						<p class = "error" id="p4Error5">{{ackTimeErrors}}</p>
 					</div>
 					<br>
 
