@@ -24,7 +24,7 @@ const Acknowledgement = require('./AcknowledgementSchema');
  * @property acknowledgement: Acknowledgement of the receipt.
  */
 let DeliveryReceiptSchema = new mongoose.Schema({
-    dateIssued: {type: String, required: true},
+    dateIssued: {type: Date, required: true},
     companyName: {type: String, required: true, maxLength: 125},
     clientName: {type: String, required: true, maxLength: 50},
     pickSite: {type: String, required: true, maxLength: 100},

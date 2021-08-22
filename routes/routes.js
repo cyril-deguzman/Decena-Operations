@@ -16,5 +16,7 @@ app.post(`/postform`, formController.postForm);
 /* search routes */
 app.get(`/search`, searchController.getSearch);
 app.get(`/companysearch`, searchController.getCompanies);
+app.get(`/viewreceipts/:id`, searchController.getViewDRs);
 app.post(`/paginatecompany`, searchController.postPaginateCompanies);
+
 module.exports = app;
