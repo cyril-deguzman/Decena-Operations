@@ -74,6 +74,7 @@ $(document).ready(function () {
 
     $('.resultsFoundCard').click(function() {
         let companyName = $(this).attr('data-id');
-        window.location = `/viewreceipts/${companyName}`
+        
+        window.location = `/viewreceipts/${companyName}`;
     })
 })
