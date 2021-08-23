@@ -91,8 +91,6 @@ const searchController = {
         let page = req.body.page
         let filter = req.body.filter
 
-        console.log('here');
-
         const regex = new RegExp(searchController.escapeRegex(filter), 'gi');
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, page, 10);
         

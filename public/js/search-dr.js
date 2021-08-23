@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#filter-year-btn').prop('disabled', true);
 
     $('#filter-year-btn').click(function(){
-        let companyName = $('#search-year-input').attr('data-id');
+        let companyName = $('#company-name-title').attr('data-id');
         let year = $('#search-year-input').val();
         
         window.location = `/viewreceipts/${companyName}/${year}`;

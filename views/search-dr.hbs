@@ -34,7 +34,7 @@
             <div class="col-lg-10 h-75 d-inline-block row justify-content-center" id="content-container">
                 <div class="row">
                     <div class="col-lg-12" id="title-container">
-                        <h1 id="company-name-title">{{name}}</h1>              
+                        <h1 data-id={{name}} id="company-name-title">{{name}}</h1>              
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                         Update year:  
                     </label>
 
-                    <input data-id={{year}} type="number" class="form-control form-control-sm searchField" id="search-year-input"  
+                    <input type="number" class="form-control form-control-sm searchField" id="search-year-input"  
                            placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear">
 
                     <button type="button" class="btn btn-success" id="filter-year-btn">
