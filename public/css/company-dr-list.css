@@ -10,7 +10,7 @@ thead,tbody,tfoot {
     background-color: white;
 }
 
-thead, tfoot, #content-container {
+thead, tfoot{
     color: #194A09;   
 }
 
@@ -22,11 +22,16 @@ thead, tfoot, #content-container {
 }
 
 #company-name-title { 
-    border: 2px solid #194A09; 
-    border-radius: 12px;
+    
+    background-color: white;
     margin: 0%;
     padding: 1%;
     color: black;
+}
+
+#title-container{
+    position: relative;
+    left:15px;
 }
 
 /* Pagination */
