@@ -30,6 +30,14 @@ const searchController = {
         console.log(searchQuery);
         /* Get all companies from DB */ 
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 10);
+
+        foundCompanies.results.forEach((c, i, arr) => {
+            let temp = c.name;
+            c.dataName = temp.replace(/\s/g, '%20');
+            console.log(c.name);
+            console.log(c.dataName);
+        });
+
         if(foundCompanies.results.length < 1) 
             noMatch = "No companies match that query, please try again.";
                 
@@ -47,15 +55,17 @@ const searchController = {
      */    
     getViewDRs: async function(req, res) {
         let companyName = req.params.id;
-        let date = new Date()
+        let date = new Date();
         let today = date.getFullYear();
         
+        console.log(companyName);
+
         DeliveryReceiptModel.find({ 
             dateIssued: { 
                             $gte: new Date(today, 0, 1), 
                             $lt: new Date(today, 11, 31)
                         },
-            companyName: companyName
+            companyName: { $eq: companyName }
         }).lean().exec(function (err, results) { 
             const months = ["January", "February", "March", "April", "May", "June", 
                             "July", "August", "September", "October", "November", "December"];
@@ -81,9 +91,18 @@ const searchController = {
         let page = req.body.page
         let filter = req.body.filter
 
+        console.log('here');
+
         const regex = new RegExp(searchController.escapeRegex(filter), 'gi');
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, page, 10);
         
+        foundCompanies.results.forEach((c, i, arr) => {
+            let temp = c.name;
+            c.dataName = temp.replace(/\s/g, '%20');
+            console.log(c.name);
+            console.log(c.dataName);
+        });
+
         res.send(foundCompanies);
     },
 
@@ -118,7 +137,7 @@ const searchController = {
         }
 
         try {
-            results.results = await model.find(filter).limit(limit).skip(startIndex).exec()
+            results.results = await model.find(filter).lean().limit(limit).skip(startIndex).exec()
             return results;
         } catch (e) {
             console.log(e.message);
