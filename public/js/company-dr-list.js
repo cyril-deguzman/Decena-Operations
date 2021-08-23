@@ -1,8 +1,11 @@
 $(document).ready(function() {
+
+    var title;
+
     // Setup - add a text input to each footer cell
     $('.drDataTable tfoot th.filterCol').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" class ="searchField" />' );
+        title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search'+ title +'" class ="searchField" />' );
     } );
  
     // DataTable
@@ -45,7 +48,9 @@ $(document).ready(function() {
         {'width':'50px','display':'inline-block'}
      );
 
-
+     $('#myInputTextField').keyup(function(){
+        table.search($(this).val()).draw();
+    })
     /*
         This function gets all of the search input fields and adjusts the width of each.
     */
@@ -55,27 +60,25 @@ $(document).ready(function() {
             
             switch(i)
             {
-                case 0:
+                // case 0:
+                   
+                case 1:
                     instanceOfSearchField.css("width","160px");
                     break;
-                case 1:
-                    instanceOfSearchField.css("width","170px");
-                    break;
                 case 2:
-                    instanceOfSearchField.css("width","100px");
+                    instanceOfSearchField.css("width","170px");
                     break;
                 case 3:
-                    instanceOfSearchField.css("width","170px");
+                    instanceOfSearchField.css("width","100px");
                     break;
                 case 4:
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 5:
-                    instanceOfSearchField.css("width","110px");
+                    instanceOfSearchField.css("width","170px");
                     break;
                 case 6:
-                    alert("a")
-                    instanceOfSearchField.remove();
+                    instanceOfSearchField.css("width","110px");
                     break;
             }
         }
@@ -86,4 +89,6 @@ $(document).ready(function() {
         //Adds an ID "searchDrForm" to the search input to resize it
         $("label").eq(1).attr('id','searchDrForm');
         $("input[type='search']").css("width","200px");
+        $("label").eq(2).css('position','relative');
+        $("label").eq(2).css('bottom','20px');
 } );

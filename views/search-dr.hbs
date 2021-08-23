@@ -29,7 +29,18 @@
                         <h1 id="company-name-title">{{name}}</h1>              
                     </div>
                 </div>
-                
+                 <div class="col-md-2" id="mainContainerForYear"> 
+          <label for ="filterYear" id="containerForYear">
+            Update year:  
+          </label>
+          <input type="text" class="form-control form-control-sm searchField" id="searchYearInput"  
+          placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear">
+
+          <button type="button" class="btn btn-success" id="filterYearBtn">
+            <span class="material-icons-outlined">
+              update
+              </span></button>
+      </div>
                 <div class="col-xl-12 mb-3 mt-3">
                     <table class="table table-striped table-bordered drdatatable" style="width: 100%">
                         <thead>

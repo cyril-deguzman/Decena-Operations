@@ -22,11 +22,12 @@ thead, tfoot{
 }
 
 #company-name-title { 
-    
+    position: relative;
     background-color: white;
     margin: 0%;
     padding: 1%;
     color: black;
+    top:35px;
 }
 
 #title-container{
@@ -54,6 +55,13 @@ thead, tfoot{
 .editIcon{
     color: white;
 
+
+}
+
+#mainContainerForYear{
+    position: relative;
+    left:300px;
+    top:50px;
 }
 
 tfoot input {
@@ -85,7 +93,36 @@ table{
 
   #searchDrForm{
       position: relative;
-      right:40px;
+      /* right:40px; */
+       bottom:20px;
+  }
+
+    #searchYearInput{
+      position: relative;
+      top:15px;
+    
+  } 
+  
+  #filterText{
+    overflow-y: auto;
+    max-height: 50px;
+  }
+
+  #searchYearInput{
+      border-color: gray;
+  }
+
+  #filterYearBtn{
+      position: relative;
+      left:175px;
+      bottom:20px;
+      height: 40px;
+  }
+
+  #containerForYear{
+      position:relative;
+      top:50px;
+      right:100px;   
   }
 
 /*! `Custom` Bootstrap 5 theme *//*!
