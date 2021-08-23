@@ -68,6 +68,13 @@ $(document).ready(function () {
                 `<p id="bottomOfPageSpace">.</p>`
             textContent = textContent.concat(temp);
             node.html(textContent);
+
+            $('.resultsFoundCard').click(function() {
+                let companyName = $(this).attr('data-id');
+                
+                window.location = `/viewreceipts/${companyName}`;
+            })
+            
             $('#companyListContainer div.resultsFoundCard:last').css("margin-bottom","20px");
         });
     })
