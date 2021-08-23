@@ -10,6 +10,10 @@ thead, tbody, tfoot {
     background-color: white;
 }
 
+thead, tfoot, #content-container {
+    color: #194A09;   
+}
+
 #main-div {
     display: flex;
     justify-content: center;
@@ -88,6 +92,7 @@ table {
     position: relative;
     top:15px;
     border-color: gray;
+    width: 40%;
 } 
 
 #filterText {
@@ -97,7 +102,7 @@ table {
 
 #filter-year-btn {
     position: relative;
-    left:175px;
+    left:110px;
     bottom:20px;
     height: 40px;
 }

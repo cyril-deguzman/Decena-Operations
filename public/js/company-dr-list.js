@@ -69,7 +69,7 @@ $(document).ready(function() {
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 3:
-                    instanceOfSearchField.css("width","100px");
+                    instanceOfSearchField.css("width","120px");
                     break;
                 case 4:
                     instanceOfSearchField.css("width","170px");
@@ -91,4 +91,26 @@ $(document).ready(function() {
         $("input[type='search']").css("width","200px");
         $("label").eq(2).css('position','relative');
         $("label").eq(2).css('bottom','20px');
+
+        /* Filter Year */
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var year = $('#search-year-input').val();
+                var date = ( data[0] ) || 0; // use data for the age column
+        
+                if ( date.includes(year))
+                    return true;
+        
+                return false;
+            }
+        );
+    
+        $(document).ready(function() {
+            var table = $('#dr-datatable').DataTable();
+            
+            // Event listener filtering inputs to redraw on input
+            $('#search-year-input').keyup( function() {
+                table.draw();
+            } );
+        } );            
 } );

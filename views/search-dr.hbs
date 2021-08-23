@@ -44,7 +44,7 @@
                     </label>
 
                     <input type="number" class="form-control form-control-sm searchField" id="search-year-input"  
-                           placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear">
+                           placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear" value={{year}} max={{year}}>
 
                     <button type="button" class="btn btn-success" id="filter-year-btn">
                         <span class="material-icons-outlined">
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="col-xl-12 mb-3 mt-3">
-                    <table class="table table-striped table-bordered drdatatable" style="width: 100%">
+                    <table class="table table-striped table-bordered drdatatable" style="width: 100%" id="dr-datatable">
                         <thead>
                             <tr> 
                                 <th class="filterCol">Date Issued</th>
