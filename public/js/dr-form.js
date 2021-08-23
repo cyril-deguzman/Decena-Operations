@@ -76,7 +76,6 @@ $(document).ready(function () {
 			processor: processor.val(),
 			docs: docs,
 		}, function(result){});
-		alert("Submission Success! The form has been recorded.");
 		window.location = '/form';
 	})
 })
