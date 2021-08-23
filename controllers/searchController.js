@@ -73,7 +73,7 @@ const searchController = {
             results.forEach((dr, i, arr) => {
                 let d = arr[i].dateIssued
                 arr[i].status = arr[i].status ? 'paid' : 'unpaid'
-                arr[i].dateIssued = months[d.getMonth()] + ' ' + (d.getDay() + 1) + ', ' + d.getFullYear();
+                arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             });
 
             res.render("search-dr", {dr: results, name: companyName})
