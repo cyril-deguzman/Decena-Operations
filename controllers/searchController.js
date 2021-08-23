@@ -34,8 +34,6 @@ const searchController = {
         foundCompanies.results.forEach((c, i, arr) => {
             let temp = c.name;
             c.dataName = temp.replace(/\s/g, '%20');
-            console.log(c.name);
-            console.log(c.dataName);
         });
 
         if(foundCompanies.results.length < 1) 
@@ -55,10 +53,12 @@ const searchController = {
      */    
     getViewDRs: async function(req, res) {
         let companyName = req.params.id;
+        let year = req.params.year;
         let date = new Date();
         let today = date.getFullYear();
         
-        console.log(companyName);
+        if(year)
+            today = year;
 
         DeliveryReceiptModel.find({ 
             dateIssued: { 
@@ -76,7 +76,7 @@ const searchController = {
                 arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             });
 
-            res.render("search-dr", {dr: results, name: companyName})
+            res.render("search-dr", {dr: results, name: companyName, year: today})
         })
 
     },
@@ -99,8 +99,6 @@ const searchController = {
         foundCompanies.results.forEach((c, i, arr) => {
             let temp = c.name;
             c.dataName = temp.replace(/\s/g, '%20');
-            console.log(c.name);
-            console.log(c.dataName);
         });
 
         res.send(foundCompanies);

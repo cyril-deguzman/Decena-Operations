@@ -51,7 +51,7 @@ $(document).ready(function () {
             
             data.results.forEach(company => {
                 let temp = 
-                    `<div class="card col-lg-6 mx-auto resultsFoundCard flex-row flex-rap">
+                    `<div data-id="${company.dataName}" class="card col-lg-6 mx-auto resultsFoundCard flex-row flex-rap">
                         <div class="card-header border-0">
                             <i class="material-icons-outlined cardIcon md-36">business</i>
                         </div>
@@ -60,7 +60,7 @@ $(document).ready(function () {
                             <p class="card-text companyNumberOfDR">Delivery Receipts: <strong>${company.activeReceipts}</strong></p>
                         </div>
                     </div>`;
-
+                    
                 textContent = textContent.concat(temp);
             });
             
