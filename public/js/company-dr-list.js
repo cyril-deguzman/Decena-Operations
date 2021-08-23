@@ -6,7 +6,10 @@ $(document).ready(function() {
     } );
  
     // DataTable
-    var table = $('.drDataTable').DataTable({  bAutoWidth: false, 
+    var table = $('.drDataTable').DataTable({  bAutoWidth: false,
+        columnDefs: [
+            { orderable: false, targets: -1 }
+         ],
         aoColumns : [
           { sWidth: '140px' },
           { sWidth: '150px' },
