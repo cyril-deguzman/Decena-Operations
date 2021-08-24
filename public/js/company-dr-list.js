@@ -5,7 +5,7 @@ $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('.drDataTable tfoot th.filterCol').each( function () {
         title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search'+ title +'" class ="searchField" />' );
+        $(this).html( '<input type="text" placeholder="Search'+ " " + title +'" class ="searchField" />' );
     } );
  
     // DataTable
@@ -69,7 +69,7 @@ $(document).ready(function() {
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 3:
-                    instanceOfSearchField.css("width","120px");
+                    instanceOfSearchField.css("width","100px");
                     break;
                 case 4:
                     instanceOfSearchField.css("width","170px");
@@ -111,6 +111,27 @@ $(document).ready(function() {
             // Event listener filtering inputs to redraw on input
             $('#search-year-input').keyup( function() {
                 table.draw();
-            } );
-        } );            
+            });
+        });
+
+        /*
+            Change style of div based on payment status
+        */
+        
+        var paymentStatus = $(".paymentStatus");
+        var paid = "paid";
+        var pending = "pending";
+        
+        paymentStatus.each(function(){
+            if($(this).text().toUpperCase() == paid.toUpperCase()){
+                $(this).css("background-color","#299B04");
+            }
+            else if($(this).text().toUpperCase() == pending.toUpperCase()){
+                $(this).css("background-color","#cc3333");
+            }
+        });
+
+        
+        
+        
 } );
