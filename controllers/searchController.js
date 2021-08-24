@@ -72,7 +72,7 @@ const searchController = {
 
             results.forEach((dr, i, arr) => {
                 let d = arr[i].dateIssued
-                arr[i].status = arr[i].status ? 'paid' : 'unpaid'
+                arr[i].status = arr[i].status ? 'paid' : 'pending'
                 arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             });
 
