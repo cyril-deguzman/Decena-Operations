@@ -5,7 +5,7 @@ $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('.drDataTable tfoot th.filterCol').each( function () {
         title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search'+ " " + title +'" class ="searchField" />' );
+        $(this).html( '<input type="text" placeholder="'+ " " + title +'" class ="searchField" />' );
     } );
  
     // DataTable
@@ -16,10 +16,10 @@ $(document).ready(function() {
         aoColumns : [
           { sWidth: '140px' },
           { sWidth: '150px' },
-          { sWidth: '75px' },
+          { sWidth: '100px' },
           { sWidth: '150px' },
           { sWidth: '150px' },
-          { sWidth: '85px' },
+          { sWidth: '90px' },
           { sWidth: '100px' }
         ],
         initComplete: function () {
@@ -69,7 +69,7 @@ $(document).ready(function() {
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 3:
-                    instanceOfSearchField.css("width","100px");
+                    instanceOfSearchField.css("width","120px");
                     break;
                 case 4:
                     instanceOfSearchField.css("width","170px");
@@ -78,7 +78,7 @@ $(document).ready(function() {
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 6:
-                    instanceOfSearchField.css("width","110px");
+                    instanceOfSearchField.css("width","115px");
                     break;
             }
         }
@@ -91,6 +91,7 @@ $(document).ready(function() {
         $("input[type='search']").css("width","200px");
         $("label").eq(2).css('position','relative');
         $("label").eq(2).css('bottom','20px');
+        $("label").eq(2).css('right','10px');
 
         /* Filter Year */
         $.fn.dataTable.ext.search.push(
