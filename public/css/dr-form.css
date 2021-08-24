@@ -188,3 +188,7 @@ textarea {
 #driver, #helper, #plate-number, #quantity, #docs-options {
     background-color: #FFFFFF;
 }
+
+#secondModalTitle{
+    color: #194A09;
+}

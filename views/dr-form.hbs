@@ -386,7 +386,11 @@
                                     class="btn btn-success btn-sm"
                                     data-toggle="modal"
                                     data-target="#exampleModal"
-                                    id="submit-confirm">
+                                    id="submit-confirm"
+									{{!-- Remove the comments below to trigger the second modal--}}
+									{{!-- href="#confirmModal" --}}
+									{{!-- data-dismiss="modal" --}}
+									>
                                     Confirm
                                 </button>
                             </div>
@@ -395,6 +399,26 @@
 				</div>	
 			</div>
 			</form>
+
+
+			{{!-- Second Modal --}}
+
+			<div class="modal" id="confirmModal" data-backdrop="static">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="secondModalTitle">Delivery Receipt Confirmation</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						</div>
+					<div class="container"></div>
+					<div class="modal-body"> Submission success! The form has been recorded. </div>
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn">Close</a>
+					</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		
 		<!-- JavaScript/JQuery -->
