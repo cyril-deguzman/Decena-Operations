@@ -10,8 +10,9 @@ $(document).ready(function() {
 
     $('#search-year-input').keyup(function(){
         let year = $(this).val();
-
-        if(!(year < 1000 || year > 9999))
+        let date = new Date()
+    
+        if(!(year < 1000 || year > date.getFullYear()))
             $('#filter-year-btn').prop('disabled', false);
         else 
             $('#filter-year-btn').prop('disabled', true);
