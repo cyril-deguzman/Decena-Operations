@@ -25,7 +25,7 @@ $(document).ready(function () {
         $(".paginationContainer").hide();
         
         console.log(companyCount);
-        if (companyCount == 0) {
+        if (companyCount == 0 && searchQuery != "") {
             $("#noResultsFoundCard").text("There are (0) results found for: " + searchQuery);
             $("#noResultsParentCard").css("background-color","#299b04");
             $('#noResultsFoundCard').css('color','white');
