@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+
+    /*
+        Change style of div based on payment status
+    */
+
+
+    var paymentStatus = $(".paymentStatus");
+    var paid = "paid";
+    var pending = "pending";
+    
+    paymentStatus.each(function(){
+        if($(this).text().toUpperCase() == paid.toUpperCase()){
+            $(this).css("background-color","#299B04");
+            $(this).text("Paid");
+        }
+        else if($(this).text().toUpperCase() == pending.toUpperCase()){
+            $(this).css("background-color","#cc3333");
+            $(this).text("Pending");
+        }
+    });
+
+    
     var title;
 
     // Setup - add a text input to each footer cell
@@ -115,26 +137,8 @@ $(document).ready(function() {
             });
         });
 
-        /*
-            Change style of div based on payment status
-        */
-        
-        var paymentStatus = $(".paymentStatus");
-        var paid = "paid";
-        var pending = "pending";
-        
-        paymentStatus.each(function(){
-            if($(this).text().toUpperCase() == paid.toUpperCase()){
-                $(this).css("background-color","#299B04");
-                $(this).text("Paid");
-            }
-            else if($(this).text().toUpperCase() == pending.toUpperCase()){
-                $(this).css("background-color","#cc3333");
-                $(this).text("Pending");
-            }
-        });
+       
 
-        
         
         
 } );
