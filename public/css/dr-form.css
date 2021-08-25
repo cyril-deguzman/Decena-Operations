@@ -177,6 +177,12 @@ textarea {
     flex-direction: column;
 }
 
+#secondModalTitle{
+    color: #194A09;
+}
+
+/* Error-related styles */
+
 .error {
     color: #ce2029;
     font-weight: 500;
@@ -189,6 +195,6 @@ textarea {
     background-color: #FFFFFF;
 }
 
-#secondModalTitle{
-    color: #194A09;
+#pick-up, #destination {
+    padding:  1%;
 }
