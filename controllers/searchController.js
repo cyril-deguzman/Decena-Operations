@@ -56,7 +56,11 @@ const searchController = {
         let year = req.params.year;
         let date = new Date();
         let today = date.getFullYear();
-        
+        let dataName = companyName.replace(/\s/g, '%20');
+
+        console.log(companyName);
+        console.log(dataName);
+
         if(year)
             today = year;
 
@@ -76,7 +80,7 @@ const searchController = {
                 arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             });
 
-            res.render("search-dr", {dr: results, name: companyName, year: today})
+            res.render("search-dr", {dr: results, name: companyName, year: today, dataName: dataName})
         })
 
     },
