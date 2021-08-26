@@ -1,4 +1,127 @@
 $(document).ready(function () {
+
+    /* Keyup events for real time validation */
+
+    //Alpha
+    $("#client-name, #driver" ).keyup(function () {
+        var alphaClientName = validator.trim($("#client-name").val());
+        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
+    });
+
+    $("#driver").keyup(function () {
+        var alphaDriver = validator.trim($("#driver").val());
+        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
+    });
+
+    $("#helper").keyup(function () {
+        var alphaHelper = validator.trim($("#helper").val());
+        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
+    });
+
+    $("#processor").keyup(function () {
+        var alphaProcessor = validator.trim($("#processor").val());
+        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
+    });
+
+    // Alphanumeric
+    $("#company-name").keyup(function () {
+        var alphaCompanyName = validator.trim($('#company-name').val());
+        validFilled(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'));
+        validLenCompanyName(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'));
+    });
+
+    $("#pickup-site").keyup(function () {
+        var alphaPickSite = validator.trim($('#pickup-site').val());
+        validFilled(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'));
+        validLenSite(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'));
+    });
+
+    $("#delivery-site").keyup(function () {
+        var alphaDelSite = validator.trim($('#delivery-site').val());
+        validFilled(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'));
+        validLenSite(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'));
+    });
+
+    $("#plate-number").keyup(function () {
+        var alphaPlateNum = validator.trim($('#plate-number').val());
+        validFilled(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'));
+        validLenPlateNum(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'));
+    });
+    
+    $("#description").keyup(function () {
+        var alphaDescription = validator.trim($('#description').val());
+        validFilled(alphaDescription, $('#p2Error4'), $('#description').attr('id'));
+        validLenDescription(alphaDescription, $('#p2Error4'), $('#description').attr('id'));
+    });
+
+    // Checkbox
+    $("#docs-options").on("change", function () {
+        validCheckbox($("#docs-options").attr('id'), $("#p2Error2"));
+    });
+
+    // Numeric
+    $("#quantity").on("change", function () {
+        var quantityNum = document.getElementById("quantity").value;
+        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+    });
+
+    // Dates
+    $("#date-issued").on("change", function () {
+        var dateIssued = document.getElementById("date-issued").value;
+        validDate(dateIssued, $("#p1Error5"), $("#date-issued").attr("id"));
+    });
+
+    $("#p-arrival-date").on("change", function () {
+        var datePArrive = document.getElementById("p-arrival-date").value;
+        var flagPArrive = validDate(datePArrive, $("#p3Error1"), $("#p-arrival-date").attr("id"));
+    });
+
+    $("#p-departure-date").on("change", function () {
+        var datePDepart = document.getElementById("p-departure-date").value;
+        var flagPDepart = validDate(datePDepart, $("#p3Error2"), $("#p-departure-date").attr("id"));
+    });
+
+    $("#d-arrival-date").on("change", function () {
+        var dateDArrive = document.getElementById("d-arrival-date").value;
+        var flagDArrive = validDate(dateDArrive, $("#p3Error5"), $("#d-arrival-date").attr("id"));
+    });
+
+    $("#d-departure-date").on("change", function () {
+        var dateDDepart = document.getElementById("d-departure-date").value;
+        var flagDDepart = validDate(dateDDepart, $("#p3Error8"), $("#d-departure-date").attr("id"));
+    });
+
+    $("#start-load-date").on("change", function () {
+        var dateDStartLoad = document.getElementById("start-load-date").value;
+        var flagDStartLoad = validDate(dateDStartLoad, $("#p3Error6"), $("#start-load-date").attr("id"));
+    });
+
+    $("#finish-load-date").on("change", function () {
+        var dateDEndLoad = document.getElementById("finish-load-date").value;
+        var flagDEndLoad = validDate(dateDEndLoad, $("#p3Error7"), $("#finish-load-date").attr("id"));
+    });
+
+    $("#p-arrival-time, #p-departure-time").on("change", function () {
+        var timePArrive = document.getElementById("p-arrival-time").value;
+        var timePDepart = document.getElementById("p-departure-time").value;
+        validStartEndTime($("#p3Error1"), $("#p3Error2"), pArriveDepart, timePArrive, timePDepart, $("#p3Error3"), 
+            $("#p3Error4"), $("#p-arrival-time").attr("id"), $("#p-departure-time").attr("id"));
+    });
+
+    $("#d-arrival-time, #d-departure-time").on("change", function () {
+        var timeDArrive = document.getElementById("d-arrival-time").value;
+        var timeDDepart = document.getElementById("d-departure-time").value;
+        validStartEndTime($("#p3Error5"), $("#p3Error8"), dArriveDepart, timeDArrive, timeDDepart, $("#p3Error9"), 
+            $("#p3Error12"), $("#d-arrival-time").attr("id"), $("#d-departure-time").attr("id"));
+    });
+
+    $("#start-load-time, #finish-load-time").on("change", function () {
+        var timeDStartLoad = document.getElementById("start-load-time").value;
+        var timeDEndLoad = document.getElementById("finish-load-time").value;
+        validStartEndTime($("#p3Error6"), $("#p3Error7"), dStartEnd, timeDStartLoad, timeDEndLoad, $("#p3Error10"), 
+            $("#p3Error11"), $("#start-load-time").attr("id"), $("#finish-load-time").attr("id"));
+    });
+
     /**
      * Prints the data inputted by the user in the Modal if there are no errors.
      * Otherwise, it scrolls up to first occurrence of the error.
@@ -9,9 +132,10 @@ $(document).ready(function () {
     });
 
     /**
-     * Runs the validation for the whole form
+     * Runs another set of validation for the whole form after submission
     */
     function getValidation() {
+
         // Alpha
         var alphaClientName = validator.trim($("#client-name").val());
         validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
@@ -27,24 +151,24 @@ $(document).ready(function () {
 
         // Alphanumeric
         var alphaCompanyName = validator.trim($('#company-name').val());
-        validFilled(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'));
-        validLenCompanyName(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'));
+        var companyLen = document.getElementById("company-name").getAttribute("maxlength");
+        validLen(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'), companyLen );
 
         var alphaPickSite = validator.trim($('#pickup-site').val());
-        validFilled(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'));
-        validLenSite(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'));
+        var pickLen = document.getElementById("pickup-site").getAttribute("maxlength");
+        validLen(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'), pickLen);
 
         var alphaDelSite = validator.trim($('#delivery-site').val());
-        validFilled(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'));
-        validLenSite(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'));
+        var delLen = document.getElementById("delivery-site").getAttribute("maxlength");
+        validLen(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'), delLen);
 
         var alphaPlateNum = validator.trim($('#plate-number').val());
-        validFilled(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'));
-        validLenPlateNum(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'));
+        var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
+        validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
 
         var alphaDescription = validator.trim($('#description').val());
-        validFilled(alphaDescription, $('#p2Error4'), $('#description').attr('id'));
-        validLenDescription(alphaDescription, $('#p2Error4'), $('#description').attr('id'));
+        var descriptionLen = document.getElementById("description").getAttribute("maxlength");
+        validLen(alphaDescription, $('#p2Error4'), $('#description').attr('id'), descriptionLen);
 
         // Checkbox
         validCheckbox($("#docs-options").attr('id'), $("#p2Error2"));
@@ -88,6 +212,16 @@ $(document).ready(function () {
         var dStartEnd = validStartEndDate(flagDStartLoad, flagDEndLoad, dateDStartLoad, dateDEndLoad, 
             $("#p3Error6"), $("#p3Error7"), $("#start-load-date").attr("id"), $("#finish-load-date").attr("id"));
 
+        // var pickDest = validStartEndDate(flagPDepart, flagDArrive, datePDepart, dateDArrive, 
+        //     $("#p3Error2"), $("#p3Error5"), $("#p-departure-date").attr("id"), $("#d-arrival-date").attr("id"));
+
+        // Dates (Destination dates)
+        const dArrive = [$("#d-arrival-date").val(), "#" + $("#p3Error5").attr("id"), $("#d-arrival-date").attr("id")];
+        const dDepart = [$("#d-departure-date").val(), "#" +  $("#p3Error8").attr("id"), $("#d-departure-date").attr("id")];
+        const dStart = [$("#start-load-date").val(), "#" +  $("#p3Error6").attr("id"), $("#start-load-date").attr("id")];
+        const dEnd = [$("#finish-load-date").val(), "#" +  $("#p3Error7").attr("id"), $("#finish-load-date").attr("id")];
+        validLoadDate(dArrive, dDepart, dStart, dEnd);
+
         // Time (Start & End)
         var timePArrive = document.getElementById("p-arrival-time").value;
         var timePDepart = document.getElementById("p-departure-time").value;
@@ -107,6 +241,10 @@ $(document).ready(function () {
 
     /**
      * Sets the error fields appearance for invalid inputs
+     * 
+     * @param {String} field        The ID of the field in the form with discrepancies
+     * @param {String} errormsg     The error message to show in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
     */
     function setInvalid(field, errormsg, errorfield) {
         field = "#" + field;
@@ -116,6 +254,9 @@ $(document).ready(function () {
 
     /**
      * Sets the error fields appearance for valid inputs
+     * 
+     * @param {String} field        The ID of the field in the form with discrepancies
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
     */
     function setValid(field, errorfield) {
         field = "#" + field;
@@ -126,6 +267,10 @@ $(document).ready(function () {
 
     /**
      * Checks all fields if empty
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validFilled (input, errorfield, id) {
         if (validator.isEmpty(input))
@@ -134,8 +279,12 @@ $(document).ready(function () {
             setValid(id, errorfield);
     }
 
-    /*
+    /**
      * Checks name fields for invalid inputs
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validAlpha (input, errorfield, id) {
         const blacklist = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
@@ -161,72 +310,105 @@ $(document).ready(function () {
 
     /**
      * Checks date fields if they are not set at most today (YYYY-MM-DD)
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validDate (input, errorfield, id) {
         var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth() + 1;
-        var year = today.getFullYear();
-        
-        var dd = parseInt(input.slice(8, 10));
-        var mm = parseInt(input.slice(5, 7));
-        var yyyy = parseInt(input.slice(0, 4));
 
-        var dateToday = new Date(year, month, day);
-        var dateInput = new Date(yyyy, mm, dd);
-        console.log("FIELD: " + id);
-        console.log("TODAY: " + year + "-" + month + "-" + day);
-        console.log("INPUT: " + yyyy + "-" + mm + "-" + dd);
-        
+        var dd = today.getDate();
+        var mm = today.getMonth();
+        var yyyy = today.getFullYear();
 
-        if ((year >= yyyy) && (month >= mm) && (day >= dd)) {
-            console.log("VALID");
+        var dateToday = getDateTime(yyyy + "-" + mm + "-" + dd);
+        var dateInput = getDateTime(input);
+
+        if (dateInput - dateToday < 0) {
+            setInvalid(id, "Invalid Input. Invalid input. Date must be at most today.", errorfield);
+            return true;
+        }
+        else {
             setValid(id, errorfield);
             return false;
         }
-        else {
-            console.log("INVALID");
-            setInvalid(id, "Invalid input. Date must be at most today.", errorfield);
-            return true;
-        }
-        console.log("\n");
     }
 
     /**
      * Checks start and end date fields if end date does not precede start date
+     * 
+     * @param {boolean} dateFlag1   Contains true if the user's start date input is set after today's date. Otherwise, false.
+     * @param {boolean} dateFlag2   Contains true if the user's end date input is set after today's date. Otherwise, false.
+     * @param {String}  startInput  The user's starting date input
+     * @param {String}  endInput    The user's ending date input
+     * @param {String}  errorfield1 The ID of the starting date's errorfield in the form to display the errormsg in
+     * @param {String}  errorfield2 The ID of the starting date's errorfield in the form to display the errormsg in
+     * @param {String}  startId     The ID of the starting date field in the form with discrepancies 
+     * @param {String}  startId     The ID of the sending date field in the form with discrepancies 
     */
     function validStartEndDate (dateFlag1, dateFlag2, startInput, endInput, errorfield1, errorfield2, startId, endId) {
-        var startDD = parseInt(startInput.slice(5, 6));
-        var startMM = parseInt(startInput.slice(8, 10));
-        var startYYYY = parseInt(startInput.slice(0, 4));
+        var dateStart = getDateTime(startInput);
+        var dateEnd = getDateTime(endInput);
 
-        var endDD = parseInt(endInput.slice(5, 6));
-        var endMM = parseInt(endInput.slice(8, 10));
-        var endYYYY = parseInt(endInput.slice(0, 4));
-
-        var dateStart = new Date(startYYYY, startMM, startDD);
-        var dateEnd = new Date(endYYYY, endMM, endDD);
-        // If either of the start or end date has an error, it should not check
-        // for start and end date validation if one of them is wrong anyway
-        if (!(dateFlag1 || dateFlag2)) {
-            if ((endYYYY >= startYYYY) && (endMM >= startMM) && (endDD >= startDD)) {
-                setValid(startId, errorfield1);
-                setValid(endId, errorfield2);
-            }
-            else {
-                setInvalid(startId, "Invalid Input. Start date must be before end date.", errorfield1);
-                setInvalid(endId, "Invalid Input. Start date must be before end date.", errorfield2);
-            }
+        if (dateEnd - dateStart < 0) {
+            setInvalid(startId, "Invalid Input. Start date must be before end date.", errorfield1);
+            setInvalid(endId, "Invalid Input. Start date must be before end date.", errorfield2);
         }
-        
-        if ((endYYYY == startYYYY) && (endMM == startMM) && (endDD == startDD))
+        else {
+            setValid(startId, errorfield1);
+            setValid(endId, errorfield2);
+        }
+
+        if (dateEnd == dateStart)
             return true;
-        else
-            return false;
+        return false;
+    }
+
+    /**
+     * Checks the start and end load/unload dates if it is between the arrival 
+     * and departure dates
+     * 
+     * @param {String}  dArrive     The array containing the input, errorfield, and id of the arrive date
+     * @param {String}  dDepart     The array containing the input, errorfield, and id of the depart date
+     * @param {String}  dStart      The array containing the input, errorfield, and id of the start load/unload date
+     * @param {String}  dEnd        The array containing the input, errorfield, and id of the end load/unloda date
+    */
+    function validLoadDate (dArrive, dDepart, dStart, dEnd) {
+        var dateArrive = getDateTime(dArrive[0]);
+        var dateDepart = getDateTime(dDepart[0]);
+        var dateStart = getDateTime(dStart[0]);
+        var dateEnd = getDateTime(dEnd[0]);
+
+        // Will not proceed with validation if either of the start and end date's has an error
+        if (!(validDate(dArrive[0], $(dArrive[1]), dArrive[2]) || validDate(dDepart[0], $(dDepart[1]), dDepart[2]) ||
+            validDate(dStart[0], $(dStart[1]), dStart[2]) || validDate(dEnd[0], $(dEnd[1]), dEnd[2]))) {
+            // Start load date checked with arrival and departure date
+            if ((dateStart - dateArrive < 0) || (dateStart - dateDepart > 0)) 
+                setInvalid(dStart[2], "Invalid input. This date should be in between the arrival and departure date.", $(dStart[1]));
+            else
+                setValid(dStart[2], $(dStart[1]));
+
+            // End load date checked with arrival and departure date
+            if ((dateEnd - dateArrive < 0) || (dateEnd - dateDepart > 0))
+                setInvalid(dEnd[2], "Invalid input. This date should be in between the arrival and departure date.", $(dEnd[1]));
+            else
+                setValid(dEnd[2], $(dEnd[1]));
+        }
     }
 
     /**
      * Checks start and end time fields if end time does not precede start time
+     * 
+     * @param {boolean} dateError1  Contains the errorfield of the date associated with this time field
+     * @param {boolean} dateError2  Contains the errorfield of the date associated with this time field
+     * @param {boolean} dateFlag    Contains true if the dates associated with the time is the same (a.k.a same day)
+     * @param {String}  startInput  The user's starting time input
+     * @param {String}  endInput    The user's ending time input
+     * @param {String}  errorfield1 The ID of the starting time's errorfield in the form to display the errormsg in
+     * @param {String}  errorfield2 The ID of the starting time's errorfield in the form to display the errormsg in
+     * @param {String}  startId     The ID of the starting time field in the form with discrepancies 
+     * @param {String}  startId     The ID of the sending time field in the form with discrepancies 
     */
     function validStartEndTime (dateError1, dateError2, dateFlag, startInput, endInput, errorfield1, errorfield2, startId, endId) {
         var startHH = parseInt(startInput.slice(0, 2));
@@ -235,37 +417,50 @@ $(document).ready(function () {
         var endHH = parseInt(endInput.slice(0, 2));
         var endMM = parseInt(endInput.slice(3, 5));
 
+        console.log("hakdog pagod na ako huhu");
+        console.log("\n==== START ====");
+        console.log(startInput);
+        console.log(errorfield1);   
+        console.log(startId);
+
+        console.log("\n==== END ====");
+        console.log(endInput);
+        console.log(errorfield2);
+        console.log(endId);
+
         // Assuming that start and end date is within the SAME day
-        // Remove 2nd operand of || if error for invalid date is not needed
+        // Checks if the date paired with the time is invalid
         if (dateFlag || (dateError1.html() != "" && dateError2.html() != "")) {
             if (endInput.localeCompare(startInput) == 0) {
                 setInvalid(startId, "Invalid Input. Start and end time must be different.", errorfield1);
                 setInvalid(endId, "Invalid Input. Start and end time must be different.", errorfield2);
             }
-            else if ((endHH >= startHH) && (endMM >= startMM)) {
-                setValid(startId, errorfield1);
-                setValid(endId, errorfield2);
+            else if (endHH == startHH) {
+                if (endMM < startMM) {
+                    setInvalid(startId, "Invalid Input. Start time must be before end time.", errorfield1);
+                    setInvalid(endId, "Invalid Input. Start time must be before end time.", errorfield2);
+                }
+                else {
+                    setValid(startId, errorfield1);
+                    setValid(endId, errorfield2);
+                }
             }
-            else {
+            else if (endHH < startHH) {
                 setInvalid(startId, "Invalid Input. Start time must be before end time.", errorfield1);
                 setInvalid(endId, "Invalid Input. Start time must be before end time.", errorfield2);
             }
+            else
+                setValid(startId, errorfield1);
+                setValid(endId, errorfield2);
         }
-        // Use inner HTML to check for errors
-        // else if (/*May error yung StartEndDate: Nauna si End date kay Start date*/)
-        // Bawal mauna yung end time kay start time
-        // e.g. Start date: 08-22-2021; End date: 08-21-2021
-        // Start time: 04:00; End time: 03:00 <--- Should not be allowed?
-
-        // 1. Date input is after today == Error in DATE is detected
-        //  - Time has no error even if end time came first than start time
-        // 2. Make date same day; retain time == Error in TIME is detected
-        // 3. Make date after today == Error is detected on BOTH
-        //  - wtf
     }
 
     /**
      * Checks if quantity stays in the range 0 - 100
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validAmount (input, errorfield, id) {
         if (!(input > 0 && input <= 100))
@@ -276,6 +471,9 @@ $(document).ready(function () {
 
     /**
      * Checks if at least one checkbox is checked
+     * 
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validCheckbox (id, errorfield) {
         checked = $("input[type=checkbox]:checked").length;
@@ -286,44 +484,45 @@ $(document).ready(function () {
     }
 
     /**
-     * Checks if the length of 'Company Name' is within range
+     * Checks the length of a string if it is within the given min-max range
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
     */
-    function validLenCompanyName (input, errorfield, id) {
-        if (!validator.isLength(input, {min: 1, max: 150})) 
+    function validLen (input, errorfield, id, length) {
+        if (!validator.isLength(input, {min: 1, max: length}))
             setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 150 characters.', errorfield);
         else
             setValid(id, errorfield);
     }
 
     /**
-     * Checks if the length of 'Pick-up' the sight are is
-     * Checks if the length of 'Pick-up' and 'Destination' sites are within range
+     * Gets and returns the time (millisecond) equivalent of a date
+     * 
+     * @param {String}  input   The date in String format to be converted
     */
-    function validLenSite (input, errorfield, id) {
-        if (!validator.isLength(input, {min: 1, max: 100})) 
-            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 100 characters.', errorfield);
-        else
-            setValid(id, errorfield);
+    function getDateTime (input) {
+        var day = parseInt(input.slice(8, 10));
+        var month = parseInt(input.slice(5, 7));
+        var year = parseInt(input.slice(0, 4));
+
+        return new Date (year, month, day).getTime();
     }
 
     /**
-     * Checks if the length of 'Plate Number' is within range
+     * Finds the y value of a given object
+     * 
+     * @param {Object} obj  The object to find in the window
     */
-    function validLenPlateNum (input, errorfield, id) {
-        if (!validator.isLength(input, {min: 1, max: 8})) 
-            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 8 characters.', errorfield);
-        else
-            setValid(id, errorfield);
-    }
-
-    /**
-     * Checks if the length of 'Description' is within range
-    */
-    function validLenDescription (input, errorfield, id) {
-        if (!validator.isLength(input, {min: 1, max: 200})) 
-            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 200 characters.', errorfield);
-        else
-            setValid(id, errorfield);
+    function findPos(obj) {
+        var curtop = 0;
+        if (obj.offsetParent) {
+            do {
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+        return [curtop];
+        }
     }
 
     /**
@@ -331,22 +530,39 @@ $(document).ready(function () {
      * Otherwise, it scrolls to the top showing all errors
     */
     function getConditions() {
-        if (($("#p1Error1").html() == "") && ($("#p1Error2").html() == "") &&( $("#p1Error3").html() == "") &&
-            ($("#p1Error4").html() == "") && ($("#p1Error5").html() == "") && ($("#p2Error1").html() == "") && 
-            ($("#p2Error2").html() == "") && ($("#p2Error3").html() == "") && ($("#p2Error4").html() == "") && 
-            ($("#p3Error1").html() == "") && ($("#p3Error2").html() == "") && ($("#p3Error3").html() == "") && 
-            ($("#p3Error4").html() == "") && ($("#p3Error5").html() == "") && ($("#p3Error6").html() == "") && 
-            ($("#p3Error7").html() == "") && ($("#p3Error8").html() == "") && ($("#p3Error9").html() == "") && 
-            ($("#p3Error10").html() == "") && ($("#p3Error11").html() == "") && ($("#p3Error12").html() == "") && 
-            ($("#p4Error1").html() == "") && ($("#p4Error2").html() == "") && ($("#p4Error3").html() == "") && 
-            ($("#p4Error4").html() == "") && ($("#p4Error5").html() == "") && ($("#p4Error1").html() == "") ) {
+
+        const formErrors = ["p1Error1", "p1Error2", "p1Error3", "p1Error4", "p1Error5", 
+                            "p2Error1", "p2Error2", "p2Error3", "p2Error4", "p3Error1", 
+                            "p3Error2", "p3Error3", "p3Error4", "p3Error5", "p3Error6", 
+                            "p3Error7", "p3Error8", "p3Error9", "p3Error10", "p3Error11", 
+                            "p3Error12", "p4Error1", "p4Error2", "p4Error3", "p4Error4", 
+                            "p4Error5"];
+
+        const formFields = ["company-name", "client-name", "pickup-site", "delivery-site", "date-issued", 
+                            "quantity", "docs-options", "processor", "description", "p-arrival-date", 
+                            "p-departure-date", "p-arrival-time", "p-departure-time", "d-arrival-date", "start-load-date", 
+                            "finish-load-date", "d-departure-date", "d-arrival-time", "start-load-time", "finish-load-time", 
+                            "d-departure-time", "plate-number", "driver", "helper", "ack-date", 
+                            "ack-time"];
+        var temp, error = "";
+
+        for (let j = 0; j < formErrors.length; j++) {
+            if(document.getElementById(formErrors[j]).innerHTML != "") {
+                error = formFields[j];
+                j = formErrors.length;
+            }
+        }
+
+        if (error == "") {
             $("#submit").attr("data-toggle", "modal");
             getModal();
-        }   
+        }
 
         else {
             $("#submit").removeAttr("data-toggle");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            temp = findPos(document.getElementById(error));
+            window.scroll(0, temp - 100);
+            // window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 
