@@ -141,24 +141,21 @@
 				<!-- Pick-Up Date & Time -->
 				<div id="pick-up">
 					<h6>PICK-UP POINT</h6>
+					<span class = "error" id = "pick-up-errors">{{pickUpPointErrors}}</span>
 					<div id="p-date-time">
 						<div id="p-date">
 							<label class="label" for="p-arrival-date">Arrival Date </label>
 							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
-							<p class = "error" id="p3Error1">{{pInDateErrors}}</p>
 							<br>
 							<label class="label" for="p-departure-date">Departure Date </label>
 							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error2">{{pOutDateErrors}}</p>
 						</div>
 						<div id="p-time">	
 							<label class="label" for="p-arrival-time">Time </label>
 							<input type="time" id="p-arrival-time" name="p-arrival-time" value="00:00">
-							<p class = "error" id="p3Error3">{{pInTimeErrors}}</p>	
 							<br>
 							<label class="label" for="p-departure-time">Time </label>
 							<input type="time" id="p-departure-time" name="p-departure-time" value="00:00">
-							<p class = "error" id="p3Error4">{{pOutTimeErrors}}</p>
 						</div>	
 					</div>					
 				</div>
@@ -166,40 +163,33 @@
 				<!-- Destination Date & Time -->
 				<div id="destination">
 					<h6>DESTINATION POINT</h6>
+					<span class = "error" id = "destination-errors">{{destinationPointErrors}}</span>
 					<div id="d-date-time">
 						<div id="d-date"> 
 							<label class="label" for="d-arrival-date">Arrival Date </label>
 							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error5">{{dInDateErrors}}</p>
 							<br>
 							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
 							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error6">{{dStartLoadDateErrors}}</p>
 							<br>
 							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
 							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error7">{{dEndLoadDateErrors}}</p>
 							<br>
 							<label class="label" for="d-departure-date">Departure Date </label>
 							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
-							<p class = "error" id="p3Error8">{{dOutDateErrors}}</p>
 						</div>
 						<div id="d-time">
 							<label class="label" for="d-arrival-time">Time </label>
 							<input type="time" id="d-arrival-time" name="d-arrival-time" value="00:00">
-							<p class = "error" id="p3Error9">{{dInTimeErrors}}</p>
 							<br>						
 							<label class="label" for="start-load-time">Time </label>
-							<input type="time" id="start-load-time" name="start-load-time" value="00:00">
-							<p class = "error" id="p3Error10">{{dStartLoadTimeErrors}}</p>					
+							<input type="time" id="start-load-time" name="start-load-time" value="00:00">					
 							<br>
 							<label class="label" for="finish-load-time">Time </label>
 							<input type="time" id="finish-load-time" name="finish-load-time" value="00:00">
-							<p class = "error" id="p3Error11">{{dEndLoadTimeErrors}}</p>
 							<br>	
 							<label class="label" for="d-departure-time">Time </label>
 							<input type="time" id="d-departure-time" name="d-departure-time" value="00:00">
-							<p class = "error" id="p3Error12">{{dOutTimeErrors}}</p>
 						</div>	
 					</div>				
 				</div>
