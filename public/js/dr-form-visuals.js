@@ -93,7 +93,7 @@ $(document).ready(function () {
         
         if (($("#pick-up-errors").html() == "Invalid Input. Date must be at most today.") ||
             ($("#destination-errors").html() == "Invalid Input. Date must be at most today.")) {
-            
+
             $("#p-arrival-date").on("change", function () {
                 var datePArrive = document.getElementById("p-arrival-date").value;
                 setValid($("#p-arrival-date").attr("id"), $("#pick-up-errors"));
@@ -249,7 +249,7 @@ $(document).ready(function () {
             var timeDDepart = document.getElementById("d-departure-time").value;
             flagTime = validStartEndTime(dArriveDepart, timeDArrive, timeDDepart, $("#destination-errors"), 
                 $("#d-arrival-time").attr("id"), $("#d-departure-time").attr("id"));
-
+            
             if ($("#destination-errors").html() == "") {
                 var dateDStartLoad = document.getElementById("start-load-date").value;
                 var dateDEndLoad = document.getElementById("finish-load-date").value;
@@ -267,8 +267,9 @@ $(document).ready(function () {
                 const dStart = [$("#start-load-date").val(), "#" +  $("#destination-errors").attr("id"), $("#start-load-date").attr("id")];
                 const dEnd = [$("#finish-load-date").val(), "#" +  $("#destination-errors").attr("id"), $("#finish-load-date").attr("id")];
 
-                if (!((dArriveDepart == "Invalid") || (dStartEnd == "Invalid") || (dStartEnd == false) || flagTime == false))
+                if (!((dArriveDepart == "Invalid") || (dStartEnd == "Invalid") || flagTime == false)) {
                     var flagBetween = validLoadDate(dArrive, dDepart, dStart, dEnd);
+                }
 
                 if (flagBetween) {
                     validPickDestDate(datePDepart, dateDArrive, $("#pick-up-errors"), $("#destination-errors"), 
@@ -391,6 +392,24 @@ $(document).ready(function () {
         return "Invalid";
     }
 
+    function validPickDestDate (startInput, endInput, errorfield1, errorfield2, id1, id2) {
+        var dateStart = getDateTime(startInput);
+        var dateEnd = getDateTime(endInput);
+
+        if (!(validDate(startInput, errorfield1, id1) || validDate(endInput, errorfield2, id2))) {
+            if (!(dateEnd == dateStart)) {
+                if (dateEnd - dateStart < 0) {
+                    setInvalid(id1, "Invalid Input. Start date must be before end date.", errorfield1);
+                    setInvalid(id2, "Invalid Input. Start date must be before end date.", errorfield2);
+                }
+                else {
+                    setValid(id1, errorfield1);
+                    setValid(id2, errorfield2);
+                }
+            }
+        }
+    }
+
     /**
      * Checks the start and end load/unload dates if it is between the arrival 
      * and departure dates
@@ -410,26 +429,25 @@ $(document).ready(function () {
         var flag = false;
 
         // Start load date checked with arrival and departure date
-        if (dateStart - dateArrive < 0) 
+        if (dateStart - dateArrive < 0) {
             setInvalid(dStart[2], "Invalid input. Load/Unload date must be in between the arrival and departure date.", $(dStart[1]));
+        }
         else {
             setValid(dStart[2], $(dStart[1]));
             flag = true;
         }
 
-        // End load date checked with arrival and departure date
-        if (dateEnd - dateDepart > 0)
-            setInvalid(dEnd[2], "Invalid input. Load/Unload date must be in between the arrival and departure date.", $(dEnd[1]));
-        else {
-            setValid(dEnd[2], $(dEnd[1]));
-            flag = true;
+        if ($("#destination-errors").html() == "") {
+            // End load date checked with arrival and departure date
+            if (dateEnd - dateDepart > 0)
+                setInvalid(dEnd[2], "Invalid input. Load/Unload date must be in between the arrival and departure date.", $(dEnd[1]));
+            else {
+                setValid(dEnd[2], $(dEnd[1]));
+                flag = true;
+            }
         }
 
         return flag;
-    }
-
-    function validPickDestDate (pDepart, dArrive, errorfield1, errorfield2, id1, id2) {
-
     }
 
     /**
