@@ -268,10 +268,19 @@ $(document).ready(function () {
                 const dEnd = [$("#finish-load-date").val(), "#" +  $("#destination-errors").attr("id"), $("#finish-load-date").attr("id")];
 
                 if (!((dArriveDepart == "Invalid") || (dStartEnd == "Invalid") || flagTime == false)) {
-                    var flagBetween = validLoadDate(dArrive, dDepart, dStart, dEnd);
+                    var flagBetweenDate = validLoadDate(dArrive, dDepart, dStart, dEnd);
+                    console.log("BEFORE");
+                    var flagBetTime1 = validStartEndTime(flagBetweenDate, timeDArrive, timeDStartLoad, 
+                        $("#destination-errors"), $("#d-arrival-time").attr("id"), $("#start-load-time").attr("id"));
+                    console.log("ERROR: " + $("#destination-errors").html())
+                    if ($("#destination-errors").html() == "" ) {
+                        var flagBetTime2 = validStartEndTime(flagBetweenDate, timeDEndLoad, timeDDepart,
+                            $("#destination-errors"), $("#finish-load-date").attr("id"), $("#d-departure-date").attr("id"));
+                    }
+                    console.log("AFTER");
                 }
 
-                if (flagBetween) {
+                if ((flagBetweenDate && flagBetTime1) && flagBetTime2) {
                     validPickDestDate(datePDepart, dateDArrive, $("#pick-up-errors"), $("#destination-errors"), 
                         $("#p-departure-date").attr("id"), $("#d-arrival-date").attr("id"));
                 }
@@ -352,7 +361,7 @@ $(document).ready(function () {
         var dateInput = getDateTime(input);
 
         if (dateInput - dateToday > 0) {
-            setInvalid(id, "Invalid Input. Date must be at most today.", errorfield);
+            setInvalid(id, "Date must be at most today.", errorfield);
             return true;
         }
         else {
@@ -473,6 +482,13 @@ $(document).ready(function () {
 
         if (dateFlag != "Invalid") {
             if (dateFlag) {
+                console.log("endHH: " + endHH + " < " + "startHH: " + startHH);
+                console.log(endHH < startHH);
+                if ((startInput == "") || (endInput == "")) {
+                    setInvalid(startId, "Invalid Input. Start and end time must not be empty.", errorfield);
+                    setInvalid(endId, "Invalid Input. Start and end time must not be empty.", errorfield);
+                    return false;
+                }
                 if (endInput.localeCompare(startInput) == 0) {
                     setInvalid(startId, "Invalid Input. Start and end time must be different if dates are the same.", errorfield);
                     setInvalid(endId, "Invalid Input. Start and end time must be different if dates are the same.", errorfield);
