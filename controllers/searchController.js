@@ -25,9 +25,10 @@ const searchController = {
         let noMatch = null;
         let pageCount = 0;
         let searchQuery = req.query.search;
-
+        let trimmedQuery = searchQuery.trim();
+        
         /* Escape regex to avoid DDOS attacks. */
-        const regex = new RegExp(searchController.escapeRegex(searchQuery.trim()), 'gi');
+        const regex = new RegExp(searchController.escapeRegex(trimmedQuery), 'gi');
         
         /* Get all companies from DB */ 
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 10);
@@ -42,7 +43,7 @@ const searchController = {
                 
         await Company.countDocuments({name: regex}, function(err, companyCount) {
             pageCount = companyCount
-            res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: searchQuery});
+            res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: trimmedQuery});
         });
     },
     
