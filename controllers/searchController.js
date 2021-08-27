@@ -25,9 +25,10 @@ const searchController = {
         let noMatch = null;
         let pageCount = 0;
         let searchQuery = req.query.search;
+
         /* Escape regex to avoid DDOS attacks. */
-        const regex = new RegExp(searchController.escapeRegex(searchQuery), 'gi');
-        console.log(searchQuery);
+        const regex = new RegExp(searchController.escapeRegex(searchQuery.trim()), 'gi');
+        
         /* Get all companies from DB */ 
         let foundCompanies = await searchController.paginatedResults(Company, {name: regex}, 1, 10);
 
@@ -57,9 +58,6 @@ const searchController = {
         let date = new Date();
         let today = date.getFullYear();
         let dataName = companyName.replace(/\s/g, '%20');
-
-        console.log(companyName);
-        console.log(dataName);
 
         if(year)
             today = year;
