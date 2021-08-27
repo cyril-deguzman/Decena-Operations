@@ -134,6 +134,7 @@ input[type=text], input[type=date], input[type=time], input[type=number]{
     border-bottom: 2px solid #194A09;   
     font-size: 2vh;
     display: block;
+    width: auto;
 }
 
 .label,p {
