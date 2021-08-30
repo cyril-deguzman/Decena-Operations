@@ -1,0 +1,33 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/grayBackground.jpg");
+    background-size: cover;
+    font-family: Helvetica;               
+}    
+
+body, #error-photo, #error-texts, #error-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#error-contents {
+    padding: 5%;
+}
+
+#error-title {
+    font-size: 8vh;
+    color: #194a0a;
+    font-family: Helvetica;  
+    margin: 0;
+}
+
+p {
+    font-size: 3vh;
+    font-weight: normal;
+}
+
+img {
+    width: 70%;
+}
