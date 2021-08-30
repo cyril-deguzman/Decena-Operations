@@ -17,4 +17,9 @@ $(document).ready(function() {
         else 
             $('#filter-year-btn').prop('disabled', true);
     })
+
+    $('.editBtn').click(function(){
+        let id = $(this).attr('data-id');
+        window.location = `/editreceipt/${id}`;
+    })
 })

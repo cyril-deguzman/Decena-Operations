@@ -1,0 +1,434 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Delivery Receipt </title>
+		<!-- Import bootstrap cdn -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+			crossorigin="anonymous">
+
+		<!-- Import stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/dr-form.css">
+    	<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+		
+		<!-- Import jquery cdn -->
+		<script 
+			src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous">
+		</script>
+
+		<!-- Import Validator cdn -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-xYHcfaQeUiKHs9YsHqjpyLaHnh+q7y8kYuOGdh5FkJeK7Z+dZct7Yoa7h+PtsrKRh03t8eJZuSeCN7b0dkrFwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<!-- Import javascript -->
+		<script type="text/javascript" src="/js/dr-form.js"></script>
+		<script type="text/javascript" src="/js/dr-form-visuals.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+			crossorigin="anonymous">
+		</script> 
+	</head> 
+	
+	<body>
+		 {{!-- Navigation bar here --}}
+		{{> navbarOps}}
+			
+		<div class="dr-form" id="dr-form">
+			<form method="POST" id="dr-form-post">
+			<!-- Header -->
+			<div id="header">
+				<!-- logo -->
+				<div class="header-logo" id="header-logo">
+					<img src="/images/dv-logo.png" alt="dv-logo"/>
+					<h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
+				</div>
+				<!-- Delivery Receipt Title -->
+				<h1 id="dr-title">Delivery Receipt</h1>	
+			</div>
+
+			<!-- Part 1 of DR Form -->
+			<div class="part1" id="part1">
+				<div id="name-date-container">
+					<div id="name-container" style="width: 70%;">
+						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
+                        <!-- INPUT 1 -->
+						<input data-id={{dr.companyName}} placeholder={{dr.companyName}} type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
+						<p class = "error" id="p1Error1">{{companyNameErrors}}</p>
+						<br>
+						<label class="label" for="client-name">Client's Name </label>
+                        <!-- INPUT 2 -->
+						<input data-id={{dr.clientName}} placeholder={{dr.clientName}} type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
+						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
+					</div>
+					<div id = "date-error-container">
+						<div id="date-container">	
+							<label class="label" for="date-issued">Date Issued</label>
+                            <!-- INPUT 3 -->
+							<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
+						</div>
+						<p class = "error" id="p1Error5">{{dateIssueErrors}}</p>
+					</div>
+				</div>
+				<br>
+				<div id="site-container">
+					<label class="label" for="pickup-site">Pick-Up Site </label>
+                    <!-- INPUT 4 -->
+					<input data-id={{dr.pickSite}} placeholder={{dr.pickSite}} type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">
+					<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
+					<br>
+					<label class="label" for="delivery-site">Delivery Site </label>
+                    <!-- INPUT 5 -->
+					<input data-id={{dr.dropSite}} placeholder={{dr.dropSite}} type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
+					<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
+				</div>
+				<!-- <div class = errors>
+					<p class = "error" id="p1Error">{{part1Errors}}</p>
+				</div> -->
+			</div>
+
+			<!-- Part 2 of DR Form -->
+			<div class="part2" id="part2">
+				<!-- Lists -->
+				<div id="lists-processor">
+					<!-- Mode of Shipment-->
+					<div id="mode-shipment">
+						<p class="mode-shipment">Mode Of Shipment</p>
+                        <!-- INPUT 6 -->
+						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" id="shipment1" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" id="shipment2" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
+						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" id="shipment3" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
+						<input type="radio" class="radio" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
+						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+						<!-- <p class = "error" id="p2Error1">{{shipModeErrors}}</p> -->
+
+						<label class="label" for="quantity">Quantity (No. of Packages)</label>
+
+                        <!-- INPUT 7 -->
+						<input value={{dr.quantity}} type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;">
+						<p class = "error" id="p2Error1">{{quantityErrors}}</p><br>
+					</div>
+					<!-- List of Documents w/ Processsor-->
+					<div id="documents-processor">
+						<p class="list-documents">List of Documents</p>
+                        <!-- INPUT 8 -->
+						<div id="docs-options">
+							<div id="first-docs">
+								<input type="checkbox" value="KN DR" id="document1" name="document"/> <label> KN DR</label><br>
+								<input type="checkbox" value="AIR WAYBILL (AIR FREIGHT)" id="document2" name="document" /> <label> AIR WAYBILL (AIR FREIGHT)</label><br>
+								<input type="checkbox" class="radio" value="BILL OF LADING (SEA FREIGHT)" id="document3" name="document"/> <label> BILL OF LADING (SEA FREIGHT)</label><br>	
+								<input type="checkbox" value="IMPORT" id="document4" name="document" /> <label> IMPORT</label><br>
+							</div>
+							<div id="second-docs">
+								<input type="checkbox" value="INVOICE" id="document5" name="document"/> <label> INVOICE</label><br>	
+								<input type="checkbox" value="PACKING LIST" id="document6" name="document" /> <label> PACKING LIST</label><br>		
+								<input type="checkbox" value="B.O REPORT" id="document7" name="document"/> <label> B.O REPORT</label><br>
+								<input type="checkbox" value="OTHERS" id="document8" name="document" /> <label> OTHERS</label><br>
+							</div>
+						</div>
+						<p class = "error" id="p2Error2">{{docListErrors}}</p>
+						<br>
+						<label class="label" for="processor">Processor</label>
+                        <!-- INPUT 9 -->
+						<input data-id={{dr.documentList.processor}} placeholder={{dr.documentList.processor}} type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
+						<p class = "error" id="p2Error3">{{processorErrors}}</p>
+					</div>	
+				</div>
+				<div id="description-container">
+					<label class="label" for="description">Description of Commodity</label>
+                    <!-- INPUT 10 -->
+					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = {{dr.commodityDesc}} maxlength="200"></textarea>
+				</div>
+				<p class = "error" id="p2Error4">{{descriptionErrors}}</p>
+				<!-- <div class = errors>
+					<p class = "error" id="p2Error">{{part2Error}}</p>
+				</div>	 -->									
+			</div>
+
+			<!-- Part 3 of DR Form: Arrival & Departure -->
+			<div id="part3">
+				<!-- Pick-Up Date & Time -->
+				<div id="pick-up">
+					<h6>PICK-UP POINT</h6>
+					<span class = "error" id = "pick-up-errors">{{pickUpPointErrors}}</span>
+					<div id="p-date-time">
+						<div id="p-date">
+							<label class="label" for="p-arrival-date">Arrival Date </label>
+							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+							<br>
+							<label class="label" for="p-departure-date">Departure Date </label>
+							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+						</div>
+						<div id="p-time">	
+							<label class="label" for="p-arrival-time">Time </label>
+							<input type="time" id="p-arrival-time" name="p-arrival-time" value={{dr.pickUpDates.arrivalTime}}>
+							<br>
+							<label class="label" for="p-departure-time">Time </label>
+							<input type="time" id="p-departure-time" name="p-departure-time" value={{dr.pickUpDates.departureTime}}>
+						</div>	
+					</div>					
+				</div>
+				
+				<!-- Destination Date & Time -->
+				<div id="destination">
+					<h6>DESTINATION POINT</h6>
+					<span class = "error" id = "destination-errors">{{destinationPointErrors}}</span>
+					<div id="d-date-time">
+						<div id="d-date"> 
+							<label class="label" for="d-arrival-date">Arrival Date </label>
+							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<br>
+							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
+							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<br>
+							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
+							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<br>
+							<label class="label" for="d-departure-date">Departure Date </label>
+							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+						</div>
+						<div id="d-time">
+							<label class="label" for="d-arrival-time">Time </label>
+							<input type="time" id="d-arrival-time" name="d-arrival-time" value={{dr.destinationDates.arrivalTime}}>
+							<br>						
+							<label class="label" for="start-load-time">Time </label>
+							<input type="time" id="start-load-time" name="start-load-time" value={{dr.destinationDates.unloadingStartTime}}>					
+							<br>
+							<label class="label" for="finish-load-time">Time </label>
+							<input type="time" id="finish-load-time" name="finish-load-time" value={{dr.destinationDates.unloadingFinishedTime}}>
+							<br>	
+							<label class="label" for="d-departure-time">Time </label>
+							<input type="time" id="d-departure-time" name="d-departure-time" value={{dr.destinationDates.departureTime}}>
+						</div>	
+					</div>				
+				</div>
+				<!-- <div class = errors>
+					<p class = "error" id="p3Error">{{part3Error}}</p>
+				</div> -->
+			</div>
+
+			<!-- Part 4 of DR Form: Fleet Details & Acknowledgement -->
+			<div class="part4" id="part4">
+				<div id="fleet-details">
+					<h6>FLEET DETAILS</h6>
+					<label class="label" for="plate-number">Truck Plate Number</label>
+                    <!-- INPUT 11 -->
+					<input data-id={{dr.fleetDetails.truckPlateNo}} placeholder={{dr.fleetDetails.truckPlateNo}} type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8">
+					<p class = "error" id="p4Error1">{{plateNumErrors}}</p><br>
+					<label class="label" for="driver">Driver</label>
+                    <!-- INPUT 12 -->
+					<input data-id={{dr.fleetDetails.driverName}} placeholder={{dr.fleetDetails.driverName}} type="text" id="driver" name="driver" style="width: 70%;" maxlength="50">
+					<p class = "error" id="p4Error2">{{driverErrors}}</p><br>
+					<label class="label" for="helper">Helper</label>
+                     <!-- INPUT 13 -->
+					<input data-id={{dr.fleetDetails.helperName}} placeholder={{dr.fleetDetails.helperName}} type="text" id="helper" name="fname" style="width: 70%;" maxlength="50">
+					<p class = "error" id="p4Error3">{{helperErrors}}</p><br>	
+				</div>
+				<div id="acknowledgement">
+					<h6>ACKNOWLEDGEMENT</h6>
+					<div id="a-date-time">
+						<div id="a-date">
+							<label class="label" for="ack-date">Date</label>
+                            <!-- INPUT 14 -->
+							<input type="date" class="datefield" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<p class = "error" id="p4Error4">{{ackDateErrors}}</p>
+						</div>
+						
+						<div id="a-time">
+							<label class="label" for="ack-time">Time</label>
+                            <!-- INPUT 15 -->
+							<input type="time" id="ack-time" name="ack-time" value={{dr.acknowledgement.timeAck}}>
+							<p class = "error" id="p4Error5">{{ackTimeErrors}}</p>
+						</div>
+					</div>
+					<br>
+
+                    <!-- INPUT 16 -->
+					<input type="radio" class="radio" value="Received the merchandise in good order and condition" id="acknowledgement1" name="acknowledgement"/> 
+					<label for="acknowledgement1"> Received the merchandise in good order and condition</label>
+					<br>
+					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
+					<label for="acknowledgement2"> Received the merchandise with issue/s</label>							
+				</div>
+				<!-- <div class = errors>
+					<p class = "error" id="p4Error">{{part4Error}}</p>
+				</div> -->
+			</div>
+			
+			<!-- Part 5 of DR Form: Submit Button -->
+			<div id="part5">
+				<!-- Button to trigger the modal -->
+				<button type="button" class="btn btn-primary
+                    btn-sm" 
+                    data-target="#exampleModal"
+                    id="submit">
+					Submit
+				</button>
+
+				<!-- Modal -->
+				<div div class="modal fade" id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+					
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 id="modal-dr-title">
+									Delivery Receipt
+								</h1>
+								
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+							</div>
+                            
+							<div class="modal-body" id="modal-body">
+                                <div id="modal-header">
+                                    Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Confirm</b> to submit.
+                                </div>
+                                <div class="modal-part1" id="modal-part1">
+                                	<div id="upper1-part1">
+	                                    <p id="upper1-left-p1"></p>
+	                                    <p id="upper1-right-p1"></p>
+                                	</div>
+                                	<div id="upper2-part1">
+	                                    <p id="upper2-left-p1"></p>
+	                                    <p id="upper2-right-p1"></p>
+	                                </div>    
+                                	<div id="lower1-part1">
+	                                    <p id="lower1-left-p1"></p>
+	                                    <p id="lower1-right-p1"></p>
+                                	</div>
+
+                                	<div id="lower2-part1">
+                                		<p id="lower2-left-p1"></p>
+	                                    <p id="lower2-right-p1"></p>
+                                	</div>
+                                </div>
+                                
+                                <div class="modal-part2" id="modal-part2">
+                                    <div id="upper-part2">
+                                        <p id="upper-left-p2"></p>
+                                        <p id="upper-right-p2"></p>
+                                    </div>
+                                    <div id="middle-part2">
+                                        <p id="middle-left-p2"></p>
+                                        <p id="middle-right-p2"></p>
+                                    </div>
+                                    <div id="lower-part2">
+                                        <p id="lower-left-p2"></p>
+                                        <p id="lower-right-p2"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-part3" id="modal-part3">
+                                    <div id="left-p3">
+                                        <h6>PICK-UP POINT</h6>
+                                        <div class="modal-pickup-point" id="modal-pickup-point">
+                                        	<div id="arrival-ppoint">
+                                        		<p id="a-left-left-p3"></p>
+                                            	<p id="a-left-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="departure-ppoint">
+                                        		<p id="d-left-left-p3"></p>
+                                            	<p id="d-left-right-p3"></p>
+                                        	</div> 
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="right-p3">
+                                        <h6>DESTINATION POINT</h6>
+                                        <div id="modal-destination-point">
+                                        	<div id="arrival-dpoint">
+                                            	<p id="a-right-left-p3"></p>
+                                            	<p id="a-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="startload-dpoint">
+                                            	<p id="sl-right-left-p3"></p>
+                                            	<p id="sl-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="finishload-dpoint">
+                                            	<p id="fl-right-left-p3"></p>
+                                            	<p id="fl-right-right-p3"></p>
+                                        	</div>
+                                        	<br>
+                                        	<div id="departure-dpoint">
+                                            	<p id="d-right-left-p3"></p>
+                                            	<p id="d-right-right-p3"></p>
+                                        	</div>                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-part4" id="modal-part4">
+                                    <h6>FLEET DETAILS</h6>
+                                    <div id="modal-fleet1-details">
+                                        <p id="upper1-left-p4"></p>
+                                        <p id="upper1-right-p4"></p>
+                                    </div>
+                                    <div id="modal-fleet2-details">
+                                        <p id="upper2-left-p4"></p>
+                                        <p id="upper2-right-p4"></p>
+                                    </div>
+                                    <br>
+                                    <h6>ACKNOWLEDGEMENT</h6>
+                                    <div id="modal-acknowledgement1">
+                                        <p id="lower1-left-p4"></p>
+                                        <p id="lower1-right-p4"></p>
+                                    </div>
+                                    <div id="modal-acknowledgement2">
+                                        <p id="lower2-left-p4"></p>
+                                        <p id="lower2-right-p4"></p>
+                                    </div>    
+                                </div>
+							</div>
+                            <div id="modal-footer" style="padding-bottom:4vh">
+                                <button type="button"
+                                    class="btn btn-success btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    id="submit-confirm"
+									{{!-- Remove the comments below to trigger the second modal--}}
+									{{!-- href="#confirmModal" --}}
+									{{!-- data-dismiss="modal" --}}
+									>
+                                    Confirm
+                                </button>
+                            </div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			</form>
+
+
+			{{!-- Second Modal --}}
+
+			<div class="modal" id="confirmModal" data-backdrop="static">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="secondModalTitle">Delivery Receipt Confirmation</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						</div>
+					<div class="container"></div>
+					<div class="modal-body"> Submission success! The form has been recorded. </div>
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn">Close</a>
+					</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- JavaScript/JQuery -->
+		<script type="text/javascript" src="/js/dr-form-visuals.js"></script>
+	</body>
+</html>
