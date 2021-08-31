@@ -773,21 +773,14 @@ $(document).ready(function () {
     if(mm < 10)
         mm='0'+mm; 
     today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("date-issued").setAttribute("value", today);
+
     document.getElementById("date-issued").setAttribute("max", today);  
-    document.getElementById("p-arrival-date").setAttribute("value", today);
     document.getElementById("p-arrival-date").setAttribute("max", today);   
-    document.getElementById("p-departure-date").setAttribute("value", today);
     document.getElementById("p-departure-date").setAttribute("max", today);
-    document.getElementById("d-arrival-date").setAttribute("value", today);
     document.getElementById("d-arrival-date").setAttribute("max", today);   
-    document.getElementById("d-departure-date").setAttribute("value", today);
     document.getElementById("d-departure-date").setAttribute("max", today); 
-    document.getElementById("start-load-date").setAttribute("value", today);
     document.getElementById("start-load-date").setAttribute("max", today);  
-    document.getElementById("finish-load-date").setAttribute("value", today);
     document.getElementById("finish-load-date").setAttribute("max", today); 
-    document.getElementById("ack-date").setAttribute("value", today);
     document.getElementById("ack-date").setAttribute("max", today);                                         
 
     /**
@@ -818,9 +811,36 @@ $(document).ready(function () {
     /**
      * Adding a default value for the radio buttons
      */
-    radBtnShip = document.getElementById("shipment1");
-    radBtnShip.checked = true;
+    let ackBtn = $('#acknowledgement1');
+    if(ackBtn.attr('data-id') == ackBtn.val())
+        ackBtn.prop("checked", true);
+    else
+        $('#acknowledgement2').prop("checked", true);
+    
 
-    radBtnAck = document.getElementById("acknowledgement1");
-    radBtnAck.checked = true;
+    $('.ship-mode').each(function(){
+        if($(this).val() == $('#mode-shipment').attr('data-id'))
+            $(this).prop("checked", true);
+    });
+
+    $('.doc-info').each(function(){
+        let doc_info = $(this).attr('data-id');
+        console.log(doc_info);
+        switch(doc_info) {
+            case "KN DR": $('#document1').prop("checked", true); break;
+            case "AIR WAYBILL (AIR FREIGHT)": $('#document2').prop("checked", true); break;
+            case "BILL OF LADING (SEA FREIGHT)": $('#document3').prop("checked", true); break;
+            case "IMPORT": $('#document4').prop("checked", true); break;
+            case "INVOICE": $('#document5').prop("checked", true); break;
+            case "PACKING LIST": $('#document6').prop("checked", true); break;
+            case "B.O REPORT": $('#document7').prop("checked", true); break;
+            case "OTHERS": $('#document8').prop("checked", true); break;
+        }
+    });
+
+    let id = $('#dr-form').attr('data-id');
+        let oldCompanyName = $('#company-name').attr('data-id');
+
+        console.log(id);
+        console.log(oldCompanyName);
 });

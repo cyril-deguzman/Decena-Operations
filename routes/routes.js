@@ -23,4 +23,5 @@ app.post(`/paginatecompany`, searchController.postPaginateCompanies);
 
 /* edit routes*/
 app.get(`/editreceipt/:id`, editController.getEdit);
+app.post(`/posteditform`, editController.postEditForm);
 module.exports = app;

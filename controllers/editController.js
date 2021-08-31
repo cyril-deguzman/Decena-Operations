@@ -17,22 +17,34 @@ const editController = {
      */
      getEdit: function(req, res) {
         let id = req.params.id;
-        DeliveryReceipt.findById(id, function (err, dr) {
+        DeliveryReceipt.findById(id).lean().exec(function (err, dr) {
             if(err)
                 console.log(err);
-            else 
-                res.render('edit-form', {dr: dr});
+            else {
+                dr.dIssued = editController.convertDate(dr.dateIssued);
+                dr.dParr = editController.convertDate(dr.pickUpDates.arrivalDate);
+                dr.dPdep = editController.convertDate(dr.pickUpDates.arrivalDate);
+                dr.dDarr = editController.convertDate(dr.destinationDates.arrivalDate);
+                dr.dUnStart = editController.convertDate(dr.destinationDates.unloadingStartDate);
+                dr.dUnFin = editController.convertDate(dr.destinationDates.unloadingFinishedDate);
+                dr.dDdep = editController.convertDate(dr.destinationDates.departureDate);
+                dr.dAck = editController.convertDate(dr.acknowledgement.dateAck);
+                res.render('edit-form', {dr: dr, id: id});
+            }
+                
         });
     },
 
     /**
-     * postForm.
+     * postEditForm.
      * 
-     * Saves the delivery receipt to the database.
+     * Saves the editted delivery receipt to the database.
      * @param {*} req 
      * @param {*} res 
      */
-    postForm: function(req, res) {
+    postEditForm: function(req, res) {
+        let dr_id = req.body.dr_id;
+        let oldCompanyName = req.body.oldCompanyName;
         let dateIssued = req.body.dateIssued;
         let companyName = req.body.companyName;
         let clientName = req.body.clientName;
@@ -104,8 +116,8 @@ const editController = {
             remarks: remarks,
         });
 
-        /* Delivery Receipt */
-        let deliveryReceipt = new DeliveryReceipt({
+        /* Update Delivery Receipt */
+        DeliveryReceipt.findByIdAndUpdate(dr_id, { 
             dateIssued: dateIssued,
             companyName: companyName,
             clientName: clientName,
@@ -119,32 +131,61 @@ const editController = {
             destinationDates: destinationDates,
             documentList: documentList,
             acknowledgement: acknowledgement
-        });
-        
-        deliveryReceipt.save();
-
-        Company.findOne({name: companyName}, function (err, result) {
-            if (err) 
+        },
+            function (err, docs) {
+            if (err)
                 console.log(err)
-            else if (!result) {
-                let company = new Company ({
-                    name: companyName
-                })
+            else 
+            {
+                if(companyName != oldCompanyName) 
+                    Company.findOne({name: companyName}, function (err, result) 
+                    {
+                        if (err) 
+                            console.log(err)
 
-                company.save();
+                        else if (!result) 
+                        {
+                            Company.findOneAndUpdate({name: oldCompanyName}, {$inc: {activeReceipts: -1}}, function(err, succ){
+                                if (err)
+                                    console.log(err);
+                                else {
+                                    let company = new Company ({
+                                        name: companyName
+                                    })
+                                    company.save();
+                                }
+                            });
+                        }
+
+                        else 
+                        {
+                            Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                if (err)
+                                    console.log(err);
+                            });
+                        }
+                    });
             }
-            else {
-                Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}},
-                    function(err, succ){
-                    if (err)
-                        console.log(err);
-                });
-            }
+                
+            
         });
-
-        
+          
     },
 
+    convertDate: function(d) {
+
+        var dd = d.getDate();
+        var mm = d.getMonth()+1;
+        var yyyy = d.getFullYear();
+
+        if(dd < 10)
+            dd='0'+dd;
+        if(mm < 10)
+            mm='0'+mm; 
+        date = yyyy+'-'+mm+'-'+dd;
+        
+        return date
+    },
 }
 
 module.exports = editController;
