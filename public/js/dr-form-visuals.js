@@ -359,8 +359,8 @@ $(document).ready(function () {
 
         var dateToday = getDateTime(yyyy + "-" + ("0" + mm) + "-" + dd);
         var dateInput = getDateTime(input);
-
-        if (dateInput - dateToday > 0) {
+        
+        if ((dateInput - dateToday > 0) || isNaN(dateInput)) {
             setInvalid(id, "Date must be at most today.", errorfield);
             return true;
         }
