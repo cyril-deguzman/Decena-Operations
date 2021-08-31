@@ -22,20 +22,21 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-xYHcfaQeUiKHs9YsHqjpyLaHnh+q7y8kYuOGdh5FkJeK7Z+dZct7Yoa7h+PtsrKRh03t8eJZuSeCN7b0dkrFwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 		<!-- Import javascript -->
-		<script type="text/javascript" src="/js/dr-form.js"></script>
-		<script type="text/javascript" src="/js/dr-form-visuals.js"></script>
-		
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 			crossorigin="anonymous">
 		</script> 
+		<script type="text/javascript" src="/js/edit-dr-form.js"></script>
+		<script type="text/javascript" src="/js/edit-dr-form-visuals.js"></script>
+		
+		
 	</head> 
 	
 	<body>
 		 {{!-- Navigation bar here --}}
 		{{> navbarOps}}
 			
-		<div class="dr-form" id="dr-form">
+		<div class="dr-form" id="dr-form" data-id="{{id}}">
 			<form method="POST" id="dr-form-post">
 			<!-- Header -->
 			<div id="header">
@@ -45,7 +46,7 @@
 					<h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
 				</div>
 				<!-- Delivery Receipt Title -->
-				<h1 id="dr-title">Delivery Receipt</h1>	
+				<h1 id="dr-title">Edit Delivery Receipt</h1>	
 			</div>
 
 			<!-- Part 1 of DR Form -->
@@ -54,19 +55,21 @@
 					<div id="name-container" style="width: 70%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
                         <!-- INPUT 1 -->
-						<input data-id={{dr.companyName}} placeholder={{dr.companyName}} type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
+						<input  data-id="{{dr.companyName}}" placeholder="{{dr.companyName}}" value="{{dr.companyName}}" 
+                                type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
 						<p class = "error" id="p1Error1">{{companyNameErrors}}</p>
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
                         <!-- INPUT 2 -->
-						<input data-id={{dr.clientName}} placeholder={{dr.clientName}} type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
+						<input  data-id="{{dr.clientName}}" placeholder="{{dr.clientName}}" value="{{dr.clientName}}"
+                                type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
 						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
 					</div>
 					<div id = "date-error-container">
 						<div id="date-container">	
 							<label class="label" for="date-issued">Date Issued</label>
                             <!-- INPUT 3 -->
-							<input type="date" class="datefield" id="date-issued" name="date-issued" value="2021-01-01" min="1900-01-01" max="2021-12-31" style="width: 120%;">
+							<input data-id="{{dr.dIssued}}" type="date" class="datefield" id="date-issued" name="date-issued" value="{{dr.dIssued}}" min="1900-01-01" max="2021-12-31" style="width: 120%;">
 						</div>
 						<p class = "error" id="p1Error5">{{dateIssueErrors}}</p>
 					</div>
@@ -75,12 +78,14 @@
 				<div id="site-container">
 					<label class="label" for="pickup-site">Pick-Up Site </label>
                     <!-- INPUT 4 -->
-					<input data-id={{dr.pickSite}} placeholder={{dr.pickSite}} type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">
+					<input  data-id="{{dr.pickSite}}" placeholder="{{dr.pickSite}}" value="{{dr.pickSite}}"
+                            type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">
 					<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
 					<br>
 					<label class="label" for="delivery-site">Delivery Site </label>
                     <!-- INPUT 5 -->
-					<input data-id={{dr.dropSite}} placeholder={{dr.dropSite}} type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
+					<input  data-id="{{dr.dropSite}}" placeholder="{{dr.dropSite}}" value="{{dr.dropSite}}"
+                            type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
 					<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
 				</div>
 				<!-- <div class = errors>
@@ -93,27 +98,30 @@
 				<!-- Lists -->
 				<div id="lists-processor">
 					<!-- Mode of Shipment-->
-					<div id="mode-shipment">
+					<div id="mode-shipment" data-id="{{dr.shipMode}}">
 						<p class="mode-shipment">Mode Of Shipment</p>
                         <!-- INPUT 6 -->
-						<input type="radio" class="radio" value="AIR FREIGHT (EXPORT)" id="shipment1" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
-						<input type="radio" class="radio" value="AIR FREIGHT (IMPORT)" id="shipment2" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
-						<input type="radio" class="radio" value="SEA FREIGHT (EXPORT)" id="shipment3" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
-						<input type="radio" class="radio" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
-						<input type="radio" class="radio" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
-						<input type="radio" class="radio" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
+						<input type="radio" class="radio ship-mode" value="AIR FREIGHT (EXPORT)" id="shipment1" name="shipment"/> <label> AIR FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio ship-mode" value="AIR FREIGHT (IMPORT)" id="shipment2" name="shipment" /> <label> AIR FREIGHT (IMPORT)</label><br>							
+						<input type="radio" class="radio ship-mode" value="SEA FREIGHT (EXPORT)" id="shipment3" name="shipment"/> <label> SEA FREIGHT (EXPORT)</label><br>
+						<input type="radio" class="radio ship-mode" value="SEA FREIGHT (IMPORT)" id="shipment4" name="shipment" /> <label> SEA FREIGHT (IMPORT)</label><br>				
+						<input type="radio" class="radio ship-mode" value="LOCAL" id="shipment5" name="shipment"/> <label> LOCAL</label><br>
+						<input type="radio" class="radio ship-mode" value="TRANSFER (to Airline)" id="shipment6" name="shipment" /> <label> TRANSFER (to Airline)</label><br><br>
 						<!-- <p class = "error" id="p2Error1">{{shipModeErrors}}</p> -->
 
 						<label class="label" for="quantity">Quantity (No. of Packages)</label>
 
                         <!-- INPUT 7 -->
-						<input value={{dr.quantity}} type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;">
+						<input value="{{dr.quantity}}" type="number" id="quantity" name="quantity" min="1" max="100" maxlength="4" style="width: 18%;">
 						<p class = "error" id="p2Error1">{{quantityErrors}}</p><br>
 					</div>
 					<!-- List of Documents w/ Processsor-->
 					<div id="documents-processor">
 						<p class="list-documents">List of Documents</p>
                         <!-- INPUT 8 -->
+                        {{#each dr.documentList.documents}}
+                            {{>docInfo}}    
+                        {{/each}}
 						<div id="docs-options">
 							<div id="first-docs">
 								<input type="checkbox" value="KN DR" id="document1" name="document"/> <label> KN DR</label><br>
@@ -132,14 +140,15 @@
 						<br>
 						<label class="label" for="processor">Processor</label>
                         <!-- INPUT 9 -->
-						<input data-id={{dr.documentList.processor}} placeholder={{dr.documentList.processor}} type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
+						<input  data-id="{{dr.documentList.processor}}" placeholder="{{dr.documentList.processor}}" value="{{dr.documentList.processor}}"
+                                type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
 						<p class = "error" id="p2Error3">{{processorErrors}}</p>
 					</div>	
 				</div>
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
                     <!-- INPUT 10 -->
-					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = {{dr.commodityDesc}} maxlength="200"></textarea>
+					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = "{{dr.commodityDesc}}" maxlength="200">{{dr.commodityDesc}}</textarea>
 				</div>
 				<p class = "error" id="p2Error4">{{descriptionErrors}}</p>
 				<!-- <div class = errors>
@@ -156,17 +165,17 @@
 					<div id="p-date-time">
 						<div id="p-date">
 							<label class="label" for="p-arrival-date">Arrival Date </label>
-							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">	
+							<input type="date" class="datefield" id="p-arrival-date" name="p-arrival-date" value="{{dr.dParr}}" min="1900-01-01" max="2021-12-31">	
 							<br>
 							<label class="label" for="p-departure-date">Departure Date </label>
-							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="p-departure-date" name="p-departure-date" value="{{dr.dPdep}}" min="1900-01-01" max="2021-12-31">
 						</div>
 						<div id="p-time">	
 							<label class="label" for="p-arrival-time">Time </label>
-							<input type="time" id="p-arrival-time" name="p-arrival-time" value={{dr.pickUpDates.arrivalTime}}>
+							<input type="time" id="p-arrival-time" name="p-arrival-time" value="{{dr.pickUpDates.arrivalTime}}">
 							<br>
 							<label class="label" for="p-departure-time">Time </label>
-							<input type="time" id="p-departure-time" name="p-departure-time" value={{dr.pickUpDates.departureTime}}>
+							<input type="time" id="p-departure-time" name="p-departure-time" value="{{dr.pickUpDates.departureTime}}">
 						</div>	
 					</div>					
 				</div>
@@ -178,29 +187,29 @@
 					<div id="d-date-time">
 						<div id="d-date"> 
 							<label class="label" for="d-arrival-date">Arrival Date </label>
-							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="d-arrival-date" name="d-arrival-date" value="{{dr.dDarr}}" min="1900-01-01" max="2021-12-31">
 							<br>
 							<label class="label" for="start-load-date">Date Started Loading/Unloading </label>
-							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="start-load-date" name="start-load-date" value="{{dr.dUnStart}}" min="1900-01-01" max="2021-12-31">
 							<br>
 							<label class="label" for="finish-load-date">Date Finished Loading/Unloading </label>
-							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="finish-load-date" name="finish-load-date" value="{{dr.dUnFin}}" min="1900-01-01" max="2021-12-31">
 							<br>
 							<label class="label" for="d-departure-date">Departure Date </label>
-							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="d-departure-date" name="d-departure-date" value="{{dr.dDdep}}" min="1900-01-01" max="2021-12-31">
 						</div>
 						<div id="d-time">
 							<label class="label" for="d-arrival-time">Time </label>
-							<input type="time" id="d-arrival-time" name="d-arrival-time" value={{dr.destinationDates.arrivalTime}}>
+							<input type="time" id="d-arrival-time" name="d-arrival-time" value="{{dr.destinationDates.arrivalTime}}">
 							<br>						
 							<label class="label" for="start-load-time">Time </label>
-							<input type="time" id="start-load-time" name="start-load-time" value={{dr.destinationDates.unloadingStartTime}}>					
+							<input type="time" id="start-load-time" name="start-load-time" value="{{dr.destinationDates.unloadingStartTime}}">					
 							<br>
 							<label class="label" for="finish-load-time">Time </label>
-							<input type="time" id="finish-load-time" name="finish-load-time" value={{dr.destinationDates.unloadingFinishedTime}}>
+							<input type="time" id="finish-load-time" name="finish-load-time" value="{{dr.destinationDates.unloadingFinishedTime}}">
 							<br>	
 							<label class="label" for="d-departure-time">Time </label>
-							<input type="time" id="d-departure-time" name="d-departure-time" value={{dr.destinationDates.departureTime}}>
+							<input type="time" id="d-departure-time" name="d-departure-time" value="{{dr.destinationDates.departureTime}}">
 						</div>	
 					</div>				
 				</div>
@@ -215,15 +224,18 @@
 					<h6>FLEET DETAILS</h6>
 					<label class="label" for="plate-number">Truck Plate Number</label>
                     <!-- INPUT 11 -->
-					<input data-id={{dr.fleetDetails.truckPlateNo}} placeholder={{dr.fleetDetails.truckPlateNo}} type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8">
+					<input  data-id="{{dr.fleetDetails.truckPlateNo}}" placeholder="{{dr.fleetDetails.truckPlateNo}}" value="{{dr.fleetDetails.truckPlateNo}}"
+                            type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8">
 					<p class = "error" id="p4Error1">{{plateNumErrors}}</p><br>
 					<label class="label" for="driver">Driver</label>
                     <!-- INPUT 12 -->
-					<input data-id={{dr.fleetDetails.driverName}} placeholder={{dr.fleetDetails.driverName}} type="text" id="driver" name="driver" style="width: 70%;" maxlength="50">
+					<input  data-id="{{dr.fleetDetails.driverName}}" placeholder="{{dr.fleetDetails.driverName}}" value="{{dr.fleetDetails.driverName}}"
+                            type="text" id="driver" name="driver" style="width: 70%;" maxlength="50">
 					<p class = "error" id="p4Error2">{{driverErrors}}</p><br>
 					<label class="label" for="helper">Helper</label>
                      <!-- INPUT 13 -->
-					<input data-id={{dr.fleetDetails.helperName}} placeholder={{dr.fleetDetails.helperName}} type="text" id="helper" name="fname" style="width: 70%;" maxlength="50">
+					<input  data-id="{{dr.fleetDetails.helperName}}" placeholder="{{dr.fleetDetails.helperName}}" value="{{dr.fleetDetails.helperName}}"
+                            type="text" id="helper" name="fname" style="width: 70%;" maxlength="50">
 					<p class = "error" id="p4Error3">{{helperErrors}}</p><br>	
 				</div>
 				<div id="acknowledgement">
@@ -232,7 +244,7 @@
 						<div id="a-date">
 							<label class="label" for="ack-date">Date</label>
                             <!-- INPUT 14 -->
-							<input type="date" class="datefield" id="ack-date" name="ack-date" value="2000-01-01" min="1900-01-01" max="2021-12-31">
+							<input type="date" class="datefield" id="ack-date" name="ack-date" value="{{dr.dAck}}" min="1900-01-01" max="2021-12-31">
 							<p class = "error" id="p4Error4">{{ackDateErrors}}</p>
 						</div>
 						
@@ -246,7 +258,7 @@
 					<br>
 
                     <!-- INPUT 16 -->
-					<input type="radio" class="radio" value="Received the merchandise in good order and condition" id="acknowledgement1" name="acknowledgement"/> 
+					<input data-id="{{dr.acknowledgement.remarks}}" type="radio" class="radio" value="Received the merchandise in good order and condition" id="acknowledgement1" name="acknowledgement"/> 
 					<label for="acknowledgement1"> Received the merchandise in good order and condition</label>
 					<br>
 					<input type="radio" class="radio" value="Received the merchandise with issue/s" id="acknowledgement2" name="acknowledgement"/> 
@@ -428,7 +440,5 @@
 
 		</div>
 		
-		<!-- JavaScript/JQuery -->
-		<script type="text/javascript" src="/js/dr-form-visuals.js"></script>
 	</body>
 </html>
