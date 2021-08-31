@@ -271,15 +271,16 @@ $(document).ready(function () {
                 const dEnd = [$("#finish-load-date").val(), "#" +  $("#destination-errors").attr("id"), $("#finish-load-date").attr("id")];
 
                 if (!((dArriveDepart == "Invalid") || (dStartEnd == "Invalid") || flagTime == false)) {
-                    var flagBetweenDate = validLoadDate(dArrive, dDepart, dStart, dEnd);
-                    var flagBetTime1 = validStartEndTime(flagBetweenDate, timeDArrive, timeDStartLoad, 
-                        $("#destination-errors"), $("#d-arrival-time").attr("id"), $("#start-load-time").attr("id"));                    if ($("#destination-errors").html() == "" ) {
-                        var flagBetTime2 = validStartEndTime(flagBetweenDate, timeDEndLoad, timeDDepart,
-                            $("#destination-errors"), $("#finish-load-date").attr("id"), $("#d-departure-date").attr("id"));
-                    }
+                    // var flagBetweenDate = validLoadDate(dArrive, dDepart, dStart, dEnd);
+                    var flagBetDate1 = validStartEndDate(dArrive[0], dStart[0], $("#destination-errors"), dArrive[2], dStart[2]);
+                    var flagBetDate2 = validStartEndDate(dEnd[0], dDepart[0], $("#destination-errors"), dEnd[2], dDepart[2]);
+                    var flagBetTime1 = validStartEndTime(flagBetDate1, timeDArrive, timeDStartLoad, 
+                        $("#destination-errors"), $("#d-arrival-time").attr("id"), $("#start-load-time").attr("id"));
+                    var flagBetTime2 = validStartEndTime(flagBetDate2, timeDEndLoad, timeDDepart,
+                        $("#destination-errors"), $("#finish-load-date").attr("id"), $("#d-departure-date").attr("id"));
                 }
-
-                if ((flagBetweenDate && flagBetTime1) && flagBetTime2) {
+                
+                if (((flagBetDate1 != "Invalid") && (flagBetDate2 != "Invalid")) && flagBetTime1 && flagBetTime2) {
                     validPickDestDate(datePDepart, dateDArrive, $("#pick-up-errors"), $("#destination-errors"), 
                         $("#p-departure-date").attr("id"), $("#d-arrival-date").attr("id"));
                 }
@@ -419,49 +420,6 @@ $(document).ready(function () {
     }
 
     /**
-     * Checks the start and end load/unload dates if it is between the arrival 
-     * and departure dates
-     * 
-     * @param {String}  dArrive     The array containing the input, errorfield, and id of the arrive date
-     * @param {String}  dDepart     The array containing the input, errorfield, and id of the depart date
-     * @param {String}  dStart      The array containing the input, errorfield, and id of the start load/unload date
-     * @param {String}  dEnd        The array containing the input, errorfield, and id of the end load/unloda date
-    */
-    function validLoadDate (dArrive, dDepart, dStart, dEnd) {
-        // Params array index above: 0 - input, 1 - errorfield, 2 - id
-        var dateArrive = getDateTime(dArrive[0]);
-        var dateDepart = getDateTime(dDepart[0]);
-        var dateStart = getDateTime(dStart[0]);
-        var dateEnd = getDateTime(dEnd[0]);
-
-        var flag = false;
-
-        // Start load date checked with arrival and departure date
-        if (dateStart - dateArrive < 0) {
-            setInvalid(dStart[2], "Invalid input. Load/Unload date must be in between the arrival and departure date.", $(dStart[1]));
-            flag = false;
-        }
-        else {
-            setValid(dStart[2], $(dStart[1]));
-            flag = true;
-        }
-
-        if ($("#destination-errors").html() == "") {
-            // End load date checked with arrival and departure date
-            if (dateEnd - dateDepart > 0) {
-                setInvalid(dEnd[2], "Invalid input. Load/Unload date must be in between the arrival and departure date.", $(dEnd[1]));
-                flag = false;
-            }
-            else {
-                setValid(dEnd[2], $(dEnd[1]));
-                flag = true;
-            }
-        }
-
-        return flag;
-    }
-
-    /**
      * Checks start and end time fields if end time does not precede start time
      * 
      * @param {boolean/String}  dateFlag    Contains a boolean value if the dates associated with the time are valid
@@ -481,7 +439,9 @@ $(document).ready(function () {
 
         var endHH = parseInt(endInput.slice(0, 2));
         var endMM = parseInt(endInput.slice(3, 5));
-
+        // console.log("START FIELD: " + startId);
+        // console.log("END FIELD: " + endId);
+        // console.log("SAME DATE: " + dateFlag);
         if (dateFlag) {
             if ((startInput == "") || (endInput == "")) {
                 setInvalid(startId, "Invalid Input. Start and end time must not be empty.", errorfield);
@@ -516,7 +476,7 @@ $(document).ready(function () {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 
     /**
