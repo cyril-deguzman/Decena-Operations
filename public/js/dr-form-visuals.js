@@ -82,14 +82,14 @@ $(document).ready(function () {
      */
     $("#submit").click(function () {
         getValidation();
-        cleanDates();
+        cleanDateAndTime();
         getConditions();
     });
 
     /**
      * Removes the errors in the dates after changing the value
     */
-    function cleanDates() {
+    function cleanDateAndTime() {
         
         if (($("#pick-up-errors").html() == "Date must be at most today.") ||
             ($("#destination-errors").html() == "Date must be at most today.")) {
@@ -126,48 +126,45 @@ $(document).ready(function () {
         }
 
         else {
-            $("#p-arrival-date, #p-departure-date").on("change", function () {
+            $("#p-arrival-date, #p-departure-date, #p-arrival-time, #p-departure-time").on("change", function () {
                 var datePArrive = document.getElementById("p-arrival-date").value;
                 setValid($("#p-arrival-date").attr("id"), $("#pick-up-errors"));
 
                 var datePDepart = document.getElementById("p-departure-date").value;
                 setValid($("#p-departure-date").attr("id"), $("#pick-up-errors"));
-            });
 
-            $("#p-arrival-time, #p-departure-time").on("change", function () {
                 var timePArrive = document.getElementById("p-arrival-time").value;
-                var timePDepart = document.getElementById("p-departure-time").value;
                 setValid($("#p-arrival-time").attr("id"), $("#pick-up-errors"));
+
+                var timePDepart = document.getElementById("p-departure-time").value;
                 setValid($("#p-departure-time").attr("id"), $("#pick-up-errors"));
             });
 
-            $("#d-arrival-date, #d-departure-date").on("change", function () {
+            $("#d-arrival-date, #d-departure-date, #d-arrival-time, #d-departure-time").on("change", function () {
                 var dateDArrive = document.getElementById("d-arrival-date").value;
                 setValid($("#d-arrival-date").attr("id"), $("#destination-errors"));
 
                 var dateDDepart = document.getElementById("d-departure-date").value;
                 setValid($("#d-departure-date").attr("id"), $("#destination-errors"));
-            });
 
-            $("#d-arrival-time, #d-departure-time").on("change", function () {
                 var timeDArrive = document.getElementById("d-arrival-time").value;
-                var timeDDepart = document.getElementById("d-departure-time").value;
                 setValid($("#d-arrival-time").attr("id"), $("#destination-errors"));
+
+                var timeDDepart = document.getElementById("d-departure-time").value;
                 setValid($("#d-departure-time").attr("id"), $("#destination-errors"));
             });
 
-            $("#start-load-date, #finish-load-date").on("change", function () {
+            $("#start-load-date, #finish-load-date, #start-load-time, #finish-load-time").on("change", function () {
                 var dateDStartLoad = document.getElementById("start-load-date").value;
                 setValid($("#start-load-date").attr("id"), $("#destination-errors"));
 
                 var dateDEndLoad = document.getElementById("finish-load-date").value;
                 setValid($("#finish-load-date").attr("id"), $("#destination-errors"));
-            });
 
-            $("#start-load-time, #finish-load-time").on("change", function () {
                 var timeDStartLoad = document.getElementById("start-load-time").value;
-                var timeDEndLoad = document.getElementById("finish-load-time").value;
                 setValid($("#start-load-time").attr("id"), $("#destination-errors"));
+
+                var timeDEndLoad = document.getElementById("finish-load-time").value;
                 setValid($("#finish-load-time").attr("id"), $("#destination-errors"));
             });
         }
@@ -484,11 +481,8 @@ $(document).ready(function () {
 
         var endHH = parseInt(endInput.slice(0, 2));
         var endMM = parseInt(endInput.slice(3, 5));
-        console.log("BOOLEAN: " + dateFlag);
+
         if (dateFlag) {
-            console.log("bakit ka nandito");
-            // console.log("endHH: " + endHH + " < " + "startHH: " + startHH);
-            // console.log(endHH < startHH);
             if ((startInput == "") || (endInput == "")) {
                 setInvalid(startId, "Invalid Input. Start and end time must not be empty.", errorfield);
                 setInvalid(endId, "Invalid Input. Start and end time must not be empty.", errorfield);
