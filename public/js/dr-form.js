@@ -76,6 +76,21 @@ $(document).ready(function () {
 			processor: processor.val(),
 			docs: docs,
 		}, function(result){});
-		window.location = '/form';
+		
+		/** 
+		 * 
+		 * 	Redirect the user through another modal after submitting the form.
+		 * 
+		*/
+
+		$("#closeConfirmModal").click(function(){
+			window.location = '/form';
+		});
+
+		$("#confirmModalCloseButton").click(function(){
+			window.location = '/form';
+		});
+
+		$("#confirmModal").modal("show");
 	})
 })
