@@ -153,6 +153,7 @@ const editController = {
                                         name: companyName
                                     })
                                     company.save();
+                                    res.send(succ);
                                 }
                             });
                         }
@@ -162,6 +163,7 @@ const editController = {
                             Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
                                 if (err)
                                     console.log(err);
+                                res.send(succ);
                             });
                         }
                     });

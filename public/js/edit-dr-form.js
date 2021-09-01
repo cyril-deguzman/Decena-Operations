@@ -5,6 +5,7 @@ $(document).ready(function () {
 	$("#submit-confirm").click(function () {
         let id = $('#dr-form').attr('data-id');
         let oldCompanyName = $('#company-name').attr('data-id');
+        let companyUrl = oldCompanyName.replace(/\s/g, '%20');
 		let dateIssued = $('#date-issued');
 		let companyName = $('#company-name');
 		let clientName = $('#client-name');
@@ -82,6 +83,7 @@ $(document).ready(function () {
             dr_id: id,
             oldCompanyName: oldCompanyName
 		}, function(result){});
-		window.history.back();
+		console.log('here');
+        window.location = `/viewreceipts/${companyUrl}`
 	})
 })
