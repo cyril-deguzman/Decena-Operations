@@ -25,7 +25,7 @@ const Acknowledgement = require('./AcknowledgementSchema');
  */
 let DeliveryReceiptSchema = new mongoose.Schema({
     dateIssued: {type: Date, required: true},
-    companyName: {type: String, required: true, maxLength: 125},
+    companyName: {type: String, required: true, maxLength: 150},
     clientName: {type: String, required: true, maxLength: 50},
     pickSite: {type: String, required: true, maxLength: 100},
     dropSite: {type: String, required: true, maxLength: 100},

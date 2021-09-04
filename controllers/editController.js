@@ -46,16 +46,16 @@ const editController = {
         let dr_id = req.body.dr_id;
         let oldCompanyName = req.body.oldCompanyName;
         let dateIssued = req.body.dateIssued;
-        let companyName = req.body.companyName;
-        let clientName = req.body.clientName;
-        let	pickSite = req.body.pickSite;
-        let	dropSite = req.body.dropSite;
-        let shipMode = req.body.shipMode;
+        let companyName = req.body.companyName.trim();
+        let clientName = req.body.clientName.trim();
+        let	pickSite = req.body.pickSite.trim();
+        let	dropSite = req.body.dropSite.trim();
+        let shipMode = req.body.shipMode.trim();
         let quantity = req.body.quantity;
-        let commodityDesc = req.body.commodityDesc;
-        let truckPlateNo = req.body.truckPlateNo;
-        let driverName = req.body.driverName;
-        let helperName = req.body.helperName;
+        let commodityDesc = req.body.commodityDesc.trim();
+        let truckPlateNo = req.body.truckPlateNo.trim();
+        let driverName = req.body.driverName.trim();
+        let helperName = req.body.helperName.trim();
         let pArrivalDate = req.body.pArrivalDate;
         let pArrivalTime = req.body.pArrivalTime;
         let pDepartureDate = req.body.pDepartureDate;
@@ -68,7 +68,7 @@ const editController = {
         let dFinishLoadTime = req.body.dFinishLoadTime;
         let dDepartureDate = req.body.dDepartureDate;
         let dDepartureTime = req.body.dDepartureTime;
-        let processor = req.body.processor;
+        let processor = req.body.processor.trim();
         let remarks = req.body.remarks;
         let dateAck = req.body.dateAck;
         let timeAck = req.body.timeAck;
@@ -149,22 +149,36 @@ const editController = {
                                 if (err)
                                     console.log(err);
                                 else {
-                                    let company = new Company ({
-                                        name: companyName
-                                    })
-                                    company.save();
-                                    res.send(succ);
+
+                                    Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                        if (err)
+                                            console.log(err);
+                                        else if(!succ) {
+                                            let company = new Company ({
+                                                name: companyName
+                                            })
+                                            company.save();
+                                            res.send(succ);
+                                        }
+                                    });
+                                    
                                 }
                             });
                         }
 
                         else 
                         {
-                            Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                            Company.findOneAndUpdate({name: oldCompanyName}, {$inc: {activeReceipts: -1}}, function(err, succ){
                                 if (err)
                                     console.log(err);
-                                res.send(succ);
+                                else
+                                    Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                        if (err)
+                                            console.log(err);
+                                        res.send(succ);
+                                    });
                             });
+                            
                         }
                     });
             }
@@ -175,7 +189,6 @@ const editController = {
     },
 
     convertDate: function(d) {
-
         var dd = d.getDate();
         var mm = d.getMonth()+1;
         var yyyy = d.getFullYear();
