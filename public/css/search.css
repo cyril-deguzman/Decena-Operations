@@ -115,7 +115,22 @@ a{
     background-color: #194A09;
 }
 
+.deleteDRButton{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
 
+.deleteDRButton:active{
+    outline: none;
+    padding: 0;
+    border: none;
+    background: none;
+}
 
 form {
     display:flex;

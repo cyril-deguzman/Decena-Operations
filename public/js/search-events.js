@@ -3,10 +3,15 @@ $(document).ready(function () {
 
     /* Event Handlers */
     $(".resultsFoundCard").hover(function(){
-        $(this).children().css("background-color","#dbdbdb");
+        $(this).children().not('deleteDRButton').css("background-color","#dbdbdb");
+        
     }, function(){
-        $(this).children().css("background-color","#FFFFFF");
+        $(this).children().not('deleteDRButton').css("background-color","#FFFFFF");
     });
+
+    
+
+
 
     $('#next').click(function (e) {
         e.preventDefault();
