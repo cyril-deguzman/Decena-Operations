@@ -131,14 +131,20 @@ table {
 }
 
 .paymentStatus {
+    padding-bottom: 10px;
     border: 2px solid  #cc3333;
     border-radius: 5px ; 
-    padding:1px; 
+    padding:3px; 
     color: white; 
     text-align: center;
     width: 100%;
     background-color: #cc3333;
+    height:30px;
 
+}
+
+.paymentButton{
+    padding-bottom: 3px;
 }
 
 .paymentStatus:hover{
