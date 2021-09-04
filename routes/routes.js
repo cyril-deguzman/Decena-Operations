@@ -28,5 +28,6 @@ app.post(`/posteditform`, editController.postEditForm);
 
 /* accounting routes */
 app.get(`/accounting`, accountingController.getViewAllDRs);
+app.get(`/accounting/:year`, accountingController.getViewAllDRs);
 
 module.exports = app;

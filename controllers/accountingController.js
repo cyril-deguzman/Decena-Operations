@@ -1,4 +1,3 @@
-const Company = require('../models/CompanyModel.js');
 const DeliveryReceiptModel = require('../models/DeliveryReceiptModel.js');
 
 const accountingController = {
