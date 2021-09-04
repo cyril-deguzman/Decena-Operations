@@ -371,6 +371,7 @@
                                     </div>    
                                 </div>
 							</div>
+
                             <div id="modal-footer" style="padding-bottom:4vh">
                                 <button type="button"
                                     class="btn btn-success btn-sm"
@@ -380,17 +381,16 @@
                                     id="submit-confirm"
 					
 									href="#confirmModal"
-
 									>
                                     Confirm
                                 </button>
                             </div>
+
 						</div>
 					</div>
 				</div>	
 			</div>
 			</form>
-
 
 			{{!-- Second Modal --}}
 
@@ -401,11 +401,11 @@
 							<h4 class="modal-title" id="secondModalTitle">Delivery Receipt Confirmation</h4>
 						</div>
 					<div class="container"></div>
-					<div class="modal-body"> Submission success! The form has been recorded.</div>
-					<div class="modal-footer">
+					<div class="modal-body" id="submissionSuccessText"> Submission success! The form has been recorded.</div>
+					<hr>
+					<div class="modal-footer" id="modalFooterId"> 
 						<a href="#" data-dismiss="modal" class="btn btn-light" id="redirectConfirmModal">See existing list</a>
 						<a href="#" data-dismiss="modal" class="btn btn-primary" id="closeConfirmModal">Add new delivery receipt</a>
-						
 					</div>
 					</div>
 				</div>

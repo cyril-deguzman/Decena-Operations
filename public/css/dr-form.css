@@ -180,6 +180,29 @@ textarea {
 
 #secondModalTitle{
     color: #194A09;
+    position: relative;
+    left:75px;
+}
+
+hr {
+    border: 0;
+  clear:both;
+  display:block;
+  width: 100%;               
+  background-color:#cccccc;
+  height: 1px;
+  }
+
+#submissionSuccessText{
+    position: relative;
+    left:60px;
+    top:10px;
+}
+
+#modalFooterId{
+    position: relative;
+    right:50px;
+    border-top:none;
 }
 
 #redirectConfirmModal{
