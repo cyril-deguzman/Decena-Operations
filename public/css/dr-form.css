@@ -182,6 +182,10 @@ textarea {
     color: #194A09;
 }
 
+#redirectConfirmModal{
+    background-color: #e0e0e0;
+}
+
 /* Error-related styles */
 
 .error {

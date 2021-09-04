@@ -42,5 +42,17 @@ $(document).ready(function () {
         if(currNum > maxPageCount)
             $(this).parent().toggle();
     });
+
+    $(".companyName").each(function(){
+        console.log($(this).text().length);
+        if($(this).text().length >= 82 && $(this).text().length <= 139){
+            $(this).parent().parent().css("height","90px");
+            $(this).parent().parent().children(".card-header").children(".cardIcon").css("margin-top","14px");
+        }
+        else if($(this).text().length >= 140){
+            $(this).parent().parent().css("height","100px");
+            $(this).parent().parent().children(".card-header").children(".cardIcon").css("margin-top","14px");
+        }
+    });
 })
 

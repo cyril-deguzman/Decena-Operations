@@ -86,11 +86,7 @@ $(document).ready(function () {
 		$("#closeConfirmModal").click(function(){
 			window.location = '/form';
 		});
-
-		$("#confirmModalCloseButton").click(function(){
-			window.location = '/form';
-		});
-
+		
 		$("#confirmModal").modal("show");
 	})
 })
