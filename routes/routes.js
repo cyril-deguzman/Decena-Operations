@@ -3,6 +3,7 @@ const indexController = require(`../controllers/indexController.js`);
 const formController = require(`../controllers/formController.js`);
 const searchController = require(`../controllers/searchController.js`);
 const editController = require(`../controllers/editController.js`);
+const accountingController = require(`../controllers/accountingController.js`);
 
 const app = express();
 
@@ -21,7 +22,11 @@ app.get(`/viewreceipts/:id`, searchController.getViewDRs);
 app.get(`/viewreceipts/:id/:year`, searchController.getViewDRs);
 app.post(`/paginatecompany`, searchController.postPaginateCompanies);
 
-/* edit routes*/
+/* edit routes */
 app.get(`/editreceipt/:id`, editController.getEdit);
 app.post(`/posteditform`, editController.postEditForm);
+
+/* accounting routes */
+app.get(`/accounting`, accountingController.getViewAllDRs);
+
 module.exports = app;

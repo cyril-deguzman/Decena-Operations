@@ -9,3 +9,9 @@ $(document).ready(function () {
 		window.location = '/search';
 	})
 })
+
+$(document).ready(function () {
+	$("#submit-3").click(function () {
+		window.location = '/accounting';
+	})
+})
