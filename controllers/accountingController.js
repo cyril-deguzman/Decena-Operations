@@ -30,7 +30,7 @@ const accountingController = {
                 arr[i].status = arr[i].status ? 'paid' : 'pending'
                 arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
             });
-
+            
             res.render("accounting-dr-list", {dr: results, year: today})
         })
 

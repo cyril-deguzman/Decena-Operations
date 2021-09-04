@@ -140,12 +140,12 @@ $(document).ready(function() {
                 table.draw();
             });
         });
-        
+
         $('#filter-year-btn').click(function(){
             let companyName = $('#company-name-title').attr('data-id');
             let year = $('#search-year-input').val();
             
-            window.location = `/viewreceipts/${year}`;
+            window.location = `/accounting/${year}`;
         });
 
         $('#search-year-input').keyup(function(){
