@@ -3,10 +3,27 @@ $(document).ready(function () {
 
     /* Event Handlers */
     $(".resultsFoundCard").hover(function(){
-        $(this).children().css("background-color","#dbdbdb");
+        $(this).css("background-color","#dbdbdb");
+        
     }, function(){
-        $(this).children().css("background-color","#FFFFFF");
+        $(this).css("background-color","#FFFFFF");
     });
+
+    $(".companyNumberOfDRValue").each(function(){
+        if($(this).text() == 0){
+            $(this).parent().parent().parent().children(".deleteDRButton").css("display","inline");
+        }
+    });
+
+    $(".deleteDRButton").on("click",function(e){
+        e.stopPropagation();
+        $("#deleteCompanyModal").modal('toggle');
+        var companyName = $(this).siblings('.card-body').children('.companyName').text();
+        $(".confirmDeleteModalText").text("Are you sure you want to delete '"
+                                             + companyName + "' ?");
+
+    });
+
 
     $('#next').click(function (e) {
         e.preventDefault();
@@ -57,8 +74,13 @@ $(document).ready(function () {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title companyName">${company.name}</h5>
-                            <p class="card-text companyNumberOfDR">Delivery Receipts: <strong>${company.activeReceipts}</strong></p>
+                            <p class="card-text companyNumberOfDR">Delivery Receipts: 
+                                <strong class="companyNumberOfDRValue">${company.activeReceipts}</strong>
+                            </p>
                         </div>
+                        <button type="button" class="close deleteDRButton" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>`;
                     
                 textContent = textContent.concat(temp);
@@ -77,20 +99,35 @@ $(document).ready(function () {
             
             $('#companyListContainer div.resultsFoundCard:last').css("margin-bottom","20px");
 
-                     
-            $(".companyName").each(function(){
-                console.log($(this).text().length);
-                if($(this).text().length >= 82 && $(this).text().length <= 139){
-                    $(this).parent().parent().css("height","90px");
-                    $(this).parent().parent().children(".card-header").children(".cardIcon").css("margin-top","14px");
-                }
-                else if($(this).text().length >= 140){
-                    $(this).parent().parent().css("height","100px");
-                    $(this).parent().parent().children(".card-header").children(".cardIcon").css("margin-top","14px");
+            /**
+             *  Adds a delete button to each card that has 0 DR forms associated with the company
+             */
+
+            $(".companyNumberOfDRValue").each(function(){
+                if($(this).text() == 0){
+                    $(this).parent().parent().parent().children(".deleteDRButton").css("display","inline");
                 }
             });
+
+            $(".resultsFoundCard").hover(function(){
+                $(this).css("background-color","#dbdbdb");
+            }, function(){
+                $(this).css("background-color","#FFFFFF");
+            });
+
+            $(".deleteDRButton").on("click",function(e){
+                e.stopPropagation();
+                $("#deleteCompanyModal").modal('toggle');
+                var companyName = $(this).siblings('.card-body').children('.companyName').text();
+                $(".confirmDeleteModalText").text("Are you sure you want to delete '"
+                                                     + companyName + "' ?");
+            });
+
+        
         });
     })
+
+
 
     $('.resultsFoundCard').click(function() {
         let companyName = $(this).attr('data-id');
