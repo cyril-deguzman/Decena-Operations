@@ -116,7 +116,7 @@ $(document).ready(function () {
         $('#deleteCompanyButton').on("click",function(){
             /* Delete company here */
             let cName = currentCompany.attr('data-name');
-            console.log(cName);
+            
             $.post('/deletecompany', {companyName: cName}, function(data, status){
                 if(data == 'success'); {
                     currentCompany.toggle();

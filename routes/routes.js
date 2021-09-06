@@ -33,5 +33,6 @@ app.post(`/posteditform`, editController.postEditForm);
 /* accounting routes */
 app.get(`/accounting`, authMiddleware.isAccountant, accountingController.getViewAllDRs);
 app.get(`/accounting/:year`, authMiddleware.isAccountant, accountingController.getViewAllDRs);
+app.post(`/updatestatus`, accountingController.postUpdateStatus);
 
 module.exports = app;

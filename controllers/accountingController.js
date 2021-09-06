@@ -53,6 +53,17 @@ const accountingController = {
 
     },
 
+    postUpdateStatus: function(req, res) {
+        let id = req.body.id;
+
+        DeliveryReceiptModel.findByIdAndUpdate(id, { status: true }, function (err, docs) {
+            if (err)
+                console.log(err)
+            else
+                res.send('success');
+        });
+    },
+
     /**
      * paginatedResults
      * 

@@ -10,7 +10,7 @@
             <i class="material-icons-outlined viewIcon" style="font: size 48px;">table_view</i>
         </button>
     </td>
-    <td><div class="paymentDiv"><button class="paymentStatus"  data-toggle="modal" href="#paymentStatusModal" type="submit">{{status}}</button></div></td>
+    <td><div class="paymentDiv"><button data-id={{_id}} class="paymentStatus payment-btn"  data-toggle="modal" href="#paymentStatusModal" type="submit">{{status}}</button></div></td>
 </tr>
 
 
@@ -141,20 +141,3 @@
     </div>	
 </div>
 
-<!-- 2nd Modal: Confirmation for Updating Payment Status -->
-<div class="modal" id="paymentStatusModal" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="secondModalTitle">Payment Status Update</h4>
-            </div>
-        <div class="container"></div>
-        <div class="modal-body" id="updatePaymentStatusText">Would you like to continue on updating the payment status of this Delivery Receipt?</div>
-        <hr>
-        <div class="modal-footer" id="modalFooterId"> 
-            <a href="#" data-dismiss="modal" class="btn btn-light" id="cancelUpdateModal">Cancel</a>
-            <a href="#" data-dismiss="modal" class="btn btn-primary" id="continueUpdateModal">Continue</a>
-        </div>
-        </div>
-    </div>
-</div>
