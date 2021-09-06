@@ -13,9 +13,18 @@ $(document).ready(function () {
     /* This checks if the search is able to return a company, if succcessful the card will 
        display the number of companies matching the search query. */
     if ($(".resultsFoundCard")[0]) {
+
         let companyCount = $('#page-count').val();
         let searchQuery = $('#search-query').val();
-        $("#resultsCountCard").text("There are ("+ companyCount +")" + " results found for: " + searchQuery);
+
+        if(searchQuery == ""){
+            $("#resultsCountCard").text("Showing all " + "(" + companyCount + ") " +  "companies");
+        }
+
+        else{
+            $("#resultsCountCard").text("There are ("+ companyCount +")" + " results found for: " + searchQuery);
+        }
+        
     } 
     else {
         let companyCount = $('#page-count').val();
@@ -29,7 +38,6 @@ $(document).ready(function () {
             $("#noResultsFoundCard").text("There are (0) results found for: " + searchQuery);
             $("#noResultsParentCard").css("background-color","#299b04");
             $('#noResultsFoundCard').css('color','white');
-            $('#noResultsFoundCard').css('padding','15px');
         }   
         else {
             $("#noResultsParentCard").hide();
