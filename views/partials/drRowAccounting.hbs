@@ -6,7 +6,7 @@
     {{!-- <td>{{fleetDetails.helperName}}</td> --}}
     <td>{{fleetDetails.truckPlateNo}}</td>
     <td id="viewDRCol">
-        <button type="button" class="btn btn-info viewBtn material-icons-outlined md-24" data-toggle="modal" data-target="#exampleModal" id="submit">
+        <button type="button" class="btn btn-info viewBtn material-icons-outlined md-24" data-toggle="modal" data-target="#exampleModal{{@index}}" id="submit">
             <i class="material-icons-outlined viewIcon" style="font: size 48px;">table_view</i>
         </button>
     </td>
@@ -16,7 +16,7 @@
 
 <!-- 1st Modal: View Delivery Receipt Details -->
 <div id="modalAccounting">
-    <div div class="modal fade" id="exampleModal"
+    <div div class="modal fade" id="exampleModal{{@index}}"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">

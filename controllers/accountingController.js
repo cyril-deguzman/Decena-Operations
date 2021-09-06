@@ -22,13 +22,30 @@ const accountingController = {
                             $lt: new Date(today, 11, 31)
                         },
         }).lean().exec(function (err, results) { 
-            const months = ["January", "February", "March", "April", "May", "June", 
-                            "July", "August", "September", "October", "November", "December"];
 
             results.forEach((dr, i, arr) => {
-                let d = arr[i].dateIssued
+                let dateIss = arr[i].dateIssued
+                let datePick = arr[i].pickUpDates;
+                let dateDest= arr[i].destinationDates;
+                let dateAck = arr[i].acknowledgement;
+
                 arr[i].status = arr[i].status ? 'paid' : 'pending'
-                arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+                
+                /* Date Issued Reformat */
+                arr[i].dateIssued = accountingController.changeDateFormat(dateIss);
+
+                /* Pick up Dates Reformat */
+                arr[i].pickUpDates.arrivalDate = accountingController.changeDateFormat(datePick.arrivalDate);
+                arr[i].pickUpDates.departureDate =  accountingController.changeDateFormat(datePick.departureDate);
+
+                /* Destination Dates Reformat */
+                arr[i].destinationDates.arrivalDate = accountingController.changeDateFormat(dateDest.arrivalDate);
+                arr[i].destinationDates.departureDate = accountingController.changeDateFormat(dateDest.departureDate);
+                arr[i].destinationDates.unloadingStartDate = accountingController.changeDateFormat(dateDest.unloadingStartDate);
+                arr[i].destinationDates.unloadingFinishedDate = accountingController.changeDateFormat(dateDest.unloadingFinishedDate);
+
+                /* Acknowledgement Date Reformat */
+                arr[i].acknowledgement.dateAck = accountingController.changeDateFormat(dateAck.dateAck);
             });
             
             res.render("accounting-dr-list", {dr: results, year: today})
@@ -86,6 +103,14 @@ const accountingController = {
         return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     },
 
+    changeDateFormat: function(date) {
+        const months = ["January", "February", "March", "April", "May", "June", 
+                            "July", "August", "September", "October", "November", "December"];
+
+        date =  months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+        
+        return date;
+    }
 }
 
 module.exports = accountingController;

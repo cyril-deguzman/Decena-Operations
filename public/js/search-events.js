@@ -123,8 +123,6 @@ $(document).ready(function () {
                     $("#deleteCompanyModal").modal('hide'); 
                 }
             });
-
-            
         });
     }
 

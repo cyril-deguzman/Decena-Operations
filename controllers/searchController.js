@@ -70,13 +70,14 @@ const searchController = {
                         },
             companyName: { $eq: companyName }
         }).lean().exec(function (err, results) { 
-            const months = ["January", "February", "March", "April", "May", "June", 
-                            "July", "August", "September", "October", "November", "December"];
 
             results.forEach((dr, i, arr) => {
-                let d = arr[i].dateIssued
+                let dateIss = arr[i].dateIssued
+
                 arr[i].status = arr[i].status ? 'paid' : 'pending'
-                arr[i].dateIssued = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+                /* Date Issued Reformat */
+                arr[i].dateIssued = searchController.changeDateFormat(dateIss);
             });
 
             res.render("search-dr", {dr: results, name: companyName, year: today, dataName: dataName})
@@ -173,7 +174,13 @@ const searchController = {
         return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     },
 
-    
+    changeDateFormat: function(date) {
+        const months = ["January", "February", "March", "April", "May", "June", 
+                            "July", "August", "September", "October", "November", "December"];
+
+        date =  months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+        return date;
+    }
 }
 
 module.exports = searchController;
