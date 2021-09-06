@@ -21,6 +21,8 @@ thead, tfoot, #content-container {
     align-items: center;
     margin-top: 30px;
     position: relative;
+    width: 100%;
+    
 }
 
 #title-container {
@@ -184,7 +186,13 @@ table {
 
 .viewBtn{
     position: relative;
-    right:15px;
+}
+
+#viewDRCol {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 0px;
 }
 
 /* Chrome, Safari, Edge, Opera */
