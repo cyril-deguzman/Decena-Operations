@@ -2,28 +2,8 @@ $(document).ready(function () {
     let maxPageCount = Math.ceil($('#page-count').val() / 10);
 
     /* Event Handlers */
-    $(".resultsFoundCard").hover(function(){
-        $(this).css("background-color","#dbdbdb");
-        
-    }, function(){
-        $(this).css("background-color","#FFFFFF");
-    });
-
-    $(".companyNumberOfDRValue").each(function(){
-        if($(this).text() == 0){
-            $(this).parent().parent().parent().children(".deleteDRButton").css("display","inline");
-        }
-    });
-
-    $(".deleteDRButton").on("click",function(e){
-        e.stopPropagation();
-        $("#deleteCompanyModal").modal('toggle');
-        var companyName = $(this).siblings('.card-body').children('.companyName').text();
-        $(".confirmDeleteModalText").text("Are you sure you want to delete '"
-                                             + companyName + "' ?");
-
-    });
-
+   
+    onClickAndHoverEvents();
 
     $('#next').click(function (e) {
         e.preventDefault();
@@ -103,29 +83,42 @@ $(document).ready(function () {
              *  Adds a delete button to each card that has 0 DR forms associated with the company
              */
 
-            $(".companyNumberOfDRValue").each(function(){
-                if($(this).text() == 0){
-                    $(this).parent().parent().parent().children(".deleteDRButton").css("display","inline");
-                }
-            });
-
-            $(".resultsFoundCard").hover(function(){
-                $(this).css("background-color","#dbdbdb");
-            }, function(){
-                $(this).css("background-color","#FFFFFF");
-            });
-
-            $(".deleteDRButton").on("click",function(e){
-                e.stopPropagation();
-                $("#deleteCompanyModal").modal('toggle');
-                var companyName = $(this).siblings('.card-body').children('.companyName').text();
-                $(".confirmDeleteModalText").text("Are you sure you want to delete '"
-                                                     + companyName + "' ?");
-            });
+           onClickAndHoverEvents();
 
         
         });
     })
+    
+    function onClickAndHoverEvents(){
+        $(".resultsFoundCard").hover(function(){
+            $(this).css("background-color","#dbdbdb");
+            
+        }, function(){
+            $(this).css("background-color","#FFFFFF");
+        });
+    
+        $(".companyNumberOfDRValue").each(function(){
+            if($(this).text() == 0){
+                $(this).parent().parent().parent().children(".deleteDRButton").css("display","inline");
+            }
+        });
+    
+        $(".deleteDRButton").on("click",function(e){
+            e.stopPropagation();
+            $("#deleteCompanyModal").modal('toggle');
+            var companyName = $(this).siblings('.card-body').children('.companyName').text();
+            $(".confirmDeleteModalText").text("Are you sure you want to delete '"
+                                                 + companyName + "' ?");                            
+        });
+
+
+        $('#deleteCompanyButton').on("click",function(){
+
+            /* Delete company here */
+
+           $("#deleteCompanyModal").modal('hide'); 
+        });
+    }
 
 
 
