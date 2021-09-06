@@ -11,6 +11,7 @@ const app = express();
 /* index routes */
 app.get(`/favicon.ico`, indexController.getFavicon);
 app.get(`/`, indexController.getIndex);
+app.get(`/logout`, indexController.getLogOut);
 app.post(`/login`, indexController.postLogin);
 
 /* form routes */

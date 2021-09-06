@@ -27,6 +27,18 @@ const indexController = {
     },
     
     /**
+     * getLogOut
+     * 
+     * destroys current session and logs out the user.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    getLogOut: function(req,res) {
+        req.session.destroy();
+        res.render('login', {});
+    },
+
+    /**
      * postLogin.
      * 
      * logs in the user.
