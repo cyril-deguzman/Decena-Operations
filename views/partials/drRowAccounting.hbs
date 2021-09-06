@@ -4,10 +4,156 @@
     <td>{{fleetDetails.driverName}}</td>
     <td>{{fleetDetails.helperName}}</td>
     <td>{{fleetDetails.truckPlateNo}}</td>
-       <td>
-        <button type="button" class="btn btn-info editBtn material-icons-outlined md-24">
+    <td>
+        <button type="button" class="btn btn-info editBtn material-icons-outlined md-24" data-toggle="modal" data-target="#exampleModal" id="submit">
             <i class="material-icons-outlined editIcon" style="font: size 48px;">table_view</i>
         </button>
     </td>
-    <td><div class="paymentDiv"><button class="paymentStatus paymentButton" type="submit">{{status}}</button></div></td>
+    <td><div class="paymentDiv"><button class="paymentStatus"  data-toggle="modal" href="#paymentStatusModal" type="submit">{{status}}</button></div></td>
 </tr>
+
+
+<!-- 1st Modal: View Delivery Receipt Details -->
+<div id="modalAccounting">
+    <div div class="modal fade" id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 id="modal-dr-title">
+                        Delivery Receipt
+                    </h1>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body" id="modal-body">
+                    <div id="modal-dr-header">
+                        Click <b>&times;</b> to exit this view.
+                    </div>
+                    <div class="modal-part1" id="modal-part1">
+                        <div id="upper1-part1">
+                            <p id="upper1-left-p1">Date Issued <br>Forwarding/Broker's Company </p>
+                            <p id="upper1-right-p1">{{dateIssued}}<br>{{companyName}}</p>
+                        </div>
+                        <div id="upper2-part1">
+                            <p id="upper2-left-p1">Client </p>
+                            <p id="upper2-right-p1">{{clientName}}</p>
+                        </div>    
+                        <div id="lower1-part1">
+                            <p id="lower1-left-p1">Pick-Up Site </p>
+                            <p id="lower1-right-p1"></p>
+                        </div>
+
+                        <div id="lower2-part1">
+                            <p id="lower2-left-p1">Delivery Site </p>
+                            <p id="lower2-right-p1"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-part2" id="modal-part2">
+                        <div id="upper-part2">
+                            <p id="upper-left-p2">Mode of Shipment <br>List of Documents </p>
+                            <p id="upper-right-p2">{{shipMode}}</p>
+                        </div>
+                        <div id="middle-part2">
+                            <p id="middle-left-p2">Processor </p>
+                            <p id="middle-right-p2">{{processor}}</p>
+                        </div>
+                        <div id="lower-part2">
+                            <p id="lower-left-p2">Quantity <br>Description of Commodity </p>
+                            <p id="lower-right-p2">{{quantity}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-part3" id="modal-part3">
+                        <div id="left-p3">
+                            <h6>PICK-UP POINT</h6>
+                            <div class="modal-pickup-point" id="modal-pickup-point">
+                                <div id="arrival-ppoint">
+                                    <p id="a-left-left-p3">Arrival Date <br>Time </p>
+                                    <p id="a-left-right-p3"></p>
+                                </div>
+                                <br>
+                                <div id="departure-ppoint">
+                                    <p id="d-left-left-p3">Departure Date <br>Time </p>
+                                    <p id="d-left-right-p3"></p>
+                                </div> 
+                            </div>
+                        </div>
+                        
+                        <div id="right-p3">
+                            <h6>DESTINATION POINT</h6>
+                            <div id="modal-destination-point">
+                                <div id="arrival-dpoint">
+                                    <p id="a-right-left-p3">Arrival Date <br>Time </p>
+                                    <p id="a-right-right-p3"></p>
+                                </div>
+                                <br>
+                                <div id="startload-dpoint">
+                                    <p id="sl-right-left-p3">Date Started Loading/Unloading <br>Time </p>
+                                    <p id="sl-right-right-p3"></p>
+                                </div>
+                                <br>
+                                <div id="finishload-dpoint">
+                                    <p id="fl-right-left-p3">Date Finished Loading/Unloading <br>Time </p>
+                                    <p id="fl-right-right-p3"></p>
+                                </div>
+                                <br>
+                                <div id="departure-dpoint">
+                                    <p id="d-right-left-p3">Departure Date <br>Time </p>
+                                    <p id="d-right-right-p3"></p>
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-part4" id="modal-part4">
+                        <h6>FLEET DETAILS</h6>
+                        <div id="modal-fleet1-details">
+                            <p id="upper1-left-p4">Truck Plate Number <br>Driver </p>
+                            <p id="upper1-right-p4">{{fleetDetails.truckPlateNo}} <br>{{fleetDetails.driverName}}</p>
+                        </div>
+                        <div id="modal-fleet2-details">
+                            <p id="upper2-left-p4">Helper </p>
+                            <p id="upper2-right-p4">{{fleetDetails.helperName}}</p>
+                        </div>
+                        <br>
+                        <h6>ACKNOWLEDGEMENT</h6>
+                        <div id="modal-acknowledgement1">
+                            <p id="lower1-left-p4">Acknowledgement </p>
+                            <p id="lower1-right-p4"></p>
+                        </div>
+                        <div id="modal-acknowledgement2">
+                            <p id="lower2-left-p4">Date <br>Time </p>
+                            <p id="lower2-right-p4"></p>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+</div>
+
+<!-- 2nd Modal: Confirmation for Updating Payment Status -->
+<div class="modal" id="paymentStatusModal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="secondModalTitle">Payment Status Update</h4>
+            </div>
+        <div class="container"></div>
+        <div class="modal-body" id="updatePaymentStatusText">Would you like to continue on updating the payment status of this Delivery Receipt?</div>
+        <hr>
+        <div class="modal-footer" id="modalFooterId"> 
+            <a href="#" data-dismiss="modal" class="btn btn-light" id="cancelUpdateModal">Cancel</a>
+            <a href="#" data-dismiss="modal" class="btn btn-primary" id="continueUpdateModal">Continue</a>
+        </div>
+        </div>
+    </div>
+</div>

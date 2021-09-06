@@ -212,3 +212,120 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* View DR Modal */
+#upper1-part1, #upper2-part1, #lower1-part1, #lower2-part1, #upper-part2, #middle-part2, #lower-part2, #modal-part3, 
+#arrival-ppoint, #departure-ppoint, #arrival-dpoint, #startload-dpoint, #finishload-dpoint, #departure-dpoint, #modal-fleet1-details, 
+#modal-fleet2-details, #modal-acknowledgement1, #modal-acknowledgement2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#modal-part1, #modal-part2, #modal-part4 {
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-part1, #modal-part2, #modal-part3, #modal-part4  {
+    border-top: 5px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-color: #194A09;
+    border-style: solid;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+}
+
+ #upper1-left-p1, #upper2-left-p1, #lower1-left-p1, #lower2-left-p1, #upper-left-p2, #middle-left-p2, #lower-left-p2, 
+ #left-p3,  #a-left-left-p3, #d-left-left-p3, #a-right-left-p3, #sl-right-left-p3, #fl-right-left-p3, #d-right-left-p3,
+   #upper1-left-p4, #upper2-left-p4, #lower1-left-p4, #lower2-left-p4 {
+   width: 40%;
+   font-size: 2vh;
+}
+
+#upper1-right-p1, #upper2-right-p1, #lower1-right-p1, #lower2-right-p1, #upper-right-p2, #middle-right-p2, #lower-right-p2, 
+#a-left-right-p3, #d-left-right-p3, #a-right-right-p3, #sl-right-right-p3, #fl-right-right-p3, #d-right-right-p3, 
+#upper1-right-p4, #upper2-right-p4, #lower1-right-p4, #lower2-right-p4 {
+   width: 55%;
+   word-wrap: break-word;
+   color: black;
+   font-size: 2vh;
+   margin-left: 2vh;    
+}
+
+#right-p3 {
+   margin-left: 2vh;
+   width: 55%;
+   word-wrap: break-word;    
+}
+
+h6 {
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+
+p {
+    display: block;
+    margin: 0;
+    color: #737373;
+    font-size: 2.5vh;
+}
+
+#modal-dr-header {
+    background-color: #FCFA0D;
+    margin: 1vh;
+    margin-top: 0vh;
+    padding: 2vh;
+}
+
+#modal-dr-title {
+    margin: 0vh;
+}
+
+/* Update Payment Status Modal */
+#secondModalTitle {
+    color: #194A09;
+    position: relative;
+    left:10px;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#cccccc;
+    height: 1px;
+  }
+
+#updatePaymentStatusText {
+    position: relative;
+    left:10px;
+    top:10px;
+    color: black;
+}
+
+#modalFooterId {
+    position: relative;
+    right:10px;
+    border-top:none;
+    padding-top: 0px;
+}
+
+#cancelUpdateModal {
+    background-color: #e0e0e0;
+}
+
+#continueUpdateModal {
+    background-color: #cc3333;
+}
+
+#continueUpdateModal:hover{
+    background-color: #8b0000;
+}
+#cancelUpdateModal:hover{
+    background-color: #c0c0c0;
+}
