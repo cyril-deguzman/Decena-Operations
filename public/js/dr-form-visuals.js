@@ -777,24 +777,74 @@ $(document).ready(function () {
     var div1 = document.createElement("div");
     var commodityDesc = document.getElementById("description");
     var div2 = document.createElement("div");
-    var counter = document.createElement("span");
+    var counterComomdityDesc = document.createElement("span");
 
     div1.style.position = "relative";
     div2.style.position = "absolute";
-    div2.style.bottom = "8px";
+    div2.style.bottom = "3px";
     div2.style.color = "#ccc";
-    div2.style.left = "71%";
+    div2.style.left = "40%";
     commodityDesc.parentNode.appendChild(div1);
     div1.appendChild(commodityDesc);
-    div2.appendChild(counter);
+    div2.appendChild(counterComomdityDesc);
     div1.appendChild(div2);
 
-    function charLeft() {
-        counter.innerHTML = (200 - this.value.length);
+    function charLeftCommodityDesc() {
+        counterComomdityDesc.innerHTML = (150 - this.value.length);
     }
 
-    commodityDesc.addEventListener("input", charLeft);
-    charLeft.call(commodityDesc);   
+    commodityDesc.addEventListener("input", charLeftCommodityDesc);
+    charLeftCommodityDesc.call(commodityDesc);   
+
+    /**
+     * Displaying number of characters left in Pick-up Site
+     */
+    var div3 = document.createElement("div");
+    var pickUpSite = document.getElementById("pickup-site");
+    var div4 = document.createElement("div");
+    var counterPickUp = document.createElement("span");
+
+    div3.style.position = "relative";
+    div4.style.position = "absolute";
+    div4.style.bottom = "9px";
+    div4.style.color = "#ccc";
+    div4.style.left = "40%";
+    pickUpSite.parentNode.appendChild(div3);
+    div3.appendChild(pickUpSite);
+    div4.appendChild(counterPickUp);
+    div3.appendChild(div4);
+
+    function charLeftPickUpSite() {
+        counterPickUp.innerHTML = (150 - this.value.length);
+    }
+
+    pickUpSite.addEventListener("input", charLeftPickUpSite);
+    charLeftPickUpSite.call(pickUpSite);  
+         
+    /**
+     * Displaying number of characters left in Delivery Site
+     */
+     var div5 = document.createElement("div");
+     var deliverySite = document.getElementById("delivery-site");
+     var div6 = document.createElement("div");
+     var counterDeliverySite = document.createElement("span");
+ 
+     div5.style.position = "relative";
+     div6.style.position = "absolute";
+     div6.style.bottom = "9px";
+     div6.style.color = "#ccc";
+     div6.style.left = "40%";
+     deliverySite.parentNode.appendChild(div5);
+     div5.appendChild(deliverySite);
+     div6.appendChild(counterDeliverySite);
+     div5.appendChild(div6);
+ 
+     function charLeftDeliverySite() {
+        counterDeliverySite.innerHTML = (150 - this.value.length);
+     }
+ 
+     deliverySite.addEventListener("input", charLeftDeliverySite);
+     charLeftDeliverySite.call(deliverySite);           
 
     /**
      * Adding a default value for the radio buttons
