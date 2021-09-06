@@ -125,6 +125,24 @@ $(document).ready(function () {
             }); 
         }
 
+        else if (($("#pick-up-errors").html() == "Invalid Input. Pick-up point dates/time must be before Destination point dates/time") ||
+                ($("#destination-errors").html() == "Invalid Input. Pick-up point dates/time must be before Destination point dates/time")) {
+            //
+            $("#p-departure-date, #d-arrival-date, #p-departure-time, #d-arrival-time").on("change", function () {
+                var datePDepart = document.getElementById("p-departure-date").value;
+                setValid($("#p-departure-date").attr("id"), $("#pick-up-errors"));
+
+                var dateDArrive = document.getElementById("d-arrival-date").value;
+                setValid($("#d-arrival-date").attr("id"), $("#destination-errors"));
+
+                var timePDepart = document.getElementById("p-departure-time").value;
+                setValid($("#p-departure-time").attr("id"), $("#pick-up-errors"));
+
+                var timeDArrive = document.getElementById("d-arrival-time").value;
+                setValid($("#d-arrival-time").attr("id"), $("#destination-errors"));
+            });
+        }
+
         else {
             $("#p-arrival-date, #p-departure-date, #p-arrival-time, #p-departure-time").on("change", function () {
                 var datePArrive = document.getElementById("p-arrival-date").value;
@@ -387,21 +405,28 @@ $(document).ready(function () {
     function validStartEndDate (startInput, endInput, errorfield, startId, endId) {
         var dateStart = getDateTime(startInput);
         var dateEnd = getDateTime(endInput);
+        var errorMsg;
+
+        if ((startId == $("#p-departure-date").attr("id")) && (endId == $("#d-arrival-date").attr("id")))
+            errorMsg = "Invalid Input. Pick-up point dates/time must be before Destination point dates/time";
+        else
+            errorMsg = "Invalid Input. Start date must be before end date.";
+
         console.log("startInput: " + startInput);
         console.log("endInput: " + endInput);
         // console.log("dateEnd: " + dateEnd + " == dateStart: " + dateStart);
         if (!(validDate(startInput, errorfield, startId) || validDate(endInput, errorfield, endId))) {
             // Special case
             if (startInput == "2021-09-01" && endInput == "2021-08-31") {
-                setInvalid(startId, "Invalid Input. Start date must be before end date.", errorfield);
-                setInvalid(endId, "Invalid Input. Start date must be before end date.", errorfield);
+                setInvalid(startId, errorMsg, errorfield);
+                setInvalid(endId, errorMsg, errorfield);
                 return "Invalid";
             }
 
             if (!(dateEnd == dateStart) || (startInput == "2021-08-31" && endInput == "2021-09-01")) {
                 if (dateEnd - dateStart < 0) {
-                    setInvalid(startId, "Invalid Input. Start date must be before end date.", errorfield);
-                    setInvalid(endId, "Invalid Input. Start date must be before end date.", errorfield);
+                    setInvalid(startId, errorMsg, errorfield);
+                    setInvalid(endId, errorMsg, errorfield);
                     return "Invalid";
                 }
                 else {
