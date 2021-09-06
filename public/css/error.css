@@ -3,7 +3,8 @@ body {
     width: 100%;
     background-image: url("../images/grayBackground.jpg");
     background-size: cover;
-    font-family: Helvetica;               
+    font-family: Helvetica;      
+    overflow: hidden;         
 }    
 
 body, #error-photo, #error-texts, #error-contents {

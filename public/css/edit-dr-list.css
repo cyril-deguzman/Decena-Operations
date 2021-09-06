@@ -1,0 +1,192 @@
+body {          
+    height: 100%;
+    background-image: url("../images/grayBackground.jpg");
+    background-size: cover;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+thead, tbody, tfoot {
+    background-color: white;
+}
+
+thead, tfoot, #content-container {
+    color: #194A09;   
+}
+
+#main-div {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right:30px;
+    margin-top:30px;
+}
+
+#company-name-title { 
+    position: relative;
+    /* background-color: white; */
+    margin: 0%;
+    padding: 1%;
+    color: black;
+    top:60px;
+    right:20px;
+}
+
+#title-container {
+    position: relative;
+    left:15px;
+}
+
+.custom-select { 
+    background-position: 35px !important;
+    width:50px !important
+}
+
+.btn-info {
+    background-color: #417dc1 !important;
+    border-style: none !important;
+    margin-left: 40px;
+}
+
+.editIcon {
+    color: white;
+}
+
+#mainContainerForYear {
+    position: relative;
+    left:300px;
+    top:50px;
+}
+
+tfoot input {
+    width: 40%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+table {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed; 
+    word-wrap:break-word; 
+}
+
+.form-control-sm {
+    position: relative;
+}
+
+.pagination {
+    position: relative;
+    right:430px;
+    top:30px;
+    padding-bottom: 30px;
+}
+
+#searchDrForm {
+    position: relative;
+    left:5px;
+    bottom:20px;
+}
+
+#search-year-input {
+    position: relative;
+    top:15px;
+    border-color: gray;
+    width: 40%;
+} 
+
+#filterText {
+    overflow-y: auto;
+    max-height: 50px;
+}
+
+#filter-year-btn {
+    position: relative;
+    left:110px;
+    bottom:20px;
+    height: 40px;
+}
+
+#containerForYear{
+    position:relative;
+    top:50px;
+    right:100px;   
+}
+
+/* Pagination */
+.pagination > li > a
+{
+    background-color: white;
+    color: #194A09;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #194A09 !Important;
+    border: solid 1px #194A09 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #194A09 !Important;
+    border: solid 1px #194A09;
+}
+
+.paymentStatus{
+    border-radius: 5px; 
+    padding:1px; color: white; 
+    text-align: center;
+    width: 90%;
+    height:25px;
+}
+
+.editBtn{
+    position: relative;
+    right:15px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#header-logo{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position:relative;
+}
+
+#decena-logo{
+    width: 23%;
+    height: 23%;
+    vertical-align: middle;
+    border-style: none;
+}
+
+#title-container {
+    position: relative;
+    left:150px;
+}
