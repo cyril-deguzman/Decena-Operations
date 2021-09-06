@@ -24,6 +24,7 @@ app.get(`/companysearch`, authMiddleware.isEncoder, searchController.getCompanie
 app.get(`/viewreceipts/:id`, authMiddleware.isEncoder, searchController.getViewDRs);
 app.get(`/viewreceipts/:id/:year`, authMiddleware.isEncoder, searchController.getViewDRs);
 app.post(`/paginatecompany`, searchController.postPaginateCompanies);
+app.post(`/deletecompany`, searchController.postDeleteCompany);
 
 /* edit routes */
 app.get(`/editreceipt/:id`, authMiddleware.isEncoder, editController.getEdit);

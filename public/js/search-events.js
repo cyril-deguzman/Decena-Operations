@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let maxPageCount = Math.ceil($('#page-count').val() / 10);
-
+    let currentCompany;
     /* Event Handlers */
    
     onClickAndHoverEvents();
@@ -105,6 +105,7 @@ $(document).ready(function () {
     
         $(".deleteDRButton").on("click",function(e){
             e.stopPropagation();
+            currentCompany = $(this).parent();
             $("#deleteCompanyModal").modal('toggle');
             var companyName = $(this).siblings('.card-body').children('.companyName').text();
             $(".confirmDeleteModalText").text("Are you sure you want to delete '"
@@ -113,14 +114,19 @@ $(document).ready(function () {
 
 
         $('#deleteCompanyButton').on("click",function(){
-
             /* Delete company here */
+            let cName = currentCompany.attr('data-name');
+            console.log(cName);
+            $.post('/deletecompany', {companyName: cName}, function(data, status){
+                if(data == 'success'); {
+                    currentCompany.toggle();
+                    $("#deleteCompanyModal").modal('hide'); 
+                }
+            });
 
-           $("#deleteCompanyModal").modal('hide'); 
+            
         });
     }
-
-
 
     $('.resultsFoundCard').click(function() {
         let companyName = $(this).attr('data-id');

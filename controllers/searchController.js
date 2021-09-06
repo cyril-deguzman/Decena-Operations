@@ -106,6 +106,24 @@ const searchController = {
     },
 
     /**
+     * postDeleteCompany.
+     * 
+     * deletes a Company from the database.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    postDeleteCompany: function(req, res) {
+        let companyName = req.body.companyName;
+
+        Company.findOneAndDelete({name: {$eq: companyName} }, function (err, docs) {
+            if (err)
+                console.log(err)
+            else 
+                res.send('success');
+        });
+    },
+
+    /**
      * paginatedResults
      * 
      * paginates a collection.
