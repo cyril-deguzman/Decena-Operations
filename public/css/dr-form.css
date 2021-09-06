@@ -55,6 +55,7 @@ body {
     padding-bottom: 2%;
 
 }
+
 #header-logo {
     display: flex;
     align-items: center;
@@ -69,11 +70,8 @@ body {
 .header-logo h1 {
   position: relative;
   font-size: 6vh;
-}
-
-.header-logo h1 {
-    padding-left: 1%;
-    color: #299B04;
+  padding-left: 1%;
+  color: #299B04;
 }
 
 #name-container, #mode-shipment, #pick-up, #fleet-details {

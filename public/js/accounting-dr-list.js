@@ -30,7 +30,7 @@ $(document).ready(function() {
     $('.drDataTable tfoot th.filterCol').each( function () {
         title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+ " " + title +'" class ="searchField" />' );
-    } );
+    } )
  
     // DataTable
     var table = $('.drDataTable').DataTable({  bAutoWidth: false,
@@ -38,13 +38,13 @@ $(document).ready(function() {
             { orderable: false, targets: -2 }
          ],
         aoColumns : [
-          { sWidth: '140px' },
-          { sWidth: '150px' },
-          { sWidth: '150px' },
-          { sWidth: '150px' },
-          { sWidth: '120px' },
           { sWidth: '90px' },
-          { sWidth: '100px' }
+          { sWidth: '170px' },
+          { sWidth: '170px' },
+          { sWidth: '170px' },
+          { sWidth: '80px' },
+          { sWidth: '40px' },
+          { sWidth: '70px' }
         ],
         initComplete: function () {
             // Apply the search
@@ -87,22 +87,22 @@ $(document).ready(function() {
                 // case 0:
                    
                 case 1:
-                    instanceOfSearchField.css("width","160px");
+                    instanceOfSearchField.css("width","100px");
                     break;
                 case 2:
-                    instanceOfSearchField.css("width","170px");
+                    instanceOfSearchField.css("width","160px");
                     break;
                 case 3:
-                    instanceOfSearchField.css("width","170px");
+                    instanceOfSearchField.css("width","160px");
                     break;
                 case 4:
-                    instanceOfSearchField.css("width","170px");
+                    instanceOfSearchField.css("width","160px");
                     break;
                 case 5:
-                    instanceOfSearchField.css("width","140px");
+                    instanceOfSearchField.css("width","100px");
                     break;
                 case 6:
-                    instanceOfSearchField.css("width","125px");
+                    instanceOfSearchField.css("width","90px");
                     break;
             }
         }

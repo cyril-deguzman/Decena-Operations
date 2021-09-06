@@ -46,9 +46,10 @@ thead, tfoot, #content-container {
 }
 
 #mainContainerForYear {
-    position: relative;
+    /* position: relative; */
     left:300px;
-    top:51px;
+    margin-bottom: 15px;
+    margin-top: 0%;
 }
 
 tfoot input {
@@ -320,4 +321,28 @@ hr {
 }
 #cancelUpdateModal:hover{
     background-color: #c0c0c0;
+}
+
+div.datatable-wide {
+    padding-top: 0%;
+    margin-top:0%;
+}
+
+/* Header */
+#title-container {
+    display: flex;
+    align-items: center;
+}
+
+#decena-logo {
+  float: left;
+  width: 23%;
+  height: 23%;
+}
+
+#dr-logo {
+  position: relative;
+  font-size: 6vh;
+  padding-left: 1%;
+  color: #299B04;
 }

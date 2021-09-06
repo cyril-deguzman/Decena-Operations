@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <!-- Page Title -->
-        <title>test</title>
+        <title>Accounting</title>
         <link rel="icon" type="image/png" href="/images/favicon.ico"/>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -54,8 +54,8 @@
                         </span>
                     </button>
                 </div>
-
-                <div class="col-xl-12 mb-3 mt-3">
+                {{!-- class="col-xl-12 mb-3 mt-3" --}}
+                <div id="table-container" class="datatable-wide">
                     <table class="table table-striped table-bordered drdatatable" style="width: 100%" id="dr-datatable">
                         <thead>
                             <tr> 
@@ -63,7 +63,6 @@
                                 <th class="filterCol">Company</th>
                                 <th class="filterCol">Client</th>
                                 <th class="filterCol">Driver</th>
-                                {{!-- <th class="filterCol">Helper</th> --}}
                                 <th class="filterCol">Truck Plate No.</th>
                                 <th>View DR</th>
                                 <th class="filterCol">Payment Status</th>
@@ -82,10 +81,9 @@
                                 <th class="filterCol">Company</th>
                                 <th class="filterCol">Client</th>
                                 <th class="filterCol">Driver</th>
-                                {{!-- <th class="filterCol">Helper</th> --}}
-                                <th class="filterCol">Truck Plate No.</th>
+                                <th class="filterCol">Plate No.</th>
                                 <th>View DR</th>
-                                <th class="filterCol">Payment Status</th>
+                                <th class="filterCol">Status</th>
                             </tr>    
                         </tfoot>
                     </table>
