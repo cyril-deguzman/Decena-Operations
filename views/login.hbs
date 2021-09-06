@@ -1,14 +1,21 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title> Login </title>
-        <link rel="stylesheet" type="text/css" href="../public/css/login.css">
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
 
+        <!-- Import jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous">
+        </script>
+
+        <!-- Import javascript -->
+	    <script type="text/javascript" src="/js/login.js"></script>
     </head>
     <body>
         <div id="loginContents">
             <div id="loginForm">
-                <img src="../public/images/dv-logo.png" id="logo" alt="dv-logo"/>
+                <img src="/images/dv-logo.png" id="logo" alt="dv-logo"/>
                 <h1 id="login-title"> Department Login </h1>
                 <hr class="solid">
                 <p ib="login-subtitle"> Enter your department code here: </p>
@@ -17,7 +24,7 @@
                 </div>	
                 <form>
                     <input class="input" type="text" placeholder="Usercode" id="ucode" name="ucode">
-                    <input type="submit" id="loginbutton" value="Login" class = "btn" name = "login-btn">                    
+                    <input type="button" id="login-button" value="Login" class="btn" name="login-btn">                    
                 </form>
             </div>
         </div>
