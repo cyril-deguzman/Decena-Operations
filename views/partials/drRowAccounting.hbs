@@ -1,8 +1,9 @@
 <tr>
     <td>{{dateIssued}}</td>
+    <td>{{companyName}}</td>    
     <td>{{clientName}}</td>
     <td>{{fleetDetails.driverName}}</td>
-    <td>{{fleetDetails.helperName}}</td>
+    {{!-- <td>{{fleetDetails.helperName}}</td> --}}
     <td>{{fleetDetails.truckPlateNo}}</td>
     <td id="viewDRCol">
         <button type="button" class="btn btn-info viewBtn material-icons-outlined md-24" data-toggle="modal" data-target="#exampleModal" id="submit">
@@ -47,27 +48,27 @@
                         </div>    
                         <div id="lower1-part1">
                             <p id="lower1-left-p1">Pick-Up Site </p>
-                            <p id="lower1-right-p1"></p>
+                            <p id="lower1-right-p1">{{pickSite}}</p>
                         </div>
 
                         <div id="lower2-part1">
                             <p id="lower2-left-p1">Delivery Site </p>
-                            <p id="lower2-right-p1"></p>
+                            <p id="lower2-right-p1">{{dropSite}}</p>
                         </div>
                     </div>
                     
                     <div class="modal-part2" id="modal-part2">
                         <div id="upper-part2">
                             <p id="upper-left-p2">Mode of Shipment <br>List of Documents </p>
-                            <p id="upper-right-p2">{{shipMode}}</p>
+                            <p id="upper-right-p2">{{shipMode}}<br>{{documentList.documents}}</p>
                         </div>
                         <div id="middle-part2">
                             <p id="middle-left-p2">Processor </p>
-                            <p id="middle-right-p2">{{processor}}</p>
+                            <p id="middle-right-p2">{{documentList.processor}}</p>
                         </div>
                         <div id="lower-part2">
                             <p id="lower-left-p2">Quantity <br>Description of Commodity </p>
-                            <p id="lower-right-p2">{{quantity}}</p>
+                            <p id="lower-right-p2">{{quantity}}<br>{{commodityDesc}}</p>
                         </div>
                     </div>
                     
@@ -77,12 +78,12 @@
                             <div class="modal-pickup-point" id="modal-pickup-point">
                                 <div id="arrival-ppoint">
                                     <p id="a-left-left-p3">Arrival Date <br>Time </p>
-                                    <p id="a-left-right-p3"></p>
+                                    <p id="a-left-right-p3">{{pickUpDates.arrivalDate}}<br>{{pickUpDates.arrivalTime}}</p>
                                 </div>
                                 <br>
                                 <div id="departure-ppoint">
                                     <p id="d-left-left-p3">Departure Date <br>Time </p>
-                                    <p id="d-left-right-p3"></p>
+                                    <p id="d-left-right-p3">{{pickUpDates.departureDate}}<br>{{pickUpDates.departureTime}}</p>
                                 </div> 
                             </div>
                         </div>
@@ -92,22 +93,22 @@
                             <div id="modal-destination-point">
                                 <div id="arrival-dpoint">
                                     <p id="a-right-left-p3">Arrival Date <br>Time </p>
-                                    <p id="a-right-right-p3"></p>
+                                    <p id="a-right-right-p3">{{destinationDates.arrivalDate}}<br>{{destinationDates.arrivalTime}}</p>
                                 </div>
                                 <br>
                                 <div id="startload-dpoint">
                                     <p id="sl-right-left-p3">Date Started Loading/Unloading <br>Time </p>
-                                    <p id="sl-right-right-p3"></p>
+                                    <p id="sl-right-right-p3">{{destinationDates.unloadingStartDate}}<br>{{destinationDates.unloadingStartTime}}</p>
                                 </div>
                                 <br>
                                 <div id="finishload-dpoint">
                                     <p id="fl-right-left-p3">Date Finished Loading/Unloading <br>Time </p>
-                                    <p id="fl-right-right-p3"></p>
+                                    <p id="fl-right-right-p3">{{destinationDates.unloadingFinishedDate}}<br>{{destinationDates.unloadingFinishedTime}}</p>
                                 </div>
                                 <br>
                                 <div id="departure-dpoint">
                                     <p id="d-right-left-p3">Departure Date <br>Time </p>
-                                    <p id="d-right-right-p3"></p>
+                                    <p id="d-right-right-p3">{{destinationDates.departureDate}}<br>{{destinationDates.departureTime}}</p>
                                 </div>                                    
                             </div>
                         </div>
@@ -127,11 +128,11 @@
                         <h6>ACKNOWLEDGEMENT</h6>
                         <div id="modal-acknowledgement1">
                             <p id="lower1-left-p4">Acknowledgement </p>
-                            <p id="lower1-right-p4"></p>
+                            <p id="lower1-right-p4">{{acknowledgement.remarks}}</p>
                         </div>
                         <div id="modal-acknowledgement2">
                             <p id="lower2-left-p4">Date <br>Time </p>
-                            <p id="lower2-right-p4"></p>
+                            <p id="lower2-right-p4">{{acknowledgement.dateAck}}<br>{{acknowledgement.timeAck}}</p>
                         </div>    
                     </div>
                 </div>

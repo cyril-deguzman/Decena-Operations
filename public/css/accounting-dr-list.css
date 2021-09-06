@@ -122,20 +122,16 @@ table {
 }
 
 .paymentStatus {
-    padding-bottom: 10px;
     border: 2px solid  #cc3333;
     border-radius: 5px ; 
-    padding:3px; 
     color: white; 
     text-align: center;
     width: 100%;
     background-color: #cc3333;
     height:30px;
-
-}
-
-.paymentButton{
-    padding-bottom: 3px;
+    margin: 3px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .paymentStatus:hover{
@@ -185,14 +181,14 @@ table {
 }
 
 .viewBtn{
-    position: relative;
+    margin: 0 auto;
 }
 
 #viewDRCol {
     display: flex;
     text-align: center;
     align-items: center;
-    padding: 0px;
+    padding: 8px;
 }
 
 /* Chrome, Safari, Edge, Opera */

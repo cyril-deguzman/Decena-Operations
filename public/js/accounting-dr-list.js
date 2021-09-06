@@ -4,8 +4,6 @@ $(document).ready(function() {
     /*
         Change style of div based on payment status
     */
-
-
     var paymentStatus = $(".paymentStatus");
     var paid = "paid";
     var pending = "pending";
@@ -43,8 +41,8 @@ $(document).ready(function() {
           { sWidth: '140px' },
           { sWidth: '150px' },
           { sWidth: '150px' },
-          { sWidth: '120px' },
           { sWidth: '150px' },
+          { sWidth: '120px' },
           { sWidth: '90px' },
           { sWidth: '100px' }
         ],
@@ -98,13 +96,13 @@ $(document).ready(function() {
                     instanceOfSearchField.css("width","170px");
                     break;
                 case 4:
-                    instanceOfSearchField.css("width","140px");
-                    break;
-                case 5:
                     instanceOfSearchField.css("width","170px");
                     break;
+                case 5:
+                    instanceOfSearchField.css("width","140px");
+                    break;
                 case 6:
-                    instanceOfSearchField.css("width","123px");
+                    instanceOfSearchField.css("width","125px");
                     break;
             }
         }
