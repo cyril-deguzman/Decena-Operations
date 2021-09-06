@@ -125,9 +125,8 @@ $(document).ready(function () {
             }); 
         }
 
-        else if (($("#pick-up-errors").html() == "Invalid Input. Pick-up point dates/time must be before Destination point dates/time") ||
-                ($("#destination-errors").html() == "Invalid Input. Pick-up point dates/time must be before Destination point dates/time")) {
-            //
+        else if (($("#pick-up-errors").html() == "Invalid Input. Pick-up point date/time must be before Destination point date/time.") ||
+                ($("#destination-errors").html() == "Invalid Input. Pick-up point date/time must be before Destination point date/time.")) {
             $("#p-departure-date, #d-arrival-date, #p-departure-time, #d-arrival-time").on("change", function () {
                 var datePDepart = document.getElementById("p-departure-date").value;
                 setValid($("#p-departure-date").attr("id"), $("#pick-up-errors"));
@@ -140,6 +139,38 @@ $(document).ready(function () {
 
                 var timeDArrive = document.getElementById("d-arrival-time").value;
                 setValid($("#d-arrival-time").attr("id"), $("#destination-errors"));
+            });
+        }
+
+        else if (($("#pick-up-errors").html() == "Invalid Input. Loading/Unloading date/time should be between arrival and departure date/time.") ||
+        ($("#destination-errors").html() == "Invalid Input. Loading/Unloading date/time should be between arrival and departure date/time.")) {
+            $("#d-arrival-date, #start-load-date, #d-arrival-time, #start-load-time").on("change", function () {
+                var dateDArrive = document.getElementById("d-arrival-date").value;
+                setValid($("#d-arrival-date").attr("id"), $("#destination-errors"));
+
+                var timeDArrive = document.getElementById("d-arrival-time").value;
+                setValid($("#d-arrival-time").attr("id"), $("#destination-errors"));
+
+                var dateDStartLoad = document.getElementById("start-load-date").value;
+                setValid($("#start-load-date").attr("id"), $("#destination-errors"));
+
+                var timeDStartLoad = document.getElementById("start-load-time").value;
+                setValid($("#start-load-time").attr("id"), $("#destination-errors"));
+
+            });
+
+            $("#finish-load-date, #d-depart-date, #finish-load-time, #d-depart-time").on("change", function () {
+                var dateDDepart = document.getElementById("d-departure-date").value;
+                setValid($("#d-depart-date").attr("id"), $("#destination-errors"));
+            
+                var timeDDepart = document.getElementById("d-departure-time").value;
+                setValid($("#d-depart-time").attr("id"), $("#destination-errors"));
+                
+                var dateDEndLoad = document.getElementById("finish-load-date").value;
+                setValid($("#finish-load-date").attr("id"), $("#destination-errors"));
+                
+                var timeDEndLoad = document.getElementById("finish-load-time").value;
+                setValid($("#finish-load-time").attr("id"), $("#destination-errors"));
             });
         }
 
@@ -248,7 +279,7 @@ $(document).ready(function () {
         var datePDepart = document.getElementById("p-departure-date").value;
         var pArriveDepart = validStartEndDate(datePArrive, datePDepart, $("#pick-up-errors"), 
             $("#p-arrival-date").attr("id"), $("#p-departure-date").attr("id"));
-        console.log("pArriveDepart: " + pArriveDepart);
+
         var timePArrive = document.getElementById("p-arrival-time").value;
         var timePDepart = document.getElementById("p-departure-time").value;
         flagTime = validStartEndTime(pArriveDepart, timePArrive, timePDepart, $("#pick-up-errors"), 
@@ -284,7 +315,6 @@ $(document).ready(function () {
 
                 if (!((dArriveDepart == "Invalid") || (dStartEnd == "Invalid") || flagTime == false)) {
                     var flagBetDate1 = validStartEndDate(dArrive[0], dStart[0], $("#destination-errors"), dArrive[2], dStart[2]);
-                    console.log("flagBetDate1: " + flagBetDate1);
                     var flagBetTime1 = validStartEndTime(flagBetDate1, timeDArrive, timeDStartLoad, 
                         $("#destination-errors"), $("#d-arrival-time").attr("id"), $("#start-load-time").attr("id"));
 
@@ -407,14 +437,15 @@ $(document).ready(function () {
         var dateEnd = getDateTime(endInput);
         var errorMsg;
 
-        if ((startId == $("#p-departure-date").attr("id")) && (endId == $("#d-arrival-date").attr("id")))
-            errorMsg = "Invalid Input. Pick-up point dates/time must be before Destination point dates/time";
+        if ((startId == "p-departure-date") && (endId == "d-arrival-date"))
+            errorMsg = "Invalid Input. Pick-up point date/time must be before Destination point date/time.";
+        
+        else if (((startId == "d-arrival-date") && (endId == "start-load-date")) || 
+            ((startId == "finish-load-date") && (endId == "d-departure-date")))
+            errorMsg = "Invalid Input. Loading/Unloading date/time should be between arrival and departure date/time.";
         else
             errorMsg = "Invalid Input. Start date must be before end date.";
 
-        console.log("startInput: " + startInput);
-        console.log("endInput: " + endInput);
-        // console.log("dateEnd: " + dateEnd + " == dateStart: " + dateStart);
         if (!(validDate(startInput, errorfield, startId) || validDate(endInput, errorfield, endId))) {
             // Special case
             if (startInput == "2021-09-01" && endInput == "2021-08-31") {
@@ -460,9 +491,17 @@ $(document).ready(function () {
 
         var endHH = parseInt(endInput.slice(0, 2));
         var endMM = parseInt(endInput.slice(3, 5));
-        // console.log("START FIELD: " + startId);
-        // console.log("END FIELD: " + endId);
-        // console.log("SAME DATE: " + dateFlag);
+
+        var errorMsg;
+
+        if ((startId == "p-departure-time") && (endId == "d-arrival-time"))
+            errorMsg = "Invalid Input. Pick-up point date/time must be before Destination point date/time.";
+        else if (((startId == "d-arrival-time") && (endId == "start-load-time")) || 
+            ((startId == "finish-load-time") && (endId == "d-departure-time")))
+            errorMsg = "Invalid Input. Loading/Unloading date/time should be between arrival and departure date/time.";
+        else
+            errorMsg = "Invalid Input. Start and end time must be different if dates are the same.";
+        
         if (dateFlag != "Invalid") {
             if (dateFlag) {
                 if ((startInput == "") || (endInput == "")) {
@@ -471,8 +510,8 @@ $(document).ready(function () {
                     return false;
                 }
                 if (endInput.localeCompare(startInput) == 0) {
-                    setInvalid(startId, "Invalid Input. Start and end time must be different if dates are the same.", errorfield);
-                    setInvalid(endId, "Invalid Input. Start and end time must be different if dates are the same.", errorfield);
+                    setInvalid(startId, errorMsg, errorfield);
+                    setInvalid(endId, errorMsg, errorfield);
                     return false;
                 }
                 else if (endHH == startHH) {
