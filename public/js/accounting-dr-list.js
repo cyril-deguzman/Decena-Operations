@@ -157,6 +157,4 @@ $(document).ready(function() {
             else 
                 $('#filter-year-btn').prop('disabled', true);
         })
-
-        $("#submit").attr("data-toggle", "modal");
 } );

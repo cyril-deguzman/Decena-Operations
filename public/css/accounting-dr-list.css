@@ -4,6 +4,7 @@ body {
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
+    margin:0 auto;
 }
 
 thead, tbody, tfoot {
@@ -20,17 +21,6 @@ thead, tfoot, #content-container {
     align-items: center;
     margin-top: 30px;
     position: relative;
-    right:50px;
-}
-
-#company-name-title { 
-    position: relative;
-    /* background-color: white; */
-    margin: 0%;
-    padding: 1%;
-    color: black;
-    top:60px;
-    right:20px;
 }
 
 #title-container {
@@ -49,14 +39,14 @@ thead, tfoot, #content-container {
     margin-left: 40px;
 }
 
-.editIcon {
+.viewIcon {
     color: white;
 }
 
 #mainContainerForYear {
     position: relative;
     left:300px;
-    top:50px;
+    top:51px;
 }
 
 tfoot input {
@@ -123,7 +113,6 @@ table {
 }
 
 #decena-logo{
-    float: left;
     width: 23%;
     height: 23%;
     vertical-align: middle;
@@ -193,9 +182,7 @@ table {
     border: solid 1px #194A09;
 }
 
-
-
-.editBtn{
+.viewBtn{
     position: relative;
     right:15px;
 }
@@ -279,6 +266,7 @@ p {
     margin: 1vh;
     margin-top: 0vh;
     padding: 2vh;
+    color: black;
 }
 
 #modal-dr-title {
