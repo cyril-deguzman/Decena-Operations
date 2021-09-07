@@ -51,7 +51,7 @@ h1{
 
 #searchText{
     font-weight: bold;
-    font-size: 60px;
+    font-size: 8vh;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -89,6 +89,7 @@ h1{
     border-width: medium;
     position: relative;
     left: 20px;
+    font-size: 2vh;
 }
 
 #bottomOfPageSpace{
@@ -119,10 +120,6 @@ a{
 
 #companyListContainer{
     margin-top: 25px;
-}
-
-#searchButton{
-    background-color: #194A09;
 }
 
 .deleteDRButton{
@@ -178,10 +175,13 @@ form {
   }
 
 #searchButton{
+    background-color: #194A09;
     position: relative;
     right:22px;
-    border-color: black;
+    border-color: #194A09;
     color: white;
+    padding-top:9px;
+    padding-bottom: 9px;
 }
 
 #resultsCountCard{
@@ -250,4 +250,3 @@ form {
     outline:none;
 
  }
-

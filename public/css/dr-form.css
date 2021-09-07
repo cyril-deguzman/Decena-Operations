@@ -189,11 +189,11 @@ textarea {
 
 hr {
     border: 0;
-  clear:both;
-  display:block;
-  width: 100%;               
-  background-color:#cccccc;
-  height: 1px;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#cccccc;
+    height: 1px;
   }
 
 #submissionSuccessText{

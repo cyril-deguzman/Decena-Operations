@@ -31,6 +31,7 @@ thead, tfoot, #content-container {
     color: black;
     top:60px;
     right:20px;
+    overflow-wrap: break-word;   
 }
 
 #title-container {
