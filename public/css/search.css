@@ -25,6 +25,7 @@ body,html{
     top:10px;
     background: none;
     height: auto;
+    width: 100%;
 }
 
 .card-header{

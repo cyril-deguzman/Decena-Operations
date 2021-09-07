@@ -124,6 +124,13 @@ $(document).ready(function () {
                 }
             });
         });
+
+        $(".companyName").each(function(){
+            if (!(/\s/.test($(this).text())) && $(this).text().length >= 75) {
+                $(this).parent().parent().children('.card-header').children('.cardIcon').css("position","relative");
+           $(this).parent().parent().children('.card-header').children('.cardIcon').css("left","30px");
+            }
+         });
     }
 
     $('.resultsFoundCard').click(function() {
