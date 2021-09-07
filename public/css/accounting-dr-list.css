@@ -185,13 +185,6 @@ table {
     margin: 0 auto;
 }
 
-#viewDRCol {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    padding: 8px;
-}
-
 #submit:hover {
     background-color: #123524 !Important;
 }
