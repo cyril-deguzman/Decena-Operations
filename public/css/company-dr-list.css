@@ -92,6 +92,12 @@ table {
     bottom:20px;
 }
 
+.searchField{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
 #search-year-input {
     position: relative;
     top:15px;

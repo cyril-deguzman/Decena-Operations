@@ -76,36 +76,37 @@ $(document).ready(function() {
     /*
         This function gets all of the search input fields and adjusts the width of each.
     */
-     var searchFields = $(".searchField");
-        for(var i=0; i<searchFields.length; i++){
-            var instanceOfSearchField= searchFields.eq(i);
+    //  var searchFields = $(".searchField");
+    //     for(var i=0; i<searchFields.length; i++){
+    //         var instanceOfSearchField= searchFields.eq(i);
             
-            switch(i)
-            {
-                // case 0:
+    //         switch(i)
+    //         {
+    //             // case 0:
                    
-                case 1:
-                    instanceOfSearchField.css("width","160px");
-                    break;
-                case 2:
-                    instanceOfSearchField.css("width","170px");
-                    break;
-                case 3:
-                    instanceOfSearchField.css("width","120px");
-                    break;
-                case 4:
-                    instanceOfSearchField.css("width","170px");
-                    break;
-                case 5:
-                    instanceOfSearchField.css("width","170px");
-                    break;
-                case 6:
-                    instanceOfSearchField.css("width","115px");
-                    break;
-            }
-        }
+    //             case 1:
+    //                 instanceOfSearchField.css("width","160px");
+    //                 break;
+    //             case 2:
+    //                 instanceOfSearchField.css("width","170px");
+    //                 break;
+    //             case 3:
+    //                 instanceOfSearchField.css("width","120px");
+    //                 break;
+    //             case 4:
+    //                 instanceOfSearchField.css("width","170px");
+    //                 break;
+    //             case 5:
+    //                 instanceOfSearchField.css("width","170px");
+    //                 break;
+    //             case 6:
+    //                 instanceOfSearchField.css("width","115px");
+    //                 break;
+    //         }
+    //     }
 
         //This just removes the text for the Edit DR column
+        $('th').eq(9).text("");
         $('th').eq(13).text("");
         
         //Adds an ID "searchDrForm" to the search input to resize it

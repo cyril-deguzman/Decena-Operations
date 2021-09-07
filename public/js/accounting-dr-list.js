@@ -109,6 +109,7 @@ $(document).ready(function() {
 
         //This just removes the text for the Edit DR column
         $('th').eq(12).text("");
+        $('th').eq(13).text("");
         
         //Adds an ID "searchDrForm" to the search input to resize it
         $("label").eq(1).attr('id','searchDrForm');
