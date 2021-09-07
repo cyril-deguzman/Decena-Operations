@@ -1,6 +1,29 @@
 $(document).ready(function() {
     let dr_id;
 
+
+      $('.payment-btn').click(function() {
+            dr_id = $(this);
+        });
+
+        $('#continueUpdateModal').click(function(){
+            let id = dr_id.attr('data-id');
+
+            $.post(`/updatestatus`, {id: id}, function(data, status){
+                if(data == 'success') {
+                    
+                    dr_id.removeClass("paymentStatus");
+                    dr_id.addClass("paidStatus");
+                    dr_id.text("Paid");
+                    dr_id.off('hover');
+                    dr_id.prop("disabled",true);
+                
+                }
+                    
+                
+            });
+        })
+
     /*
         Change style of div based on payment status
     */
@@ -157,25 +180,5 @@ $(document).ready(function() {
                 $('#filter-year-btn').prop('disabled', true);
         })
 
-        $('.payment-btn').click(function() {
-            dr_id = $(this);
-        });
-
-        $('#continueUpdateModal').click(function(){
-            let id = dr_id.attr('data-id');
-
-            $.post(`/updatestatus`, {id: id}, function(data, status){
-                if(data == 'success') {
-                    
-                    dr_id.removeClass("paymentStatus");
-                    dr_id.addClass("paidStatus");
-                    dr_id.text("Paid");
-                    dr_id.off('hover');
-                    dr_id.prop("disabled",true);
-                
-                }
-                    
-                
-            });
-        })
+      
 });
