@@ -185,6 +185,10 @@ form {
     padding-bottom: 9px;
 }
 
+#searchButton:hover {
+    background-color: #123524 !Important;
+}
+
 #resultsCountCard{
     padding: 15px;
     margin-bottom: 30px;

@@ -45,7 +45,7 @@ thead, tfoot, #content-container {
 }
 
 .btn-info {
-    background-color: #417dc1 !important;
+    background-color: #26619c !important;
     border-style: none !important;
     margin-left: 40px;
 }
@@ -162,8 +162,15 @@ table {
 }
 
 .editBtn{
-    position: relative;
-    right:15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    /* padding: 8px; */
+}
+
+.editBtn:hover {
+    background-color: #0f4d92 !Important;
+    border: solid 1px #0f4d92;
 }
 
 /* Chrome, Safari, Edge, Opera */

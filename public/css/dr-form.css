@@ -133,6 +133,16 @@ body {
     margin-right: 5%;
 }
 
+#closeConfirmModal {
+    background-color: #194A09;
+    border: #194A09;
+}
+
+#submit:hover, #submit-confirm:hover, #closeConfirmModal:hover {
+    background-color: #123524 !Important; 
+    border: #123524 !Important;
+}
+
 input[type=text], input[type=date], input[type=time], input[type=number]{
     border: none;
     border-bottom: 2px solid #194A09;   

@@ -192,6 +192,10 @@ table {
     padding: 8px;
 }
 
+#submit:hover {
+    background-color: #123524 !Important;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -313,11 +317,11 @@ hr {
 }
 
 #continueUpdateModal {
-    background-color: #cc3333;
+    background-color: #194A09;;
 }
 
 #continueUpdateModal:hover{
-    background-color: #8b0000;
+    background-color: #123524;
 }
 #cancelUpdateModal:hover{
     background-color: #c0c0c0;

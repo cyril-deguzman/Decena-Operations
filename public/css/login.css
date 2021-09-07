@@ -103,3 +103,7 @@ hr.solid {
     width: 100%;
     margin-top: 5%;
 }
+
+#login-button:hover {
+    background-color: #123524 !Important;
+}
