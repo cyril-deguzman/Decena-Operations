@@ -76,6 +76,12 @@ $(document).ready(function () {
         validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
     });
 
+    // Time
+    $("#ack-time").on("change", function () {
+        var ackTime = document.getElementById("ack-time").value;
+        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    });
+
     /**
      * Prints the data inputted by the user in the Modal if there are no errors.
      * Otherwise, it scrolls up to first occurrence of the error.
@@ -271,6 +277,10 @@ $(document).ready(function () {
 
         var ackDate = document.getElementById("ack-date").value;
         validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
+
+        // Time
+        var ackTime = document.getElementById("ack-time").value;
+        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
 
         // Dates & Time (Start & End)
         var flagTime;
@@ -471,6 +481,12 @@ $(document).ready(function () {
         return "Invalid";
     }
 
+    function validTime(timeInput) {
+        if (timeInput == "")
+            return false;
+        return true;
+    }
+
     /**
      * Checks start and end time fields if end time does not precede start time
      * 
@@ -493,6 +509,12 @@ $(document).ready(function () {
         var endMM = parseInt(endInput.slice(3, 5));
 
         var errorMsg;
+        var errorEmptyMsg;
+
+        if ((startId == "ack-time") || (endId == "ack-time"))
+            errorEmptyMsg = "Invalid input. Time must not be empty.";
+        else
+            errorEmptyMsg = "Invalid Input. Start and end time must not be empty.";
 
         if ((startId == "p-departure-time") && (endId == "d-arrival-time"))
             errorMsg = "Invalid Input. Pick-up point date/time must be before Destination point date/time.";
@@ -504,20 +526,20 @@ $(document).ready(function () {
         
         if (dateFlag != "Invalid") {
             if (dateFlag) {
-                if ((startInput == "") || (endInput == "")) {
-                    setInvalid(startId, "Invalid Input. Start and end time must not be empty.", errorfield);
-                    setInvalid(endId, "Invalid Input. Start and end time must not be empty.", errorfield);
+                if (!(validTime(startInput) || validTime(endInput))) {
+                    setInvalid(startId, errorEmptyMsg, errorfield);
+                    setInvalid(endId, errorEmptyMsg, errorfield);
                     return false;
                 }
-                if (endInput.localeCompare(startInput) == 0) {
+                if ((endInput.localeCompare(startInput) == 0) && startId != "ack-time") {
                     setInvalid(startId, errorMsg, errorfield);
                     setInvalid(endId, errorMsg, errorfield);
                     return false;
                 }
                 else if (endHH == startHH) {
                     if (endMM < startMM) {
-                        setInvalid(startId, "Invalid Input. Start time must be before end time.", errorfield);
-                        setInvalid(endId, "Invalid Input. Start time must be before end time.", errorfield);
+                        setInvalid(startId, errorMsg, errorfield);
+                        setInvalid(endId, errorMsg, errorfield);
                         return false;
                     }
                     else {
@@ -527,8 +549,8 @@ $(document).ready(function () {
                     }
                 }
                 else if (endHH < startHH) {
-                    setInvalid(startId, "Invalid Input. Start time must be before end time.", errorfield);
-                    setInvalid(endId, "Invalid Input. Start time must be before end time.", errorfield);
+                    setInvalid(startId, errorMsg, errorfield);
+                    setInvalid(endId, errorMsg, errorfield);
                     return false;
                 }
                 else {
