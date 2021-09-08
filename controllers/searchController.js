@@ -78,6 +78,12 @@ const searchController = {
 
                 /* Date Issued Reformat */
                 arr[i].dateIssued = searchController.changeDateFormat(dateIss);
+
+                /* Date Issued Sort Reformat */
+                year = dateIss.getFullYear() 
+                month = dateIss.getMonth() + 1 >= 10 ? dateIss.getMonth() + 1 : '0' + dateIss.getMonth()
+                day = dateIss.getDate() >= 10 ? dateIss.getDate() : '0' + dateIss.getDate()
+                arr[i].dateIssuedInteger = '' + year  + month + day;
             });
 
             res.render("search-dr", {dr: results, name: companyName, year: today, dataName: dataName})
