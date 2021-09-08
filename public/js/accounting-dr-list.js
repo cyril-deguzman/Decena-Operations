@@ -11,13 +11,12 @@ $(document).ready(function() {
 
             $.post(`/updatestatus`, {id: id}, function(data, status){
                 if(data == 'success') {
-                    
                     dr_id.removeClass("paymentStatus");
                     dr_id.addClass("paidStatus");
                     dr_id.text("Paid");
                     dr_id.off('hover');
                     dr_id.prop("disabled",true);
-                
+                    refreshRow();
                 }
                     
                 
@@ -180,5 +179,22 @@ $(document).ready(function() {
                 $('#filter-year-btn').prop('disabled', true);
         })
 
-      
+
+        /**
+         * This function refreshes the row to enable filtering after updating the payment status .
+         */
+      function refreshRow(){
+          
+        var rowToUpdate = dr_id.parent().parent();
+        var row = table.row(rowToUpdate);
+        table.cell(row,6).data("Paid").draw(false);
+
+        if(rowToUpdate.text() == "Paid"){
+            rowToUpdate.text("");
+            rowToUpdate.append('<button class="paidStatus payment-btn"> Paid </button>');
+            rowToUpdate.children().off('hover');
+            rowToUpdate.children().prop("disabled",true);
+        } 
+
+      }
 });
