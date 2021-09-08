@@ -17,6 +17,7 @@ $(document).ready(function() {
                     dr_id.off('hover');
                     dr_id.prop("disabled",true);
                     refreshRow();
+
                 }
                     
                 
@@ -59,6 +60,7 @@ $(document).ready(function() {
         columnDefs: [
             { orderable: false, targets: -2 }
          ],
+         "order": [[ 6, "desc" ],[0,"desc"],],
         aoColumns : [
           { sWidth: '90px' },
           { sWidth: '170px' },
