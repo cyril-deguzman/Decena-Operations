@@ -34,6 +34,12 @@ const accountingController = {
                 /* Date Issued Reformat */
                 arr[i].dateIssued = accountingController.changeDateFormat(dateIss);
 
+                /* Date Issued Sort Reformat */
+                year = dateIss.getFullYear() 
+                month = dateIss.getMonth() + 1 >= 10 ? dateIss.getMonth() + 1 : '0' + dateIss.getMonth()
+                day = dateIss.getDate() >= 10 ? dateIss.getDate() : '0' + dateIss.getDate()
+                arr[i].dateIssuedInteger = '' + year  + month + day;
+
                 /* Pick up Dates Reformat */
                 arr[i].pickUpDates.arrivalDate = accountingController.changeDateFormat(datePick.arrivalDate);
                 arr[i].pickUpDates.departureDate =  accountingController.changeDateFormat(datePick.departureDate);
@@ -115,11 +121,11 @@ const accountingController = {
     },
 
     changeDateFormat: function(date) {
-        const months = ["January", "February", "March", "April", "May", "June", 
-                            "July", "August", "September", "October", "November", "December"];
+        year = date.getFullYear() 
+        month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : '0' + date.getMonth()
+        day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate()
+        date = year+'-'+month+'-'+day;
 
-        date =  months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
-        
         return date;
     }
 }
