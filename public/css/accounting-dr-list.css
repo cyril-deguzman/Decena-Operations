@@ -1,6 +1,6 @@
 body {          
     height: 100%;
-    background-image: url("../images/grayBackground.jpg");
+    background: linear-gradient(rgba(234,234,234,.40), rgba(234,234,234,.40)), url("../images/grayBackground.jpg");
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
@@ -45,13 +45,6 @@ thead, tfoot, #content-container {
     color: white;
 }
 
-#mainContainerForYear {
-    /* position: relative; */
-    left:300px;
-    margin-bottom: 15px;
-    margin-top: 0%;
-}
-
 tfoot input {
     width: 40%;
     padding: 3px;
@@ -84,29 +77,9 @@ table {
     bottom:20px;
 }
 
-#search-year-input {
-    position: relative;
-    top:15px;
-    border-color: gray;
-    width: 40%;
-} 
-
 #filterText {
     overflow-y: auto;
     max-height: 50px;
-}
-
-#filter-year-btn {
-    position: relative;
-    left:110px;
-    bottom:20px;
-    height: 40px;
-}
-
-#containerForYear{
-    position:relative;
-    top:50px;
-    right:100px;   
 }
 
 #header-logo{
@@ -185,6 +158,9 @@ table {
     margin: 0 auto;
 }
 
+#submit {
+    text-align: center;
+}
 #submit:hover {
     background-color: #123524 !Important;
 }
@@ -310,7 +286,7 @@ hr {
 }
 
 #continueUpdateModal {
-    background-color: #194A09;;
+    background-color: #194A09;
 }
 
 #continueUpdateModal:hover{
@@ -342,4 +318,52 @@ div.datatable-wide {
   font-size: 6vh;
   padding-left: 1%;
   color: #299B04;
+}
+
+#mainContainerForYear {
+    display: flex;
+    flex-direction: row;
+    left: 18%;
+    top: 2%;
+    padding:0%;
+    margin-top: 2%;
+    transform: translateY(15px);
+}
+
+.md-48 {
+    font-size: 21px !important;
+    color:black;
+  }
+
+#filter-year-btn{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 2;
+    border: gray;
+    height: 30px;
+    cursor: pointer;
+    width: auto;
+    background-color:transparent;
+    transform: translateX(-125px);
+    padding: 0%;
+}
+
+#btn-in {
+    width: 24%;
+    position: relative;
+}
+
+#set-year-input {
+    margin: 0px;
+    padding: 6px;
+    width: 45%;
+    outline: none;
+    height: 30px;
+    border-radius: 4px;
+}
+
+#set-year-label {
+    padding-right: 3%;
+    padding-top: 1%;
 }

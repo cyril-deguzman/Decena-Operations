@@ -144,7 +144,7 @@ $(document).ready(function() {
         /* Filter Year */
         $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
-                var year = $('#search-year-input').val();
+                var year = $('#set-year-input').val();
                 var date = ( data[0] ) || 0; // use data for the age column
         
                 if ( date.includes(year))
@@ -158,19 +158,19 @@ $(document).ready(function() {
             var table = $('#dr-datatable').DataTable();
             
             // Event listener filtering inputs to redraw on input
-            $('#search-year-input').keyup( function() {
+            $('#set-year-input').keyup( function() {
                 table.draw();
             });
         });
 
         $('#filter-year-btn').click(function(){
             let companyName = $('#company-name-title').attr('data-id');
-            let year = $('#search-year-input').val();
+            let year = $('#set-year-input').val();
             
             window.location = `/accounting/${year}`;
         });
 
-        $('#search-year-input').keyup(function(){
+        $('#set-year-input').keyup(function(){
             let year = $(this).val();
             let date = new Date()
         
