@@ -183,8 +183,8 @@ background-color: white;
     right:22px;
     border-color: #194A09;
     color: white;
-    padding-top:5px;
-    padding-bottom: 5px;
+    padding-top:0.4%;
+    padding-bottom: 0.4%;
 }
 
 #searchButton:hover {
