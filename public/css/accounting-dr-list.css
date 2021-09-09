@@ -9,12 +9,13 @@ body {
 
 /* Header */
 #header-logo{
-    padding-top: 1%;
+    padding-top: 40px;
     padding-bottom: 0%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 #decena-logo{
@@ -32,7 +33,7 @@ body {
 #set-year-container {
     display: flex;
     flex-direction: row;
-    margin-left: 152px;
+    margin-left: 17px;
     padding:0%;
     margin-bottom: 35px;
     transform: translateY(14px);

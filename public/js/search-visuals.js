@@ -36,7 +36,7 @@ $(document).ready(function () {
         console.log(companyCount);
         if (companyCount == 0 && searchQuery != "") {
             $("#noResultsFoundCard").text("There are (0) results found for: " + searchQuery);
-            $("#noResultsParentCard").css("background-color","#299b04");
+            $("#noResultsParentCard").css("background-color","#b22222");
             $('#noResultsFoundCard').css('color','white');
         }   
         else {
