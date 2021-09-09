@@ -1,10 +1,111 @@
 body {          
     height: 100%;
-    background: linear-gradient(rgba(234,234,234,.40), rgba(234,234,234,.40)), url("../images/grayBackground.jpg");
+    background: linear-gradient(rgba(234,234,234,.30), rgba(234,234,234,.30)), url("../images/grayBackground.jpg");
     background-size: cover;
     width: 100%;
     overflow-x: hidden;
     margin:0 auto;
+}
+
+/* Header */
+#header-logo{
+    padding-top: 1%;
+    padding-bottom: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#decena-logo{
+    width: 19%;
+    height: 100%;
+}
+
+#decena-text {
+    position: relative;
+    font-size: 6vh;
+    color: #299B04;
+}
+
+/* Set Year */
+#set-year-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 152px;
+    padding:0%;
+    margin-bottom: 35px;
+    transform: translateY(14px);
+}
+
+#set-year-label {
+    display:inline-block;
+    padding-right: 7px;
+    padding-top: 4px;
+    color: #194A09;
+    max-width: 55%;
+}
+
+#set-year-input-btn {
+    width: 120px;
+    position: relative;
+    display:inline-block;
+}
+
+#set-year-input {
+    margin: 0px;
+    padding: 6px;
+    width: 65px;
+    outline: none;
+    height: 30px;
+    border-radius: 4px;
+}
+
+#set-year-btn{
+    position: absolute;
+    width: auto;
+    height: 30px;
+    border: gray;
+    background-color:transparent;
+    top: 0px;
+    right: 0px;
+    padding-bottom: 1px;
+    padding-top: 2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    z-index: 2;
+    cursor: pointer;
+    transform: translateX(-60px);
+}
+
+.set-year-span {
+    font-size: 19px !important;
+    color: 	#404040;
+  }
+
+/* Container for Main Content */
+#main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: relative;
+    width: 100%; 
+}
+
+/* DataTable */
+div.datatable-wide {
+    padding-top: 0%;
+    margin-top:0%;
+}
+
+table {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed; 
+    word-wrap:break-word; 
 }
 
 thead, tbody, tfoot {
@@ -15,19 +116,10 @@ thead, tfoot, #content-container {
     color: #194A09;   
 }
 
-#main-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    position: relative;
-    width: 100%;
-    
-}
-
-#title-container {
-    position: relative;
-    left:150px;
+tfoot input {
+    width: 40%;
+    padding: 3px;
+    box-sizing: border-box;
 }
 
 .custom-select { 
@@ -43,21 +135,6 @@ thead, tfoot, #content-container {
 
 .viewIcon {
     color: white;
-}
-
-tfoot input {
-    width: 40%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-table {
-    margin: 0 auto;
-    width: 100%;
-    clear: both;
-    border-collapse: collapse;
-    table-layout: fixed; 
-    word-wrap:break-word; 
 }
 
 .form-control-sm {
@@ -80,19 +157,6 @@ table {
 #filterText {
     overflow-y: auto;
     max-height: 50px;
-}
-
-#header-logo{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-#decena-logo{
-    width: 23%;
-    height: 23%;
-    vertical-align: middle;
-    border-style: none;
 }
 
 .paymentStatus {
@@ -177,7 +241,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* View DR Modal */
+/* 1st Modal: View DR Modal */
 #upper1-part1, #upper2-part1, #lower1-part1, #lower2-part1, #upper-part2, #middle-part2, #lower-part2, #modal-part3, 
 #arrival-ppoint, #departure-ppoint, #arrival-dpoint, #startload-dpoint, #finishload-dpoint, #departure-dpoint, #modal-fleet1-details, 
 #modal-fleet2-details, #modal-acknowledgement1, #modal-acknowledgement2 {
@@ -251,7 +315,7 @@ p {
     margin: 0vh;
 }
 
-/* Update Payment Status Modal */
+/* 2nd Modal: Update Payment Status Modal */
 #secondModalTitle {
     color: #194A09;
     position: relative;
@@ -294,76 +358,4 @@ hr {
 }
 #cancelUpdateModal:hover{
     background-color: #c0c0c0;
-}
-
-div.datatable-wide {
-    padding-top: 0%;
-    margin-top:0%;
-}
-
-/* Header */
-#title-container {
-    display: flex;
-    align-items: center;
-}
-
-#decena-logo {
-  float: left;
-  width: 23%;
-  height: 23%;
-}
-
-#dr-logo {
-  position: relative;
-  font-size: 6vh;
-  padding-left: 1%;
-  color: #299B04;
-}
-
-#mainContainerForYear {
-    display: flex;
-    flex-direction: row;
-    left: 18%;
-    top: 2%;
-    padding:0%;
-    margin-top: 2%;
-    transform: translateY(15px);
-}
-
-.md-48 {
-    font-size: 21px !important;
-    color:black;
-  }
-
-#filter-year-btn{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 2;
-    border: gray;
-    height: 30px;
-    cursor: pointer;
-    width: auto;
-    background-color:transparent;
-    transform: translateX(-125px);
-    padding: 0%;
-}
-
-#btn-in {
-    width: 24%;
-    position: relative;
-}
-
-#set-year-input {
-    margin: 0px;
-    padding: 6px;
-    width: 45%;
-    outline: none;
-    height: 30px;
-    border-radius: 4px;
-}
-
-#set-year-label {
-    padding-right: 3%;
-    padding-top: 1%;
 }

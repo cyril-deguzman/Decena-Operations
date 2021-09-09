@@ -27,29 +27,28 @@
     <body>
         <!-- Navigation bar here -->
         {{> navbar display='none'}}
-    
+         
+        <!-- Header -->   
+        <div class="col-lg-12" id="header-logo">
+            <img src="/images/dv-logo.png" alt="dv-logo" id="decena-logo"/>
+            <h1 id="decena-text">DECENA'S VICTORY MOVERS</h1>
+        </div>
+        
+        <!-- Set Year -->
+        <div class="col-lg-12" id="set-year-container"> 
+            <label for ="filterYear" id="set-year-label">Set Year </label>
+            <div id="set-year-input-btn">
+                <input type="number" class="form-control form-control-sm searchField" id="set-year-input"  
+                placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear" value={{year}} max={{year}}>
+                <button type="button" class="btn btn-success" id="set-year-btn">
+                    <span class="material-icons-outlined set-year-span">filter_alt</span>
+                </button>
+            </div>
+        </div>                 
+        
+        <!-- DataTable -->
         <div id="main-div">
             <div class="col-lg-10 h-75 d-inline-block row justify-content-center" id="content-container">
-                <div class="row">
-                    <div class="col-lg-12" id="title-container">
-                        <div class="col-lg-12" id="header-logo">
-					        <img src="/images/dv-logo.png" alt="dv-logo" id="decena-logo"/>
-					        <h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
-				        </div>         
-                    </div>
-                </div>
-
-                <div class="col-md-2" id="mainContainerForYear"> 
-                    <label for ="filterYear" id="set-year-label">Set Year </label>
-                    <div class="btn-in">
-                        <input type="number" class="form-control form-control-sm searchField" id="set-year-input"  
-                        placeholder="Year" aria-controls="DataTables_Table_0" name="filterYear" value={{year}} max={{year}}>
-                        <button type="button" class="btn btn-success" id="filter-year-btn">
-                            <span class="material-icons-outlined md-48">filter_alt</span>
-                        </button>
-                    </div>
-                </div>
-                
                 <div id="table-container" class="datatable-wide">
                     <table class="table table-striped table-bordered drdatatable" style="width: 100%" id="dr-datatable">
                         <thead>
