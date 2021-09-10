@@ -82,7 +82,7 @@ const searchController = {
 
                 /* Date Issued Sort Reformat */
                 year = dateIss.getFullYear() 
-                month = dateIss.getMonth() + 1 >= 10 ? dateIss.getMonth() + 1 : '0' + dateIss.getMonth()
+                month = dateIss.getMonth() + 1 >= 10 ? dateIss.getMonth() + 1 : '0' + (dateIss.getMonth() + 1)
                 day = dateIss.getDate() >= 10 ? dateIss.getDate() : '0' + dateIss.getDate()
                 arr[i].dateIssuedInteger = '' + year  + month + day;
             });
