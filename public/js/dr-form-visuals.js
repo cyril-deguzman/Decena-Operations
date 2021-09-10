@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     /* Keyup events for real time validation */
 
-    Alpha
+    // Alpha
     $("#client-name, #driver" ).keyup(function () {
         var alphaClientName = validator.trim($("#client-name").val());
         var clientLen = document.getElementById("client-name").getAttribute("maxlength");
