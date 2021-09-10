@@ -32,7 +32,7 @@ const searchController = {
         const regex = new RegExp(auxiliaryController.escapeRegex(trimmedQuery), 'gi');
         
         /* Get all companies from DB */ 
-        let foundCompanies = await auxiliaryController.paginatedResults(Company, {name: regex}, 1, 10);
+        let foundCompanies = await auxiliaryController.paginatedResults(Company, {name: regex}, 1, 10, 'name');
 
         foundCompanies.results.forEach((c, i, arr) => {
             let temp = c.name;
@@ -103,7 +103,7 @@ const searchController = {
         let filter = req.body.filter
 
         const regex = new RegExp(auxiliaryController.escapeRegex(filter), 'gi');
-        let foundCompanies = await auxiliaryController.paginatedResults(Company, {name: regex}, page, 10);
+        let foundCompanies = await auxiliaryController.paginatedResults(Company, {name: regex}, page, 10, 'name');
         
         foundCompanies.results.forEach((c, i, arr) => {
             let temp = c.name;

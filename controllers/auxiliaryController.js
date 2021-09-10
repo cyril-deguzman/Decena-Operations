@@ -53,10 +53,9 @@ const auxiliaryController = {
      * @param {*} limit the number of results to return per page.
      * @returns 
      */
-    paginatedResults: async function(model, filter, page, limit) {
+    paginatedResults: async function(model, filter, page, limit, sortFilter) {
         let startIndex = (page - 1) * limit;
         let endIndex = page * limit;
-        
         let results = {}
         
         if (endIndex < await model.countDocuments(filter).exec()) {
@@ -74,7 +73,14 @@ const auxiliaryController = {
         }
 
         try {
-            results.results = await model.find(filter).lean().limit(limit).skip(startIndex).exec()
+            results.results = await model.find(filter)
+            .collation({'locale':'en'})
+            .sort(sortFilter)
+            .lean()
+            .limit(limit)
+            .skip(startIndex)
+            .exec()
+
             return results;
         } catch (e) {
             console.log(e.message);

@@ -950,4 +950,18 @@ $(document).ready(function () {
 
         console.log(id);
         console.log(oldCompanyName);
+
+    $("#submit").prop("disabled", true);
+
+    $('input').change(function() {
+        $("#submit").prop("disabled", false);
+    });
+
+    $('input').keyup(function() {
+        $("#submit").prop("disabled", false);
+    });
+
+    $('textarea').keyup(function() {
+        $("#submit").prop("disabled", false);
+    });
 });
