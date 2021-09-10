@@ -242,6 +242,11 @@ hr {
     background-color: #e0e0e0;
 }
 
+.modal-xl {
+    width: 50%;
+    max-width:1200px;
+  }
+  
 /* Error-related styles */
 
 .error {
