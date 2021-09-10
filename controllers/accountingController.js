@@ -1,4 +1,5 @@
 const DeliveryReceiptModel = require('../models/DeliveryReceiptModel.js');
+const auxiliaryController = require(`./auxiliaryController.js`);
 
 const accountingController = {
     
@@ -32,7 +33,7 @@ const accountingController = {
                 arr[i].status = arr[i].status ? 'paid' : 'pending'
                 
                 /* Date Issued Reformat */
-                arr[i].dateIssued = accountingController.changeDateFormat(dateIss);
+                arr[i].dateIssued = auxiliaryController.convertDate2(dateIss);
 
                 /* Date Issued Sort Reformat */
                 year = dateIss.getFullYear() 
@@ -41,24 +42,29 @@ const accountingController = {
                 arr[i].dateIssuedInteger = '' + year  + month + day;
 
                 /* Pick up Dates Reformat */
-                arr[i].pickUpDates.arrivalDate = accountingController.changeDateFormat(datePick.arrivalDate);
-                arr[i].pickUpDates.departureDate =  accountingController.changeDateFormat(datePick.departureDate);
+                arr[i].pickUpDates.arrivalDate = auxiliaryController.convertDate(datePick.arrivalDate);
+                arr[i].pickUpDates.departureDate =  auxiliaryController.convertDate(datePick.departureDate);
 
                 /* Destination Dates Reformat */
-                arr[i].destinationDates.arrivalDate = accountingController.changeDateFormat(dateDest.arrivalDate);
-                arr[i].destinationDates.departureDate = accountingController.changeDateFormat(dateDest.departureDate);
-                arr[i].destinationDates.unloadingStartDate = accountingController.changeDateFormat(dateDest.unloadingStartDate);
-                arr[i].destinationDates.unloadingFinishedDate = accountingController.changeDateFormat(dateDest.unloadingFinishedDate);
+                arr[i].destinationDates.arrivalDate = auxiliaryController.convertDate(dateDest.arrivalDate);
+                arr[i].destinationDates.departureDate = auxiliaryController.convertDate(dateDest.departureDate);
+                arr[i].destinationDates.unloadingStartDate = auxiliaryController.convertDate(dateDest.unloadingStartDate);
+                arr[i].destinationDates.unloadingFinishedDate = auxiliaryController.convertDate(dateDest.unloadingFinishedDate);
 
                 /* Acknowledgement Date Reformat */
-                arr[i].acknowledgement.dateAck = accountingController.changeDateFormat(dateAck.dateAck);
+                arr[i].acknowledgement.dateAck = auxiliaryController.convertDate(dateAck.dateAck);
             });
             
             res.render("accounting-dr-list", {dr: results, year: today})
         })
 
     },
-
+    
+    /**
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
     postUpdateStatus: function(req, res) {
         let id = req.body.id;
 
@@ -70,64 +76,6 @@ const accountingController = {
         });
     },
 
-    /**
-     * paginatedResults
-     * 
-     * paginates a collection.
-     * @param {*} model the Model to be paginated
-     * @param {*} filter the filter for finding the model
-     * @param {*} page the page to access
-     * @param {*} limit the number of results to return per page.
-     * @returns 
-     */
-    paginatedResults: async function(model, filter, page, limit) {
-        let startIndex = (page - 1) * limit;
-        let endIndex = page * limit;
-      
-        let results = {}
-      
-        if (endIndex < await model.countDocuments(filter).exec()) {
-            results.next = {
-                page: page + 1,
-                limit: limit
-            }
-        }
-        
-        if (startIndex > 0) {
-            results.previous = {
-                page: page - 1,
-                limit: limit
-            }
-        }
-
-        try {
-            results.results = await model.find(filter).lean().limit(limit).skip(startIndex).exec()
-            return results;
-        } catch (e) {
-            console.log(e.message);
-        }
-    },
-
-     /**
-     * escapeRegex
-     * 
-     * A small security measure to avoid common DDOS attacks that can potentially
-     * overload and crash the database.
-     * @param {*} text search query of the user to apply the function to.
-     * @returns 
-     */
-    escapeRegex: function(text) {
-        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    },
-
-    changeDateFormat: function(date) {
-        year = date.getFullYear() 
-        month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : '0' + date.getMonth()
-        day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate()
-        date = year+'-'+month+'-'+day;
-
-        return date;
-    }
 }
 
 module.exports = accountingController;

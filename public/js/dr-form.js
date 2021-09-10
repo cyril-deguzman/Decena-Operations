@@ -82,6 +82,10 @@ $(document).ready(function () {
 		 * 	Redirect the user through another modal after submitting the form.
 		 * 
 		*/
+        $("#redirectConfirmModal").click(function(){
+            window.location = '/viewallreceipts';
+        });
+
 
 		$("#closeConfirmModal").click(function(){
 			window.location = '/form';
