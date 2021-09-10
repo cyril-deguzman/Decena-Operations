@@ -185,6 +185,7 @@ background-color: white;
     color: white;
     padding-top:0.4%;
     padding-bottom: 0.4%;
+    height:100%;
 }
 
 #searchButton:hover {

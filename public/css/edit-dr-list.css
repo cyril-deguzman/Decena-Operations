@@ -6,6 +6,11 @@ body {
     overflow-x: hidden;
 }
 
+.searchField{
+    box-sizing: border-box;
+    width: 100%;
+}
+
 thead, tbody, tfoot {
     background-color: white;
 }
