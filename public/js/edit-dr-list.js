@@ -5,7 +5,7 @@ $(document).ready(function() {
         let companyName = $('#company-name-title').attr('data-id');
         let year = $('#search-year-input').val();
         
-        window.location = `/viewreceipts/${companyName}/${year}`;
+        window.location = `/viewallreceipts/${year}`;
     });
 
     $('#search-year-input').keyup(function(){
