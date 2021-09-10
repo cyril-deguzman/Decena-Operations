@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-	$("#login-button").click(function () {
+	$("#login-button").click(function (e) {
+        e.preventDefault();
         let credentials = $("#ucode").val();
 
         $.post("/login", 
