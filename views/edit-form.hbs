@@ -77,29 +77,20 @@
 				</div>
 				<br>
 				<div id="site-container">
-					{{!-- <label class="label" for="pickup-site">Pick-Up Site </label> --}}
                     <!-- INPUT 4 -->
-					{{!-- <input  data-id="{{dr.pickSite}}" placeholder="{{dr.pickSite}}" value="{{dr.pickSite}}"
-                            type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100"> --}}
 					<div id="pickup-site-container" style="padding:0%;padding-bottom:1%;">
 						<label class="label" for="pickup-site">Pick-Up Site </label>
 						<textarea type="text"  id="pickup-site" name="pickup-site" rows = "2" data-id="{{dr.pickSite}}" 
 						placeholder="Write here..." maxlength="150">{{dr.pickSite}}</textarea>
 						<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
 					</div>
+					<!-- INPUT 5 -->
 					<div id="delivery-site-container" style="padding:0%;">
 						<label class="label" for="delivery-site">Delivery Site </label>
 						<textarea type="text"  id="delivery-site" name="delivery-site" rows = "2" data-id="{{dr.dropSite}}" 
 						placeholder = "Write here..." maxlength="150">{{dr.dropSite}}</textarea>
 						<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
 					</div>						
-					{{!-- <p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		 --}}
-					{{!-- <br> --}}
-					{{!-- <label class="label" for="delivery-site">Delivery Site </label> --}}
-                    <!-- INPUT 5 -->
-					{{!-- <input  data-id="{{dr.dropSite}}" placeholder="{{dr.dropSite}}" value="{{dr.dropSite}}"
-                            type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
-					<p class = "error" id="p1Error4">{{delSiteErrors}}</p> --}}
 				</div>
 				<!-- <div class = errors>
 					<p class = "error" id="p1Error">{{part1Errors}}</p>

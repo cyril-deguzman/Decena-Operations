@@ -1,21 +1,21 @@
 $(document).ready(function() {
-    $('#filter-year-btn').prop('disabled', true);
+    $('#set-year-btn').prop('disabled', true);
 
-    $('#filter-year-btn').click(function(){
+    $('#set-year-btn').click(function(){
         let companyName = $('#company-name-title').attr('data-id');
-        let year = $('#search-year-input').val();
+        let year = $('#set-year-input').val();
         
         window.location = `/viewallreceipts/${year}`;
     });
 
-    $('#search-year-input').keyup(function(){
+    $('#set-year-input').keyup(function(){
         let year = $(this).val();
         let date = new Date()
     
         if(!(year < 1000 || year > date.getFullYear()))
-            $('#filter-year-btn').prop('disabled', false);
+            $('#set-year-btn').prop('disabled', false);
         else 
-            $('#filter-year-btn').prop('disabled', true);
+            $('#set-year-btn').prop('disabled', true);
     })
 
     $('.editBtn').click(function(){
@@ -65,7 +65,7 @@ $(document).ready(function() {
               { sWidth: '150px' },
               { sWidth: '150px' },
               { sWidth: '90px' },
-              { sWidth: '90px' }
+              { sWidth: '55px' }
             ],
             initComplete: function () {
                 // Apply the search
