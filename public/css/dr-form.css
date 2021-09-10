@@ -121,16 +121,6 @@ body {
 }
 
 
-#btn-cancel{
-    float: right;
-    margin-right: 5%;
-    font-size: 3vh;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    padding-left: 5vh;
-    padding-right: 5vh;
-}
-
 #submit, #submit-confirm {
     background-color: #194A09;
     color: white;
@@ -150,8 +140,26 @@ body {
 }
 
 #submit:hover, #submit-confirm:hover, #closeConfirmModal:hover {
-    background-color: #123524 !Important; 
-    border: #123524 !Important;
+    background-color: #123524; 
+    border: #123524;
+}
+
+#btn-cancel{
+    background: #828282;
+    border-color: #828282;
+    color: white;
+    font-size: 3vh;
+    padding-top: 0.9vh;
+    padding-bottom: 0.9vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    float: right;
+    margin-right: 5%;
+}
+
+#btn-cancel:hover {
+    background-color: #707070; 
+    border-color: #828282;
 }
 
 input[type=text], input[type=date], input[type=time], input[type=number]{
