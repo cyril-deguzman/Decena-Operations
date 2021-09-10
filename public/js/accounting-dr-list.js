@@ -164,7 +164,7 @@ $(document).ready(function() {
             });
         });
 
-        $('#filter-year-btn').click(function(){
+        $('#set-year-btn').click(function(){
             let companyName = $('#company-name-title').attr('data-id');
             let year = $('#set-year-input').val();
             
@@ -176,9 +176,9 @@ $(document).ready(function() {
             let date = new Date()
         
             if(!(year < 1000 || year > date.getFullYear()))
-                $('#filter-year-btn').prop('disabled', false);
+                $('#set-year-btn').prop('disabled', false);
             else 
-                $('#filter-year-btn').prop('disabled', true);
+                $('#set-year-btn').prop('disabled', true);
         })
 
 
