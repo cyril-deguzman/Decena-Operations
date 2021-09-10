@@ -117,6 +117,11 @@ thead, tfoot, #content-container {
     color: #194A09;   
 }
 
+.searchField{
+    box-sizing: border-box;
+    width: 100%;
+}
+
 tfoot input {
     width: 40%;
     padding: 3px;

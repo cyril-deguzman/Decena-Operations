@@ -14,6 +14,7 @@ $(document).ready(function () {
        display the number of companies matching the search query. */
     if ($(".resultsFoundCard")[0]) {
 
+        $('#search-guide').css('display','none');
         let companyCount = $('#page-count').val();
         let searchQuery = $('#search-query').val();
 
@@ -38,6 +39,7 @@ $(document).ready(function () {
             $("#noResultsFoundCard").text("There are (0) results found for: " + searchQuery);
             $("#noResultsParentCard").css("background-color","#b22222");
             $('#noResultsFoundCard').css('color','white');
+            $('#search-guide').css('display','none');
         }   
         else {
             $("#noResultsParentCard").hide();
