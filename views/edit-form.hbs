@@ -53,21 +53,21 @@
 			<!-- Part 1 of DR Form -->
 			<div class="part1" id="part1">
 				<div id="name-date-container">
-					<div id="name-container" style="width: 70%;">
+					<div id="name-container" style="width: 55%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
                         <!-- INPUT 1 -->
 						<input  data-id="{{dr.companyName}}" placeholder="{{dr.companyName}}" value="{{dr.companyName}}" 
-                                type="text" id="company-name" name="company-name" style="width: 50%;" maxlength="150">
+                                type="text" id="company-name" name="company-name" style="width: 90%;" maxlength="150">
 						<p class = "error" id="p1Error1">{{companyNameErrors}}</p>
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
                         <!-- INPUT 2 -->
 						<input  data-id="{{dr.clientName}}" placeholder="{{dr.clientName}}" value="{{dr.clientName}}"
-                                type="text" id="client-name" name="client-name" style="width: 50%;" maxlength="50">
+                                type="text" id="client-name" name="client-name" style="width: 90%;" maxlength="50">
 						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
 					</div>
 					<div id = "date-error-container">
-						<div id="date-container">	
+						<div id="date-container" style="padding-left:9%;">	
 							<label class="label" for="date-issued">Date Issued</label>
                             <!-- INPUT 3 -->
 							<input data-id="{{dr.dIssued}}" type="date" class="datefield" id="date-issued" name="date-issued" value="{{dr.dIssued}}" min="1900-01-01" max="2021-12-31" style="width: 120%;">
@@ -77,17 +77,29 @@
 				</div>
 				<br>
 				<div id="site-container">
-					<label class="label" for="pickup-site">Pick-Up Site </label>
+					{{!-- <label class="label" for="pickup-site">Pick-Up Site </label> --}}
                     <!-- INPUT 4 -->
-					<input  data-id="{{dr.pickSite}}" placeholder="{{dr.pickSite}}" value="{{dr.pickSite}}"
-                            type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100">
-					<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
-					<br>
-					<label class="label" for="delivery-site">Delivery Site </label>
+					{{!-- <input  data-id="{{dr.pickSite}}" placeholder="{{dr.pickSite}}" value="{{dr.pickSite}}"
+                            type="text"  id="pickup-site" name="pickup-site" style="width: 70%;" maxlength="100"> --}}
+					<div id="pickup-site-container" style="padding:0%;padding-bottom:1%;">
+						<label class="label" for="pickup-site">Pick-Up Site </label>
+						<textarea type="text"  id="pickup-site" name="pickup-site" rows = "2" data-id="{{dr.pickSite}}" 
+						placeholder="Write here..." maxlength="150">{{dr.pickSite}}</textarea>
+						<p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		
+					</div>
+					<div id="delivery-site-container" style="padding:0%;">
+						<label class="label" for="delivery-site">Delivery Site </label>
+						<textarea type="text"  id="delivery-site" name="delivery-site" rows = "2" data-id="{{dr.dropSite}}" 
+						placeholder = "Write here..." maxlength="150">{{dr.dropSite}}</textarea>
+						<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
+					</div>						
+					{{!-- <p class = "error" id="p1Error3">{{pickSiteErrors}}</p>		 --}}
+					{{!-- <br> --}}
+					{{!-- <label class="label" for="delivery-site">Delivery Site </label> --}}
                     <!-- INPUT 5 -->
-					<input  data-id="{{dr.dropSite}}" placeholder="{{dr.dropSite}}" value="{{dr.dropSite}}"
+					{{!-- <input  data-id="{{dr.dropSite}}" placeholder="{{dr.dropSite}}" value="{{dr.dropSite}}"
                             type="text"  id="delivery-site" name="delivery-site" style="width: 70%;" maxlength="100">
-					<p class = "error" id="p1Error4">{{delSiteErrors}}</p>
+					<p class = "error" id="p1Error4">{{delSiteErrors}}</p> --}}
 				</div>
 				<!-- <div class = errors>
 					<p class = "error" id="p1Error">{{part1Errors}}</p>
@@ -142,14 +154,14 @@
 						<label class="label" for="processor">Processor</label>
                         <!-- INPUT 9 -->
 						<input  data-id="{{dr.documentList.processor}}" placeholder="{{dr.documentList.processor}}" value="{{dr.documentList.processor}}"
-                                type="text" id="processor" name="processor" style="width: 70%;" maxlength="50">	
+                                type="text" id="processor" name="processor" style="width: 80%;" maxlength="50">	
 						<p class = "error" id="p2Error3">{{processorErrors}}</p>
 					</div>	
 				</div>
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
                     <!-- INPUT 10 -->
-					<textarea type = "text" id = "description" name = "description" rows = "4" cols = "10" placeholder = "{{dr.commodityDesc}}" maxlength="200">{{dr.commodityDesc}}</textarea>
+					<textarea type = "text" id = "description" name = "description" rows = "2" placeholder = "Write here..." maxlength="150">{{dr.commodityDesc}}</textarea>
 				</div>
 				<p class = "error" id="p2Error4">{{descriptionErrors}}</p>
 				<!-- <div class = errors>
@@ -231,12 +243,12 @@
 					<label class="label" for="driver">Driver</label>
                     <!-- INPUT 12 -->
 					<input  data-id="{{dr.fleetDetails.driverName}}" placeholder="{{dr.fleetDetails.driverName}}" value="{{dr.fleetDetails.driverName}}"
-                            type="text" id="driver" name="driver" style="width: 70%;" maxlength="50">
+                            type="text" id="driver" name="driver" style="width: 90%;" maxlength="50">
 					<p class = "error" id="p4Error2">{{driverErrors}}</p><br>
 					<label class="label" for="helper">Helper</label>
                      <!-- INPUT 13 -->
 					<input  data-id="{{dr.fleetDetails.helperName}}" placeholder="{{dr.fleetDetails.helperName}}" value="{{dr.fleetDetails.helperName}}"
-                            type="text" id="helper" name="fname" style="width: 70%;" maxlength="50">
+                            type="text" id="helper" name="fname" style="width: 90%;" maxlength="50">
 					<p class = "error" id="p4Error3">{{helperErrors}}</p><br>	
 				</div>
 				<div id="acknowledgement">
@@ -273,8 +285,6 @@
 			<!-- Part 5 of DR Form: Submit Button -->
 			<div id="part5">
 				<!-- Button to trigger the modal -->
-
-
 				<button type="button" class="btn btn-primary
                     btn-sm" 
                     data-target="#exampleModal"
@@ -282,8 +292,11 @@
 					Submit
 				</button>
 
-				
-				<button type="button" class="btn btn-danger" id="btn-cancel" onclick="window.history.go(-1); return false;">Cancel</button>
+				<button type="button" class="btn btn-primary
+                    btn-sm" id="btn-cancel" 
+					onclick="window.history.go(-1); return false;">
+					Cancel
+				</button>
 
 				<!-- Modal -->
 				<div div class="modal fade" id="exampleModal"
@@ -305,7 +318,7 @@
                             
 							<div class="modal-body" id="modal-body">
                                 <div id="modal-header">
-                                    Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Confirm</b> to submit.
+                                    Please double-check the information below. Click <b>&times;</b> if you want to change your previously entered information in the form. Otherwise, click <b>Save Changes</b> to submit.
                                 </div>
                                 <div class="modal-part1" id="modal-part1">
                                 	<div id="upper1-part1">
@@ -416,7 +429,7 @@
 									{{!-- href="#confirmModal" --}}
 									{{!-- data-dismiss="modal" --}}
 									>
-                                    Confirm
+                                    Save Changes
                                 </button>
                             </div>
 						</div>
@@ -436,7 +449,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						</div>
 					<div class="container"></div>
-					<div class="modal-body"> Submission success! The form has been recorded. </div>
+					<div class="modal-body"> Submission success! The changes has been recorded. </div>
 					<div class="modal-footer">
 						<a href="#" data-dismiss="modal" class="btn">Close</a>
 					</div>

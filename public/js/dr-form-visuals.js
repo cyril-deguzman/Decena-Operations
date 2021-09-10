@@ -860,7 +860,7 @@ $(document).ready(function () {
     div2.style.position = "absolute";
     div2.style.bottom = "3px";
     div2.style.color = "#ccc";
-    div2.style.left = "41%";
+    div2.style.left = "47%";
     commodityDesc.parentNode.appendChild(div1);
     div1.appendChild(commodityDesc);
     div2.appendChild(counterComomdityDesc);
@@ -885,7 +885,7 @@ $(document).ready(function () {
     div4.style.position = "absolute";
     div4.style.bottom = "9px";
     div4.style.color = "#ccc";
-    div4.style.left = "41%";
+    div4.style.left = "47%";
     pickUpSite.parentNode.appendChild(div3);
     div3.appendChild(pickUpSite);
     div4.appendChild(counterPickUp);
@@ -910,7 +910,7 @@ $(document).ready(function () {
      div6.style.position = "absolute";
      div6.style.bottom = "9px";
      div6.style.color = "#ccc";
-     div6.style.left = "41%";
+     div6.style.left = "47%";
      deliverySite.parentNode.appendChild(div5);
      div5.appendChild(deliverySite);
      div6.appendChild(counterDeliverySite);
