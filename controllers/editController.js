@@ -139,24 +139,25 @@ const editController = {
             else 
             {
                 if(companyName != oldCompanyName) 
-                    Company.findOne({name: { $regex : new RegExp(companyName, "i") }}, function (err, result) 
+                    Company.findOne({lowercaseName: companyName.toLowerCase()}, function (err, result) 
                     {
                         if (err) 
                             console.log(err)
 
                         else if (!result) 
                         {
-                            Company.findOneAndUpdate({name: oldCompanyName}, {$inc: {activeReceipts: -1}}, function(err, succ){
+                            Company.findOneAndUpdate({lowercaseName: oldCompanyName.toLowerCase()}, {$inc: {activeReceipts: -1}}, function(err, succ){
                                 if (err)
                                     console.log(err);
                                 else {
 
-                                    Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                    Company.findOneAndUpdate({lowercaseName: companyName.toLowerCase()}, {$inc: {activeReceipts: 1}}, function(err, succ){
                                         if (err)
                                             console.log(err);
                                         else if(!succ) {
                                             let company = new Company ({
-                                                name: companyName
+                                                name: companyName,
+                                                lowercaseName: companyName.toLowerCase()
                                             })
                                             company.save();
                                             res.send(succ);
@@ -169,11 +170,11 @@ const editController = {
 
                         else 
                         {
-                            Company.findOneAndUpdate({name: oldCompanyName}, {$inc: {activeReceipts: -1}}, function(err, succ){
+                            Company.findOneAndUpdate({lowercaseName: oldCompanyName.toLowerCase()}, {$inc: {activeReceipts: -1}}, function(err, succ){
                                 if (err)
                                     console.log(err);
                                 else
-                                    Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                    Company.findOneAndUpdate({lowercaseName: companyName.toLowerCase()}, {$inc: {activeReceipts: 1}}, function(err, succ){
                                         if (err)
                                             console.log(err);
                                         res.send(succ);

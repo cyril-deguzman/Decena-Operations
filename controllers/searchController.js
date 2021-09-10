@@ -69,7 +69,7 @@ const searchController = {
                             $gte: new Date(today, 0, 1), 
                             $lt: new Date(today, 11, 31)
                         },
-            companyName: { $eq: companyName }
+            lowCompanyName: { $eq: companyName.toLowerCase() }
         }).lean().exec(function (err, results) { 
 
             results.forEach((dr, i, arr) => {

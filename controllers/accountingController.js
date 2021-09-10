@@ -25,7 +25,7 @@ const accountingController = {
         }).lean().exec(function (err, results) { 
 
             results.forEach((dr, i, arr) => {
-                let dateIss = arr[i].dateIssued
+                let dateIss = arr[i].dateIssued;
                 let datePick = arr[i].pickUpDates;
                 let dateDest= arr[i].destinationDates;
                 let dateAck = arr[i].acknowledgement;

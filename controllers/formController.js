@@ -145,6 +145,7 @@ const formController = {
         let deliveryReceipt = new DeliveryReceipt({
             dateIssued: dateIssued,
             companyName: companyName,
+            lowCompanyName: companyName.toLowerCase(),
             clientName: clientName,
             pickSite: pickSite,
             dropSite: dropSite,
@@ -160,18 +161,19 @@ const formController = {
         
         deliveryReceipt.save();
 
-        Company.findOne({name: { $regex : new RegExp(companyName, "i") }}, function (err, result) {
+        Company.findOne({lowercaseName: companyName.toLowerCase()}, function (err, result) {
             if (err) 
                 console.log(err)
             else if (!result) {
                 let company = new Company ({
-                    name: companyName
+                    name: companyName,
+                    lowercaseName: companyName.toLowerCase()
                 })
 
                 company.save();
             }
             else {
-                Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}},
+                Company.findOneAndUpdate({lowercaseName: companyName.toLowerCase()}, {$inc: {activeReceipts: 1}},
                     function(err, succ){
                     if (err)
                         console.log(err);

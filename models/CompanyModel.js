@@ -11,6 +11,7 @@ let mongoose = require ("mongoose");
  */
 let CompanySchema = new mongoose.Schema ({
 	name: {type: String, required: true, maxLength: 150},
+    lowercaseName: {type: String, required: true, maxLength: 150},
 	activeReceipts: {type: Number, default: 1},
 	validatedReceipts: {type: Number, default: 0}
 });

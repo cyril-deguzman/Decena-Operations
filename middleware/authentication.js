@@ -29,7 +29,8 @@ const authMiddleware = {
             res.redirect(`/search`);
         else
             res.render('error', {});
-    }
+    },
+
 }
 
 module.exports = authMiddleware;
