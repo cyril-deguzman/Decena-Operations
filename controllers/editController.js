@@ -5,6 +5,7 @@ const DocumentList = require('../models/DocumentListSchema.js');
 const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
 const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const Company = require('../models/CompanyModel.js')
+const auxiliaryController = require(`./auxiliaryController.js`);
 
 const editController = {
 
@@ -21,14 +22,14 @@ const editController = {
             if(err)
                 console.log(err);
             else {
-                dr.dIssued = editController.convertDate(dr.dateIssued);
-                dr.dParr = editController.convertDate(dr.pickUpDates.arrivalDate);
-                dr.dPdep = editController.convertDate(dr.pickUpDates.arrivalDate);
-                dr.dDarr = editController.convertDate(dr.destinationDates.arrivalDate);
-                dr.dUnStart = editController.convertDate(dr.destinationDates.unloadingStartDate);
-                dr.dUnFin = editController.convertDate(dr.destinationDates.unloadingFinishedDate);
-                dr.dDdep = editController.convertDate(dr.destinationDates.departureDate);
-                dr.dAck = editController.convertDate(dr.acknowledgement.dateAck);
+                dr.dIssued = auxiliaryController.convertDate(dr.dateIssued);
+                dr.dParr = auxiliaryController.convertDate(dr.pickUpDates.arrivalDate);
+                dr.dPdep = auxiliaryController.convertDate(dr.pickUpDates.arrivalDate);
+                dr.dDarr = auxiliaryController.convertDate(dr.destinationDates.arrivalDate);
+                dr.dUnStart = auxiliaryController.convertDate(dr.destinationDates.unloadingStartDate);
+                dr.dUnFin = auxiliaryController.convertDate(dr.destinationDates.unloadingFinishedDate);
+                dr.dDdep = auxiliaryController.convertDate(dr.destinationDates.departureDate);
+                dr.dAck = auxiliaryController.convertDate(dr.acknowledgement.dateAck);
                 res.render('edit-form', {dr: dr, id: id});
             }
                 
@@ -188,19 +189,6 @@ const editController = {
           
     },
 
-    convertDate: function(d) {
-        var dd = d.getDate();
-        var mm = d.getMonth()+1;
-        var yyyy = d.getFullYear();
-
-        if(dd < 10)
-            dd='0'+dd;
-        if(mm < 10)
-            mm='0'+mm; 
-        date = yyyy+'-'+mm+'-'+dd;
-        
-        return date
-    },
 }
 
 module.exports = editController;

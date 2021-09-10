@@ -66,25 +66,19 @@ form {
 }
 
 .btn {
-      border: 2px solid #355e3b;
-      color: white;
-      padding: 5px 16px;				
+    border: 2px solid #355e3b;
+    color: white;
+    padding: 5px 16px;				
     font-size: 2vh;
     width: 100%;
     background-color: #355e3b;
-    border-radius: 12px;
-}
-input:hover[type="submit"] {
-    border: 2px solid #194a0a;
-    background-color: #194a0a;
-    color: white;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
  .input {
-      border: 3px solid #355e3b;
-      color: black;
-      padding: 4px 10px;				
+    border: 3px solid #355e3b;
+    color: black;
+    padding: 4px 10px;				
     width: 100%;
     font-size: 15px;
     background-color: white;
@@ -105,5 +99,8 @@ hr.solid {
 }
 
 #login-button:hover {
-    background-color: #123524 !Important;
+    border: 2px solid #194a0a;
+    background-color: #194a0a;
+    color: white;
+    border-radius: 8px;
 }

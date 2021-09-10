@@ -120,6 +120,17 @@ body {
     word-wrap: break-word;    
 }
 
+
+#btn-cancel{
+    float: right;
+    margin-right: 5%;
+    font-size: 3vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+}
+
 #submit, #submit-confirm {
     background-color: #194A09;
     color: white;

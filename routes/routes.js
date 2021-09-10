@@ -17,6 +17,8 @@ app.post(`/login`, indexController.postLogin);
 /* form routes */
 app.get(`/form`, authMiddleware.isEncoder, formController.getForm);
 app.post(`/postform`, formController.postForm);
+app.get(`/viewallreceipts`, authMiddleware.isEncoder,formController.getViewAllDRs);
+app.get(`/viewallreceipts/:year`, authMiddleware.isEncoder,formController.getViewAllDRs);
 
 /* search routes */
 app.get(`/search`, authMiddleware.isEncoder, searchController.getSearch);

@@ -47,7 +47,7 @@
 					<h1 id="dr-logo">DECENA'S VICTORY MOVERS</h1>
 				</div>
 				<!-- Delivery Receipt Title -->
-				<h1 id="dr-title">Edit Delivery Receipt</h1>	
+				<h1 id="dr-title">Delivery Receipt</h1>	
 			</div>
 
 			<!-- Part 1 of DR Form -->
@@ -273,12 +273,17 @@
 			<!-- Part 5 of DR Form: Submit Button -->
 			<div id="part5">
 				<!-- Button to trigger the modal -->
+
+
 				<button type="button" class="btn btn-primary
                     btn-sm" 
                     data-target="#exampleModal"
                     id="submit">
 					Submit
 				</button>
+
+				
+				<button type="button" class="btn btn-danger" id="btn-cancel" onclick="window.history.go(-1); return false;">Cancel</button>
 
 				<!-- Modal -->
 				<div div class="modal fade" id="exampleModal"

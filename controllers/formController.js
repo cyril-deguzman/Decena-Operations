@@ -5,6 +5,7 @@ const DocumentList = require('../models/DocumentListSchema.js');
 const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
 const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const Company = require('../models/CompanyModel.js')
+const auxiliaryController = require(`./auxiliaryController.js`);
 
 const formController = {
 
@@ -15,8 +16,50 @@ const formController = {
      * @param {*} req 
      * @param {*} res 
      */
-     getForm: function(req, res) {
+    getForm: function(req, res) {
         res.render('dr-form', {});
+    },
+
+    /**
+     * getViewAllDRs
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */    
+    getViewAllDRs: async function(req, res) {
+        let year = req.params.year;
+        let date = new Date();
+        let today = date.getFullYear();
+
+        if(year)
+            today = year;
+
+        DeliveryReceipt.find({ 
+            dateIssued: { 
+                            $gte: new Date(today, 0, 1), 
+                            $lt: new Date(today, 11, 31)
+                        },
+        }).lean().exec(function (err, results) { 
+
+            results.forEach((dr, i, arr) => {
+                let dateIss = arr[i].dateIssued
+                
+                arr[i].status = arr[i].status ? 'paid' : 'pending'
+                
+                /* Date Issued Reformat */
+                arr[i].dateIssued = auxiliaryController.convertDate2(dateIss);
+
+                /* Date Issued Sort Reformat */
+                year = dateIss.getFullYear() 
+                month = dateIss.getMonth() + 1 >= 10 ? dateIss.getMonth() + 1 : '0' + dateIss.getMonth()
+                day = dateIss.getDate() >= 10 ? dateIss.getDate() : '0' + dateIss.getDate()
+                arr[i].dateIssuedInteger = '' + year  + month + day;
+
+            });
+            
+            res.render("edit-dr-list", {dr: results, year: today})
+        })
+
     },
 
     /**
