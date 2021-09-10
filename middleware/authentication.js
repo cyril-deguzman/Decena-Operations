@@ -20,8 +20,6 @@ const authMiddleware = {
 
     isLoggedIn: function(req, res, next) {
         const role = req.session.role;
-        
-        console.log(role);
 
         if(typeof role == 'undefined')
             next();
