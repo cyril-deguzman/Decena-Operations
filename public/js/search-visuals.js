@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // popovers Initialization
+    $('[data-toggle="popover"]').popover()
+
     var url = window.location.href;
     var searchValue = url.split('=')[1];
     let maxPageCount = Math.ceil($('#page-count').val() / 10);
@@ -13,8 +16,6 @@ $(document).ready(function () {
     /* This checks if the search is able to return a company, if succcessful the card will 
        display the number of companies matching the search query. */
     if ($(".resultsFoundCard")[0]) {
-
-        $('#search-guide').css('display','none');
         let companyCount = $('#page-count').val();
         let searchQuery = $('#search-query').val();
 
@@ -39,7 +40,6 @@ $(document).ready(function () {
             $("#noResultsFoundCard").text("There are (0) results found for: " + searchQuery);
             $("#noResultsParentCard").css("background-color","#b22222");
             $('#noResultsFoundCard').css('color','white');
-            $('#search-guide').css('display','none');
         }   
         else {
             $("#noResultsParentCard").hide();

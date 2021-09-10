@@ -36,16 +36,22 @@
 
     <div class="col-lg-12 h-75 d-inline-block row justify-content-center" id="mainDivSearch">
         <h1 id = "searchText" class="col-lg-12 align-items-center row justify-content-center">Search Company</h1>
-        
-        <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
-            <div class="form-group justify-content-center w-100 flex-container">
-                    <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
-                    <input id="page-count" type="hidden" name="pagecount" value="{{pageCount}}">
-                    <input id="search-query" type="hidden" name="searchquery" value="{{searchQuery}}">
-                    <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
-            </div>
-        </form>
-        <div class="col-lg-12" id="search-guide">To view all companies, leave the search bar blank and click the search button.</div>
+            <!-- Search Bar -->
+            <form action="/companysearch" method="GET" class="form-inline justify-content-center col-lg-12">
+                <div class="form-group justify-content-center w-100 flex-container">
+                        <input type="text" name="search" placeholder="Company name" class="form-control col-lg-6" id="searchCompanyText"> 
+                        <input id="page-count" type="hidden" name="pagecount" value="{{pageCount}}">
+                        <input id="search-query" type="hidden" name="searchquery" value="{{searchQuery}}">
+                        <button class="btn btn-outline-secondary material-icons-outlined " value="Search" type="submit" id="searchButton">search</button>
+                        <!-- Popover -->
+                        <span class="d-inline-block" data-toggle="popover" data-trigger="hover" title="View All Companies" data-content="To view all companies, leave the search bar blank and click the search button.">
+                            <button class="btn btn-primary" style="pointer-events: none;" type="button" id="btn-popover">
+                                <span class="material-icons-outlined" style="color: #194a0a;">lightbulb</span>
+                            </button>
+                        </span>
+                </div>
+            </form>
+
         <div class="col-lg-12 mx-auto" id="companyListContainer">
             <div class="card col-lg-6 mx-auto resultsCard" id="resultsCountCard">
                 <div class="card-body" id="resultsFoundText"> </div>
