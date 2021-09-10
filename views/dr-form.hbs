@@ -52,13 +52,13 @@
 			<!-- Part 1 of DR Form -->
 			<div class="part1" id="part1">
 				<div id="name-date-container">
-					<div id="name-container">
+					<div id="name-container" style="width: 55%;">
 						<label class="label" for="company-name">Forwarding/Broker's Company Name </label>
-						<input type="text" id="company-name" name="company-name" style="width: 80%;" maxlength="150">
+						<input type="text" id="company-name" name="company-name" style="width: 90%;" maxlength="150">
 						<p class = "error" id="p1Error1">{{companyNameErrors}}</p>
 						<br>
 						<label class="label" for="client-name">Client's Name </label>
-						<input type="text" id="client-name" name="client-name" style="width: 80%;" maxlength="50">
+						<input type="text" id="client-name" name="client-name" style="width: 90%;" maxlength="50">
 						<p class = "error" id="p1Error2">{{clientNameErrors}}</p>	
 					</div>
 					<div id = "date-error-container">
@@ -132,7 +132,7 @@
 				</div>
 				<div id="description-container">
 					<label class="label" for="description">Description of Commodity</label>
-					<textarea type = "text" id = "description" name = "description" rows = "4" placeholder = "Write here..." maxlength="150"></textarea>
+					<textarea type = "text" id = "description" name = "description" rows = "2" placeholder = "Write here..." maxlength="150"></textarea>
 				</div>
 				<p class = "error" id="p2Error4">{{descriptionErrors}}</p>
 				<!-- <div class = errors>
@@ -210,10 +210,10 @@
 					<input type="text" id="plate-number" name="plate-number" style="width: 40%;" maxlength="8">
 					<p class = "error" id="p4Error1">{{plateNumErrors}}</p><br>
 					<label class="label" for="driver">Driver</label>
-					<input type="text" id="driver" name="driver" style="width: 80%;" maxlength="50">
+					<input type="text" id="driver" name="driver" style="width: 90%;" maxlength="50">
 					<p class = "error" id="p4Error2">{{driverErrors}}</p><br>
 					<label class="label" for="helper">Helper</label>
-					<input type="text" id="helper" name="helper" style="width: 80%;" maxlength="50">
+					<input type="text" id="helper" name="helper" style="width: 90%;" maxlength="50">
 					<p class = "error" id="p4Error3">{{helperErrors}}</p><br>	
 				</div>
 				<div id="acknowledgement">

@@ -83,7 +83,7 @@ body {
 }
 
 #description, #pickup-site, #delivery-site {
-    width: 44%;
+    width: 50%;
     padding-left: 7px;
     resize: none;
 }
