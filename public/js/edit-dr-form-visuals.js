@@ -5,22 +5,30 @@ $(document).ready(function () {
     //Alpha
     $("#client-name, #driver" ).keyup(function () {
         var alphaClientName = validator.trim($("#client-name").val());
+        var clientLen = document.getElementById("client-name").getAttribute("maxlength");
         validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
+        validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
     });
 
     $("#driver").keyup(function () {
         var alphaDriver = validator.trim($("#driver").val());
+        var driverLen = document.getElementById("driver").getAttribute("maxlength");
         validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
+        validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
     });
 
     $("#helper").keyup(function () {
         var alphaHelper = validator.trim($("#helper").val());
+        var helperLen = document.getElementById("helper").getAttribute("maxlength");
         validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
+        validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
     });
 
     $("#processor").keyup(function () {
         var alphaProcessor = validator.trim($("#processor").val());
+        var processorLen = document.getElementById("processor").getAttribute("maxlength");
         validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
+        validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
     });
 
     // Alphanumeric
@@ -232,16 +240,24 @@ $(document).ready(function () {
 
         // Alpha
         var alphaClientName = validator.trim($("#client-name").val());
+        var clientLen = document.getElementById("client-name").getAttribute("maxlength");
         validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
+        validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
 
         var alphaDriver = validator.trim($("#driver").val());
+        var driverLen = document.getElementById("driver").getAttribute("maxlength");
         validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
+        validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
 
         var alphaHelper = validator.trim($("#helper").val());
+        var helperLen = document.getElementById("helper").getAttribute("maxlength");
         validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
+        validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
 
         var alphaProcessor = validator.trim($("#processor").val());
+        var processorLen = document.getElementById("processor").getAttribute("maxlength");
         validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
+        validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
 
         // Alphanumeric
         var alphaCompanyName = validator.trim($('#company-name').val());
@@ -601,7 +617,7 @@ $(document).ready(function () {
     */
     function validLen (input, errorfield, id, length) {
         if (!validator.isLength(input, {min: 1, max: length}))
-            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 150 characters.', errorfield);
+            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of ' + length + ' characters.', errorfield);
         else
             setValid(id, errorfield);
     }

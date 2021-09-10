@@ -3,92 +3,100 @@ $(document).ready(function () {
     /* Keyup events for real time validation */
 
     //Alpha
-    $("#client-name, #driver" ).keyup(function () {
-        var alphaClientName = validator.trim($("#client-name").val());
-        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
-    });
+    // $("#client-name, #driver" ).keyup(function () {
+    //     var alphaClientName = validator.trim($("#client-name").val());
+    //     var clientLen = document.getElementById("client-name").getAttribute("maxlength");
+    //     validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
+    //     validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
+    // });
 
-    $("#driver").keyup(function () {
-        var alphaDriver = validator.trim($("#driver").val());
-        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
-    });
+    // $("#driver").keyup(function () {
+    //     var alphaDriver = validator.trim($("#driver").val());
+    //     var driverLen = document.getElementById("driver").getAttribute("maxlength");
+    //     validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
+    //     validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
+    // });
 
-    $("#helper").keyup(function () {
-        var alphaHelper = validator.trim($("#helper").val());
-        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
-    });
+    // $("#helper").keyup(function () {
+    //     var alphaHelper = validator.trim($("#helper").val());
+    //     var helperLen = document.getElementById("helper").getAttribute("maxlength");
+    //     validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
+    //     validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
+    // });
 
-    $("#processor").keyup(function () {
-        var alphaProcessor = validator.trim($("#processor").val());
-        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
-    });
+    // $("#processor").keyup(function () {
+    //     var alphaProcessor = validator.trim($("#processor").val());
+    //     var processorLen = document.getElementById("processor").getAttribute("maxlength");
+    //     validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
+    //     validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
+    // });
 
-    // Alphanumeric
-    $("#company-name").keyup(function () {
-        var alphaCompanyName = validator.trim($('#company-name').val());
-        var companyLen = document.getElementById("company-name").getAttribute("maxlength");
-        validLen(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'), companyLen );
-    });
+    // // Alphanumeric
+    // $("#company-name").keyup(function () {
+    //     var alphaCompanyName = validator.trim($('#company-name').val());
+    //     var companyLen = document.getElementById("company-name").getAttribute("maxlength");
+    //     validLen(alphaCompanyName, $('#p1Error1'), $('#company-name').attr('id'), companyLen );
+    // });
 
-    $("#pickup-site").keyup(function () {
-        var alphaPickSite = validator.trim($('#pickup-site').val());
-        var pickLen = document.getElementById("pickup-site").getAttribute("maxlength");
-        validLen(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'), pickLen);
-    });
+    // $("#pickup-site").keyup(function () {
+    //     var alphaPickSite = validator.trim($('#pickup-site').val());
+    //     var pickLen = document.getElementById("pickup-site").getAttribute("maxlength");
+    //     validLen(alphaPickSite, $('#p1Error3'), $('#pickup-site').attr('id'), pickLen);
+    // });
 
-    $("#delivery-site").keyup(function () {
-        var alphaDelSite = validator.trim($('#delivery-site').val());
-        var delLen = document.getElementById("delivery-site").getAttribute("maxlength");
-        validLen(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'), delLen);
-    });
+    // $("#delivery-site").keyup(function () {
+    //     var alphaDelSite = validator.trim($('#delivery-site').val());
+    //     var delLen = document.getElementById("delivery-site").getAttribute("maxlength");
+    //     validLen(alphaDelSite, $('#p1Error4'), $('#delivery-site').attr('id'), delLen);
+    // });
 
-    $("#plate-number").keyup(function () {
-        var alphaPlateNum = validator.trim($('#plate-number').val());
-        var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
-        validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
-    });
+    // $("#plate-number").keyup(function () {
+    //     var alphaPlateNum = validator.trim($('#plate-number').val());
+    //     var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
+    //     validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
+    // });
     
-    $("#description").keyup(function () {
-        var alphaDescription = validator.trim($('#description').val());
-        var descriptionLen = document.getElementById("description").getAttribute("maxlength");
-        validLen(alphaDescription, $('#p2Error4'), $('#description').attr('id'), descriptionLen);
-    });
+    // $("#description").keyup(function () {
+    //     var alphaDescription = validator.trim($('#description').val());
+    //     var descriptionLen = document.getElementById("description").getAttribute("maxlength");
+    //     validLen(alphaDescription, $('#p2Error4'), $('#description').attr('id'), descriptionLen);
+    // });
 
-    // Checkbox
-    $("#docs-options").on("change", function () {
-        validCheckbox($("#docs-options").attr('id'), $("#p2Error2"));
-    });
+    // // Checkbox
+    // $("#docs-options").on("change", function () {
+    //     validCheckbox($("#docs-options").attr('id'), $("#p2Error2"));
+    // });
 
-    // Numeric
-    $("#quantity").on("change", function () {
-        var quantityNum = document.getElementById("quantity").value;
-        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
-    });
+    // // Numeric
+    // $("#quantity").on("change", function () {
+    //     var quantityNum = document.getElementById("quantity").value;
+    //     validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+    // });
 
-    // Dates
-    $("#date-issued").on("change", function () {
-        var dateIssued = document.getElementById("date-issued").value;
-        validDate(dateIssued, $("#p1Error5"), $("#date-issued").attr("id"));
-    });
+    // // Dates
+    // $("#date-issued").on("change", function () {
+    //     var dateIssued = document.getElementById("date-issued").value;
+    //     validDate(dateIssued, $("#p1Error5"), $("#date-issued").attr("id"));
+    // });
 
-    $("#ack-date").on("change", function () {
-        var ackDate = document.getElementById("ack-date").value;
-        validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
-    });
+    // $("#ack-date").on("change", function () {
+    //     var ackDate = document.getElementById("ack-date").value;
+    //     validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
+    // });
 
-    // Time
-    $("#ack-time").on("change", function () {
-        var ackTime = document.getElementById("ack-time").value;
-        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
-    });
+    // // Time
+    // $("#ack-time").on("change", function () {
+    //     var ackTime = document.getElementById("ack-time").value;
+    //     validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    // });
 
     /**
      * Prints the data inputted by the user in the Modal if there are no errors.
      * Otherwise, it scrolls up to first occurrence of the error.
      */
     $("#submit").click(function () {
-        getValidation();
-        cleanDateAndTime();
+        // getValidation();
+        // cleanDateAndTime();
         getConditions();
     });
 
@@ -232,16 +240,24 @@ $(document).ready(function () {
 
         // Alpha
         var alphaClientName = validator.trim($("#client-name").val());
+        var clientLen = document.getElementById("client-name").getAttribute("maxlength");
         validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
+        validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
 
         var alphaDriver = validator.trim($("#driver").val());
+        var driverLen = document.getElementById("driver").getAttribute("maxlength");
         validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
+        validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
 
         var alphaHelper = validator.trim($("#helper").val());
+        var helperLen = document.getElementById("helper").getAttribute("maxlength");
         validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
+        validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
 
         var alphaProcessor = validator.trim($("#processor").val());
+        var processorLen = document.getElementById("processor").getAttribute("maxlength");
         validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
+        validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
 
         // Alphanumeric
         var alphaCompanyName = validator.trim($('#company-name').val());
@@ -601,7 +617,7 @@ $(document).ready(function () {
     */
     function validLen (input, errorfield, id, length) {
         if (!validator.isLength(input, {min: 1, max: length}))
-            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of 150 characters.', errorfield);
+            setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of ' + length + ' characters.', errorfield);
         else
             setValid(id, errorfield);
     }
