@@ -9,7 +9,7 @@ const auxiliaryController = {
      */
     convertDate: function(date) {
         year = date.getFullYear() 
-        month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : '0' + date.getMonth()
+        month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
         day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate()
         date = year+'-'+month+'-'+day;
 
