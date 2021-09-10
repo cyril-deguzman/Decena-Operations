@@ -16,6 +16,21 @@ const authMiddleware = {
             next();
         else 
             res.render('access-restricted', {});
+    },
+
+    isLoggedIn: function(req, res, next) {
+        const role = req.session.role;
+        
+        console.log(role);
+
+        if(typeof role == 'undefined')
+            next();
+        else if(role == 'ACCOUNTANT')
+            res.redirect(`/accounting`);
+        else if(role == 'ENCODER')
+            res.redirect(`/search`);
+        else
+            res.render('error', {});
     }
 }
 

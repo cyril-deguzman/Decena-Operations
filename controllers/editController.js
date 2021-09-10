@@ -139,7 +139,7 @@ const editController = {
             else 
             {
                 if(companyName != oldCompanyName) 
-                    Company.findOne({name: companyName}, function (err, result) 
+                    Company.findOne({name: { $regex : new RegExp(companyName, "i") }}, function (err, result) 
                     {
                         if (err) 
                             console.log(err)
@@ -151,7 +151,7 @@ const editController = {
                                     console.log(err);
                                 else {
 
-                                    Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                    Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}}, function(err, succ){
                                         if (err)
                                             console.log(err);
                                         else if(!succ) {
@@ -173,7 +173,7 @@ const editController = {
                                 if (err)
                                     console.log(err);
                                 else
-                                    Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}}, function(err, succ){
+                                    Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}}, function(err, succ){
                                         if (err)
                                             console.log(err);
                                         res.send(succ);

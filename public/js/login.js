@@ -12,11 +12,11 @@ $(document).ready(function () {
             switch(result) {
                 case 'enc': 
                     url = `/search`; 
-                    window.location = url;
+                    window.location.replace(url);
                     break;
                 case 'acc':
                     url = `/accounting`; 
-                    window.location = url;
+                    window.location.replace(url);
                     break;
                 default:
                     // TODO: VISUALS

@@ -34,6 +34,7 @@ const accountingController = {
                 
                 /* Date Issued Reformat */
                 arr[i].dateIssued = auxiliaryController.convertDate2(dateIss);
+                arr[i].dateIssued2 = auxiliaryController.convertDate(dateIss)
 
                 /* Date Issued Sort Reformat */
                 year = dateIss.getFullYear() 
@@ -61,6 +62,7 @@ const accountingController = {
     },
     
     /**
+     * 
      * 
      * @param {*} req 
      * @param {*} res 

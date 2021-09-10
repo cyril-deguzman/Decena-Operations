@@ -160,7 +160,7 @@ const formController = {
         
         deliveryReceipt.save();
 
-        Company.findOne({name: companyName}, function (err, result) {
+        Company.findOne({name: { $regex : new RegExp(companyName, "i") }}, function (err, result) {
             if (err) 
                 console.log(err)
             else if (!result) {
@@ -171,7 +171,7 @@ const formController = {
                 company.save();
             }
             else {
-                Company.findOneAndUpdate({name: companyName}, {$inc: {activeReceipts: 1}},
+                Company.findOneAndUpdate({name: { $regex : new RegExp(companyName, "i") }}, {$inc: {activeReceipts: 1}},
                     function(err, succ){
                     if (err)
                         console.log(err);
