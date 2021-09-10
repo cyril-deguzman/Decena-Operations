@@ -6,9 +6,101 @@ body {
     overflow-x: hidden;
 }
 
-.searchField{
-    box-sizing: border-box;
+/* Header */
+#header-logo{
+    padding-top: 40px;
+    padding-bottom: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#decena-logo{
+    width: 19%;
+    height: 100%;
+}
+
+#decena-text {
+    position: relative;
+    font-size: 6vh;
+    color: #299B04;
+}
+
+/* Set Year */
+#set-year-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 17px;
+    padding:0%;
+    margin-bottom: 35px;
+    transform: translateY(14px);
+}
+
+#set-year-label {
+    display:inline-block;
+    padding-right: 7px;
+    padding-top: 4px;
+    color: #194A09;
+    max-width: 55%;
+}
+
+#set-year-input-btn {
+    width: 120px;
+    position: relative;
+    display:inline-block;
+}
+
+#set-year-input {
+    margin: 0px;
+    padding: 6px;
+    width: 65px;
+    outline: none;
+    height: 30px;
+    border-radius: 4px;
+}
+
+#set-year-btn{
+    position: absolute;
+    width: auto;
+    height: 30px;
+    border: gray;
+    background-color:transparent;
+    top: 0px;
+    right: 0px;
+    padding-bottom: 1px;
+    padding-top: 2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    z-index: 2;
+    cursor: pointer;
+    transform: translateX(-60px);
+}
+
+.set-year-span {
+    font-size: 19px !important;
+    color: 	#404040;
+}
+
+/* Container for Main Content */
+#main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: relative;
+    width: 100%; 
+}
+
+/* DataTable */
+table {
+    margin: 0 auto;
     width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed; 
+    word-wrap:break-word; 
 }
 
 thead, tbody, tfoot {
@@ -19,29 +111,10 @@ thead, tfoot, #content-container {
     color: #194A09;   
 }
 
-#main-div {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    right:30px;
-    margin-top:30px;
-}
-
-#company-name-title { 
-    position: relative;
-    /* background-color: white; */
-    margin: 0%;
-    padding: 1%;
-    color: black;
-    top:60px;
-    right:20px;
-}
-
-#title-container {
-    position: relative;
-    left:15px;
+tfoot input {
+    width: 40%;
+    padding: 3px;
+    box-sizing: border-box;
 }
 
 .custom-select { 
@@ -49,46 +122,8 @@ thead, tfoot, #content-container {
     width:50px !important
 }
 
-.btn-info {
-    background-color: #417dc1 !important;
-    border-style: none !important;
-    margin-left: 40px;
-}
-
-.editIcon {
-    color: white;
-}
-
-#mainContainerForYear {
-    position: relative;
-    left:300px;
-    top:50px;
-}
-
-tfoot input {
-    width: 40%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-table {
-    margin: 0 auto;
-    width: 100%;
-    clear: both;
-    border-collapse: collapse;
-    table-layout: fixed; 
-    word-wrap:break-word; 
-}
-
 .form-control-sm {
     position: relative;
-}
-
-.pagination {
-    position: relative;
-    right:430px;
-    top:30px;
-    padding-bottom: 30px;
 }
 
 #searchDrForm {
@@ -97,29 +132,46 @@ table {
     bottom:20px;
 }
 
-#search-year-input {
-    position: relative;
-    top:15px;
-    border-color: gray;
-    width: 40%;
-} 
+.searchField{
+    box-sizing: border-box;
+    width: 100%;
+}
 
 #filterText {
     overflow-y: auto;
     max-height: 50px;
 }
 
-#filter-year-btn {
-    position: relative;
-    left:110px;
-    bottom:20px;
-    height: 40px;
-}
-
 #containerForYear{
     position:relative;
     top:50px;
     right:100px;   
+}
+
+.paymentStatus{
+    border-radius: 5px; 
+    padding:1px; color: white; 
+    text-align: center;
+    width: 90%;
+    height:25px;
+}
+
+.editBtn{
+    margin-left: 5px;
+}
+
+.editBtn:hover {
+    background-color: #0f4d92 !Important;
+    border: solid 1px #0f4d92;
+}
+
+.btn-info {
+    background-color: 26619c !Important;
+    border-style: none !Important;
+}
+
+.editIcon {
+    color: white;
 }
 
 /* Pagination */
@@ -152,17 +204,11 @@ table {
     border: solid 1px #194A09;
 }
 
-.paymentStatus{
-    border-radius: 5px; 
-    padding:1px; color: white; 
-    text-align: center;
-    width: 90%;
-    height:25px;
-}
-
-.editBtn{
+.pagination {
     position: relative;
-    right:15px;
+    right:430px;
+    top:30px;
+    padding-bottom: 30px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -175,23 +221,4 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-}
-
-#header-logo{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    position:relative;
-}
-
-#decena-logo{
-    width: 23%;
-    height: 23%;
-    vertical-align: middle;
-    border-style: none;
-}
-
-#title-container {
-    position: relative;
-    left:150px;
 }
