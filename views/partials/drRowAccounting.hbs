@@ -14,13 +14,13 @@
 
 
 <!-- 1st Modal: View Delivery Receipt Details -->
-<div id="modalAccounting">
+<div id="modalAccounting bd-example-modal-lg">
     <div div class="modal fade" id="exampleModal{{@index}}"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 id="modal-dr-title">
@@ -76,13 +76,25 @@
                             <h6>PICK-UP POINT</h6>
                             <div class="modal-pickup-point" id="modal-pickup-point">
                                 <div id="arrival-ppoint">
-                                    <p id="a-left-left-p3">Arrival Date <br>Time </p>
-                                    <p id="a-left-right-p3">{{pickUpDates.arrivalDate}}<br>{{pickUpDates.arrivalTime}}</p>
+                                    <div id="arrival-date-ppoint">
+                                        <p class="label-p3" id="a-date-label-ppoint-p3">Arrival Date </p>
+                                        <p class="input-p3" id="a-date-input-ppoint-p3">{{pickUpDates.arrivalDate}}</p>
+                                    </div>
+                                    <div id="arrival-time-ppoint">
+                                        <p class="label-p3" id="a-time-label-ppoint-p3">Time </p>
+                                        <p class="input-p3" id="a-time-input-ppoint-p3">{{pickUpDates.arrivalTime}}</p>
+                                    </div>	
                                 </div>
                                 <br>
                                 <div id="departure-ppoint">
-                                    <p id="d-left-left-p3">Departure Date <br>Time </p>
-                                    <p id="d-left-right-p3">{{pickUpDates.departureDate}}<br>{{pickUpDates.departureTime}}</p>
+                                    <div id="departure-date-ppoint">
+                                        <p class="label-p3" id="d-date-label-ppoint-p3">Departure Date </p>
+                                        <p class="input-p3" id="d-date-input-ppoint-p3">{{pickUpDates.departureDate}}</p>
+                                    </div>
+                                    <div id="departure-time-ppoint">
+                                        <p class="label-p3" id="d-time-label-ppoint-p3">Time </p>
+                                        <p class="input-p3" id="d-time-input-ppoint-p3">{{pickUpDates.departureTime}}</p>
+                                    </div>	
                                 </div> 
                             </div>
                         </div>
@@ -91,23 +103,47 @@
                             <h6>DESTINATION POINT</h6>
                             <div id="modal-destination-point">
                                 <div id="arrival-dpoint">
-                                    <p id="a-right-left-p3">Arrival Date <br>Time </p>
-                                    <p id="a-right-right-p3">{{destinationDates.arrivalDate}}<br>{{destinationDates.arrivalTime}}</p>
+                                    <div id="arrival-date-dpoint">
+                                        <p class="label-p3" id="a-date-label-dpoint-p3">Arrival Date </p>
+                                        <p class="input-p3" id="a-date-input-dpoint-p3">{{destinationDates.arrivalDate}}</p>
+                                    </div>
+                                    <div id="arrival-time-dpoint">
+                                        <p class="label-p3" id="a-time-label-dpoint-p3">Time </p>
+                                        <p class="input-p3" id="a-time-input-dpoint-p3">{{destinationDates.arrivalTime}}</p>
+                                    </div>
                                 </div>
                                 <br>
                                 <div id="startload-dpoint">
-                                    <p id="sl-right-left-p3">Date Started Loading/Unloading <br>Time </p>
-                                    <p id="sl-right-right-p3">{{destinationDates.unloadingStartDate}}<br>{{destinationDates.unloadingStartTime}}</p>
+                                    <div id="startload-date-dpoint">
+                                        <p class="label-p3" id="sl-date-label-dpoint-p3">Date Started Loading/Unloading </p>
+                                        <p class="input-p3" id="sl-date-input-dpoint-p3">{{destinationDates.unloadingStartDate}}</p>
+                                    </div>
+                                    <div id="startload-time-dpoint">
+                                        <p class="label-p3" id="sl-time-label-dpoint-p3">Time </p>
+                                        <p class="input-p3" id="sl-time-input-dpoint-p3">{{destinationDates.unloadingStartTime}}</p>
+                                    </div>
                                 </div>
                                 <br>
                                 <div id="finishload-dpoint">
-                                    <p id="fl-right-left-p3">Date Finished Loading/Unloading <br>Time </p>
-                                    <p id="fl-right-right-p3">{{destinationDates.unloadingFinishedDate}}<br>{{destinationDates.unloadingFinishedTime}}</p>
+                                    <div id="finishload-date-dpoint">
+                                        <p class="label-p3" id="fl-date-label-dpoint-p3">Date Finished Loading/Unloading </p>
+                                        <p class="input-p3" id="fl-date-input-dpoint-p3">{{destinationDates.unloadingFinishedDate}}</p>
+                                    </div>
+                                    <div id="finishload-time-dpoint">
+                                        <p class="label-p3" id="fl-time-label-dpoint-p3">Time </p>
+                                        <p class="input-p3" id="fl-time-input-dpoint-p3">{{destinationDates.unloadingFinishedTime}}</p>
+                                    </div>
                                 </div>
                                 <br>
                                 <div id="departure-dpoint">
-                                    <p id="d-right-left-p3">Departure Date <br>Time </p>
-                                    <p id="d-right-right-p3">{{destinationDates.departureDate}}<br>{{destinationDates.departureTime}}</p>
+                                    <div id="departure-date-dpoint">
+                                        <p class="label-p3" id="d-date-label-dpoint-p3">Departure Date </p>
+                                        <p class="input-p3" id="d-date-input-dpoint-p3">{{destinationDates.departureDate}}</p>
+                                    </div>
+                                    <div id="departure-time-dpoint">
+                                        <p class="label-p3" id="d-time-label-dpoint-p3">Time </p>
+                                        <p class="input-p3" id="d-time-input-dpoint-p3">{{destinationDates.departureTime}}</p>
+                                    </div>	
                                 </div>                                    
                             </div>
                         </div>
