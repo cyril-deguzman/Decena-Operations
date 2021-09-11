@@ -3,32 +3,32 @@ $(document).ready(function () {
     /* Keyup events for real time validation */
 
     // Alpha
-    $("#client-name, #driver" ).keyup(function () {
+    $("#client-name" ).keyup(function () {
         var alphaClientName = validator.trim($("#client-name").val());
         var clientLen = document.getElementById("client-name").getAttribute("maxlength");
-        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
         validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
+        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
     });
 
     $("#driver").keyup(function () {
         var alphaDriver = validator.trim($("#driver").val());
         var driverLen = document.getElementById("driver").getAttribute("maxlength");
-        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
         validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
+        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
     });
 
     $("#helper").keyup(function () {
         var alphaHelper = validator.trim($("#helper").val());
         var helperLen = document.getElementById("helper").getAttribute("maxlength");
-        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
         validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
+        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
     });
 
     $("#processor").keyup(function () {
         var alphaProcessor = validator.trim($("#processor").val());
         var processorLen = document.getElementById("processor").getAttribute("maxlength");
-        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
         validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
+        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
     });
 
     // Alphanumeric
