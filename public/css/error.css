@@ -1,7 +1,7 @@
 body {
     height: 100%;
     width: 100%;
-    background-image: url("../images/grayBackground.jpg");
+    background: linear-gradient(rgba(234,234,234,.30), rgba(234,234,234,.30)), url("../images/grayBackground.jpg");
     background-size: cover;
     font-family: Helvetica;      
     overflow: hidden;   
