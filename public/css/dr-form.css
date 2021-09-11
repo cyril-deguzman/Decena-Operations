@@ -91,6 +91,10 @@ body {
     resize: none;
 }
 
+#label-ack1, #label-ack2 {
+    font-size: 2vh;
+}
+
 /* Modal */ #a-date-label-dpoint-p3, #a-time-label-dpoint-p3, #sl-date-label-dpoint-p3, #sl-time-label-dpoint-p3,
 #fl-date-label-dpoint-p3, #fl-time-label-dpoint-p3, #d-date-label-dpoint-p3, #d-time-label-dpoint-p3 {
     width:81%;
