@@ -1,6 +1,6 @@
 body {          
     height: 100%;
-    background-image: url("../images/grayBackground.jpg");
+    background: linear-gradient(rgba(234,234,234,.30), rgba(234,234,234,.30)), url("../images/grayBackground.jpg");
     background-size: cover;
     max-width: 100%;
     overflow-x: hidden;
@@ -91,9 +91,17 @@ body {
     resize: none;
 }
 
-/*modal*/ #a-date-label-dpoint-p3, #a-time-label-dpoint-p3, #sl-date-label-dpoint-p3, #sl-time-label-dpoint-p3,
+#label-ack1, #label-ack2 {
+    font-size: 2vh;
+}
+
+/* Modal */ #a-date-label-dpoint-p3, #a-time-label-dpoint-p3, #sl-date-label-dpoint-p3, #sl-time-label-dpoint-p3,
 #fl-date-label-dpoint-p3, #fl-time-label-dpoint-p3, #d-date-label-dpoint-p3, #d-time-label-dpoint-p3 {
-    width:60%;
+    width:81%;
+}
+
+/* Modal */ #a-date-label-ppoint-p3, #a-time-label-ppoint-p3, #d-date-label-ppoint-p3, #d-time-label-ppoint-p3 {
+    width:50%;
 }
 
 /* 
@@ -101,7 +109,7 @@ body {
  */ 
  .label-p3, #upper1-left-p1, #upper2-left-p1, #lower1-left-p1, #lower2-left-p1, #upper-left-p2, #middle-left-p2, #lower-left-p2, 
   #left-p3,#upper1-left-p4, #upper2-left-p4, #lower1-left-p4, #lower2-left-p4 {
-    width: 44%;
+    width: 35%;
     font-size: 2vh;
 }
 
@@ -249,7 +257,7 @@ hr {
 }
 
 .modal-xl {
-    width: 66%;
+    width: 60%;
     max-width:1200px;
 }
   

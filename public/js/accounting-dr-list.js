@@ -142,7 +142,26 @@ $(document).ready(function() {
         $("label").eq(2).css('bottom','20px');
         $("label").eq(2).css('right','10px');
 
-        /* Filter Year */
+        /* Set Year */
+        $('#set-year-btn').prop('disabled', true);
+
+        $('#set-year-btn').click(function(){
+            let companyName = $('#company-name-title').attr('data-id');
+            let year = $('#set-year-input').val();
+            
+            window.location = `/accounting/${year}`;
+        });
+
+        $('#set-year-input').keyup(function(){
+            let year = $(this).val();
+            let date = new Date()
+        
+            if(!(year < 1000 || year > date.getFullYear()))
+                $('#set-year-btn').prop('disabled', false);
+            else 
+                $('#set-year-btn').prop('disabled', true);
+        })
+        
         $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
                 var year = $('#set-year-input').val();
@@ -163,23 +182,6 @@ $(document).ready(function() {
                 table.draw();
             });
         });
-
-        $('#set-year-btn').click(function(){
-            let companyName = $('#company-name-title').attr('data-id');
-            let year = $('#set-year-input').val();
-            
-            window.location = `/accounting/${year}`;
-        });
-
-        $('#set-year-input').keyup(function(){
-            let year = $(this).val();
-            let date = new Date()
-        
-            if(!(year < 1000 || year > date.getFullYear()))
-                $('#set-year-btn').prop('disabled', false);
-            else 
-                $('#set-year-btn').prop('disabled', true);
-        })
 
 
         /**

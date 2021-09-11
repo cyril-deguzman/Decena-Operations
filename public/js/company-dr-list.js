@@ -117,6 +117,18 @@ $(document).ready(function() {
         $("label").eq(2).css('right','10px');
 
         /* Filter Year */
+        $('#set-year-btn').prop('disabled', true);
+
+        $('#set-year-input').keyup(function(){
+            let year = $(this).val();
+            let date = new Date()
+        
+            if(!(year < 1000 || year > date.getFullYear()))
+                $('#set-year-btn').prop('disabled', false);
+            else 
+                $('#set-year-btn').prop('disabled', true);
+        })
+
         $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
                 var year = $('#set-year-input').val();
@@ -136,10 +148,5 @@ $(document).ready(function() {
             $('#set-year-input').keyup( function() {
                 table.draw();
             });
-        });
-
-       
-
-        
-        
+        });     
 } );

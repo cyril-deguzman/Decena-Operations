@@ -3,7 +3,7 @@
 
 body,html{          
     height: 100%;
-    background-image: url("../images/grayBackground.jpg");
+    background: linear-gradient(rgba(234,234,234,.30), rgba(234,234,234,.30)), url("../images/grayBackground.jpg");
     background-size: cover;
     max-width: 100%;
     overflow-x: hidden;
@@ -212,7 +212,7 @@ input:focus {
 }
 
 #noResultsParentCard{
-    border-color: #b22222;
+    border-color: #299b04;
     font-weight: 500;
     padding-left: 15px;
     padding-right: 15px;
