@@ -21,14 +21,17 @@ body {
 }
 
 #header-logo, #name-date-container, #lists-processor, #part3, #part4, #docs-options, #p-date-time, #d-date-time, #a-date-time, 
-/* modal */ #upper1-part1, #upper2-part1, #lower1-part1, #lower2-part1, #upper-part2, #middle-part2, #lower-part2, #modal-part3, 
-#arrival-ppoint, #departure-ppoint, #arrival-dpoint, #startload-dpoint, #finishload-dpoint, #departure-dpoint, #modal-fleet1-details, 
-#modal-fleet2-details, #modal-acknowledgement1, #modal-acknowledgement2 {
+/* modal */ #upper1-part1, #upper2-part1, #lower1-part1, #lower2-part1, #upper-part2, #middle-part2, #lower-part2, 
+#modal-part3, #arrival-date-ppoint, #arrival-time-ppoint, #departure-date-ppoint, #departure-time-ppoint, #arrival-date-dpoint, 
+#arrival-time-dpoint, #startload-date-dpoint, #startload-time-dpoint, #finishload-date-dpoint, #finishload-time-dpoint, 
+#departure-date-dpoint, #departure-time-dpoint, #modal-fleet1-details, #modal-fleet2-details, #modal-acknowledgement1, 
+#modal-acknowledgement2 {
     display: flex;
     flex-direction: row;
 }
 
-#part1, #part2, #description, #p-date, #p-time, /* modal */ #modal-part1, #modal-part2, #modal-part4 {
+#part1, #part2, #description, #p-date, #p-time, /* modal */ #modal-part1, #modal-part2, #modal-part4,
+#arrival-ppoint, #departure-ppoint, #arrival-dpoint, #startload-dpoint, #finishload-dpoint, #departure-dpoint {
     display: flex;
     flex-direction: column;
 }
@@ -88,22 +91,25 @@ body {
     resize: none;
 }
 
+/*modal*/ #a-date-label-dpoint-p3, #a-time-label-dpoint-p3, #sl-date-label-dpoint-p3, #sl-time-label-dpoint-p3,
+#fl-date-label-dpoint-p3, #fl-time-label-dpoint-p3, #d-date-label-dpoint-p3, #d-time-label-dpoint-p3 {
+    width:60%;
+}
+
 /* 
  * Modal
  */ 
-  #upper1-left-p1, #upper2-left-p1, #lower1-left-p1, #lower2-left-p1, #upper-left-p2, #middle-left-p2, #lower-left-p2, 
-  #left-p3,  #a-left-left-p3, #d-left-left-p3, #a-right-left-p3, #sl-right-left-p3, #fl-right-left-p3, #d-right-left-p3,
-    #upper1-left-p4, #upper2-left-p4, #lower1-left-p4, #lower2-left-p4 {
-    width: 40%;
+ .label-p3, #upper1-left-p1, #upper2-left-p1, #lower1-left-p1, #lower2-left-p1, #upper-left-p2, #middle-left-p2, #lower-left-p2, 
+  #left-p3,#upper1-left-p4, #upper2-left-p4, #lower1-left-p4, #lower2-left-p4 {
+    width: 44%;
     font-size: 2vh;
 }
 
 /* 
  * Modal
  */ 
- #upper1-right-p1, #upper2-right-p1, #lower1-right-p1, #lower2-right-p1, #upper-right-p2, #middle-right-p2, #lower-right-p2, 
- #a-left-right-p3, #d-left-right-p3, #a-right-right-p3, #sl-right-right-p3, #fl-right-right-p3, #d-right-right-p3, 
- #upper1-right-p4, #upper2-right-p4, #lower1-right-p4, #lower2-right-p4 {
+ .input-p3, #upper1-right-p1, #upper2-right-p1, #lower1-right-p1, #lower2-right-p1, #upper-right-p2, #middle-right-p2, #lower-right-p2, 
+#upper1-right-p4, #upper2-right-p4, #lower1-right-p4, #lower2-right-p4 {
     width: 55%;
     word-wrap: break-word;
     color: black;
@@ -243,9 +249,9 @@ hr {
 }
 
 .modal-xl {
-    width: 50%;
+    width: 66%;
     max-width:1200px;
-  }
+}
   
 /* Error-related styles */
 

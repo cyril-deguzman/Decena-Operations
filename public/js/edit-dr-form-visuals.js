@@ -779,7 +779,7 @@ $(document).ready(function () {
         var strDataUpper1P4 = dataP4.slice(0,2).join("<br>");
         var strDataLower2P4 = dataP4.slice(4,6).join("<br>");
         
-        // Displaying all contents of field[] and data[];
+        //Part 1
         $("#upper1-left-p1").html(strFieldUpper1P1);
         $("#upper2-left-p1").html(fieldsP1[2]); 
         $("#lower1-left-p1").html(fieldsP1[3]);
@@ -789,26 +789,46 @@ $(document).ready(function () {
         $("#lower1-right-p1").html(dataP1[3]);
         $("#lower2-right-p1").html(dataP1[4]);
         
+        //Part 2
         $("#upper-left-p2").html(strFieldUpperP2);
         $("#upper-right-p2").html(strDataUpperP2);
         $("#middle-left-p2").html(fieldsP2[2]);
         $("#middle-right-p2").html(dataP2[2]);
         $("#lower-left-p2").html(strFieldLowerP2);
         $("#lower-right-p2").html(strDataLowerP2);
+
+        //Part 3. Pick Up Point
+            //Label
+        $("#a-date-label-ppoint-p3").html(fieldsP3[0]);
+        $("#a-time-label-ppoint-p3").html(fieldsP3[4]);
+        $("#d-date-label-ppoint-p3").html(fieldsP3[3]);
+        $("#d-time-label-ppoint-p3").html(fieldsP3[4]);        
+            //Input
+        $("#a-date-input-ppoint-p3").html(dataP3[0]);
+        $("#a-time-input-ppoint-p3").html(dataP3[1]);
+        $("#d-date-input-ppoint-p3").html(dataP3[2]);
+        $("#d-time-input-ppoint-p3").html(dataP3[3]);               
+        //Part 3. Destination Point
+            //Label
+        $("#a-date-label-dpoint-p3").html(fieldsP3[0]);
+        $("#a-time-label-dpoint-p3").html(fieldsP3[4]);
+        $("#sl-date-label-dpoint-p3").html(fieldsP3[1]);
+        $("#sl-time-label-dpoint-p3").html(fieldsP3[4]);
+        $("#fl-date-label-dpoint-p3").html(fieldsP3[2]);
+        $("#fl-time-label-dpoint-p3").html(fieldsP3[4]);
+        $("#d-date-label-dpoint-p3").html(fieldsP3[3]);
+        $("#d-time-label-dpoint-p3").html(fieldsP3[4]);
+            //Input
+        $("#a-date-input-dpoint-p3").html(dataP3[4]);
+        $("#a-time-input-dpoint-p3").html(dataP3[5]);
+        $("#sl-date-input-dpoint-p3").html(dataP3[6]);
+        $("#sl-time-input-dpoint-p3").html(dataP3[7]);
+        $("#fl-date-input-dpoint-p3").html(dataP3[8]);
+        $("#fl-time-input-dpoint-p3").html(dataP3[9]);
+        $("#d-date-input-dpoint-p3").html(dataP3[10]);
+        $("#d-time-input-dpoint-p3").html(dataP3[11]);
         
-        $("#a-left-left-p3").html(fieldsP3[0] + "<br>" + fieldsP3[4]);
-        $("#a-left-right-p3").html(dataP3.slice(0,2).join("<br>"));
-        $("#d-left-left-p3").html(fieldsP3[3] + "<br>" + fieldsP3[4]);
-        $("#d-left-right-p3").html(dataP3.slice(2,4).join("<br>"));                
-        $("#a-right-left-p3").html(fieldsP3[0] + "<br>" + fieldsP3[4]);
-        $("#a-right-right-p3").html(dataP3.slice(4,6).join("<br>"));
-        $("#sl-right-left-p3").html(fieldsP3[1] + "<br>" + fieldsP3[4]);
-        $("#sl-right-right-p3").html(dataP3.slice(6,8).join("<br>"));
-        $("#fl-right-left-p3").html(fieldsP3[2] + "<br>" + fieldsP3[4]);
-        $("#fl-right-right-p3").html(dataP3.slice(8,10).join("<br>"));
-        $("#d-right-left-p3").html(fieldsP3[3] + "<br>" + fieldsP3[4]);
-        $("#d-right-right-p3").html(dataP3.slice(10,12).join("<br>"));
-        
+        //Part 4
         $("#upper1-left-p4").html(strFieldUpper1P4);
         $("#upper1-right-p4").html(strDataUpper1P4);
         $("#upper2-left-p4").html(fieldsP4[2]);
