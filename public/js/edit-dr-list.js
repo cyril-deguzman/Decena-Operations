@@ -61,6 +61,7 @@ $(document).ready(function() {
             aoColumns : [
               { sWidth: '140px' },
               { sWidth: '150px' },
+              { sWidth: '150px' },
               { sWidth: '100px' },
               { sWidth: '150px' },
               { sWidth: '150px' },
@@ -98,8 +99,7 @@ $(document).ready(function() {
         })
 
         //This just removes the text for the Edit DR column
-        $('th').eq(9).text("");
-        $('th').eq(13).text("");
+        $('th').eq(15).text("");
         
         //Adds an ID "searchDrForm" to the search input to resize it
         $("label").eq(1).attr('id','searchDrForm');
