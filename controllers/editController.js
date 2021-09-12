@@ -139,7 +139,7 @@ const editController = {
                 console.log(err)
             else 
             {
-                if(companyName != oldCompanyName) 
+                if(companyName.toLowerCase() != oldCompanyName.toLowerCase()) 
                     Company.findOne({lowercaseName: companyName.toLowerCase()}, function (err, result) 
                     {
                         if (err) 
