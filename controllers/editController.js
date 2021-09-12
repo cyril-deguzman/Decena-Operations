@@ -121,6 +121,7 @@ const editController = {
         DeliveryReceipt.findByIdAndUpdate(dr_id, { 
             dateIssued: dateIssued,
             companyName: companyName,
+            lowCompanyName: companyName.toLowerCase(),
             clientName: clientName,
             pickSite: pickSite,
             dropSite: dropSite,
