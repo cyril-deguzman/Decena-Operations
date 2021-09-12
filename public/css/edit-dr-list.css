@@ -96,10 +96,8 @@ body {
 /* DataTable */
 table {
     margin: 0 auto;
-    width: 100%;
     clear: both;
     border-collapse: collapse;
-    table-layout: fixed; 
     word-wrap:break-word; 
 }
 
