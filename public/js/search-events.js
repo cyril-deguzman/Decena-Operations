@@ -125,12 +125,14 @@ $(document).ready(function () {
             });
         });
 
-        $(".companyName").each(function(){
-            if (!(/\s/.test($(this).text())) && $(this).text().length >= 75) {
-                $(this).parent().parent().children('.card-header').children('.cardIcon').css("position","relative");
-           $(this).parent().parent().children('.card-header').children('.cardIcon').css("left","30px");
+         $(".companyName").each(function(){
+            let strCompanyName = $(this).text();
+            console.log($(this).text().length);
+            if($(this).text().length >= 60){
+                strCompanyName = $(this).text().substr(0,60).trim(" ") +  "...";
             }
-         });
+            $(this).text(strCompanyName);
+        });         
     }
 
     $('.resultsFoundCard').click(function() {
@@ -138,5 +140,4 @@ $(document).ready(function () {
         
         window.location = `/viewreceipts/${companyName}`;
     })
-
 })
