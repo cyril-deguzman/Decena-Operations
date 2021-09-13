@@ -29,6 +29,10 @@ $(document).ready(function() {
         title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+ " " + title +'" class ="searchField" />' );
     } );
+
+    //Set Placeholder for Payment Status Column and Truck Plate No. Column
+    $('.searchField').eq(3).attr("placeholder"," Status");
+    $('.searchField').eq(6).attr("placeholder"," Plate No.");
  
     // DataTable
     var table = $('.drDataTable').DataTable({  bAutoWidth: false,
@@ -106,7 +110,7 @@ $(document).ready(function() {
     //     }
 
         //This just removes the text for the Edit DR column
-        $('th').eq(9).text("");
+        // $('th').eq(9).text("");
         $('th').eq(13).text("");
         
         //Adds an ID "searchDrForm" to the search input to resize it

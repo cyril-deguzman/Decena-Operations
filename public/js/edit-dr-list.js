@@ -53,6 +53,10 @@ $(document).ready(function() {
             $(this).html( '<input type="text" placeholder="'+ " " + title +'" class ="searchField" />' );
         } );
      
+        //Set Placeholder for Payment Status Column and Truck Plate No. Column
+        $('.searchField').eq(4).attr("placeholder"," Status");
+        $('.searchField').eq(7).attr("placeholder"," Plate No.");
+        
         // DataTable
         var table = $('.drDataTable').DataTable({  bAutoWidth: false,
             columnDefs: [
