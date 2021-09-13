@@ -274,7 +274,7 @@ $(document).ready(function () {
 
         var alphaPlateNum = validator.trim($('#plate-number').val());
         var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
-        validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
+        validPlateNo(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
 
         var alphaDescription = validator.trim($('#description').val());
         var descriptionLen = document.getElementById("description").getAttribute("maxlength");
@@ -604,6 +604,20 @@ $(document).ready(function () {
         checked = $("input[type=checkbox]:checked").length;
         if (checked <= 0)
             setInvalid(id, "Invalid input. At least one box must be checked.", errorfield);
+        else
+            setValid(id, errorfield);
+    }
+
+    /**
+     * Checks the length of a plate number input if it is within the given min-max range
+     * 
+     * @param {String} input        The user input for a specific field in the form
+     * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
+     * @param {String} id           The ID of the field in the form with discrepancies
+    */
+    function validPlateNo (input, errorfield, id, length) {
+        if (!validator.isLength(input, {min: 6, max: length}))
+            setInvalid(id, 'Invalid input. Minimum of 6 characters and maximum of ' + length + ' characters.', errorfield);
         else
             setValid(id, errorfield);
     }
