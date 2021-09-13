@@ -99,6 +99,7 @@ table {
     clear: both;
     border-collapse: collapse;
     word-wrap:break-word; 
+    table-layout: fixed;
 }
 
 thead, tbody, tfoot {

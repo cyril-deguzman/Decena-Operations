@@ -59,14 +59,14 @@ $(document).ready(function() {
                 { orderable: false, targets: -1 }
              ],
             aoColumns : [
-              { sWidth: '140px' },
-              { sWidth: '150px' },
-              { sWidth: '150px' },
               { sWidth: '100px' },
-              { sWidth: '150px' },
-              { sWidth: '150px' },
-              { sWidth: '90px' },
-              { sWidth: '55px' }
+              { sWidth: '130px' },
+              { sWidth: '130px' },
+              { sWidth: '70px' },
+              { sWidth: '130px' },
+              { sWidth: '130px' },
+              { sWidth: '70px' },
+              { sWidth: '50px' }
             ],
             initComplete: function () {
                 // Apply the search
