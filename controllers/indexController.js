@@ -1,7 +1,10 @@
+const dotenv = require(`dotenv`);
+
+dotenv.config();
+const ENCODERPASS = process.env.ENCODERPASS;
+const ACCOUNTANTPASS = process.env.ACCOUNTANTPASS
 const ENCODER = 'ENCODER';
 const ACCOUNTANT = 'ACCOUNTANT';
-const ENCODERPASS = 'enc';
-const ACCOUNTANTPASS = 'acc';
 
 const indexController = {
     
