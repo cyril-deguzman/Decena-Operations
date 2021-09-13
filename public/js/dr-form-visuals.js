@@ -73,6 +73,42 @@ $(document).ready(function () {
         validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
     });
 
+    // Times
+    $("#ack-time").on("change", function () {
+        var ackTime = document.getElementById("ack-time").value;
+        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    });
+
+    $("#p-arrival-time").on("change", function () {
+        if (!(validTime($("#p-arrival-time").val())))
+            setDefTime("p-arrival-time");
+    });
+
+    $("#p-departure-time").on("change", function () {
+        if (!(validTime($("#p-departure-time").val())))
+            setDefTime("p-departure-time");
+    });
+
+    $("#d-arrival-time").on("change", function () {
+        if (!(validTime($("#d-arrival-time").val())))
+            setDefTime("d-arrival-time");
+    });
+
+    $("#d-departure-time").on("change", function () {
+        if (!(validTime($("#d-departure-time").val())))
+            setDefTime("d-departure-time");
+    });
+
+    $("#start-load-time").on("change", function () {
+        if (!(validTime($("#start-load-time").val())))
+            setDefTime("start-load-time");
+    });
+
+    $("#finish-load-time").on("change", function () {
+        if (!(validTime($("#finish-load-time").val())))
+            setDefTime("finish-load-time");
+    });
+
     // Dates
     $("#date-issued").on("change", function () {
         var dateIssued = document.getElementById("date-issued").value;
@@ -84,10 +120,34 @@ $(document).ready(function () {
         validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
     });
 
-    // Time
-    $("#ack-time").on("change", function () {
-        var ackTime = document.getElementById("ack-time").value;
-        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    $("#p-arrival-date").on("change", function () {
+        if (!(validDateFilled($("#p-arrival-date").val())))
+            setDefDate("p-arrival-date");
+    });
+
+    $("#p-departure-date").on("change", function () {
+        if (!(validDateFilled($("#p-departure-date").val())))
+            setDefDate("p-departure-date");
+    });
+    
+    $("#d-arrival-date").on("change", function () {
+        if (!(validDateFilled($("#d-arrival-date").val())))
+            setDefDate("d-arrival-date");
+    });
+
+    $("#d-departure-date").on("change", function () {
+        if (!(validDateFilled($("#d-departure-date").val())))
+            setDefDate("d-departure-date");
+    });
+
+    $("#start-load-date").on("change", function () {
+        if (!(validDateFilled($("#start-load-date").val())))
+            setDefDate("start-load-date");
+    });
+
+    $("#finish-load-date").on("change", function () {
+        if (!(validDateFilled($("#finish-load-date").val())))
+            setDefDate("finish-load-date");
     });
 
     /**
@@ -421,6 +481,12 @@ $(document).ready(function () {
             setValid(id, errorfield);
     }
 
+    function validDateFilled (dateInput) {
+        if (dateInput == "")
+            return false;
+        return true;
+    }
+
     /**
      * Checks date fields if they are not set at most today (YYYY-MM-DD)
      * 
@@ -438,7 +504,11 @@ $(document).ready(function () {
         var dateToday = getDateTime(yyyy + "-" + ("0" + mm) + "-" + dd);
         var dateInput = getDateTime(input);
 
-        if ((dateInput - dateToday > 0) || isNaN(dateInput)) {
+        if (input == "") {
+            setInvalid(id, "Date must not be empty.", errorfield);
+            return true;
+        }
+        else if ((dateInput - dateToday > 0) || isNaN(dateInput)) {
             setInvalid(id, "Date must be at most today.", errorfield);
             return true;
         }
@@ -689,6 +759,31 @@ $(document).ready(function () {
     }
 
     /**
+     * Setting the DEFAULT & MAX DATE to today (for all date fields)
+     * 
+     * @param {String}  dateId  The ID of the date field in the form with discrepancies
+     */
+    function setDefDate (dateId) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        if(dd < 10)
+            dd='0'+dd;
+        if(mm < 10)
+            mm='0'+mm; 
+        today = yyyy+'-'+mm+'-'+dd;
+
+        var fieldId = "#" + dateId;
+        $(fieldId).val(today);
+    }
+
+    function setDefTime (timeId) {
+        var fieldId = "#" + timeId;
+        $(fieldId).val("00:00");
+    }
+
+    /**
      * Gets and displays the modal form
     */
     function getModal () {
@@ -867,7 +962,7 @@ $(document).ready(function () {
     document.getElementById("finish-load-date").setAttribute("value", today);
     document.getElementById("finish-load-date").setAttribute("max", today); 
     document.getElementById("ack-date").setAttribute("value", today);
-    document.getElementById("ack-date").setAttribute("max", today);                                         
+    document.getElementById("ack-date").setAttribute("max", today);  
 
     /**
      * Displaying number of characters left in Description of Commodity
