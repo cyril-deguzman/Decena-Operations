@@ -10,6 +10,8 @@ $(document).ready(function() {
     var paid = "paid";
     var pending = "pending";
     
+    $('.paid').prop('disabled', true);
+
     paymentStatus.each(function(){
         if($(this).text().toUpperCase() == paid.toUpperCase()){
             $(this).css("background-color","#299B04");

@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    $('.paid').prop('disabled', true);
+    
     $('#set-year-btn').prop('disabled', true);
 
     $('#set-year-btn').click(function(){
