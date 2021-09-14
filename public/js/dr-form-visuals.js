@@ -684,7 +684,6 @@ $(document).ready(function () {
             setValid(id, errorfield);
     }
 
-
     /**
      * Checks the length of a plate number input if it is within the given min-max range
      * 
@@ -692,12 +691,12 @@ $(document).ready(function () {
      * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
      * @param {String} id           The ID of the field in the form with discrepancies
     */
-         function validPlateNo (input, errorfield, id, length) {
-            if (!validator.isLength(input, {min: 1, max: length}))
-                setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of ' + length + ' characters.', errorfield);
-            else
-                setValid(id, errorfield);
-        }
+    function validPlateNo (input, errorfield, id, length) {
+        if (!validator.isLength(input, {min: 6, max: length}))
+            setInvalid(id, 'Invalid input. Minimum of 6 characters and maximum of ' + length + ' characters.', errorfield);
+        else
+            setValid(id, errorfield);
+    }
 
     /**
      * Checks the length of a string if it is within the given min-max range
