@@ -70,11 +70,13 @@ $(document).ready(function () {
     // Numeric
     $("#quantity").on("change", function () {
         var quantityNum = document.getElementById("quantity").value;
-        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+        validAmount(quantityNum, $("#quantity").attr("id"));
     });
 
     // Times
     $("#ack-time").on("change", function () {
+        if (!(validTime($("#ack-time").val())))
+            setDefTime("ack-time");
         var ackTime = document.getElementById("ack-time").value;
         validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
     });
@@ -111,11 +113,15 @@ $(document).ready(function () {
 
     // Dates
     $("#date-issued").on("change", function () {
+        if (!(validDateFilled($("#date-issued").val())))
+            setDefDate("date-issued");
         var dateIssued = document.getElementById("date-issued").value;
         validDate(dateIssued, $("#p1Error5"), $("#date-issued").attr("id"));
     });
 
     $("#ack-date").on("change", function () {
+        if (!(validDateFilled($("#ack-date").val())))
+            setDefDate("ack-date");
         var ackDate = document.getElementById("ack-date").value;
         validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
     });
@@ -345,7 +351,7 @@ $(document).ready(function () {
 
         // Numeric
         var quantityNum = document.getElementById("quantity").value;
-        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+        validAmount(quantityNum, $("#quantity").attr("id"));
 
         // Dates
         var dateIssued = document.getElementById("date-issued").value;
@@ -657,11 +663,11 @@ $(document).ready(function () {
      * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
      * @param {String} id           The ID of the field in the form with discrepancies
     */
-    function validAmount (input, errorfield, id) {
-        if (!(input > 0 && input <= 100))
-            setInvalid(id, "Invalid input. Minimum of 1 and maximum of 100.", errorfield);
-        else
-            setValid(id, errorfield);
+    function validAmount (input, id) {
+        if (input < 0)
+            setDefAmt(id, 1);
+        else if (input > 100)
+            setDefAmt(id, 100);
     }
 
     /**
@@ -687,12 +693,11 @@ $(document).ready(function () {
      * @param {String} id           The ID of the field in the form with discrepancies
     */
          function validPlateNo (input, errorfield, id, length) {
-            if (!validator.isLength(input, {min: 6, max: length}))
-                setInvalid(id, 'Invalid input. Minimum of 6 characters and maximum of ' + length + ' characters.', errorfield);
+            if (!validator.isLength(input, {min: 1, max: length}))
+                setInvalid(id, 'Invalid input. Minimum of 1 character and maximum of ' + length + ' characters.', errorfield);
             else
                 setValid(id, errorfield);
         }
-
 
     /**
      * Checks the length of a string if it is within the given min-max range
@@ -794,9 +799,25 @@ $(document).ready(function () {
         $(fieldId).val(today);
     }
 
+    /**
+     * Sets the time field to its default values
+     * 
+     * @param {String} timeId The ID of the time field in the form with discrepancies
+     */
     function setDefTime (timeId) {
         var fieldId = "#" + timeId;
         $(fieldId).val("00:00");
+    }
+
+    /**
+     * Sets the amount field to its default values
+     * 
+     * @param {String} amtId    The ID of the amount field in the form with discrepancies
+     * @param {Number} amt      The amount to set the value of the field to
+     */
+    function setDefAmt (amtId, amt) {
+        var fieldId = "#" + amtId;
+        $(fieldId).val("" + amt);
     }
 
     /**
@@ -807,7 +828,7 @@ $(document).ready(function () {
         var dataP1 = [];
         var fieldsP1 = [];
 
-        fieldsP1.push("Date Issued ")
+        fieldsP1.push("Date Issued ");
         fieldsP1.push("Forwarding/Broker's Company ");
         fieldsP1.push("Client ");
         fieldsP1.push("Pick-Up Site ");
