@@ -53,7 +53,7 @@ $(document).ready(function () {
     $("#plate-number").keyup(function () {
         var alphaPlateNum = validator.trim($('#plate-number').val());
         var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
-        validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
+        validPlateNo(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
     });
     
     $("#description").keyup(function () {
@@ -664,7 +664,7 @@ $(document).ready(function () {
      * @param {String} id           The ID of the field in the form with discrepancies
     */
     function validAmount (input, id) {
-        if (input < 0)
+        if (input == "" || input < 0)
             setDefAmt(id, 1);
         else if (input > 100)
             setDefAmt(id, 100);
