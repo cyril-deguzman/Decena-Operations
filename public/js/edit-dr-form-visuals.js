@@ -2,33 +2,33 @@ $(document).ready(function () {
 
     /* Keyup events for real time validation */
 
-    //Alpha
-    $("#client-name, #driver" ).keyup(function () {
+    // Alpha
+    $("#client-name" ).keyup(function () {
         var alphaClientName = validator.trim($("#client-name").val());
         var clientLen = document.getElementById("client-name").getAttribute("maxlength");
-        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
         validLen(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"), clientLen);
+        validAlpha(alphaClientName, $("#p1Error2"), $("#client-name").attr("id"));
     });
 
     $("#driver").keyup(function () {
         var alphaDriver = validator.trim($("#driver").val());
         var driverLen = document.getElementById("driver").getAttribute("maxlength");
-        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
         validLen(alphaDriver, $("#p4Error2"), $("#driver").attr("id"), driverLen);
+        validAlpha(alphaDriver, $("#p4Error2"), $("#driver").attr("id"));
     });
 
     $("#helper").keyup(function () {
         var alphaHelper = validator.trim($("#helper").val());
         var helperLen = document.getElementById("helper").getAttribute("maxlength");
-        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
         validLen(alphaHelper, $("#p4Error3"), $("#helper").attr("id"), helperLen);
+        validAlpha(alphaHelper, $("#p4Error3"), $("#helper").attr("id"));
     });
 
     $("#processor").keyup(function () {
         var alphaProcessor = validator.trim($("#processor").val());
         var processorLen = document.getElementById("processor").getAttribute("maxlength");
-        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
         validLen(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"), processorLen);
+        validAlpha(alphaProcessor, $("#p2Error3"), $("#processor").attr("id"));
     });
 
     // Alphanumeric
@@ -53,7 +53,7 @@ $(document).ready(function () {
     $("#plate-number").keyup(function () {
         var alphaPlateNum = validator.trim($('#plate-number').val());
         var plateLen = document.getElementById("plate-number").getAttribute("maxlength");
-        validLen(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
+        validPlateNo(alphaPlateNum, $('#p4Error1'), $('#plate-number').attr('id'), plateLen);
     });
     
     $("#description").keyup(function () {
@@ -70,24 +70,90 @@ $(document).ready(function () {
     // Numeric
     $("#quantity").on("change", function () {
         var quantityNum = document.getElementById("quantity").value;
-        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+        validAmount(quantityNum, $("#quantity").attr("id"));
+    });
+
+    // Times
+    $("#ack-time").on("change", function () {
+        if (!(validTime($("#ack-time").val())))
+            setDefTime("ack-time");
+        var ackTime = document.getElementById("ack-time").value;
+        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    });
+
+    $("#p-arrival-time").on("change", function () {
+        if (!(validTime($("#p-arrival-time").val())))
+            setDefTime("p-arrival-time");
+    });
+
+    $("#p-departure-time").on("change", function () {
+        if (!(validTime($("#p-departure-time").val())))
+            setDefTime("p-departure-time");
+    });
+
+    $("#d-arrival-time").on("change", function () {
+        if (!(validTime($("#d-arrival-time").val())))
+            setDefTime("d-arrival-time");
+    });
+
+    $("#d-departure-time").on("change", function () {
+        if (!(validTime($("#d-departure-time").val())))
+            setDefTime("d-departure-time");
+    });
+
+    $("#start-load-time").on("change", function () {
+        if (!(validTime($("#start-load-time").val())))
+            setDefTime("start-load-time");
+    });
+
+    $("#finish-load-time").on("change", function () {
+        if (!(validTime($("#finish-load-time").val())))
+            setDefTime("finish-load-time");
     });
 
     // Dates
     $("#date-issued").on("change", function () {
+        if (!(validDateFilled($("#date-issued").val())))
+            setDefDate("date-issued");
         var dateIssued = document.getElementById("date-issued").value;
         validDate(dateIssued, $("#p1Error5"), $("#date-issued").attr("id"));
     });
 
     $("#ack-date").on("change", function () {
+        if (!(validDateFilled($("#ack-date").val())))
+            setDefDate("ack-date");
         var ackDate = document.getElementById("ack-date").value;
         validDate(ackDate, $("#p4Error4"), $("#ack-date").attr("id"));
     });
 
-    // Time
-    $("#ack-time").on("change", function () {
-        var ackTime = document.getElementById("ack-time").value;
-        validStartEndTime(true, ackTime, ackTime, $("#p4Error5"), $("#ack-time").attr("id"), $("#ack-time").attr("id"));
+    $("#p-arrival-date").on("change", function () {
+        if (!(validDateFilled($("#p-arrival-date").val())))
+            setDefDate("p-arrival-date");
+    });
+
+    $("#p-departure-date").on("change", function () {
+        if (!(validDateFilled($("#p-departure-date").val())))
+            setDefDate("p-departure-date");
+    });
+    
+    $("#d-arrival-date").on("change", function () {
+        if (!(validDateFilled($("#d-arrival-date").val())))
+            setDefDate("d-arrival-date");
+    });
+
+    $("#d-departure-date").on("change", function () {
+        if (!(validDateFilled($("#d-departure-date").val())))
+            setDefDate("d-departure-date");
+    });
+
+    $("#start-load-date").on("change", function () {
+        if (!(validDateFilled($("#start-load-date").val())))
+            setDefDate("start-load-date");
+    });
+
+    $("#finish-load-date").on("change", function () {
+        if (!(validDateFilled($("#finish-load-date").val())))
+            setDefDate("finish-load-date");
     });
 
     /**
@@ -285,7 +351,7 @@ $(document).ready(function () {
 
         // Numeric
         var quantityNum = document.getElementById("quantity").value;
-        validAmount(quantityNum, $("#p2Error1"), $("#quantity").attr("id"));
+        validAmount(quantityNum, $("#quantity").attr("id"));
 
         // Dates
         var dateIssued = document.getElementById("date-issued").value;
@@ -421,6 +487,12 @@ $(document).ready(function () {
             setValid(id, errorfield);
     }
 
+    function validDateFilled (dateInput) {
+        if (dateInput == "")
+            return false;
+        return true;
+    }
+
     /**
      * Checks date fields if they are not set at most today (YYYY-MM-DD)
      * 
@@ -438,7 +510,11 @@ $(document).ready(function () {
         var dateToday = getDateTime(yyyy + "-" + ("0" + mm) + "-" + dd);
         var dateInput = getDateTime(input);
 
-        if ((dateInput - dateToday > 0) || isNaN(dateInput)) {
+        if (input == "") {
+            setInvalid(id, "Date must not be empty.", errorfield);
+            return true;
+        }
+        else if ((dateInput - dateToday > 0) || isNaN(dateInput)) {
             setInvalid(id, "Date must be at most today.", errorfield);
             return true;
         }
@@ -587,11 +663,11 @@ $(document).ready(function () {
      * @param {String} errorfield   The ID of the error field in the form to display the errormsg in
      * @param {String} id           The ID of the field in the form with discrepancies
     */
-    function validAmount (input, errorfield, id) {
-        if (!(input > 0 && input <= 100))
-            setInvalid(id, "Invalid input. Minimum of 1 and maximum of 100.", errorfield);
-        else
-            setValid(id, errorfield);
+    function validAmount (input, id) {
+        if (input == "" || input < 0)
+            setDefAmt(id, 1);
+        else if (input > 100)
+            setDefAmt(id, 100);
     }
 
     /**
@@ -700,6 +776,47 @@ $(document).ready(function () {
             window.scroll(0, temp - 100);
             // window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+    }
+
+    /**
+     * Setting the DEFAULT & MAX DATE to today (for all date fields)
+     * 
+     * @param {String}  dateId  The ID of the date field in the form with discrepancies
+     */
+    function setDefDate (dateId) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        if(dd < 10)
+            dd='0'+dd;
+        if(mm < 10)
+            mm='0'+mm; 
+        today = yyyy+'-'+mm+'-'+dd;
+
+        var fieldId = "#" + dateId;
+        $(fieldId).val(today);
+    }
+
+    /**
+     * Sets the time field to its default values
+     * 
+     * @param {String} timeId The ID of the time field in the form with discrepancies
+     */
+    function setDefTime (timeId) {
+        var fieldId = "#" + timeId;
+        $(fieldId).val("00:00");
+    }
+
+    /**
+     * Sets the amount field to its default values
+     * 
+     * @param {String} amtId    The ID of the amount field in the form with discrepancies
+     * @param {Number} amt      The amount to set the value of the field to
+     */
+    function setDefAmt (amtId, amt) {
+        var fieldId = "#" + amtId;
+        $(fieldId).val("" + amt);
     }
 
     /**
