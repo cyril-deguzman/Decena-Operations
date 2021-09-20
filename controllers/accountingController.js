@@ -6,6 +6,7 @@ const accountingController = {
     /**
      * getViewDRs
      * 
+     * gets all the DRs on the specified year, if not specified defaults to current year
      * @param {*} req 
      * @param {*} res 
      */    
@@ -62,8 +63,9 @@ const accountingController = {
     },
     
     /**
+     * postUpdateStatus
      * 
-     * 
+     * updates the status of the delivery receipt from pending to paid.
      * @param {*} req 
      * @param {*} res 
      */

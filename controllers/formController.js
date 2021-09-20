@@ -23,6 +23,7 @@ const formController = {
     /**
      * getViewAllDRs
      * 
+     * gets all the DRs on the specified year, if not specified defaults to current year
      * @param {*} req 
      * @param {*} res 
      */    
