@@ -14,7 +14,6 @@ app.set(`view engine`, `hbs`);
 hbs.registerPartials(__dirname + `/views/partials`);
 
 dotenv.config();
-hostname = process.env.HOSTNAME;
 port = process.env.PORT;
 url = process.env.DB_URL;
 secret = process.env.SECRET;
@@ -34,7 +33,6 @@ app.use(session({
 
 app.use(`/`, routes);
 
-app.listen(port, hostname, function () {
-    console.log(`Server is running at:`);
-    console.log(`http://` + hostname + `:` + port);
+app.listen(port, function () {
+   
 });

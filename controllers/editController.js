@@ -39,7 +39,7 @@ const editController = {
     /**
      * postEditForm.
      * 
-     * Saves the editted delivery receipt to the database.
+     * Saves the edited delivery receipt to the database.
      * @param {*} req 
      * @param {*} res 
      */

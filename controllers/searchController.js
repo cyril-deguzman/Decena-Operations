@@ -51,6 +51,7 @@ const searchController = {
     /**
      * getViewDRs
      * 
+     * renders the delivery receipts of a specified company
      * @param {*} req 
      * @param {*} res 
      */    
@@ -95,6 +96,7 @@ const searchController = {
     /**
      * postPaginateCompanies.
      * 
+     * returns a paginated collection of delivery receipts of a certain company
      * @param {*} req 
      * @param {*} res 
      */
