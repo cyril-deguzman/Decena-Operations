@@ -21,13 +21,9 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "express-validator": "^6.12.1",
     "hbs": "^4.1.2",
-    "moment": "^2.29.1",
     "mongodb": "^4.0.1",
-    "mongoose": "^5.13.3",
-    "nodemon": "^2.0.12",
-    "validator": "^13.6.0"
+    "mongoose": "^5.13.3"
   },
   "engines": {
     "node": "14.17.6"
