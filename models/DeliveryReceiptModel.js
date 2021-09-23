@@ -1,9 +1,12 @@
+/**
+ * Mongooose and schema imports
+ */
 let mongoose = require('mongoose');
-const Fleet = require('./FleetsSchema.js');
-const PickUp = require('./PickUpSchema.js');
-const Destination = require('./DestinationSchema.js');
-const DocumentList = require('./DocumentListSchema.js');
-const Acknowledgement = require('./AcknowledgementSchema');
+const Fleet = require('./subschemas/FleetsSchema');
+const PickUp = require('./subschemas/PickUpSchema');
+const Destination = require('./subschemas/DestinationSchema');
+const DocumentList = require('./subschemas/DocumentListSchema');
+const Acknowledgement = require('./subschemas/AcknowledgementSchema');
 
 /**
  * DeliveryReceiptSchema.

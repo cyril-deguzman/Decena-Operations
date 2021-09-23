@@ -1,10 +1,10 @@
-const Fleet = require('../models/FleetsSchema.js');
-const PickUp = require('../models/PickUpSchema.js');
-const Destination = require('../models/DestinationSchema.js');
-const DocumentList = require('../models/DocumentListSchema.js');
 const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
-const Acknowledgement = require('../models/AcknowledgementSchema.js');
 const Company = require('../models/CompanyModel.js')
+const Fleet = require('../models/subschemas/FleetsSchema.js');
+const PickUp = require('../models/subschemas/PickUpSchema.js');
+const Destination = require('../models/subschemas/DestinationSchema.js');
+const DocumentList = require('../models/subschemas/DocumentListSchema.js');
+const Acknowledgement = require('../models/subschemas/AcknowledgementSchema.js');
 const auxiliaryController = require(`./auxiliaryController.js`);
 
 const formController = {
@@ -17,7 +17,7 @@ const formController = {
      * @param {*} res 
      */
     getForm: function(req, res) {
-        res.render('dr-form', {});
+        res.render('create-dr-form', {});
     },
 
     /**
@@ -58,7 +58,7 @@ const formController = {
 
             });
             
-            res.render("edit-dr-list", {dr: results, year: today})
+            res.render("encoder-all-dr-list", {dr: results, year: today})
         })
 
     },

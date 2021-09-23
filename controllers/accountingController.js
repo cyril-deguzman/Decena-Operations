@@ -57,7 +57,7 @@ const accountingController = {
                 arr[i].acknowledgement.dateAck = auxiliaryController.convertDate(dateAck.dateAck);
             });
             
-            res.render("accounting-dr-list", {dr: results, year: today})
+            res.render("accounting-all-dr-list", {dr: results, year: today})
         })
 
     },

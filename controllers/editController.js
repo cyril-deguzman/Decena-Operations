@@ -1,10 +1,10 @@
-const Fleet = require('../models/FleetsSchema.js');
-const PickUp = require('../models/PickUpSchema.js');
-const Destination = require('../models/DestinationSchema.js');
-const DocumentList = require('../models/DocumentListSchema.js');
 const DeliveryReceipt = require('../models/DeliveryReceiptModel.js');
-const Acknowledgement = require('../models/AcknowledgementSchema.js');
-const Company = require('../models/CompanyModel.js')
+const Company = require('../models/CompanyModel.js');
+const Fleet = require('../models/subschemas/FleetsSchema.js');
+const PickUp = require('../models/subschemas/PickUpSchema.js');
+const Destination = require('../models/subschemas/DestinationSchema.js');
+const DocumentList = require('../models/subschemas/DocumentListSchema.js');
+const Acknowledgement = require('../models/subschemas/AcknowledgementSchema.js');
 const auxiliaryController = require(`./auxiliaryController.js`);
 
 const editController = {
@@ -30,7 +30,7 @@ const editController = {
                 dr.dUnFin = auxiliaryController.convertDate(dr.destinationDates.unloadingFinishedDate);
                 dr.dDdep = auxiliaryController.convertDate(dr.destinationDates.departureDate);
                 dr.dAck = auxiliaryController.convertDate(dr.acknowledgement.dateAck);
-                res.render('edit-form', {dr: dr, id: id});
+                res.render('edit-dr-form', {dr: dr, id: id});
             }
                 
         });

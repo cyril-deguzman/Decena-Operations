@@ -12,7 +12,7 @@ const searchController = {
      * @param {*} res 
      */
     getSearch: function(req, res) {
-        res.render('search', {});
+        res.render('search-company', {});
     },
 
     /**
@@ -44,7 +44,7 @@ const searchController = {
                 
         await Company.countDocuments({name: regex}, function(err, companyCount) {
             pageCount = companyCount
-            res.render("search", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: trimmedQuery});
+            res.render("search-company", {companyList:foundCompanies.results, noMatch: noMatch, pageCount: pageCount, searchQuery: trimmedQuery});
         });
     },
     
@@ -88,7 +88,7 @@ const searchController = {
                 arr[i].dateIssuedInteger = '' + year  + month + day;
             });
 
-            res.render("search-dr", {dr: results, name: companyName, year: today, dataName: dataName})
+            res.render("view-company-dr", {dr: results, name: companyName, year: today, dataName: dataName})
         })
 
     },
