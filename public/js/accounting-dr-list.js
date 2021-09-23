@@ -103,37 +103,6 @@ $(document).ready(function() {
      $('#myInputTextField').keyup(function(){
         table.search($(this).val()).draw();
     })
-    /*
-        This function gets all of the search input fields and adjusts the width of each.
-    */
-    //  var searchFields = $(".searchField");
-    //     for(var i=0; i<searchFields.length; i++){
-    //         var instanceOfSearchField= searchFields.eq(i);
-            
-    //         switch(i)
-    //         {
-    //             // case 0:
-                   
-    //             case 1:
-    //                 instanceOfSearchField.css("width","100px");
-    //                 break;
-    //             case 2:
-    //                 instanceOfSearchField.css("width","160px");
-    //                 break;
-    //             case 3:
-    //                 instanceOfSearchField.css("width","160px");
-    //                 break;
-    //             case 4:
-    //                 instanceOfSearchField.css("width","160px");
-    //                 break;
-    //             case 5:
-    //                 instanceOfSearchField.css("width","100px");
-    //                 break;
-    //             case 6:
-    //                 instanceOfSearchField.css("width","90px");
-    //                 break;
-    //         }
-    //     }
 
         //This just removes the text for the Edit DR column
         $('th').eq(12).text("");
